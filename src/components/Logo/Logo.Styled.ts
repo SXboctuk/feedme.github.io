@@ -16,4 +16,6 @@ export const LogoTextPrimary = styled.span`
 
 export const LogoLink = styled(Link)<ILink>`
 	text-decoration: none;
+	display: flex;
+	align-items: center;
 `;

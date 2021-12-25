@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
+import { routePath } from './constants/routePath';
 import { HomePage } from './pages';
 import { defaultTheme } from './Theme';
 
@@ -14,10 +15,11 @@ const App = () => {
 					<BrowserRouter>
 						<Routes>
 							<Route
-								path="/"
+								path={routePath.HOMEPAGE}
 								element={
 									<>
-										<Header /> <HomePage />
+										<Header />
+										<HomePage />
 									</>
 								}
 							></Route>

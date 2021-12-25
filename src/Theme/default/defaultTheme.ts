@@ -5,6 +5,7 @@ export const defaultTheme: themeInterface = {
 		textMain: '#181818',
 		primary: '#FFBC01',
 		gray: '#F7F7F7',
+		grayDark: '#DADADA',
 		white: '#FFFFFF',
 	},
 	displaySize: {

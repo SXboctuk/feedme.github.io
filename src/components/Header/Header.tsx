@@ -5,7 +5,7 @@ import HeaderSearch from '../HeaderSearch';
 import InnerContainer from '../InnerContainer';
 import LinkWithStyles from '../LinkWithStyles';
 import Logo from '../Logo';
-import SvgHamburgetButton from '../Svg/SvgHamburgerButton.tsx/SvgHamburget';
+import SvgHamburgetButton from '../Svg/SvgHamburgerButton/SvgHamburget';
 import { HeaderHamburger, HeaderNavBlock, HeaderStyled } from './Header.Styled';
 
 const Header = () => {

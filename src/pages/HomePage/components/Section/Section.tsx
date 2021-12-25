@@ -1,8 +1,10 @@
 import React from 'react';
 import Button from '../../../../components/Button';
 import InnerContainer from '../../../../components/InnerContainer';
+import OuterContainer from '../../../../components/OuterContainer';
 import { ISectionProps } from './Section.Interface';
 import {
+	ContainerBackgroundColor,
 	SectionButtonCenterWrapper,
 	SectionContent,
 	SectionMainContainer,
@@ -18,21 +20,31 @@ const Section = (props: ISectionProps) => {
 		title,
 		buttonText,
 		background,
-		nameTitleColor,
+		colorNameTitle,
+		buttonOnClick,
 	} = props;
 	if (background) {
 		return (
 			<SectionMainContainer>
-				<InnerContainer>
-					<SectionNameTitle color={nameTitleColor}>
-						{nameTitle}
-					</SectionNameTitle>
-					<SectionTitle>{title}</SectionTitle>
-					<SectionContent>{children}</SectionContent>
-					<SectionButtonCenterWrapper>
-						<Button variant={variant}>{buttonText}</Button>
-					</SectionButtonCenterWrapper>
-				</InnerContainer>
+				<OuterContainer>
+					<ContainerBackgroundColor>
+						<InnerContainer>
+							<SectionNameTitle color={colorNameTitle}>
+								{nameTitle}
+							</SectionNameTitle>
+							<SectionTitle>{title}</SectionTitle>
+							<SectionContent>{children}</SectionContent>
+							<SectionButtonCenterWrapper>
+								<Button
+									onClick={buttonOnClick}
+									variant={variant}
+								>
+									{buttonText}
+								</Button>
+							</SectionButtonCenterWrapper>
+						</InnerContainer>
+					</ContainerBackgroundColor>
+				</OuterContainer>
 			</SectionMainContainer>
 		);
 	} else {
@@ -43,7 +55,9 @@ const Section = (props: ISectionProps) => {
 					<SectionTitle>{title}</SectionTitle>
 					<SectionContent>{children}</SectionContent>
 					<SectionButtonCenterWrapper>
-						<Button variant={variant}>{buttonText}</Button>
+						<Button onClick={buttonOnClick} variant={variant}>
+							{buttonText}
+						</Button>
 					</SectionButtonCenterWrapper>
 				</InnerContainer>
 			</SectionMainContainer>

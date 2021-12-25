@@ -5,6 +5,7 @@ export interface themeInterface extends DefaultTheme {
 		textMain: string;
 		primary: string;
 		gray: string;
+		grayDark: string;
 		white: string;
 	};
 	displaySize: {

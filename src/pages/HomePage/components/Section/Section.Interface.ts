@@ -1,9 +1,9 @@
-export interface ISectionProps {
-	children: JSX.Element | JSX.Element[];
+export interface ISectionProps extends React.HTMLProps<HTMLDivElement> {
 	variant: 'outline' | 'white' | 'solid';
 	nameTitle: string;
 	title: string;
 	buttonText: string;
 	background: boolean;
-	nameTitleColor?: string;
+	colorNameTitle?: string;
+	buttonOnClick: () => void;
 }
