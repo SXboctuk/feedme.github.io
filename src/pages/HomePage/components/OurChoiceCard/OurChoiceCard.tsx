@@ -18,7 +18,6 @@ const OurChoiceCard = (props: ourChoiceCardProps) => {
 		navigate(`${routePath.COOKBOOKS}/${props.cookbookId}`);
 	};
 
-	console.log(props.image);
 	return (
 		<OurChoiceCardWrapper>
 			<OurChoiceCardImageBackground src={props.image} />
