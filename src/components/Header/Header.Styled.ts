@@ -45,3 +45,7 @@ export const HeaderHamburger = styled.div`
 		display: block;
 	}
 `;
+
+export const HeaderBackground = styled.div`
+	background-color: ${({ theme }) => theme.colors.white};
+`;

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const FooterBackground = styled.div`
 	background-color: #000000;
 	padding: 24px 0;
-	margin-top: 24px;
 `;
 export const FooterEmailLink = styled.a`
 	font-size: 16px;

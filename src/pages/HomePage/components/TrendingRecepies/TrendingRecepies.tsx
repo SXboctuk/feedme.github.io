@@ -6,6 +6,7 @@ import HomePageCard from '../HomePageCard';
 import { HomePageCardProps } from '../HomePageCard/HomePageCard.Interface';
 import Section from '../Section';
 import TrendingRecepiesSlider from '../TrendingRecepiesSlider/TrendingRecepiesSlider';
+import { TrendingRecepiesBlock } from './Trending.Styled';
 
 const TrendingRecepies = () => {
 	const [cards, setCards] = useState<HomePageCardProps[]>([]);
@@ -17,29 +18,31 @@ const TrendingRecepies = () => {
 		navigate(routePath.RECEPIES);
 	};
 	return (
-		<Section
-			buttonText="Show More"
-			nameTitle="TOP 10"
-			colorNameTitle="#FFFFFF"
-			title="Trending Recepies"
-			variant="white"
-			background={true}
-			buttonOnClick={handlerButton}
-		>
-			<TrendingRecepiesSlider>
-				{cards.map((elem) => (
-					<HomePageCard
-						key={elem.key}
-						to={elem.to}
-						imageSrc={elem.imageSrc}
-						titleName={elem.titleName}
-						creatorName={elem.creatorName}
-						viewsCounter={elem.viewsCounter}
-						fontSizeCreator="12px"
-					/>
-				))}
-			</TrendingRecepiesSlider>
-		</Section>
+		<TrendingRecepiesBlock>
+			<Section
+				buttonText="Show More"
+				nameTitle="TOP 10"
+				colorNameTitle="#FFFFFF"
+				title="Trending Recepies"
+				variant="white"
+				background={true}
+				buttonOnClick={handlerButton}
+			>
+				<TrendingRecepiesSlider>
+					{cards.map((elem) => (
+						<HomePageCard
+							key={elem.key}
+							to={`${routePath.RECEPIES}/${elem.to}`}
+							imageSrc={elem.imageSrc}
+							titleName={elem.titleName}
+							creatorName={elem.creatorName}
+							viewsCounter={elem.viewsCounter}
+							fontSizeCreator="12px"
+						/>
+					))}
+				</TrendingRecepiesSlider>
+			</Section>
+		</TrendingRecepiesBlock>
 	);
 };
 

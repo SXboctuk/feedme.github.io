@@ -6,6 +6,8 @@ import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
 import { routePath } from './constants/routePath';
 import { HomePage } from './pages';
+import Cookbooks from './pages/Cookbooks';
+import Recepies from './pages/Recepies';
 import { defaultTheme } from './Theme';
 
 const App = () => {
@@ -19,6 +21,29 @@ const App = () => {
 							<Route
 								path={routePath.HOMEPAGE}
 								element={<HomePage />}
+							></Route>
+
+							<Route path={routePath.RECEPIES}>
+								<Route index element={<Recepies />}></Route>
+								<Route
+									path={':id'}
+									element={<Recepies />}
+								></Route>
+							</Route>
+							<Route path={routePath.COOKBOOKS}>
+								<Route index element={<Cookbooks />}></Route>
+								<Route
+									path={':id'}
+									element={<Cookbooks />}
+								></Route>
+							</Route>
+							<Route
+								path={routePath.ABOUTUS}
+								element={<div>About us</div>}
+							></Route>
+							<Route
+								path={'*'}
+								element={<div>Not found</div>}
 							></Route>
 						</Routes>
 						<Footer />
