@@ -1,6 +1,7 @@
 import React from 'react';
-import InnerContainer from '../InnerContainer';
+import styles from '../../constants/stylesProperty';
 import SecondBackground from '../SecondBackground';
+import Container from '../shared/Container';
 import { ContentSearchTemplateProsp } from './ContentSearchTemplate.Interface';
 import {
 	ContentSearchTemplateWrapper,
@@ -14,7 +15,7 @@ const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
 	return (
 		<SecondBackground>
 			<ContentSearchTemplateWrapper>
-				<InnerContainer>
+				<Container maxWidth={styles.screenSize.lg}>
 					<ContentSearchTemplateGrid1x3>
 						{props.leftElem}
 						<ContentSearchTemplateRightElem>
@@ -46,7 +47,7 @@ const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
 							{props.rightElem}
 						</ContentSearchTemplateRightElem>
 					</ContentSearchTemplateGrid1x3>
-				</InnerContainer>
+				</Container>
 			</ContentSearchTemplateWrapper>
 		</SecondBackground>
 	);

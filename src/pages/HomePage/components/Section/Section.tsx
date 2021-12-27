@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../../components/Button';
-import InnerContainer from '../../../../components/InnerContainer';
-import OuterContainer from '../../../../components/OuterContainer';
+import Container from '../../../../components/shared/Container';
+import styles from '../../../../constants/stylesProperty';
 import { ISectionProps } from './Section.Interface';
 import {
 	ContainerBackgroundColor,
@@ -26,9 +26,9 @@ const Section = (props: ISectionProps) => {
 	if (background) {
 		return (
 			<SectionMainContainer>
-				<OuterContainer>
+				<Container maxWidth={styles.screenSize.xl}>
 					<ContainerBackgroundColor>
-						<InnerContainer>
+						<Container maxWidth={styles.screenSize.lg}>
 							<SectionNameTitle color={colorNameTitle}>
 								{nameTitle}
 							</SectionNameTitle>
@@ -42,15 +42,15 @@ const Section = (props: ISectionProps) => {
 									{buttonText}
 								</Button>
 							</SectionButtonCenterWrapper>
-						</InnerContainer>
+						</Container>
 					</ContainerBackgroundColor>
-				</OuterContainer>
+				</Container>
 			</SectionMainContainer>
 		);
 	} else {
 		return (
 			<SectionMainContainer>
-				<InnerContainer>
+				<Container maxWidth={styles.screenSize.lg}>
 					<SectionNameTitle>{nameTitle}</SectionNameTitle>
 					<SectionTitle>{title}</SectionTitle>
 					<SectionContent>{children}</SectionContent>
@@ -59,7 +59,7 @@ const Section = (props: ISectionProps) => {
 							{buttonText}
 						</Button>
 					</SectionButtonCenterWrapper>
-				</InnerContainer>
+				</Container>
 			</SectionMainContainer>
 		);
 	}

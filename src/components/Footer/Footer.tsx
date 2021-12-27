@@ -1,8 +1,9 @@
 import React from 'react';
 import { routePath } from '../../constants/routePath';
-import InnerContainer from '../InnerContainer';
+import styles from '../../constants/stylesProperty';
 import LinkWithStyles from '../LinkWithStyles';
 import Logo from '../Logo';
+import Container from '../shared/Container';
 
 import SvgCompany from '../Svg/SvgCompany';
 import {
@@ -19,22 +20,28 @@ import {
 const Footer = () => {
 	return (
 		<FooterBackground>
-			<InnerContainer>
+			<Container maxWidth={styles.screenSize.lg}>
 				<FooterStyled>
 					<FooterLogoBlock>
-						<Logo color="white" />
+						<Logo color={styles.colors.white} />
 					</FooterLogoBlock>
 					<FooterLinksBlock>
 						<LinkWithStyles
-							color="#FFFFFF"
+							color={styles.colors.white}
 							to={routePath.COOKBOOKS}
 						>
 							Cookbooks
 						</LinkWithStyles>
-						<LinkWithStyles color="#FFFFFF" to={routePath.RECEPIES}>
+						<LinkWithStyles
+							color={styles.colors.white}
+							to={routePath.RECEPIES}
+						>
 							Recepies
 						</LinkWithStyles>
-						<LinkWithStyles color="#FFFFFF" to={routePath.ABOUTUS}>
+						<LinkWithStyles
+							color={styles.colors.white}
+							to={routePath.ABOUTUS}
+						>
 							About Us
 						</LinkWithStyles>
 						<FooterEmailLink href="mailto:plzfeedme@itechart.com">
@@ -50,7 +57,7 @@ const Footer = () => {
 						</FooterProjectInfoBigBlock>
 					</FooterProjectInfo>
 				</FooterStyled>
-			</InnerContainer>
+			</Container>
 		</FooterBackground>
 	);
 };

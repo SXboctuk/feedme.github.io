@@ -1,7 +1,7 @@
 import React from 'react';
-import InnerContainer from '../../../../components/InnerContainer';
 import LinkWithStyles from '../../../../components/LinkWithStyles';
-import OuterContainer from '../../../../components/OuterContainer';
+import Container from '../../../../components/shared/Container';
+import styles from '../../../../constants/stylesProperty';
 import MainScreenSearch from '../MainScreenSearch';
 import {
 	BorderWrapper,
@@ -14,7 +14,7 @@ import {
 
 const MainScreen = () => {
 	return (
-		<OuterContainer>
+		<Container maxWidth={styles.screenSize.xl}>
 			<BorderWrapper>
 				<MainImage
 					src={
@@ -22,7 +22,7 @@ const MainScreen = () => {
 					}
 				/>
 				<MainShadow />
-				<InnerContainer>
+				<Container maxWidth={styles.screenSize.lg}>
 					<MainContent>
 						<MainTagLine>
 							Find Recipies and Create Your Favourite Cookbooks
@@ -30,29 +30,47 @@ const MainScreen = () => {
 						<MainScreenSearch />
 
 						<MainLandingLinksBlock>
-							<LinkWithStyles to={'#'} color="#FFFFFF">
+							<LinkWithStyles
+								to={'#'}
+								color={styles.colors.white}
+							>
 								Vegeterian
 							</LinkWithStyles>
-							<LinkWithStyles to={'#'} color="#FFFFFF">
+							<LinkWithStyles
+								to={'#'}
+								color={styles.colors.white}
+							>
 								Mexican
 							</LinkWithStyles>
-							<LinkWithStyles to={'#'} color="#FFFFFF">
+							<LinkWithStyles
+								to={'#'}
+								color={styles.colors.white}
+							>
 								Greece Kitchen
 							</LinkWithStyles>
-							<LinkWithStyles to={'#'} color="#FFFFFF">
+							<LinkWithStyles
+								to={'#'}
+								color={styles.colors.white}
+							>
 								Italy Pizza
 							</LinkWithStyles>
-							<LinkWithStyles to={'#'} color="#FFFFFF">
+							<LinkWithStyles
+								to={'#'}
+								color={styles.colors.white}
+							>
 								Philippines
 							</LinkWithStyles>
-							<LinkWithStyles to={'#'} color="#FFFFFF">
+							<LinkWithStyles
+								to={'#'}
+								color={styles.colors.white}
+							>
 								Japan Sushi
 							</LinkWithStyles>
 						</MainLandingLinksBlock>
 					</MainContent>
-				</InnerContainer>
+				</Container>
 			</BorderWrapper>
-		</OuterContainer>
+		</Container>
 	);
 };
 

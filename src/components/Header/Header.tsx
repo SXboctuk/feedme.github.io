@@ -2,9 +2,9 @@ import React, { createRef } from 'react';
 import { routePath } from '../../constants/routePath';
 import Button from '../Button';
 import HeaderSearch from '../HeaderSearch';
-import InnerContainer from '../InnerContainer';
 import LinkWithStyles from '../LinkWithStyles';
 import Logo from '../Logo';
+import Container from '../shared/Container';
 import SvgHamburgetButton from '../Svg/SvgHamburgerButton/SvgHamburget';
 import {
 	HeaderBackground,
@@ -21,7 +21,7 @@ const Header = () => {
 	};
 	return (
 		<HeaderBackground>
-			<InnerContainer>
+			<Container maxWidth={1200}>
 				<HeaderStyled>
 					<Logo />
 					<HeaderNavBlock ref={headerNavBlockRef}>
@@ -45,7 +45,7 @@ const Header = () => {
 						/>
 					</HeaderHamburger>
 				</HeaderStyled>
-			</InnerContainer>
+			</Container>
 		</HeaderBackground>
 	);
 };
