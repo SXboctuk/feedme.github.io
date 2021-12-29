@@ -16,7 +16,7 @@ const Section = (props: ISectionProps) => {
 	const {
 		children,
 		variant,
-		nameTitle,
+		sectionTitle,
 		title,
 		buttonText,
 		background,
@@ -30,7 +30,7 @@ const Section = (props: ISectionProps) => {
 					<ContainerBackgroundColor>
 						<Container maxWidth={styles.screenSize.lg}>
 							<SectionNameTitle color={colorNameTitle}>
-								{nameTitle}
+								{sectionTitle}
 							</SectionNameTitle>
 							<SectionTitle>{title}</SectionTitle>
 							<SectionContent>{children}</SectionContent>
@@ -51,7 +51,7 @@ const Section = (props: ISectionProps) => {
 		return (
 			<SectionMainContainer>
 				<Container maxWidth={styles.screenSize.lg}>
-					<SectionNameTitle>{nameTitle}</SectionNameTitle>
+					<SectionNameTitle>{sectionTitle}</SectionNameTitle>
 					<SectionTitle>{title}</SectionTitle>
 					<SectionContent>{children}</SectionContent>
 					<SectionButtonCenterWrapper>

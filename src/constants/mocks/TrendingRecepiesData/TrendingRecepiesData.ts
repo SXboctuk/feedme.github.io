@@ -1,13 +1,13 @@
-import { HomePageCardProps } from '../../../pages/HomePage/components/HomePageCard/HomePageCard.Interface';
+import { RecepieCardProps } from '../../../components/RecepieCard/RecepieCard.Interface';
 
 import Image1 from './Image/tranding1.jpg';
 import Image2 from './Image/tranding2.jpg';
 import Image3 from './Image/tranding3.jpg';
 
-export const TrendingRecepiesDataMock: HomePageCardProps[] = [
+export const TrendingRecepiesDataMock: RecepieCardProps[] = [
 	{
 		to: '1',
-		key: 'Slider1',
+		key: '123',
 		viewsCounter: 11000,
 		titleName: 'Fresh meat with potato',
 		creatorName: 'John Doe',
@@ -15,7 +15,7 @@ export const TrendingRecepiesDataMock: HomePageCardProps[] = [
 	},
 	{
 		to: '2',
-		key: 'Slider2',
+		key: '44',
 		viewsCounter: 12000,
 		titleName: 'Fresh meat with potato',
 		creatorName: 'John Doe',
@@ -23,7 +23,7 @@ export const TrendingRecepiesDataMock: HomePageCardProps[] = [
 	},
 	{
 		to: '3',
-		key: 'Slider3',
+		key: '55',
 		viewsCounter: 13000,
 		titleName: 'Fresh meat with potato',
 		creatorName: 'John Doe',
@@ -31,7 +31,7 @@ export const TrendingRecepiesDataMock: HomePageCardProps[] = [
 	},
 	{
 		to: '4',
-		key: 'Slider4',
+		key: '123123',
 		viewsCounter: 14000,
 		titleName: 'Fresh meat with potato',
 		creatorName: 'John Doe',
@@ -39,7 +39,7 @@ export const TrendingRecepiesDataMock: HomePageCardProps[] = [
 	},
 	{
 		to: '5',
-		key: 'Slider5',
+		key: '5555',
 		viewsCounter: 15000,
 		titleName: 'Fresh meat with potato',
 		creatorName: 'John Doe',

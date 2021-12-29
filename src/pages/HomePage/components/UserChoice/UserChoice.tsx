@@ -3,14 +3,19 @@ import { useNavigate } from 'react-router-dom';
 
 import { userChoiceMockData } from '../../../../constants/mocks/UserChoiceData/UserChoiceData';
 import { routePath } from '../../../../constants/routePath';
-import HomePageCard from '../HomePageCard';
-import { HomePageCardProps } from '../HomePageCard/HomePageCard.Interface';
+import RecepieCard from '../../../../components/RecepieCard';
+import { RecepieCardProps } from '../../../../components/RecepieCard/RecepieCard.Interface';
 import Section from '../Section';
 import { UserChoiceCardsBlock } from './UserChoice.Styled';
 
+import { useTranslation } from 'react-i18next';
 const UserChoice = () => {
+	const { t } = useTranslation('common', {
+		keyPrefix: 'homePage.userChoice',
+	});
+
 	const navigate = useNavigate();
-	const [cards, setCards] = useState<HomePageCardProps[]>([]);
+	const [cards, setCards] = useState<RecepieCardProps[]>([]);
 
 	useEffect(() => {
 		setCards(userChoiceMockData);
@@ -22,17 +27,16 @@ const UserChoice = () => {
 
 	return (
 		<Section
-			buttonText="Show More"
-			nameTitle="USERS CHOICE"
-			title="20 Highest-Rated Recipes"
-			colorNameTitle=""
+			buttonText={t('buttonText')}
+			sectionTitle={t('sectionTitle')}
+			title={t('title')}
 			variant="outline"
 			background={false}
 			buttonOnClick={handlerButton}
 		>
 			<UserChoiceCardsBlock>
 				{cards.map((elem) => (
-					<HomePageCard
+					<RecepieCard
 						to={elem.to}
 						key={elem.key}
 						viewsCounter={elem.viewsCounter}

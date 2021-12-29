@@ -10,7 +10,10 @@ import {
 	ContentSearchTemplateVariant,
 } from './ContentSearchTemplate.Styled';
 
+import { useTranslation } from 'react-i18next';
+
 const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
+	const { t } = useTranslation();
 	return (
 		<ContentSearchTemplateWrapper>
 			<Container maxWidth={styles.screenSize.lg}>
@@ -21,19 +24,19 @@ const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
 							{props.selectedPage === 'Cookbooks' ? (
 								<>
 									<ContentSearchTemplateVariant aria-selected>
-										Cookbooks
+										{t('cookbooks')}
 									</ContentSearchTemplateVariant>
 									<ContentSearchTemplateVariant>
-										Recepies
+										{t('recepies')}
 									</ContentSearchTemplateVariant>
 								</>
 							) : (
 								<>
 									<ContentSearchTemplateVariant>
-										Cookbooks
+										{t('cookbooks')}
 									</ContentSearchTemplateVariant>
 									<ContentSearchTemplateVariant aria-selected>
-										Recepies
+										{t('recepies')}
 									</ContentSearchTemplateVariant>
 								</>
 							)}

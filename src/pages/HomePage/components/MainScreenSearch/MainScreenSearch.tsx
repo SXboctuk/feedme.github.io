@@ -6,14 +6,19 @@ import {
 	MainScreenSearchButton,
 } from './MainScreenSearch.Styled';
 
+import { useTranslation } from 'react-i18next';
+
 const MainScreenSearch = () => {
+	const { t } = useTranslation('common', {
+		keyPrefix: 'homePage.mainScreenSearch',
+	});
 	return (
 		<MainScreenInputContainer>
 			<MainScreenInputContainer>
 				<MainScreenInputSearchIcon />
-				<MainScreenInput placeholder={'Find Best Recipies...'} />
+				<MainScreenInput placeholder={t('placeholder')} />
 			</MainScreenInputContainer>
-			<MainScreenSearchButton>SEARCH</MainScreenSearchButton>
+			<MainScreenSearchButton>{t('search')}</MainScreenSearchButton>
 		</MainScreenInputContainer>
 	);
 };

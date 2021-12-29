@@ -1,4 +1,4 @@
-import { themeInterface } from '../Theme.Interface';
+import { themeInterface } from '../theme.Interface';
 
 export const defaultTheme: themeInterface = {
 	colors: {
@@ -14,5 +14,6 @@ export const defaultTheme: themeInterface = {
 		md: '992px',
 		lg: '1200px',
 	},
-	borderRadius: '50px 10px',
+	borderRadiusSpecial: '50px 10px',
+	borderRadius: '10px',
 };

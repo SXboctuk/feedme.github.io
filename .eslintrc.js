@@ -22,6 +22,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+	'import/no-named-as-default-member': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-var-requires': 'off',

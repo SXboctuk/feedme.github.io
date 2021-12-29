@@ -17,7 +17,11 @@ import {
 	FooterLogoBlock,
 } from './Footer.Styled';
 
+import { useTranslation } from 'react-i18next';
+import { companyEmail, projectName } from '../../constants/source';
+
 const Footer = () => {
+	const { t } = useTranslation();
 	return (
 		<FooterBackground>
 			<Container maxWidth={styles.screenSize.lg}>
@@ -30,27 +34,27 @@ const Footer = () => {
 							color={styles.colors.white}
 							to={routePath.COOKBOOKS}
 						>
-							Cookbooks
+							{t('cookbook')}
 						</Link>
 						<Link
 							color={styles.colors.white}
 							to={routePath.RECEPIES}
 						>
-							Recepies
+							{t('recepies')}
 						</Link>
 						<Link
 							color={styles.colors.white}
 							to={routePath.ABOUTUS}
 						>
-							About Us
+							About Us {t('aboutus')}
 						</Link>
-						<FooterEmailLink href="mailto:plzfeedme@itechart.com">
-							plzfeedme@itechart.com
+						<FooterEmailLink href={`mailto:${companyEmail}`}>
+							{companyEmail}
 						</FooterEmailLink>
 					</FooterLinksBlock>
 					<FooterProjectInfo>
 						<FooterProjectInfoSmallBlock>
-							Study Project v2, 2021
+							{projectName}
 						</FooterProjectInfoSmallBlock>
 						<FooterProjectInfoBigBlock>
 							<SvgCompany />

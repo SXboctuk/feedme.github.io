@@ -2,14 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrendingRecepiesDataMock } from '../../../../constants/mocks/TrendingRecepiesData/TrendingRecepiesData';
 import { routePath } from '../../../../constants/routePath';
-import HomePageCard from '../HomePageCard';
-import { HomePageCardProps } from '../HomePageCard/HomePageCard.Interface';
+import RecepieCard from '../../../../components/RecepieCard';
+import { RecepieCardProps } from '../../../../components/RecepieCard/RecepieCard.Interface';
 import Section from '../Section';
 import TrendingRecepiesSlider from '../TrendingRecepiesSlider/TrendingRecepiesSlider';
 import { TrendingRecepiesBlock } from './Trending.Styled';
 
+import { useTranslation } from 'react-i18next';
+import styles from '../../../../constants/stylesProperty';
+
 const TrendingRecepies = () => {
-	const [cards, setCards] = useState<HomePageCardProps[]>([]);
+	const { t } = useTranslation('common', {
+		keyPrefix: 'homePage.trendingRecepies',
+	});
+
+	const [cards, setCards] = useState<RecepieCardProps[]>([]);
 	useEffect(() => {
 		setCards(TrendingRecepiesDataMock);
 	}, []);
@@ -20,17 +27,17 @@ const TrendingRecepies = () => {
 	return (
 		<TrendingRecepiesBlock>
 			<Section
-				buttonText="Show More"
-				nameTitle="TOP 10"
-				colorNameTitle="#FFFFFF"
-				title="Trending Recepies"
+				buttonText={t('buttonText')}
+				sectionTitle={t('sectionTitle')}
+				colorNameTitle={styles.colors.white}
+				title={t('title')}
 				variant="white"
 				background={true}
 				buttonOnClick={handlerButton}
 			>
 				<TrendingRecepiesSlider>
 					{cards.map((elem) => (
-						<HomePageCard
+						<RecepieCard
 							key={elem.key}
 							to={`${routePath.RECEPIES}/${elem.to}`}
 							imageSrc={elem.imageSrc}

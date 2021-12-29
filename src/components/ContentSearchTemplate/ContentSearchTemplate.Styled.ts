@@ -34,7 +34,7 @@ export const ContentSearchTemplateVariant = styled.div`
 			width: 100%;
 			height: 2px;
 			background: ${({ theme }) => theme.colors.primary};
-			border-radius: 10px;
+			border-radius: ${({ theme }) => theme.borderRadius};
 			position: absolute;
 			bottom: 0;
 			left: 0;

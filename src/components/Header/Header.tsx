@@ -14,7 +14,11 @@ import {
 } from './Header.Styled';
 import styles from '../../constants/stylesProperty';
 
+import { useTranslation } from 'react-i18next';
+
 const Header = () => {
+	const { t } = useTranslation();
+
 	const headerNavBlockRef = createRef<HTMLDivElement>();
 
 	const hamburgerHandler = () => {
@@ -26,11 +30,13 @@ const Header = () => {
 				<HeaderStyled>
 					<Logo />
 					<HeaderNavBlock ref={headerNavBlockRef}>
-						<Link to={routePath.RECEPIES}>Recepies</Link>
-						<Link to={routePath.COOKBOOKS}>Cookbooks</Link>
+						<Link to={routePath.RECEPIES}>{t('recepies')}</Link>
+						<Link to={routePath.COOKBOOKS}>{t('cookbooks')}</Link>
 						<HeaderSearch />
-						<Button variant="outline">Create Cookbook</Button>
-						<Link to={routePath.SIGNIN}>Sign In</Link>
+						<Button variant="outline">
+							{t('buttonCreateCookbook')}
+						</Button>
+						<Link to={routePath.SIGNIN}>{t('signin')}</Link>
 					</HeaderNavBlock>
 					<HeaderHamburger>
 						<SvgHamburgetButton

@@ -1,0 +1,48 @@
+{
+  "common": {
+    "learnReact": "Learn React123",
+	
+
+	"cookbooks": "Cookbook",
+	"recepies": "Recepies",
+	"aboutus": "About us",
+
+	"buttonCreateCookbook": "Create Cookbook",
+
+	"signin": "Sign In",
+
+	"cardRecepie" :{
+		"views": "view",
+		"likes": "likes",
+		"comments": "comments"
+	},
+
+	"homePage": {
+		"mainScreen": {
+			"mainTagLine": "Find Recepies and Create Your Favourite Cookboks"
+		},
+		"mainScreenSearch": {
+			"placeholder": "Find Best Recipies...",
+			"search": "SEARCH"
+		},
+		"ourChoice": {
+			"buttonText": "Show More",
+			"sectionTitle": "OUR CHOICE",
+			"title": "Most Popular Cookbooks"
+			
+		},
+		"trendingRecepies" : {
+			"buttonText": "Show More",
+			"sectionTitle": "TOP 10",
+			"title": "Trending Recepies"
+		},
+		"userChoice" : {
+			"buttonText": "Show More",
+			"sectionTitle": "USERS CHOICE",
+			"title": "20 Highest-Rated Recipes"
+		}
+
+	}
+  }
+  
+}

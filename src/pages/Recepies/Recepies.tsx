@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import ContentSearchTemplate from '../../components/ContentSearchTemplate';
+import RecepiesFilter from './components/RecepiesFilter';
 
 const Recepies = () => {
 	const params = useParams();
@@ -8,7 +9,7 @@ const Recepies = () => {
 	return (
 		<>
 			<ContentSearchTemplate
-				leftElem={<div>left</div>}
+				leftElem={<RecepiesFilter />}
 				rightElem={<div>right</div>}
 				selectedPage={'Recepies'}
 			/>

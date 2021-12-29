@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import SvgComment from '../../../../components/Svg/SvgComment';
-import SvgHeart from '../../../../components/Svg/SvgHeart';
-import SvgWatch from '../../../../components/Svg/SvgWatch';
-import styles from '../../../../constants/stylesProperty';
+import SvgComment from '../Svg/SvgComment';
+import SvgHeart from '../Svg/SvgHeart';
+import SvgWatch from '../Svg/SvgWatch';
+import styles from '../../constants/stylesProperty';
 import {
-	HomePageCardCreatorProps,
-	StyledHomePageCardInnerBlockProps,
-} from './HomePageCard.Interface';
+	RecepieCardCreatorProps,
+	StyledRecepieCardInnerBlockProps,
+} from './RecepieCard.Interface';
 
-export const HomePageCardInnerBlock = styled.div<StyledHomePageCardInnerBlockProps>`
+export const RecepieCardInnerBlock = styled.div<StyledRecepieCardInnerBlockProps>`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -18,7 +18,7 @@ export const HomePageCardInnerBlock = styled.div<StyledHomePageCardInnerBlockPro
 	margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : '0')};
 	margin-top: ${({ marginTop }) => (marginTop ? marginTop : '0')};
 `;
-export const HomePageCardCounterText = styled.span`
+export const RecepieCardCounterText = styled.span`
 	font-weight: normal;
 	font-size: 14px;
 	line-height: 19px;
@@ -31,44 +31,44 @@ export const HomePageCardCounterText = styled.span`
 		font-size: 14px;
 	}
 `;
-export const HomePageCardTitle = styled.div`
+export const RecepieCardTitle = styled.div`
 	font-family: Montserrat;
 	font-weight: 600;
 	font-size: 20px;
 	line-height: 24px;
 	color: ${({ theme }) => theme.colors.textMain};
 `;
-export const HomePageCardCreator = styled.div<HomePageCardCreatorProps>`
+export const RecepieCardCreator = styled.div<RecepieCardCreatorProps>`
 	font-weight: normal;
 	font-size: ${({ fontSizeCreator }) =>
 		fontSizeCreator ? fontSizeCreator : '14px'};
 	line-height: 19px;
 	color: ${({ theme }) => theme.colors.textMain};
 `;
-export const HomePageCardImage = styled.img`
+export const RecepieCardImage = styled.img`
 	width: 100%;
 	height: 20%;
 	flex: 1 1 auto;
 	object-fit: cover;
-	border-radius: ${({ theme }) => theme.borderRadius};
+	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
 	margin-bottom: ${styles.distances.md};
 `;
 export const AlignCenterBlock = styled.div`
 	display: flex;
 	align-items: center;
 `;
-export const HomePageCardSvgHeart = styled(SvgHeart)`
+export const RecepieCardSvgHeart = styled(SvgHeart)`
 	margin-right: 8px;
 `;
-export const HomePageCardSvgComment = styled(SvgComment)`
+export const RecepieCardSvgComment = styled(SvgComment)`
 	margin-right: 8px;
 `;
-export const HomePageCardSvgWatch = styled(SvgWatch)`
+export const RecepieCardSvgWatch = styled(SvgWatch)`
 	margin-right: 8px;
 `;
-export const HomePageCardBlock = styled(Link)`
+export const RecepieCardBlock = styled(Link)`
 	background-color: ${({ theme }) => theme.colors.white};
-	border-radius: 10px;
+	border-radius: ${({ theme }) => theme.borderRadius};
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -79,21 +79,21 @@ export const HomePageCardBlock = styled(Link)`
 
 	&:hover {
 		box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.24);
-		${HomePageCardTitle} {
+		${RecepieCardTitle} {
 			color: ${({ theme }) => theme.colors.primary};
 		}
-		${HomePageCardSvgHeart} path {
+		${RecepieCardSvgHeart} path {
 			fill: ${({ theme }) => theme.colors.primary};
 		}
-		${HomePageCardSvgComment} path {
+		${RecepieCardSvgComment} path {
 			fill: ${({ theme }) => theme.colors.primary};
 		}
-		${HomePageCardSvgWatch} path {
+		${RecepieCardSvgWatch} path {
 			fill: ${({ theme }) => theme.colors.primary};
 		}
 	}
 `;
 
-export const TitleAndCreatorBlock = styled(HomePageCardInnerBlock)`
+export const TitleAndCreatorBlock = styled(RecepieCardInnerBlock)`
 	align-items: baseline;
 `;

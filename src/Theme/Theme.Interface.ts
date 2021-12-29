@@ -14,5 +14,6 @@ export interface themeInterface extends DefaultTheme {
 		md: string;
 		lg: string;
 	};
+	borderRadiusSpecial: string;
 	borderRadius: string;
 }

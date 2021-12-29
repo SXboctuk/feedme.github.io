@@ -1,4 +1,5 @@
 import React from 'react';
+import { logoPartFeed, logoPartMe } from '../../constants/source';
 import SvgLogo from '../Svg/SvgLogo';
 import { LogoLink, LogoText, LogoTextPrimary } from './Logo.Styled';
 
@@ -8,8 +9,8 @@ const Logo = (props: React.HTMLProps<HTMLDivElement>) => {
 		<LogoLink to={'/'}>
 			<SvgLogo />
 			<LogoText color={color}>
-				Feed
-				<LogoTextPrimary>me</LogoTextPrimary>
+				{logoPartFeed}
+				<LogoTextPrimary>{logoPartMe}</LogoTextPrimary>
 			</LogoText>
 		</LogoLink>
 	);

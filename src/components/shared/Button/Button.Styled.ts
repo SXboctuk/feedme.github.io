@@ -9,7 +9,7 @@ export const ButtonOutline = styled.button`
 	font-size: 20px;
 	line-height: 30px;
 	text-align: center;
-	border-radius: 10px;
+	border-radius: ${({ theme }) => theme.borderRadius};
 	padding: 12px 32px;
 
 	&:hover {
@@ -26,7 +26,7 @@ export const ButtonSolid = styled.button`
 	font-size: 20px;
 	line-height: 30px;
 	text-align: center;
-	border-radius: 10px;
+	border-radius: ${({ theme }) => theme.borderRadius};
 	padding: 12px 32px;
 
 	&:hover {
@@ -43,7 +43,7 @@ export const ButtonWhite = styled.button`
 	font-size: 20px;
 	line-height: 30px;
 	text-align: center;
-	border-radius: 10px;
+	border-radius: ${({ theme }) => theme.borderRadius};
 	padding: 12px 32px;
 
 	&:hover {

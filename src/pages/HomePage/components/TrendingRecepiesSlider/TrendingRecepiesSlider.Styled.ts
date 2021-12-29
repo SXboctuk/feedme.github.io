@@ -58,7 +58,7 @@ export const TrendingRecepiesSliderDot = styled.div`
 	width: 8px;
 	background-color: ${({ theme }) => theme.colors.white};
 	opacity: 0.5;
-	border-radius: 10px;
+	border-radius: ${({ theme }) => theme.borderRadius};
 
 	&:not(:last-child) {
 		margin-right: ${styles.distances.md};

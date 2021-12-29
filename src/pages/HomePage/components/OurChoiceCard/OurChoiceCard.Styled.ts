@@ -32,7 +32,7 @@ export const OurChoiceCardButton = styled.button`
 	position: absolute;
 	left: 24px;
 	bottom: 24px;
-	border-radius: 10px;
+	border-radius: ${({ theme }) => theme.borderRadius};
 	margin-right: ${styles.distances.lg};
 
 	&:hover {
@@ -44,7 +44,7 @@ export const OurChoiceCardWrapper = styled.div`
 	position: relative;
 	width: 100%;
 	height: 100%;
-	border-radius: ${({ theme }) => theme.borderRadius};
+	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
 	overflow: hidden;
 
 	box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import styles from '../../../../constants/stylesProperty';
 
 export const BorderWrapper = styled.div`
-	border-radius: ${({ theme }) => theme.borderRadius};
+	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
 	position: relative;
 	overflow: hidden;
 `;

@@ -1,4 +1,4 @@
-import { HomePageCardProps } from '../../../pages/HomePage/components/HomePageCard/HomePageCard.Interface';
+import { RecepieCardProps } from '../../../components/RecepieCard/RecepieCard.Interface';
 import { routePath } from '../../routePath';
 
 import cardImage1 from './Image/card1.png';
@@ -6,7 +6,7 @@ import cardImage2 from './Image/card2.png';
 import cardImage3 from './Image/card3.png';
 import cardImage4 from './Image/card4.png';
 
-export const userChoiceMockData: HomePageCardProps[] = [
+export const userChoiceMockData: RecepieCardProps[] = [
 	{
 		to: `${routePath.RECEPIES}/1`,
 		key: 'card1',

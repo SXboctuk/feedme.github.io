@@ -12,7 +12,12 @@ import {
 	MainLandingLinksBlock,
 } from './MainScreen.Styled';
 
+import { useTranslation } from 'react-i18next';
+
 const MainScreen = () => {
+	const { t } = useTranslation('common', {
+		keyPrefix: 'homePage.mainScreen',
+	});
 	return (
 		<Container maxWidth={styles.screenSize.xl}>
 			<BorderWrapper>
@@ -24,9 +29,7 @@ const MainScreen = () => {
 				<MainShadow />
 				<Container maxWidth={styles.screenSize.lg}>
 					<MainContent>
-						<MainTagLine>
-							Find Recipies and Create Your Favourite Cookbooks
-						</MainTagLine>
+						<MainTagLine>{t('mainTagLine')}</MainTagLine>
 						<MainScreenSearch />
 
 						<MainLandingLinksBlock>

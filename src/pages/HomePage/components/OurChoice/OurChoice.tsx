@@ -13,7 +13,13 @@ import { routePath } from '../../../../constants/routePath';
 import { OurChoiceDataMock } from '../../../../constants/mocks/OutChoiceData/OurChoiceData';
 import { ourChoiceCardProps } from '../OurChoiceCard/OurChoiceCard.Interface';
 
+import { useTranslation } from 'react-i18next';
+
 const OurChoice = () => {
+	const { t } = useTranslation('common', {
+		keyPrefix: 'homePage.ourChoice',
+	});
+
 	const [card, setCard] = useState<ourChoiceCardProps[]>([]);
 	const navigate = useNavigate();
 
@@ -26,9 +32,9 @@ const OurChoice = () => {
 
 	return (
 		<Section
-			buttonText="Show More"
-			nameTitle="OUR CHOICE"
-			title="Most Popular Cookbooks"
+			buttonText={t('buttonText')}
+			sectionTitle={t('sectionTitle')}
+			title={t('title')}
 			colorNameTitle=""
 			variant="outline"
 			background={false}

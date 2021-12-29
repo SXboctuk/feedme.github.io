@@ -1,4 +1,4 @@
-export interface HomePageCardProps {
+export interface RecepieCardProps {
 	to: string;
 	key: string;
 	viewsCounter: number;
@@ -10,12 +10,12 @@ export interface HomePageCardProps {
 	fontSizeCreator?: string;
 }
 
-export interface StyledHomePageCardInnerBlockProps {
+export interface StyledRecepieCardInnerBlockProps {
 	marginBottom?: string;
 	marginTop?: string;
 	margin?: string;
 }
 
-export interface HomePageCardCreatorProps {
+export interface RecepieCardCreatorProps {
 	fontSizeCreator?: string;
 }

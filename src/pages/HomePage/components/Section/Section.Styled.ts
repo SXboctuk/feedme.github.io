@@ -31,7 +31,7 @@ export const SectionButtonCenterWrapper = styled.div`
 export const ContainerBackgroundColor = styled.div`
 	padding: 104px 0;
 	background-color: ${({ theme }) => theme.colors.primary};
-	border-radius: ${({ theme }) => theme.borderRadius};
+	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
 	position: relative;
 	overflow: hidden;
 `;

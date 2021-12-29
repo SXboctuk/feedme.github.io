@@ -1,6 +1,6 @@
 export interface ISectionProps extends React.HTMLProps<HTMLDivElement> {
 	variant: 'outline' | 'white' | 'solid';
-	nameTitle: string;
+	sectionTitle: string;
 	title: string;
 	buttonText: string;
 	background: boolean;
