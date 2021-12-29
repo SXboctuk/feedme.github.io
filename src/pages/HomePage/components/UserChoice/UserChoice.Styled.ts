@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import styles from '../../../../constants/stylesProperty';
 
 export const UserChoiceCardsBlock = styled.div`
 	display: flex;
@@ -6,16 +7,16 @@ export const UserChoiceCardsBlock = styled.div`
 	flex: wrap;
 	flex: 0 1 25%;
 
-	margin-right: -24px;
+	margin-right: -${styles.distances.lg};
 
 	& > * {
-		margin-right: 24px;
+		margin-right: ${styles.distances.lg};
 	}
 	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
 		flex-wrap: wrap;
-		margin-right: -24px;
+		margin-right: -${styles.distances.lg};
 		& > * {
-			margin-top: 24px;
+			margin-top: ${styles.distances.lg};
 			max-width: 50%;
 			flex: 1 1 45%;
 		}
@@ -37,7 +38,7 @@ export const UserChoiceCardsBlock = styled.div`
 			flex: 1 1 100%;
 		}
 		& > *:not(:first-child) {
-			margin-top: 24px;
+			margin-top: ${styles.distances.lg};
 		}
 	}
 `;

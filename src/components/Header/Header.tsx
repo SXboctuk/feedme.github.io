@@ -1,8 +1,8 @@
 import React, { createRef } from 'react';
 import { routePath } from '../../constants/routePath';
-import Button from '../Button';
+import Button from '../shared/Button';
 import HeaderSearch from '../HeaderSearch';
-import LinkWithStyles from '../LinkWithStyles';
+import Link from '../shared/Link';
 import Logo from '../Logo';
 import Container from '../shared/Container';
 import SvgHamburgetButton from '../Svg/SvgHamburgerButton/SvgHamburget';
@@ -12,6 +12,7 @@ import {
 	HeaderNavBlock,
 	HeaderStyled,
 } from './Header.Styled';
+import styles from '../../constants/stylesProperty';
 
 const Header = () => {
 	const headerNavBlockRef = createRef<HTMLDivElement>();
@@ -21,21 +22,15 @@ const Header = () => {
 	};
 	return (
 		<HeaderBackground>
-			<Container maxWidth={1200}>
+			<Container maxWidth={styles.screenSize.lg}>
 				<HeaderStyled>
 					<Logo />
 					<HeaderNavBlock ref={headerNavBlockRef}>
-						<LinkWithStyles to={routePath.RECEPIES}>
-							Recepies
-						</LinkWithStyles>
-						<LinkWithStyles to={routePath.COOKBOOKS}>
-							Cookbooks
-						</LinkWithStyles>
+						<Link to={routePath.RECEPIES}>Recepies</Link>
+						<Link to={routePath.COOKBOOKS}>Cookbooks</Link>
 						<HeaderSearch />
 						<Button variant="outline">Create Cookbook</Button>
-						<LinkWithStyles to={routePath.SIGNIN}>
-							Sign In
-						</LinkWithStyles>
+						<Link to={routePath.SIGNIN}>Sign In</Link>
 					</HeaderNavBlock>
 					<HeaderHamburger>
 						<SvgHamburgetButton

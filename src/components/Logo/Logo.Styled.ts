@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ILink } from '../LinkWithStyles/LinkWithStyles.Interface';
+import styles from '../../constants/stylesProperty';
+import { ILink } from '../shared/Link/Link.Interface';
 
 export const LogoText = styled.span`
 	font-size: 24px;
 	line-height: 33px;
 	font-weight: bold;
 	color: ${({ theme, color }) => (color ? color : theme.colors.textMain)};
-	margin-left: 12px;
+	margin-left: ${styles.distances.sm};
 `;
 
 export const LogoTextPrimary = styled.span`

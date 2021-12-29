@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import styles from '../../constants/stylesProperty';
 
 export const HeaderStyled = styled.header`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	position: relative;
-	padding: 12px 0;
+	padding: ${styles.distances.sm} 0;
 `;
 export const HeaderNavBlock = styled.nav`
 	display: flex;
@@ -34,7 +35,7 @@ export const HeaderNavBlock = styled.nav`
 			border-radius: 0 0 10px 10px;
 			padding: 0 12px 12px 12px;
 			* {
-				margin-bottom: 24px;
+				margin-bottom: ${styles.distances.lg};
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import styles from '../../constants/stylesProperty';
 
 export const ContentSearchTemplateWrapper = styled.div`
 	padding-top: 92px;
@@ -23,7 +24,7 @@ export const ContentSearchTemplateVariant = styled.div`
 	position: relative;
 
 	&:not(:first-child) {
-		margin-left: 32px;
+		margin-left: ${styles.distances.lg};
 	}
 
 	&[aria-selected] {

@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import styles from '../../constants/stylesProperty';
 import SvgSearch from '../Svg/SvgSearch';
 
 export const InputSearchIcon = styled(SvgSearch)`
 	position: absolute;
-	top: calc(50% - 8px);
+	top: calc(50% - ${styles.distances.xs});
 	left: 15px;
 `;
 export const InputContainer = styled.div`

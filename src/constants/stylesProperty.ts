@@ -12,6 +12,15 @@ const styles = {
 		grayDark: '#DADADA',
 		white: '#FFFFFF',
 	},
+	containerMediaMdPadding: '0px 15px',
+
+	distances: {
+		xs: '8px',
+		sm: '12px',
+		md: '16px',
+		lg: '24px',
+		xl: '48px',
+	},
 };
 
 export default styles;

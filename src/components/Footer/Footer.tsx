@@ -1,7 +1,7 @@
 import React from 'react';
 import { routePath } from '../../constants/routePath';
 import styles from '../../constants/stylesProperty';
-import LinkWithStyles from '../LinkWithStyles';
+import Link from '../shared/Link';
 import Logo from '../Logo';
 import Container from '../shared/Container';
 
@@ -26,24 +26,24 @@ const Footer = () => {
 						<Logo color={styles.colors.white} />
 					</FooterLogoBlock>
 					<FooterLinksBlock>
-						<LinkWithStyles
+						<Link
 							color={styles.colors.white}
 							to={routePath.COOKBOOKS}
 						>
 							Cookbooks
-						</LinkWithStyles>
-						<LinkWithStyles
+						</Link>
+						<Link
 							color={styles.colors.white}
 							to={routePath.RECEPIES}
 						>
 							Recepies
-						</LinkWithStyles>
-						<LinkWithStyles
+						</Link>
+						<Link
 							color={styles.colors.white}
 							to={routePath.ABOUTUS}
 						>
 							About Us
-						</LinkWithStyles>
+						</Link>
 						<FooterEmailLink href="mailto:plzfeedme@itechart.com">
 							plzfeedme@itechart.com
 						</FooterEmailLink>

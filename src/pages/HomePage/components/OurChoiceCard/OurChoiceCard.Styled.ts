@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import styles from '../../../../constants/stylesProperty';
 
 export const OurChoiceCardImageBackground = styled.img`
 	width: 100%;
@@ -27,12 +28,12 @@ export const OurChoiceCardButton = styled.button`
 	line-height: 22px;
 	color: ${({ theme }) => theme.colors.textMain};
 	background-color: ${({ theme }) => theme.colors.white};
-	padding: 8px 24px;
+	padding: ${styles.distances.xs} ${styles.distances.lg};
 	position: absolute;
 	left: 24px;
 	bottom: 24px;
 	border-radius: 10px;
-	margin-right: 24px;
+	margin-right: ${styles.distances.lg};
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.primary};

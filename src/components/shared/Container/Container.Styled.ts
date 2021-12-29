@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import styles from '../../../constants/stylesProperty';
 import { containerProps } from './Container.Interface';
 
 export const ContainerStyled = styled.div<containerProps>`
@@ -12,6 +13,6 @@ export const ContainerStyled = styled.div<containerProps>`
 	}
 	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
 		max-width: 100%;
-		padding: 0 15px;
+		padding: ${styles.containerMediaMdPadding};
 	}
 `;

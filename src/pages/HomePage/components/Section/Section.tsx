@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../../../components/Button';
+import Button from '../../../../components/shared/Button';
 import Container from '../../../../components/shared/Container';
 import styles from '../../../../constants/stylesProperty';
 import { ISectionProps } from './Section.Interface';

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
+import styles from '../../../../constants/stylesProperty';
 
 export const TrendingRecepiesBlock = styled.div`
-	margin-bottom: 24px;
+	margin-bottom: ${styles.distances.lg};
 `;

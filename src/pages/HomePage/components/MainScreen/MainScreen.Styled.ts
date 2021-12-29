@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import styles from '../../../../constants/stylesProperty';
 
 export const BorderWrapper = styled.div`
 	border-radius: ${({ theme }) => theme.borderRadius};
@@ -45,20 +46,20 @@ export const MainTagLine = styled.h1`
 	line-height: 72px;
 	font-family: 'Montserrat';
 	color: ${({ theme }) => theme.colors.white};
-	margin-bottom: 48px;
+	margin-bottom: ${styles.distances.xl};
 
 	@media (max-width: ${({ theme }) => theme.displaySize.lg}) {
 		font-size: 40px;
 		line-height: 56px;
 	}
 	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
-		margin-bottom: 12px;
+		margin-bottom: ${styles.distances.sm};
 	}
 `;
 export const MainLandingLinksBlock = styled.div`
 	display: flex;
 	width: 80%;
-	margin-top: 32px;
+	margin-top: ${styles.distances.lg};
 	justify-content: space-between;
 
 	& > * {

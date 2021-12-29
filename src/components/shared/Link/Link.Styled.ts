@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ILink } from './LinkWithStyles.Interface';
+import { ILink } from './Link.Interface';
 
 export const LinkStyled = styled(Link)<ILink>`
 	font-weight: normal;

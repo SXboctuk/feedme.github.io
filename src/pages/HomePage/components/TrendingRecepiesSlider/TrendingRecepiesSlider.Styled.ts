@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import SvgArrow from '../../../../components/Svg/SvgArrow';
+import styles from '../../../../constants/stylesProperty';
 
 export const TrendingRecepiesSliderContainer = styled.div`
 	width: 100%;
@@ -22,7 +23,7 @@ export const TrendingRecepiesSliderButtonLeft = styled(
 )`
 	transform: rotate(180deg);
 	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
-		margin-right: 24px;
+		margin-right: ${styles.distances.lg};
 	} ;
 `;
 
@@ -33,7 +34,7 @@ export const TrendingRecepiesSliderContent = styled.div`
 	overflow: hidden;
 
 	& > *:not(:first-child) {
-		margin-left: 24px;
+		margin-left: ${styles.distances.lg};
 	}
 `;
 
@@ -41,7 +42,7 @@ export const TrendingRecepiesSliderButtonRight = styled(
 	TrendingRecepiesSliderArrow,
 )`
 	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
-		margin-left: 24px;
+		margin-left: ${styles.distances.lg};
 	} ;
 `;
 
@@ -49,7 +50,7 @@ export const TrendingRecepiesSliderDotsBlock = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 44px;
+	margin-top: ${styles.distances.xl};
 `;
 
 export const TrendingRecepiesSliderDot = styled.div`
@@ -60,7 +61,7 @@ export const TrendingRecepiesSliderDot = styled.div`
 	border-radius: 10px;
 
 	&:not(:last-child) {
-		margin-right: 16px;
+		margin-right: ${styles.distances.md};
 	}
 	&[aria-checked] {
 		height: 16px;

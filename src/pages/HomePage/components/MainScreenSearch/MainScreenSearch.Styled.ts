@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { ButtonSolid } from '../../../../components/Button/Button.Styled';
+import { ButtonSolid } from '../../../../components/shared/Button/Button.Styled';
 import SvgSearch from '../../../../components/Svg/SvgSearch';
+import styles from '../../../../constants/stylesProperty';
 
 export const MainScreenInput = styled.input`
 	height: 70px;
@@ -38,7 +39,7 @@ export const MainScreenSearchButton = styled(ButtonSolid)`
 
 	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
 		position: static;
-		margin-top: 24px;
+		margin-top: ${styles.distances.lg};
 
 		transform: translate(0, 0%);
 	} ;

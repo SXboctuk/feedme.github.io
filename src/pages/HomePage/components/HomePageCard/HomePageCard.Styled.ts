@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SvgComment from '../../../../components/Svg/SvgComment';
 import SvgHeart from '../../../../components/Svg/SvgHeart';
 import SvgWatch from '../../../../components/Svg/SvgWatch';
+import styles from '../../../../constants/stylesProperty';
 import {
 	HomePageCardCreatorProps,
 	StyledHomePageCardInnerBlockProps,
@@ -50,7 +51,7 @@ export const HomePageCardImage = styled.img`
 	flex: 1 1 auto;
 	object-fit: cover;
 	border-radius: ${({ theme }) => theme.borderRadius};
-	margin-bottom: 16px;
+	margin-bottom: ${styles.distances.md};
 `;
 export const AlignCenterBlock = styled.div`
 	display: flex;
@@ -73,7 +74,7 @@ export const HomePageCardBlock = styled(Link)`
 	justify-content: space-between;
 	width: 100%;
 	height: 100%;
-	padding: 24px;
+	padding: ${styles.distances.lg};
 	box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);
 
 	&:hover {
@@ -85,6 +86,9 @@ export const HomePageCardBlock = styled(Link)`
 			fill: ${({ theme }) => theme.colors.primary};
 		}
 		${HomePageCardSvgComment} path {
+			fill: ${({ theme }) => theme.colors.primary};
+		}
+		${HomePageCardSvgWatch} path {
 			fill: ${({ theme }) => theme.colors.primary};
 		}
 	}

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import styles from '../../constants/stylesProperty';
 
 export const FooterBackground = styled.div`
 	background-color: #000000;
@@ -16,7 +17,7 @@ export const FooterLinksBlock = styled.div`
 		order: 1;
 		flex: 1 1 100%;
 		width: 100%;
-		margin-bottom: 12px;
+		margin-bottom: ${styles.distances.sm};
 	}
 	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
 		order: 2;
@@ -24,10 +25,10 @@ export const FooterLinksBlock = styled.div`
 		align-items: center;
 
 		margin-bottom: 0;
-		margin-top: 12px;
+		margin-top: ${styles.distances.sm};
 
 		& > *:not(first-child) {
-			margin-top: 6px;
+			margin-top: ${styles.distances.xs};
 		}
 	}
 `;
@@ -50,11 +51,11 @@ export const FooterProjectInfo = styled.div`
 		flex: 1 1 50%;
 	}
 	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
-		margin-top: 12px;
+		margin-top: ${styles.distances.sm};
 	}
 `;
 export const FooterProjectInfoSmallBlock = styled.div`
-	margin-right: 12px;
+	margin-right: ${styles.distances.sm};
 
 	font-size: 16px;
 	line-height: 22px;
