@@ -1,4 +1,4 @@
-export interface RecepieCardProps {
+export interface CardProps {
 	to: string;
 	key: string;
 	viewsCounter: number;
@@ -8,14 +8,18 @@ export interface RecepieCardProps {
 	likesCounter?: number;
 	commentsCounter?: number;
 	fontSizeCreator?: string;
+	text?: string;
+	isVegatarian?: boolean;
+	isWithoutMilk?: boolean;
+	isWithoutEggs?: boolean;
 }
 
-export interface StyledRecepieCardInnerBlockProps {
+export interface StyledCardInnerBlockProps {
 	marginBottom?: string;
 	marginTop?: string;
 	margin?: string;
 }
 
-export interface RecepieCardCreatorProps {
+export interface CardCreatorProps {
 	fontSizeCreator?: string;
 }

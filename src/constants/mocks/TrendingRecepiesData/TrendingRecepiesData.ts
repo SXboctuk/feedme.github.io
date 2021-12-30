@@ -1,10 +1,10 @@
-import { RecepieCardProps } from '../../../components/RecepieCard/RecepieCard.Interface';
+import { CardProps } from '../../../components/Card/Card.Interface';
 
 import Image1 from './Image/tranding1.jpg';
 import Image2 from './Image/tranding2.jpg';
 import Image3 from './Image/tranding3.jpg';
 
-export const TrendingRecepiesDataMock: RecepieCardProps[] = [
+export const TrendingRecepiesDataMock: CardProps[] = [
 	{
 		to: '1',
 		key: '123',

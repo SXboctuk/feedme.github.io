@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrendingRecepiesDataMock } from '../../../../constants/mocks/TrendingRecepiesData/TrendingRecepiesData';
 import { routePath } from '../../../../constants/routePath';
-import RecepieCard from '../../../../components/RecepieCard';
-import { RecepieCardProps } from '../../../../components/RecepieCard/RecepieCard.Interface';
+import Card from '../../../../components/Card';
+import { CardProps } from '../../../../components/Card/Card.Interface';
 import Section from '../Section';
 import TrendingRecepiesSlider from '../TrendingRecepiesSlider/TrendingRecepiesSlider';
 import { TrendingRecepiesBlock } from './Trending.Styled';
@@ -16,7 +16,7 @@ const TrendingRecepies = () => {
 		keyPrefix: 'homePage.trendingRecepies',
 	});
 
-	const [cards, setCards] = useState<RecepieCardProps[]>([]);
+	const [cards, setCards] = useState<CardProps[]>([]);
 	useEffect(() => {
 		setCards(TrendingRecepiesDataMock);
 	}, []);
@@ -37,7 +37,7 @@ const TrendingRecepies = () => {
 			>
 				<TrendingRecepiesSlider>
 					{cards.map((elem) => (
-						<RecepieCard
+						<Card
 							key={elem.key}
 							to={`${routePath.RECEPIES}/${elem.to}`}
 							imageSrc={elem.imageSrc}

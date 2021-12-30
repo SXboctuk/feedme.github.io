@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { userChoiceMockData } from '../../../../constants/mocks/UserChoiceData/UserChoiceData';
 import { routePath } from '../../../../constants/routePath';
-import RecepieCard from '../../../../components/RecepieCard';
-import { RecepieCardProps } from '../../../../components/RecepieCard/RecepieCard.Interface';
+import Card from '../../../../components/Card';
+import { CardProps } from '../../../../components/Card/Card.Interface';
 import Section from '../Section';
 import { UserChoiceCardsBlock } from './UserChoice.Styled';
 
@@ -15,7 +15,7 @@ const UserChoice = () => {
 	});
 
 	const navigate = useNavigate();
-	const [cards, setCards] = useState<RecepieCardProps[]>([]);
+	const [cards, setCards] = useState<CardProps[]>([]);
 
 	useEffect(() => {
 		setCards(userChoiceMockData);
@@ -36,7 +36,7 @@ const UserChoice = () => {
 		>
 			<UserChoiceCardsBlock>
 				{cards.map((elem) => (
-					<RecepieCard
+					<Card
 						to={elem.to}
 						key={elem.key}
 						viewsCounter={elem.viewsCounter}

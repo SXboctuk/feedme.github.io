@@ -4,12 +4,9 @@ import SvgComment from '../Svg/SvgComment';
 import SvgHeart from '../Svg/SvgHeart';
 import SvgWatch from '../Svg/SvgWatch';
 import styles from '../../constants/stylesProperty';
-import {
-	RecepieCardCreatorProps,
-	StyledRecepieCardInnerBlockProps,
-} from './RecepieCard.Interface';
+import { CardCreatorProps, StyledCardInnerBlockProps } from './Card.Interface';
 
-export const RecepieCardInnerBlock = styled.div<StyledRecepieCardInnerBlockProps>`
+export const CardInnerBlock = styled.div<StyledCardInnerBlockProps>`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -18,7 +15,7 @@ export const RecepieCardInnerBlock = styled.div<StyledRecepieCardInnerBlockProps
 	margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : '0')};
 	margin-top: ${({ marginTop }) => (marginTop ? marginTop : '0')};
 `;
-export const RecepieCardCounterText = styled.span`
+export const CardCounterText = styled.span`
 	font-weight: normal;
 	font-size: 14px;
 	line-height: 19px;
@@ -31,21 +28,21 @@ export const RecepieCardCounterText = styled.span`
 		font-size: 14px;
 	}
 `;
-export const RecepieCardTitle = styled.div`
+export const CardTitle = styled.div`
 	font-family: Montserrat;
 	font-weight: 600;
 	font-size: 20px;
 	line-height: 24px;
 	color: ${({ theme }) => theme.colors.textMain};
 `;
-export const RecepieCardCreator = styled.div<RecepieCardCreatorProps>`
+export const CardCreator = styled.div<CardCreatorProps>`
 	font-weight: normal;
 	font-size: ${({ fontSizeCreator }) =>
 		fontSizeCreator ? fontSizeCreator : '14px'};
 	line-height: 19px;
 	color: ${({ theme }) => theme.colors.textMain};
 `;
-export const RecepieCardImage = styled.img`
+export const CardImage = styled.img`
 	width: 100%;
 	height: 20%;
 	flex: 1 1 auto;
@@ -57,16 +54,22 @@ export const AlignCenterBlock = styled.div`
 	display: flex;
 	align-items: center;
 `;
-export const RecepieCardSvgHeart = styled(SvgHeart)`
+export const CardSvgHeart = styled(SvgHeart)`
 	margin-right: 8px;
 `;
-export const RecepieCardSvgComment = styled(SvgComment)`
+export const CardSvgComment = styled(SvgComment)`
 	margin-right: 8px;
 `;
-export const RecepieCardSvgWatch = styled(SvgWatch)`
+export const CardSvgWatch = styled(SvgWatch)`
 	margin-right: 8px;
 `;
-export const RecepieCardBlock = styled(Link)`
+export const CardText = styled.div`
+	height: 60px;
+	overflow: hidden;
+	width: 100%;
+	margin-bottom: ${styles.distances.md};
+`;
+export const CardBlock = styled(Link)`
 	background-color: ${({ theme }) => theme.colors.white};
 	border-radius: ${({ theme }) => theme.borderRadius};
 	display: flex;
@@ -79,21 +82,21 @@ export const RecepieCardBlock = styled(Link)`
 
 	&:hover {
 		box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.24);
-		${RecepieCardTitle} {
+		${CardTitle} {
 			color: ${({ theme }) => theme.colors.primary};
 		}
-		${RecepieCardSvgHeart} path {
+		${CardSvgHeart} path {
 			fill: ${({ theme }) => theme.colors.primary};
 		}
-		${RecepieCardSvgComment} path {
+		${CardSvgComment} path {
 			fill: ${({ theme }) => theme.colors.primary};
 		}
-		${RecepieCardSvgWatch} path {
+		${CardSvgWatch} path {
 			fill: ${({ theme }) => theme.colors.primary};
 		}
 	}
 `;
 
-export const TitleAndCreatorBlock = styled(RecepieCardInnerBlock)`
+export const TitleAndCreatorBlock = styled(CardInnerBlock)`
 	align-items: baseline;
 `;
