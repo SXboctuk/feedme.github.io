@@ -19,7 +19,13 @@ import {
 	RecepieFilterCheckboxInputWrapperHideMy,
 } from './CookbooksFilter.Styled';
 
+import { useTranslation } from 'react-i18next';
+
 const RecepiesFilter = (props: CookbooksFilterProps) => {
+	const { t } = useTranslation('common', {
+		keyPrefix: 'cookbooksComponent.Filter',
+	});
+
 	const { setFilterOption, filterOption } = props;
 	const {
 		isHideMyCookbooks,
@@ -54,30 +60,27 @@ const RecepiesFilter = (props: CookbooksFilterProps) => {
 	return (
 		<RecepiesFilterContainer>
 			<RecepiesFilterTopBlock>
-				<RecepiesFilterTitle>Filter</RecepiesFilterTitle>
+				<RecepiesFilterTitle>{t('filterTitle')}</RecepiesFilterTitle>
 				<RecepiesFilterClearButton onClick={handlerClearAll}>
-					clear all
+					{t('clearAll')}
 				</RecepiesFilterClearButton>
 			</RecepiesFilterTopBlock>
 			<RecepiesFilterDropMenu>
-				<RecepiesFilterLabel>Sort by</RecepiesFilterLabel>
+				<RecepiesFilterLabel>{t('sortBy')}</RecepiesFilterLabel>
 				<RecepiesFilterSelectWrapper>
 					<RecepiesFilterSvgArrowDropmenu />
 					<RecepiesFilterSelect onChange={handlerSortBy}>
-						<RecepiesFilterOption value="test1">
-							filte asdr
+						<RecepiesFilterOption value="popular">
+							{t('optionValuePopular')}
 						</RecepiesFilterOption>
-						<RecepiesFilterOption value="test2">
-							filte asdr
-						</RecepiesFilterOption>
-						<RecepiesFilterOption value="test3">
-							filte asdr
+						<RecepiesFilterOption value="likes">
+							{t('optionValueLikes')}
 						</RecepiesFilterOption>
 					</RecepiesFilterSelect>
 				</RecepiesFilterSelectWrapper>
 			</RecepiesFilterDropMenu>
 			<RecepiesFilterCheckbox>
-				<RecepiesFilterLabel>Cookbook type</RecepiesFilterLabel>
+				<RecepiesFilterLabel>{t('cookbookType')}</RecepiesFilterLabel>
 				<RecepieFilterCheckboxInputWrapper>
 					<RecepieFilterCheckboxInput
 						onChange={handlerCheckboxVegetarian}
@@ -87,7 +90,7 @@ const RecepiesFilter = (props: CookbooksFilterProps) => {
 						id="Vegetarian"
 					/>
 					<RecepierFilterCheckboxLabel htmlFor="Vegetarian">
-						Vegetarian
+						{t('vegetarian')}
 					</RecepierFilterCheckboxLabel>
 				</RecepieFilterCheckboxInputWrapper>
 				<RecepieFilterCheckboxInputWrapper>
@@ -99,7 +102,7 @@ const RecepiesFilter = (props: CookbooksFilterProps) => {
 						id="WithoutMilk"
 					/>
 					<RecepierFilterCheckboxLabel htmlFor="WithoutMilk">
-						Without Milk
+						{t('withoutMilk')}
 					</RecepierFilterCheckboxLabel>
 				</RecepieFilterCheckboxInputWrapper>
 				<RecepieFilterCheckboxInputWrapper>
@@ -111,7 +114,7 @@ const RecepiesFilter = (props: CookbooksFilterProps) => {
 						id="WithoutEggs"
 					/>
 					<RecepierFilterCheckboxLabel htmlFor="WithoutEggs">
-						Without Eggs
+						{t('withoutEggs')}
 					</RecepierFilterCheckboxLabel>
 				</RecepieFilterCheckboxInputWrapper>
 				<RecepieFilterCheckboxInputWrapperHideMy>
@@ -123,7 +126,7 @@ const RecepiesFilter = (props: CookbooksFilterProps) => {
 						id="HideMyCookbooks"
 					/>
 					<RecepierFilterCheckboxLabel htmlFor="HideMyCookbooks">
-						Hide My Cookbooks
+						{t('hideMyCookbooks')}
 					</RecepierFilterCheckboxLabel>
 				</RecepieFilterCheckboxInputWrapperHideMy>
 			</RecepiesFilterCheckbox>

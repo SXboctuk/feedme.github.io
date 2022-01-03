@@ -8,6 +8,10 @@ export const ContentSearchTemplateGrid1x3 = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 	grid-gap: 40px;
+
+	@media (max-width: ${({ theme }) => theme.displaySize.xs}) {
+		grid-template-columns: 1fr;
+	}
 `;
 export const ContentSearchTemplateRightElem = styled.div`
 	width: 100%;
