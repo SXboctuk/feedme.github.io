@@ -1,9 +1,6 @@
-import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
+import React, { ChangeEvent } from 'react';
 import { initialFilterOption } from '../../Cookbooks';
-import {
-	CookbooksFilterProps,
-	IFilterOption,
-} from './CookbooksFilter.Interface';
+import { CookbooksFilterProps } from './CookbooksFilter.Interface';
 import {
 	RecepiesFilterContainer,
 	RecepiesFilterTopBlock,
@@ -26,7 +23,7 @@ const RecepiesFilter = (props: CookbooksFilterProps) => {
 	const { setFilterOption, filterOption } = props;
 	const {
 		isHideMyCookbooks,
-		sortBy,
+		// sortBy,
 		isWithoutMilk,
 		isWithoutEggs,
 		isVegetarian,

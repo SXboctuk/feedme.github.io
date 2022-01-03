@@ -7,6 +7,7 @@ export const ContentSearchTemplateWrapper = styled.div`
 export const ContentSearchTemplateGrid1x3 = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 3fr;
+	grid-gap: 40px;
 `;
 export const ContentSearchTemplateRightElem = styled.div`
 	width: 100%;

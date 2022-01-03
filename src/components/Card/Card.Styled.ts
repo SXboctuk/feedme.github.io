@@ -64,10 +64,13 @@ export const CardSvgWatch = styled(SvgWatch)`
 	margin-right: 8px;
 `;
 export const CardText = styled.div`
-	height: 60px;
+	max-height: 65px;
 	overflow: hidden;
 	width: 100%;
 	margin-bottom: ${styles.distances.md};
+	color: ${({ theme }) => theme.colors.textMain};
+	overflow: hidden;
+	text-overflow: ellipsis;
 `;
 export const CardBlock = styled(Link)`
 	background-color: ${({ theme }) => theme.colors.white};

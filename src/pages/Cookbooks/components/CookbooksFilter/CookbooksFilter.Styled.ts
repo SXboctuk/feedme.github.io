@@ -7,6 +7,7 @@ export const RecepiesFilterContainer = styled.div`
 	background-color: ${({ theme }) => theme.colors.white};
 	border-radius: ${({ theme }) => theme.borderRadius};
 	box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);
+	height: fit-content;
 `;
 
 export const RecepiesFilterTopBlock = styled.div`
@@ -26,17 +27,23 @@ export const RecepiesFilterClearButton = styled.button`
 	font-size: 14px;
 	line-height: 19px;
 	color: ${({ theme }) => theme.colors.primary};
+	cursor: pointer;
 
 	border: none;
 	background: none;
 `;
 
-export const RecepiesFilterDropMenu = styled.div``;
+export const RecepiesFilterDropMenu = styled.div`
+	margin-top: ${styles.distances.lg};
+`;
 
 export const RecepiesFilterLabel = styled.label`
 	display: block;
+	margin-bottom: ${styles.distances.md};
+
 	color: ${({ theme }) => theme.colors.textMain};
 	font-weight: 600;
+	font-family: 'Montserrat';
 	font-size: 16px;
 	line-height: 20px;
 
@@ -44,6 +51,7 @@ export const RecepiesFilterLabel = styled.label`
 `;
 export const RecepiesFilterSelectWrapper = styled.div`
 	position: relative;
+	margin-bottom: ${styles.distances.lg};
 `;
 
 export const RecepiesFilterSvgArrowDropmenu = styled(SvgArrowDropmenu)`
@@ -73,10 +81,16 @@ export const RecepiesFilterOption = styled.option`
 
 export const RecepiesFilterCheckbox = styled.div``;
 
-export const RecepieFilterCheckboxInputWrapper = styled.div``;
+export const RecepieFilterCheckboxInputWrapper = styled.div`
+	&:not(:last-child) {
+		margin-bottom: ${styles.distances.xs};
+	}
+`;
 export const RecepieFilterCheckboxInputWrapperHideMy = styled(
 	RecepieFilterCheckboxInputWrapper,
-)``;
+)`
+	margin-top: ${styles.distances.lg};
+`;
 export const RecepierFilterCheckboxLabel = styled.label`
 	display: inline-flex;
 	align-items: center;
