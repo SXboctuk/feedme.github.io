@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TrendingRecepiesDataMock } from '../../../../constants/mocks/TrendingRecepiesData/TrendingRecepiesData';
 import { routePath } from '../../../../constants/routePath';
 import Card from '../../../../components/Card';
-import { CardProps } from '../../../../components/Card/Card.Interface';
+
 import Section from '../Section';
 import TrendingRecepiesSlider from '../TrendingRecepiesSlider/TrendingRecepiesSlider';
 import { TrendingRecepiesBlock } from './Trending.Styled';
 
 import { useTranslation } from 'react-i18next';
 import styles from '../../../../constants/stylesProperty';
+import { CardRecepie } from '../../../../interfaces/Recepie';
+import { recepiesMockData } from '../../../../constants/mocks/Recepies';
 
 const TrendingRecepies = () => {
 	const { t } = useTranslation('common', {
 		keyPrefix: 'homePage.trendingRecepies',
 	});
 
-	const [cards, setCards] = useState<CardProps[]>([]);
+	const [cards, setCards] = useState<CardRecepie[]>([]);
 	useEffect(() => {
-		setCards(TrendingRecepiesDataMock);
+		const data = recepiesMockData.slice(0, 6);
+		setCards(data);
 	}, []);
 	const navigate = useNavigate();
 	const handlerButton = () => {

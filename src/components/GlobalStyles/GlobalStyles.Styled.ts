@@ -82,6 +82,11 @@ const GlobalStylesStyled = createGlobalStyle`
 	}
 	a {
 	background-color: transparent;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+	}
 	}
 	abbr[title] {
 	border-bottom: none; 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import styles from '../../../../constants/stylesProperty';
+import styles from '../../constants/stylesProperty';
 
 export const CookbooksContentMainGrid = styled.div`
 	display: grid;

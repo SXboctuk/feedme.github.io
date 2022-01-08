@@ -12,6 +12,7 @@ export interface CardProps {
 	isVegatarian?: boolean;
 	isWithoutMilk?: boolean;
 	isWithoutEggs?: boolean;
+	type?: 'wide';
 }
 
 export interface StyledCardInnerBlockProps {

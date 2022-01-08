@@ -43,12 +43,23 @@ export const CardCreator = styled.div<CardCreatorProps>`
 	color: ${({ theme }) => theme.colors.textMain};
 `;
 export const CardImage = styled.img`
+	height: 100%;
 	width: 100%;
-	height: 20%;
-	flex: 1 1 auto;
+
 	object-fit: cover;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+`;
+export const CardImageWrapper = styled.div`
+	width: 100%;
+	padding-top: 100%;
+	position: relative;
+
 	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
 	margin-bottom: ${styles.distances.md};
+	overflow: hidden;
 `;
 export const AlignCenterBlock = styled.div`
 	display: flex;

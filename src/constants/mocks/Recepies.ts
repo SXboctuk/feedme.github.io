@@ -1,11 +1,11 @@
-import { CardProps } from '../../../components/Card/Card.Interface';
+import { CardRecepie } from '../../interfaces/Recepie';
 
-import cardImage1 from './Image/card1.png';
+import cardImage1 from './Image/card1.jpg';
 import cardImage2 from './Image/card2.png';
 import cardImage3 from './Image/card3.png';
 import cardImage4 from './Image/card4.png';
 
-export const cookbooksMockData: CardProps[] = [
+export const recepiesMockData: CardRecepie[] = [
 	{
 		to: `1`,
 		key: 'card1',
@@ -16,7 +16,6 @@ export const cookbooksMockData: CardProps[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 100,
 		commentsCounter: 12,
-		isVegatarian: true,
 	},
 	{
 		to: `2`,
@@ -28,7 +27,6 @@ export const cookbooksMockData: CardProps[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 200,
 		commentsCounter: 12,
-		isVegatarian: true,
 	},
 	{
 		to: `3`,
@@ -40,7 +38,6 @@ export const cookbooksMockData: CardProps[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 300,
 		commentsCounter: 12,
-		isWithoutEggs: true,
 	},
 	{
 		to: `4`,
@@ -52,7 +49,6 @@ export const cookbooksMockData: CardProps[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 400,
 		commentsCounter: 12,
-		isWithoutEggs: true,
 	},
 	{
 		to: `5`,
@@ -64,7 +60,6 @@ export const cookbooksMockData: CardProps[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 500,
 		commentsCounter: 12,
-		isWithoutEggs: true,
 	},
 	{
 		to: `6`,
@@ -76,7 +71,6 @@ export const cookbooksMockData: CardProps[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 600,
 		commentsCounter: 12,
-		isWithoutMilk: true,
 	},
 	{
 		to: `7`,
@@ -88,7 +82,6 @@ export const cookbooksMockData: CardProps[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 700,
 		commentsCounter: 12,
-		isWithoutMilk: true,
 	},
 	{
 		to: `8`,
@@ -100,9 +93,6 @@ export const cookbooksMockData: CardProps[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 800,
 		commentsCounter: 12,
-		isWithoutMilk: true,
-		isWithoutEggs: true,
-		isVegatarian: true,
 	},
 	{
 		to: `9`,
@@ -114,8 +104,5 @@ export const cookbooksMockData: CardProps[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 900,
 		commentsCounter: 12,
-		isWithoutMilk: true,
-		isWithoutEggs: true,
-		isVegatarian: true,
 	},
 ];

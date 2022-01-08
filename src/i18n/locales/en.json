@@ -3,7 +3,7 @@
     "learnReact": "Learn React123",
 	
 
-	"cookbooks": "Cookbook",
+	"cookbooks": "Cookbooks",
 	"recepies": "Recepies",
 	"aboutus": "About us",
 
@@ -43,20 +43,19 @@
 		}
 
 	},
-	"cookbooksComponent": {
-		"Filter": {
-			"filterTitle": "Filter",
-			"clearAll": "clear all",
-			"sortBy": "Sort by",
-			"optionValuePlaceholder": "Choose",
-			"optionValueLikes": "Likes",
-			"optionValuePopular": "Popular",
-			"cookbookType": "Cookbook type",
-			"vegetarian": "Vegetarian",
-			"withoutMilk": "Without Milk",
-			"withoutEggs": "Without Eggs",
-			"hideMyCookbooks": "Hide My Cookbooks"
-		}
+	"Filter": {
+		"filterTitle": "Filter",
+		"clearAll": "clear all",
+		"sortBy": "Sort by",
+		"optionValuePlaceholder": "Choose",
+		"optionValueLikes": "Likes",
+		"optionValuePopular": "Popular",
+		"cookbookType": "Cookbook type",
+		"vegetarian": "Vegetarian",
+		"withoutMilk": "Without Milk",
+		"withoutEggs": "Without Eggs",
+		"hideMyCookbooks": "Hide My Cookbooks",
+		"cookingTime": "Cooking Time"
 	}
   }
   

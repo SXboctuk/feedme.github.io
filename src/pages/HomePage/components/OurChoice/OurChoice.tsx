@@ -10,26 +10,26 @@ import {
 import OurChoiceCard from '../OurChoiceCard';
 import { useNavigate } from 'react-router-dom';
 import { routePath } from '../../../../constants/routePath';
-import { OurChoiceDataMock } from '../../../../constants/mocks/OutChoiceData/OurChoiceData';
-import { ourChoiceCardProps } from '../OurChoiceCard/OurChoiceCard.Interface';
-
 import { useTranslation } from 'react-i18next';
+import { CardCookbook } from '../../../../interfaces/Cookbook';
+import { cookbooksMockData } from '../../../../constants/mocks/Cookbooks';
 
 const OurChoice = () => {
 	const { t } = useTranslation('common', {
 		keyPrefix: 'homePage.ourChoice',
 	});
 
-	const [card, setCard] = useState<ourChoiceCardProps[]>([]);
+	const [card, setCard] = useState<CardCookbook[]>([]);
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		setCard(OurChoiceDataMock);
+		const data = cookbooksMockData.slice(0, 4);
+		setCard(data);
 	}, []);
 	const handlerButton = () => {
 		navigate(routePath.COOKBOOKS);
 	};
-
+	console.log(card);
 	return (
 		<Section
 			buttonText={t('buttonText')}
@@ -40,35 +40,35 @@ const OurChoice = () => {
 			background={false}
 			buttonOnClick={handlerButton}
 		>
-			{card.length > 0 ? (
+			{card.length >= 3 ? (
 				<MainGrid>
 					<BigCard>
 						<OurChoiceCard
-							image={card[0].image}
-							buttonText={card[0].buttonText}
-							cookbookId={card[0].cookbookId}
+							image={card[0].imageSrc}
+							buttonText={card[0].titleName}
+							cookbookId={card[0].to}
 						/>
 					</BigCard>
 					<GridIncide>
 						<WideCard>
 							<OurChoiceCard
-								image={card[1].image}
-								buttonText={card[1].buttonText}
-								cookbookId={card[1].cookbookId}
+								image={card[1].imageSrc}
+								buttonText={card[1].titleName}
+								cookbookId={card[1].to}
 							/>
 						</WideCard>
 						<SmallCard>
 							<OurChoiceCard
-								image={card[2].image}
-								buttonText={card[2].buttonText}
-								cookbookId={card[2].cookbookId}
+								image={card[2].imageSrc}
+								buttonText={card[2].titleName}
+								cookbookId={card[2].to}
 							/>
 						</SmallCard>
 						<SmallCard>
 							<OurChoiceCard
-								image={card[3].image}
-								buttonText={card[3].buttonText}
-								cookbookId={card[3].cookbookId}
+								image={card[3].imageSrc}
+								buttonText={card[3].titleName}
+								cookbookId={card[3].to}
 							/>
 						</SmallCard>
 					</GridIncide>

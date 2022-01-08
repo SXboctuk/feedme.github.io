@@ -1,9 +1,9 @@
 export interface CookbooksFilterProps {
-	filterOption: IFilterOption;
-	setFilterOption: (option: IFilterOption) => void;
+	filterOption: CookbooksFilterOption;
+	setFilterOption: (option: CookbooksFilterOption) => void;
 }
 
-export interface IFilterOption {
+export interface CookbooksFilterOption {
 	sortBy: string;
 	isVegetarian: boolean;
 	isWithoutMilk: boolean;

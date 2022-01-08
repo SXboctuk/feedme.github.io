@@ -34,7 +34,7 @@ const Footer = () => {
 							color={styles.colors.white}
 							to={routePath.COOKBOOKS}
 						>
-							{t('cookbook')}
+							{t('cookbooks')}
 						</Link>
 						<Link
 							color={styles.colors.white}
@@ -46,7 +46,7 @@ const Footer = () => {
 							color={styles.colors.white}
 							to={routePath.ABOUTUS}
 						>
-							About Us {t('aboutus')}
+							{t('aboutus')}
 						</Link>
 						<FooterEmailLink href={`mailto:${companyEmail}`}>
 							{companyEmail}

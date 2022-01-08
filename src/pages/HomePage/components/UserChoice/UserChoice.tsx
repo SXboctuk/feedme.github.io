@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { userChoiceMockData } from '../../../../constants/mocks/UserChoiceData/UserChoiceData';
 import { routePath } from '../../../../constants/routePath';
 import Card from '../../../../components/Card';
-import { CardProps } from '../../../../components/Card/Card.Interface';
 import Section from '../Section';
 import { UserChoiceCardsBlock } from './UserChoice.Styled';
 
 import { useTranslation } from 'react-i18next';
+import { CardRecepie } from '../../../../interfaces/Recepie';
+import { recepiesMockData } from '../../../../constants/mocks/Recepies';
 const UserChoice = () => {
 	const { t } = useTranslation('common', {
 		keyPrefix: 'homePage.userChoice',
 	});
 
 	const navigate = useNavigate();
-	const [cards, setCards] = useState<CardProps[]>([]);
+	const [cards, setCards] = useState<CardRecepie[]>([]);
 
 	useEffect(() => {
-		setCards(userChoiceMockData);
+		const data = recepiesMockData.slice(0, 4);
+		setCards(data);
 	}, []);
 
 	const handlerButton = () => {

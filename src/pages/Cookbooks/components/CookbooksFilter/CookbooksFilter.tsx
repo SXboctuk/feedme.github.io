@@ -1,29 +1,29 @@
 import React, { ChangeEvent } from 'react';
-import { initialFilterOption } from '../../Cookbooks';
+import { initialCookbooksFilterOption } from '../../Cookbooks';
 import { CookbooksFilterProps } from './CookbooksFilter.Interface';
 import {
-	RecepiesFilterContainer,
-	RecepiesFilterTopBlock,
-	RecepiesFilterTitle,
-	RecepiesFilterClearButton,
-	RecepiesFilterDropMenu,
-	RecepiesFilterLabel,
-	RecepiesFilterSelect,
-	RecepiesFilterOption,
-	RecepiesFilterSelectWrapper,
-	RecepiesFilterSvgArrowDropmenu,
-	RecepiesFilterCheckbox,
-	RecepieFilterCheckboxInput,
-	RecepieFilterCheckboxInputWrapper,
-	RecepierFilterCheckboxLabel,
-	RecepieFilterCheckboxInputWrapperHideMy,
+	CookbooksFilterContainer,
+	CookbooksFilterTopBlock,
+	CookbooksFilterTitle,
+	CookbooksFilterClearButton,
+	CookbooksFilterDropMenu,
+	CookbooksFilterLabel,
+	CookbooksFilterSelect,
+	CookbooksFilterOption,
+	CookbooksFilterSelectWrapper,
+	CookbooksFilterSvgArrowDropmenu,
+	CookbooksFilterCheckbox,
+	CookbooksFilterCheckboxInput,
+	CookbooksFilterCheckboxInputWrapper,
+	CookbooksFilterCheckboxLabel,
+	CookbooksFilterCheckboxInputWrapperHideMy,
 } from './CookbooksFilter.Styled';
 
 import { useTranslation } from 'react-i18next';
 
-const RecepiesFilter = (props: CookbooksFilterProps) => {
+const CookbooksFilter = (props: CookbooksFilterProps) => {
 	const { t } = useTranslation('common', {
-		keyPrefix: 'cookbooksComponent.Filter',
+		keyPrefix: 'Filter',
 	});
 
 	const { setFilterOption, filterOption } = props;
@@ -54,84 +54,84 @@ const RecepiesFilter = (props: CookbooksFilterProps) => {
 		setFilterOption({ ...filterOption, sortBy: e.currentTarget.value });
 	};
 	const handlerClearAll = () => {
-		setFilterOption(initialFilterOption);
+		setFilterOption(initialCookbooksFilterOption);
 	};
 
 	return (
-		<RecepiesFilterContainer>
-			<RecepiesFilterTopBlock>
-				<RecepiesFilterTitle>{t('filterTitle')}</RecepiesFilterTitle>
-				<RecepiesFilterClearButton onClick={handlerClearAll}>
+		<CookbooksFilterContainer>
+			<CookbooksFilterTopBlock>
+				<CookbooksFilterTitle>{t('filterTitle')}</CookbooksFilterTitle>
+				<CookbooksFilterClearButton onClick={handlerClearAll}>
 					{t('clearAll')}
-				</RecepiesFilterClearButton>
-			</RecepiesFilterTopBlock>
-			<RecepiesFilterDropMenu>
-				<RecepiesFilterLabel>{t('sortBy')}</RecepiesFilterLabel>
-				<RecepiesFilterSelectWrapper>
-					<RecepiesFilterSvgArrowDropmenu />
-					<RecepiesFilterSelect onChange={handlerSortBy}>
-						<RecepiesFilterOption value="popular">
+				</CookbooksFilterClearButton>
+			</CookbooksFilterTopBlock>
+			<CookbooksFilterDropMenu>
+				<CookbooksFilterLabel>{t('sortBy')}</CookbooksFilterLabel>
+				<CookbooksFilterSelectWrapper>
+					<CookbooksFilterSvgArrowDropmenu />
+					<CookbooksFilterSelect onChange={handlerSortBy}>
+						<CookbooksFilterOption value="popular">
 							{t('optionValuePopular')}
-						</RecepiesFilterOption>
-						<RecepiesFilterOption value="likes">
+						</CookbooksFilterOption>
+						<CookbooksFilterOption value="likes">
 							{t('optionValueLikes')}
-						</RecepiesFilterOption>
-					</RecepiesFilterSelect>
-				</RecepiesFilterSelectWrapper>
-			</RecepiesFilterDropMenu>
-			<RecepiesFilterCheckbox>
-				<RecepiesFilterLabel>{t('cookbookType')}</RecepiesFilterLabel>
-				<RecepieFilterCheckboxInputWrapper>
-					<RecepieFilterCheckboxInput
+						</CookbooksFilterOption>
+					</CookbooksFilterSelect>
+				</CookbooksFilterSelectWrapper>
+			</CookbooksFilterDropMenu>
+			<CookbooksFilterCheckbox>
+				<CookbooksFilterLabel>{t('cookbookType')}</CookbooksFilterLabel>
+				<CookbooksFilterCheckboxInputWrapper>
+					<CookbooksFilterCheckboxInput
 						onChange={handlerCheckboxVegetarian}
 						checked={isVegetarian}
 						type="checkbox"
 						name="Vegetarian"
 						id="Vegetarian"
 					/>
-					<RecepierFilterCheckboxLabel htmlFor="Vegetarian">
+					<CookbooksFilterCheckboxLabel htmlFor="Vegetarian">
 						{t('vegetarian')}
-					</RecepierFilterCheckboxLabel>
-				</RecepieFilterCheckboxInputWrapper>
-				<RecepieFilterCheckboxInputWrapper>
-					<RecepieFilterCheckboxInput
+					</CookbooksFilterCheckboxLabel>
+				</CookbooksFilterCheckboxInputWrapper>
+				<CookbooksFilterCheckboxInputWrapper>
+					<CookbooksFilterCheckboxInput
 						onChange={handlerCheckboxWithoutMilk}
 						checked={isWithoutMilk}
 						type="checkbox"
 						name="Without milk"
 						id="WithoutMilk"
 					/>
-					<RecepierFilterCheckboxLabel htmlFor="WithoutMilk">
+					<CookbooksFilterCheckboxLabel htmlFor="WithoutMilk">
 						{t('withoutMilk')}
-					</RecepierFilterCheckboxLabel>
-				</RecepieFilterCheckboxInputWrapper>
-				<RecepieFilterCheckboxInputWrapper>
-					<RecepieFilterCheckboxInput
+					</CookbooksFilterCheckboxLabel>
+				</CookbooksFilterCheckboxInputWrapper>
+				<CookbooksFilterCheckboxInputWrapper>
+					<CookbooksFilterCheckboxInput
 						onChange={handlerCheckboxWithoutEggs}
 						checked={isWithoutEggs}
 						type="checkbox"
 						name="Without eggs"
 						id="WithoutEggs"
 					/>
-					<RecepierFilterCheckboxLabel htmlFor="WithoutEggs">
+					<CookbooksFilterCheckboxLabel htmlFor="WithoutEggs">
 						{t('withoutEggs')}
-					</RecepierFilterCheckboxLabel>
-				</RecepieFilterCheckboxInputWrapper>
-				<RecepieFilterCheckboxInputWrapperHideMy>
-					<RecepieFilterCheckboxInput
+					</CookbooksFilterCheckboxLabel>
+				</CookbooksFilterCheckboxInputWrapper>
+				<CookbooksFilterCheckboxInputWrapperHideMy>
+					<CookbooksFilterCheckboxInput
 						onChange={handlerCheckboxHideMyCookbooks}
 						checked={isHideMyCookbooks}
 						type="checkbox"
 						name="Hide my cookbooks"
 						id="HideMyCookbooks"
 					/>
-					<RecepierFilterCheckboxLabel htmlFor="HideMyCookbooks">
+					<CookbooksFilterCheckboxLabel htmlFor="HideMyCookbooks">
 						{t('hideMyCookbooks')}
-					</RecepierFilterCheckboxLabel>
-				</RecepieFilterCheckboxInputWrapperHideMy>
-			</RecepiesFilterCheckbox>
-		</RecepiesFilterContainer>
+					</CookbooksFilterCheckboxLabel>
+				</CookbooksFilterCheckboxInputWrapperHideMy>
+			</CookbooksFilterCheckbox>
+		</CookbooksFilterContainer>
 	);
 };
 
-export default RecepiesFilter;
+export default CookbooksFilter;

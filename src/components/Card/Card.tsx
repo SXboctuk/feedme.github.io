@@ -14,6 +14,7 @@ import {
 	CardSvgComment,
 	TitleAndCreatorBlock,
 	CardText,
+	CardImageWrapper,
 } from './Card.Styled';
 
 import { useTranslation } from 'react-i18next';
@@ -31,8 +32,10 @@ const Card = (props: CardProps) => {
 				</AlignCenterBlock>
 				<SvgOptionButton />
 			</CardInnerBlock>
+			<CardImageWrapper>
+				<CardImage src={props.imageSrc} width={240} height={240} />
+			</CardImageWrapper>
 
-			<CardImage src={props.imageSrc} />
 			<TitleAndCreatorBlock marginBottom="12px">
 				<CardTitle>{props.titleName}</CardTitle>
 				<CardCreator fontSizeCreator={props.fontSizeCreator}>

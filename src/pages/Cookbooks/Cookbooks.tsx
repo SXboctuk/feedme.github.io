@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import Card from '../../components/Card';
 import { CardProps } from '../../components/Card/Card.Interface';
 import ContentSearchTemplate from '../../components/ContentSearchTemplate';
-import { cookbooksMockData } from '../../constants/mocks/Cookbooks/Cookbooks';
+import { cookbooksMockData } from '../../constants/mocks/Cookbooks';
 import { routePath } from '../../constants/routePath';
-import CookbooksContent from './components/CookbooksContent';
+import { CardCookbook } from '../../interfaces/Cookbook';
 import CookbooksFilter from './components/CookbooksFilter';
-import { IFilterOption } from './components/CookbooksFilter/CookbooksFilter.Interface';
+import { CookbooksFilterOption } from './components/CookbooksFilter/CookbooksFilter.Interface';
+import { CookbooksContentMainGrid } from './Cookbooks.Styled';
 
-export const initialFilterOption: IFilterOption = {
+export const initialCookbooksFilterOption: CookbooksFilterOption = {
 	sortBy: 'popular',
 	isVegetarian: false,
 	isWithoutEggs: false,
@@ -21,8 +22,10 @@ export const initialFilterOption: IFilterOption = {
 const Cookbooks = () => {
 	const params = useParams();
 
-	const [cookbooks, setCookbooks] = useState<CardProps[]>();
-	const [option, setOption] = useState<IFilterOption>(initialFilterOption);
+	const [cookbooks, setCookbooks] = useState<CardCookbook[]>();
+	const [option, setOption] = useState<CookbooksFilterOption>(
+		initialCookbooksFilterOption,
+	);
 
 	useEffect(() => {
 		setCookbooks(cookbooksMockData);
@@ -78,7 +81,7 @@ const Cookbooks = () => {
 	};
 
 	const resultCookbooks = filterElems();
-	console.log(option);
+
 	return (
 		<>
 			<ContentSearchTemplate
@@ -89,7 +92,7 @@ const Cookbooks = () => {
 					/>
 				}
 				rightElem={
-					<CookbooksContent>
+					<CookbooksContentMainGrid>
 						{resultCookbooks?.map((elem) => {
 							return (
 								<Card
@@ -105,7 +108,7 @@ const Cookbooks = () => {
 								/>
 							);
 						})}
-					</CookbooksContent>
+					</CookbooksContentMainGrid>
 				}
 				selectedPage={'Cookbooks'}
 			/>
