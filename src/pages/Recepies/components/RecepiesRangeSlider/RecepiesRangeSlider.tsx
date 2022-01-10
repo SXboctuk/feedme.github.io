@@ -1,10 +1,4 @@
-import React, {
-	ChangeEvent,
-	useCallback,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useRef } from 'react';
 import { RecepiesRangeSliderProps } from './RecepiesRangeSlider.Interface';
 import {
 	RecepiesInput,
@@ -17,9 +11,7 @@ import {
 } from './RecepiesRangeSlider.Styled';
 
 const RecepiesRangeSlider = (props: RecepiesRangeSliderProps) => {
-	const { min, max, onChange } = props;
-	const [minVal, setMinVal] = useState(min);
-	const [maxVal, setMaxVal] = useState(max);
+	const { min, max, minVal, maxVal, setMinVal, setMaxVal } = props;
 	const minValRef = useRef<HTMLInputElement>(null);
 	const maxValRef = useRef<HTMLInputElement>(null);
 	const range = useRef<HTMLDivElement>(null);
@@ -51,13 +43,9 @@ const RecepiesRangeSlider = (props: RecepiesRangeSliderProps) => {
 		}
 	}, [maxVal, getPercent]);
 
-	useEffect(() => {
-		onChange({ min: minVal, max: maxVal });
-	}, [minVal, maxVal]);
-
 	const convertTime = (num: number) => {
 		if (num < 1) {
-			return '< min';
+			return '<1 min';
 		} else if (num < 60) {
 			return num + ' min';
 		} else {
@@ -78,7 +66,7 @@ const RecepiesRangeSlider = (props: RecepiesRangeSliderProps) => {
 	};
 
 	return (
-		<RecepirsRangeSliderContainer className="container">
+		<RecepirsRangeSliderContainer>
 			<RecepiesInput
 				type="range"
 				min={min}

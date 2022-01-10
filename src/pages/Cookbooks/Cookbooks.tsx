@@ -34,7 +34,7 @@ const Cookbooks = () => {
 	const filterElems = (): CardProps[] => {
 		let filterElems: CardProps[] = cookbooks || [];
 
-		if (filterElems.length <= 1) {
+		if (filterElems.length < 1) {
 			return filterElems;
 		}
 

@@ -16,6 +16,7 @@ export const recepiesMockData: CardRecepie[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 100,
 		commentsCounter: 12,
+		cookingTime: 60,
 	},
 	{
 		to: `2`,
@@ -27,6 +28,7 @@ export const recepiesMockData: CardRecepie[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 200,
 		commentsCounter: 12,
+		cookingTime: 80,
 	},
 	{
 		to: `3`,
@@ -38,6 +40,7 @@ export const recepiesMockData: CardRecepie[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 300,
 		commentsCounter: 12,
+		cookingTime: 90,
 	},
 	{
 		to: `4`,
@@ -49,6 +52,7 @@ export const recepiesMockData: CardRecepie[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 400,
 		commentsCounter: 12,
+		cookingTime: 60,
 	},
 	{
 		to: `5`,
@@ -60,6 +64,7 @@ export const recepiesMockData: CardRecepie[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 500,
 		commentsCounter: 12,
+		cookingTime: 10,
 	},
 	{
 		to: `6`,
@@ -71,6 +76,7 @@ export const recepiesMockData: CardRecepie[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 600,
 		commentsCounter: 12,
+		cookingTime: 120,
 	},
 	{
 		to: `7`,
@@ -82,6 +88,7 @@ export const recepiesMockData: CardRecepie[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 700,
 		commentsCounter: 12,
+		cookingTime: 240,
 	},
 	{
 		to: `8`,
@@ -93,6 +100,7 @@ export const recepiesMockData: CardRecepie[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 800,
 		commentsCounter: 12,
+		cookingTime: 230,
 	},
 	{
 		to: `9`,
@@ -104,5 +112,6 @@ export const recepiesMockData: CardRecepie[] = [
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
 		likesCounter: 900,
 		commentsCounter: 12,
+		cookingTime: 180,
 	},
 ];

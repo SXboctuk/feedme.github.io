@@ -17,7 +17,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import RecepiesRangeSlider from '../RecepiesRangeSlider';
 import { initialRecepiesFilterOption } from '../../Recepies';
-import { RangeOption } from '../RecepiesRangeSlider/RecepiesRangeSlider.Interface';
 
 const RecepiesFilter = (props: RecepiesFilterProps) => {
 	const { t } = useTranslation('common', {
@@ -26,17 +25,24 @@ const RecepiesFilter = (props: RecepiesFilterProps) => {
 
 	const { filterOption, setFilterOption } = props;
 
+	const min = 0;
+	const max = 240;
 	const handlerClearAll = () => {
 		setFilterOption(initialRecepiesFilterOption);
 	};
 	const handlerSortBy = (e: ChangeEvent<HTMLSelectElement>) => {
 		setFilterOption({ ...filterOption, sortBy: e.currentTarget.value });
 	};
-	const handlerCookingTime = ({ min, max }: RangeOption) => {
+	const setMinValCookingTime = (num: number) => {
 		setFilterOption({
 			...filterOption,
-			cookingTimeFrom: min,
-			cookingTimeTo: max,
+			cookingTimeFrom: num,
+		});
+	};
+	const setMaxValCookingTime = (num: number) => {
+		setFilterOption({
+			...filterOption,
+			cookingTimeTo: num,
 		});
 	};
 	return (
@@ -51,10 +57,14 @@ const RecepiesFilter = (props: RecepiesFilterProps) => {
 				<RecepiesFilterLabel>{t('sortBy')}</RecepiesFilterLabel>
 				<RecepiesFilterSelectWrapper>
 					<RecepiesFilterSvgArrowDropmenu />
-					<RecepiesFilterSelect onChange={handlerSortBy}>
+					<RecepiesFilterSelect
+						onChange={handlerSortBy}
+						value={filterOption.sortBy}
+					>
 						<RecepiesFilterOption value="popular">
 							{t('optionValuePopular')}
 						</RecepiesFilterOption>
+
 						<RecepiesFilterOption value="likes">
 							{t('optionValueLikes')}
 						</RecepiesFilterOption>
@@ -64,9 +74,12 @@ const RecepiesFilter = (props: RecepiesFilterProps) => {
 			<RecepiesRangeSliderWrapper>
 				<RecepiesFilterLabel>{t('cookingTime')}</RecepiesFilterLabel>
 				<RecepiesRangeSlider
-					min={0}
-					max={240}
-					onChange={handlerCookingTime}
+					minVal={filterOption.cookingTimeFrom}
+					maxVal={filterOption.cookingTimeTo}
+					setMinVal={setMinValCookingTime}
+					setMaxVal={setMaxValCookingTime}
+					min={min}
+					max={max}
 				/>
 			</RecepiesRangeSliderWrapper>
 		</RecepiesFilterContainer>

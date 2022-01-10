@@ -75,13 +75,12 @@ export const CardSvgWatch = styled(SvgWatch)`
 	margin-right: 8px;
 `;
 export const CardText = styled.div`
-	max-height: 65px;
-	overflow: hidden;
 	width: 100%;
 	margin-bottom: ${styles.distances.md};
 	color: ${({ theme }) => theme.colors.textMain};
-	overflow: hidden;
-	text-overflow: ellipsis;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 19px;
 `;
 export const CardBlock = styled(Link)`
 	background-color: ${({ theme }) => theme.colors.white};
@@ -91,7 +90,7 @@ export const CardBlock = styled(Link)`
 	justify-content: space-between;
 	width: 100%;
 	height: 100%;
-	padding: ${styles.distances.lg};
+
 	box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);
 
 	&:hover {
@@ -110,7 +109,48 @@ export const CardBlock = styled(Link)`
 		}
 	}
 `;
+export const CardBlockWrapper = styled.div`
+	padding: ${styles.distances.lg};
+`;
 
 export const TitleAndCreatorBlock = styled(CardInnerBlock)`
 	align-items: baseline;
+`;
+
+export const CardWideWrapper = styled.div`
+	display: flex;
+	flex-direction: row;
+`;
+export const CardWideImageWrapper = styled.div`
+	width: 30%;
+	padding-top: 20%;
+	position: relative;
+	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
+	overflow: hidden;
+`;
+export const CardWideContent = styled.div`
+	padding: ${styles.distances.lg};
+	display: flex;
+	flex-direction: column;
+`;
+export const CardWideSocialCounter = styled.div`
+	display: flex;
+
+	& > :not(:last-child) {
+		margin-right: ${styles.distances.md};
+	}
+`;
+export const CardBottomBlock = styled.div`
+	display: flex;
+	justify-content: space-between;
+	margin-top: auto;
+	align-items: flex-end;
+`;
+export const CardBlockWide = styled(CardBlock)`
+	border-radius: ${({ theme }) => {
+		return `${'50px'} ${theme.borderRadius} ${theme.borderRadius} ${
+			theme.borderRadius
+		} `;
+	}};
+	overflow: hidden;
 `;

@@ -29,7 +29,7 @@ const CookbooksFilter = (props: CookbooksFilterProps) => {
 	const { setFilterOption, filterOption } = props;
 	const {
 		isHideMyCookbooks,
-		// sortBy,
+		sortBy,
 		isWithoutMilk,
 		isWithoutEggs,
 		isVegetarian,
@@ -69,10 +69,14 @@ const CookbooksFilter = (props: CookbooksFilterProps) => {
 				<CookbooksFilterLabel>{t('sortBy')}</CookbooksFilterLabel>
 				<CookbooksFilterSelectWrapper>
 					<CookbooksFilterSvgArrowDropmenu />
-					<CookbooksFilterSelect onChange={handlerSortBy}>
+					<CookbooksFilterSelect
+						onChange={handlerSortBy}
+						value={sortBy}
+					>
 						<CookbooksFilterOption value="popular">
 							{t('optionValuePopular')}
 						</CookbooksFilterOption>
+
 						<CookbooksFilterOption value="likes">
 							{t('optionValueLikes')}
 						</CookbooksFilterOption>

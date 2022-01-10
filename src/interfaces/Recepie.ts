@@ -8,4 +8,5 @@ export interface CardRecepie {
 	likesCounter: number;
 	commentsCounter: number;
 	text: string;
+	cookingTime: number;
 }
