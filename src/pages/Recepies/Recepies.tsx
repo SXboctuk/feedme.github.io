@@ -8,6 +8,7 @@ import { CardRecepie } from '../../interfaces/Recepie';
 import RecepiesFilter from './components/RecepiesFilter';
 import { RecepiesFilterOption } from './components/RecepiesFilter/Recepies.Interface';
 import { RecepiesContentWrapper } from './Recepies.Styled';
+import { useTranslation } from 'react-i18next';
 
 export const initialRecepiesFilterOption: RecepiesFilterOption = {
 	sortBy: 'popular',
@@ -17,6 +18,7 @@ export const initialRecepiesFilterOption: RecepiesFilterOption = {
 
 const Recepies = () => {
 	const params = useParams();
+	const { t } = useTranslation('common');
 
 	const [recepies, setRecepies] = useState<CardRecepie[]>();
 	const [option, setOption] = useState<RecepiesFilterOption>(
@@ -86,6 +88,15 @@ const Recepies = () => {
 									likesCounter={elem.likesCounter}
 									commentsCounter={elem.commentsCounter}
 									type="wide"
+									OptionItems={[
+										{
+											text: t(
+												'OptionCard.cloneToMyRecepies',
+											),
+											onClick: () =>
+												console.log('recepies'),
+										},
+									]}
 								/>
 							);
 						})}

@@ -13,9 +13,7 @@ import { CardRecepie } from '../../../../interfaces/Recepie';
 import { recepiesMockData } from '../../../../constants/mocks/Recepies';
 
 const TrendingRecepies = () => {
-	const { t } = useTranslation('common', {
-		keyPrefix: 'homePage.trendingRecepies',
-	});
+	const { t } = useTranslation('common');
 
 	const [cards, setCards] = useState<CardRecepie[]>([]);
 	useEffect(() => {
@@ -29,10 +27,10 @@ const TrendingRecepies = () => {
 	return (
 		<TrendingRecepiesBlock>
 			<Section
-				buttonText={t('buttonText')}
-				sectionTitle={t('sectionTitle')}
+				buttonText={t('homePage.trendingRecepies.buttonText')}
+				sectionTitle={t('homePage.trendingRecepies.sectionTitle')}
 				colorNameTitle={styles.colors.white}
-				title={t('title')}
+				title={t('homePage.trendingRecepies.title')}
 				variant="white"
 				background={true}
 				buttonOnClick={handlerButton}
@@ -47,6 +45,12 @@ const TrendingRecepies = () => {
 							creatorName={elem.creatorName}
 							viewsCounter={elem.viewsCounter}
 							fontSizeCreator="12px"
+							OptionItems={[
+								{
+									text: t('OptionCard.cloneToMyRecepies'),
+									onClick: () => console.log('recepies'),
+								},
+							]}
 						/>
 					))}
 				</TrendingRecepiesSlider>

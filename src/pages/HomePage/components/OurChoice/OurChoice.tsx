@@ -13,7 +13,6 @@ import { routePath } from '../../../../constants/routePath';
 import { useTranslation } from 'react-i18next';
 import { CardCookbook } from '../../../../interfaces/Cookbook';
 import { cookbooksMockData } from '../../../../constants/mocks/Cookbooks';
-
 const OurChoice = () => {
 	const { t } = useTranslation('common', {
 		keyPrefix: 'homePage.ourChoice',

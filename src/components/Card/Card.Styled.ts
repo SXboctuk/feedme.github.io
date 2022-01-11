@@ -5,6 +5,7 @@ import SvgHeart from '../Svg/SvgHeart';
 import SvgWatch from '../Svg/SvgWatch';
 import styles from '../../constants/stylesProperty';
 import { CardCreatorProps, StyledCardInnerBlockProps } from './Card.Interface';
+import OptionButton from '../OptionButton';
 
 export const CardInnerBlock = styled.div<StyledCardInnerBlockProps>`
 	display: flex;
@@ -74,6 +75,7 @@ export const CardSvgComment = styled(SvgComment)`
 export const CardSvgWatch = styled(SvgWatch)`
 	margin-right: 8px;
 `;
+export const CardOptionButton = styled(OptionButton)``;
 export const CardText = styled.div`
 	width: 100%;
 	margin-bottom: ${styles.distances.md};
@@ -152,5 +154,4 @@ export const CardBlockWide = styled(CardBlock)`
 			theme.borderRadius
 		} `;
 	}};
-	overflow: hidden;
 `;

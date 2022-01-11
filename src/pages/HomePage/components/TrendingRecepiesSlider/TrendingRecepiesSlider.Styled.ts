@@ -29,7 +29,7 @@ export const TrendingRecepiesSliderButtonLeft = styled(
 
 export const TrendingRecepiesSliderContent = styled.div`
 	width: 90%;
-	height: 460px;
+	height: 100%;
 	display: flex;
 	overflow: hidden;
 

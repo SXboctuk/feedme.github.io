@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import SvgOptionButton from '../../../../components/Svg/SvgOptionButton/SvgOptionButton';
+import OptionButton from '../../../../components/OptionButton';
 import { routePath } from '../../../../constants/routePath';
 import { ourChoiceCardProps } from './OurChoiceCard.Interface';
 import {
@@ -9,26 +10,39 @@ import {
 	OurChoiceCardTopShadow,
 	OurChoiceCardMoreOption,
 	OurChoiceCardButton,
+	OurChoiceCardBlock,
 } from './OurChoiceCard.Styled';
 
 const OurChoiceCard = (props: ourChoiceCardProps) => {
 	const navigate = useNavigate();
+
+	const { t } = useTranslation('common');
 
 	const handlerButton = () => {
 		navigate(`${routePath.COOKBOOKS}/${props.cookbookId}`);
 	};
 
 	return (
-		<OurChoiceCardWrapper>
-			<OurChoiceCardImageBackground src={props.image} />
-			<OurChoiceCardTopShadow />
+		<OurChoiceCardBlock>
+			<OurChoiceCardWrapper>
+				<OurChoiceCardImageBackground src={props.image} />
+				<OurChoiceCardTopShadow />
+
+				<OurChoiceCardButton onClick={handlerButton}>
+					{props.buttonText}
+				</OurChoiceCardButton>
+			</OurChoiceCardWrapper>
 			<OurChoiceCardMoreOption>
-				<SvgOptionButton />
+				<OptionButton
+					Items={[
+						{
+							text: t('OptionCard.cloneToMyCookBooks'),
+							onClick: () => console.log('ourChoice'),
+						},
+					]}
+				/>
 			</OurChoiceCardMoreOption>
-			<OurChoiceCardButton onClick={handlerButton}>
-				{props.buttonText}
-			</OurChoiceCardButton>
-		</OurChoiceCardWrapper>
+		</OurChoiceCardBlock>
 	);
 };
 

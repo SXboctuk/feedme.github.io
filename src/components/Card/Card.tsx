@@ -1,5 +1,4 @@
 import React from 'react';
-import SvgOptionButton from '../Svg/SvgOptionButton/SvgOptionButton';
 import { CardProps } from './Card.Interface';
 import {
 	CardBlock,
@@ -22,6 +21,7 @@ import {
 	CardBlockWide,
 	CardBlockWrapper,
 	CardBottomBlock,
+	CardOptionButton,
 } from './Card.Styled';
 
 import { useTranslation } from 'react-i18next';
@@ -67,7 +67,7 @@ const Card = (props: CardProps) => {
 									</CardCounterText>
 								</AlignCenterBlock>
 							</CardWideSocialCounter>
-							<SvgOptionButton />
+							<CardOptionButton Items={props.OptionItems} />
 						</CardBottomBlock>
 					</CardWideContent>
 				</CardWideWrapper>
@@ -84,7 +84,7 @@ const Card = (props: CardProps) => {
 								{props.viewsCounter} {t('views')}
 							</CardCounterText>
 						</AlignCenterBlock>
-						<SvgOptionButton />
+						<CardOptionButton Items={props.OptionItems} />
 					</CardInnerBlock>
 					<CardImageWrapper>
 						<CardImage src={props.imageSrc} />

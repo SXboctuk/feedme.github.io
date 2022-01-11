@@ -1,7 +1,7 @@
+import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../../components/Card';
-import { CardProps } from '../../components/Card/Card.Interface';
 import ContentSearchTemplate from '../../components/ContentSearchTemplate';
 import { cookbooksMockData } from '../../constants/mocks/Cookbooks';
 import { routePath } from '../../constants/routePath';
@@ -31,8 +31,8 @@ const Cookbooks = () => {
 		setCookbooks(cookbooksMockData);
 	}, []);
 
-	const filterElems = (): CardProps[] => {
-		let filterElems: CardProps[] = cookbooks || [];
+	const filterElems = (): CardCookbook[] => {
+		let filterElems: CardCookbook[] = cookbooks || [];
 
 		if (filterElems.length < 1) {
 			return filterElems;
@@ -105,6 +105,15 @@ const Cookbooks = () => {
 									imageSrc={elem.imageSrc}
 									likesCounter={elem.likesCounter}
 									commentsCounter={elem.commentsCounter}
+									OptionItems={[
+										{
+											text: t(
+												'OptionCard.cloneToMyCookBooks',
+											),
+											onClick: () =>
+												console.log('cookbooks'),
+										},
+									]}
 								/>
 							);
 						})}

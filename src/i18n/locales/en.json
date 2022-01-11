@@ -56,6 +56,10 @@
 		"withoutEggs": "Without Eggs",
 		"hideMyCookbooks": "Hide My Cookbooks",
 		"cookingTime": "Cooking Time"
+	},
+	"OptionCard": {
+		"cloneToMyCookBooks" :"Clone To My Cookbooks",
+		"cloneToMyRecepies": "Clone To My Recepies"
 	}
   }
   

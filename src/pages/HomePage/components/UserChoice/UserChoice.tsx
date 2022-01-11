@@ -10,9 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { CardRecepie } from '../../../../interfaces/Recepie';
 import { recepiesMockData } from '../../../../constants/mocks/Recepies';
 const UserChoice = () => {
-	const { t } = useTranslation('common', {
-		keyPrefix: 'homePage.userChoice',
-	});
+	const { t } = useTranslation('common');
 
 	const navigate = useNavigate();
 	const [cards, setCards] = useState<CardRecepie[]>([]);
@@ -28,9 +26,9 @@ const UserChoice = () => {
 
 	return (
 		<Section
-			buttonText={t('buttonText')}
-			sectionTitle={t('sectionTitle')}
-			title={t('title')}
+			buttonText={t('homePage.userChoice.buttonText')}
+			sectionTitle={t('homePage.userChoice.sectionTitle')}
+			title={t('homePage.userChoice.title')}
 			variant="outline"
 			background={false}
 			buttonOnClick={handlerButton}
@@ -46,6 +44,12 @@ const UserChoice = () => {
 						imageSrc={elem.imageSrc}
 						likesCounter={elem.likesCounter}
 						commentsCounter={elem.commentsCounter}
+						OptionItems={[
+							{
+								text: t('OptionCard.cloneToMyRecepies'),
+								onClick: () => console.log('recepies'),
+							},
+						]}
 					/>
 				))}
 			</UserChoiceCardsBlock>
