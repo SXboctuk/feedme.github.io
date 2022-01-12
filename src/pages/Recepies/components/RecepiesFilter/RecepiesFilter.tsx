@@ -16,7 +16,7 @@ import {
 
 import { useTranslation } from 'react-i18next';
 import RecepiesRangeSlider from '../RecepiesRangeSlider';
-import { initialRecepiesFilterOption } from '../../Recepies';
+import { initialRecepiesFilterOption } from '../../Recepies.Constant';
 
 const RecepiesFilter = (props: RecepiesFilterProps) => {
 	const { t } = useTranslation('common', {

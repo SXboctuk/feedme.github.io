@@ -21,10 +21,10 @@ import {
 	CardBlockWide,
 	CardBlockWrapper,
 	CardBottomBlock,
-	CardOptionButton,
 } from './Card.Styled';
 
 import { useTranslation } from 'react-i18next';
+import OptionButtonContainer from '../OptionButton/OptionButton.Container';
 
 const Card = (props: CardProps) => {
 	const { t } = useTranslation('common', { keyPrefix: 'cardRecepie' });
@@ -67,7 +67,10 @@ const Card = (props: CardProps) => {
 									</CardCounterText>
 								</AlignCenterBlock>
 							</CardWideSocialCounter>
-							<CardOptionButton Items={props.OptionItems} />
+							<OptionButtonContainer
+								type={props.OptionType}
+								id={props.to}
+							/>
 						</CardBottomBlock>
 					</CardWideContent>
 				</CardWideWrapper>
@@ -84,7 +87,10 @@ const Card = (props: CardProps) => {
 								{props.viewsCounter} {t('views')}
 							</CardCounterText>
 						</AlignCenterBlock>
-						<CardOptionButton Items={props.OptionItems} />
+						<OptionButtonContainer
+							type={props.OptionType}
+							id={props.to}
+						/>
 					</CardInnerBlock>
 					<CardImageWrapper>
 						<CardImage src={props.imageSrc} />

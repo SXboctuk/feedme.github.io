@@ -1,7 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import OptionButton from '../../../../components/OptionButton';
 import { routePath } from '../../../../constants/routePath';
 import { ourChoiceCardProps } from './OurChoiceCard.Interface';
 import {
@@ -12,11 +10,10 @@ import {
 	OurChoiceCardButton,
 	OurChoiceCardBlock,
 } from './OurChoiceCard.Styled';
+import OptionButtonContainer from '../../../../components/OptionButton/OptionButton.Container';
 
 const OurChoiceCard = (props: ourChoiceCardProps) => {
 	const navigate = useNavigate();
-
-	const { t } = useTranslation('common');
 
 	const handlerButton = () => {
 		navigate(`${routePath.COOKBOOKS}/${props.cookbookId}`);
@@ -33,13 +30,9 @@ const OurChoiceCard = (props: ourChoiceCardProps) => {
 				</OurChoiceCardButton>
 			</OurChoiceCardWrapper>
 			<OurChoiceCardMoreOption>
-				<OptionButton
-					Items={[
-						{
-							text: t('OptionCard.cloneToMyCookBooks'),
-							onClick: () => console.log('ourChoice'),
-						},
-					]}
+				<OptionButtonContainer
+					type={'Cookbook'}
+					id={props.cookbookId}
 				/>
 			</OurChoiceCardMoreOption>
 		</OurChoiceCardBlock>

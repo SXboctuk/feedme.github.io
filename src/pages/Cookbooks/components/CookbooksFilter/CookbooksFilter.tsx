@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from 'react';
-import { initialCookbooksFilterOption } from '../../Cookbooks';
 import { CookbooksFilterProps } from './CookbooksFilter.Interface';
 import {
 	CookbooksFilterContainer,
@@ -20,6 +19,7 @@ import {
 } from './CookbooksFilter.Styled';
 
 import { useTranslation } from 'react-i18next';
+import { initialCookbooksFilterOption } from '../../Cookbooks.Constant';
 
 const CookbooksFilter = (props: CookbooksFilterProps) => {
 	const { t } = useTranslation('common', {

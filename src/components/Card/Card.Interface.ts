@@ -1,5 +1,3 @@
-import { ItemButtonProp } from '../OptionButton/OptionButton.Interface';
-
 export interface CardProps {
 	to: string;
 	key: string;
@@ -15,7 +13,7 @@ export interface CardProps {
 	isWithoutMilk?: boolean;
 	isWithoutEggs?: boolean;
 	type?: 'wide';
-	OptionItems: ItemButtonProp[];
+	OptionType: 'Recepie' | 'Cookbook' | 'RecepieOwner' | 'CookbookOwner';
 }
 
 export interface StyledCardInnerBlockProps {

@@ -44,12 +44,7 @@ const UserChoice = () => {
 						imageSrc={elem.imageSrc}
 						likesCounter={elem.likesCounter}
 						commentsCounter={elem.commentsCounter}
-						OptionItems={[
-							{
-								text: t('OptionCard.cloneToMyRecepies'),
-								onClick: () => console.log('recepies'),
-							},
-						]}
+						OptionType={'Recepie'}
 					/>
 				))}
 			</UserChoiceCardsBlock>

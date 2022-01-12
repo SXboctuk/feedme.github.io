@@ -10,8 +10,8 @@ import Header from '../components/Header';
 import { routePath } from '../constants/routePath';
 import styles from '../constants/stylesProperty';
 import { HomePage } from '../pages';
-import Cookbooks from '../pages/Cookbooks';
-import Recepies from '../pages/Recepies';
+import CookbooksContainter from '../pages/Cookbooks/Cookbooks.Containter';
+import RecepiesContainer from '../pages/Recepies/Recepies.Container';
 
 const Routes = () => {
 	return (
@@ -24,12 +24,18 @@ const Routes = () => {
 						element={<HomePage />}
 					></Route>
 					<Route path={routePath.RECEPIES}>
-						<Route index element={<Recepies />}></Route>
-						<Route path={':id'} element={<Recepies />}></Route>
+						<Route index element={<RecepiesContainer />}></Route>
+						<Route
+							path={':id'}
+							element={<RecepiesContainer />}
+						></Route>
 					</Route>
 					<Route path={routePath.COOKBOOKS}>
-						<Route index element={<Cookbooks />}></Route>
-						<Route path={':id'} element={<Cookbooks />}></Route>
+						<Route index element={<CookbooksContainter />}></Route>
+						<Route
+							path={':id'}
+							element={<CookbooksContainter />}
+						></Route>
 					</Route>
 					<Route
 						path={routePath.ABOUTUS}

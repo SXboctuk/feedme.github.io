@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SvgOption from '../Svg/SvgOption';
 import { OptionButtonProps } from './OptionButton.Interface';
 import {
@@ -9,14 +9,7 @@ import {
 } from './OptionButton.Styled';
 
 const OptionButton = (props: OptionButtonProps) => {
-	const [isShow, setIsShow] = useState(false);
-
-	const { Items } = props;
-	const handlerMainButton = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.stopPropagation();
-		e.preventDefault();
-		setIsShow(!isShow);
-	};
+	const { ItemsButton, isShow, setIsShow, handlerMainButton } = props;
 
 	return (
 		<OptionWrapper>
@@ -25,7 +18,7 @@ const OptionButton = (props: OptionButtonProps) => {
 			</OptionMainButton>
 			{isShow ? (
 				<OptionShowBlock>
-					{Items.map((elem, i) => (
+					{ItemsButton.map((elem, i) => (
 						<OptionItem
 							key={i}
 							onClick={(e) => {

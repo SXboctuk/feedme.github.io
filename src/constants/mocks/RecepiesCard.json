@@ -1,0 +1,110 @@
+[
+	{
+		"to": "1",
+		"key": "card1",
+		"viewsCounter": 11000,
+		"titleName": "Fresh meat",
+		"creatorName": "John Doe",
+		"imageSrc": "cardImage1",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
+		"likesCounter": 100,
+		"commentsCounter": 12,
+		"cookingTime": 60
+	},
+	{
+		"to": "2",
+		"key": "card1",
+		"viewsCounter": 12000,
+		"titleName": "Fresh meat",
+		"creatorName": "John Doe",
+		"imageSrc": "cardImage1",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
+		"likesCounter": 200,
+		"commentsCounter": 12,
+		"cookingTime": 60
+	},
+	{
+		"to": "3",
+		"key": "card3",
+		"viewsCounter": 13000,
+		"titleName": "Fresh meat",
+		"creatorName": "John Doe",
+		"imageSrc": "cardImage1",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
+		"likesCounter": 300,
+		"commentsCounter": 12,
+		"cookingTime": 60
+	},
+	{
+		"to": "4",
+		"key": "card1",
+		"viewsCounter": 14000,
+		"titleName": "Fresh meat",
+		"creatorName": "John Doe",
+		"imageSrc": "cardImage1",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
+		"likesCounter": 400,
+		"commentsCounter": 12,
+		"cookingTime": 60
+	},
+	{
+		"to": "5",
+		"key": "card5",
+		"viewsCounter": 15000,
+		"titleName": "Fresh meat",
+		"creatorName": "John Doe",
+		"imageSrc": "cardImage1",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
+		"likesCounter": 500,
+		"commentsCounter": 12,
+		"cookingTime": 60
+	},
+	{
+		"to": "6",
+		"key": "card6",
+		"viewsCounter": 16000,
+		"titleName": "Fresh meat",
+		"creatorName": "John Doe",
+		"imageSrc": "cardImage1",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
+		"likesCounter": 600,
+		"commentsCounter": 12,
+		"cookingTime": 60
+	},
+	{
+		"to": "8",
+		"key": "card8",
+		"viewsCounter": 18000,
+		"titleName": "Fresh meat",
+		"creatorName": "John Doe",
+		"imageSrc": "cardImage1",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
+		"likesCounter": 800,
+		"commentsCounter": 12,
+		"cookingTime": 60
+	},
+	{
+		"to": "9",
+		"key": "card1",
+		"viewsCounter": 18000,
+		"titleName": "Fresh meat",
+		"creatorName": "John Doe",
+		"imageSrc": "cardImage1",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
+		"likesCounter": 800,
+		"commentsCounter": 12,
+		"cookingTime": 60
+	},
+	{
+		"to": "10",
+		"key": "card10",
+		"viewsCounter": 110000,
+		"titleName": "Fresh meat",
+		"creatorName": "John Doe",
+		"imageSrc": "cardImage1",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
+		"likesCounter": 1000,
+		"commentsCounter": 12,
+		"cookingTime": 60
+	}
+]

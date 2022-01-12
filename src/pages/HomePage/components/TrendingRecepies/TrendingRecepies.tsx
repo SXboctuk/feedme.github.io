@@ -45,12 +45,7 @@ const TrendingRecepies = () => {
 							creatorName={elem.creatorName}
 							viewsCounter={elem.viewsCounter}
 							fontSizeCreator="12px"
-							OptionItems={[
-								{
-									text: t('OptionCard.cloneToMyRecepies'),
-									onClick: () => console.log('recepies'),
-								},
-							]}
+							OptionType={'Recepie'}
 						/>
 					))}
 				</TrendingRecepiesSlider>
