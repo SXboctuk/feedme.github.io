@@ -15,6 +15,7 @@ import {
 import styles from '../../constants/stylesProperty';
 
 import { useTranslation } from 'react-i18next';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const Header = () => {
 	const { t } = useTranslation();
@@ -24,6 +25,9 @@ const Header = () => {
 	const hamburgerHandler = () => {
 		headerNavBlockRef.current?.classList.toggle('opened');
 	};
+
+	const { userName, isAuth } = useTypedSelector((state) => state.userReducer);
+
 	return (
 		<HeaderBackground>
 			<Container maxWidth={styles.screenSize.lg}>
@@ -36,7 +40,11 @@ const Header = () => {
 						<Button variant="outline">
 							{t('buttonCreateCookbook')}
 						</Button>
-						<Link to={routePath.SIGNIN}>{t('signin')}</Link>
+						{isAuth ? (
+							<Link to={routePath.PERSONAL_PAGE}>{userName}</Link>
+						) : (
+							<Link to={routePath.SIGN_IN}>{t('signin')}</Link>
+						)}
 					</HeaderNavBlock>
 					<HeaderHamburger>
 						<SvgHamburgetButton

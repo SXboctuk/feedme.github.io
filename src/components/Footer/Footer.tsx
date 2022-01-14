@@ -44,7 +44,7 @@ const Footer = () => {
 						</Link>
 						<Link
 							color={styles.colors.white}
-							to={routePath.ABOUTUS}
+							to={routePath.ABOUT_US}
 						>
 							{t('aboutus')}
 						</Link>

@@ -45,6 +45,7 @@ const UserChoice = () => {
 						likesCounter={elem.likesCounter}
 						commentsCounter={elem.commentsCounter}
 						OptionType={'Recepie'}
+						creatorId={'4'}
 					/>
 				))}
 			</UserChoiceCardsBlock>

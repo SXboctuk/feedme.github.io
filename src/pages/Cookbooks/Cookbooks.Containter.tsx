@@ -17,12 +17,13 @@ const CookbooksContainter = () => {
 	const { loading, error, cookbooks } = useTypedSelector(
 		(state) => state.cookbooksReducer,
 	);
+	const { id } = useTypedSelector((state) => state.userReducer);
 	const { FetchCookbook } = useAction();
 
 	useEffect(() => {
 		FetchCookbook();
 	}, []);
-	console.log(cookbooks);
+
 	const filterElems = (): CardCookbook[] => {
 		let filterElems: CardCookbook[] = cookbooks || [];
 
@@ -45,8 +46,8 @@ const CookbooksContainter = () => {
 				(elem) => elem.isWithoutEggs === true,
 			);
 		}
-		if (option.isHideMyCookbooks) {
-			// filterElem = filterElem.filter((elem) => elem.creatorId === myId);
+		if (option.isHideMyCookbooks && id !== null) {
+			filterElems = filterElems.filter((elem) => elem.creatorId === id);
 		}
 
 		if (option.sortBy === 'likes') {

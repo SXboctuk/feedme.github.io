@@ -28,7 +28,7 @@ const OurChoice = () => {
 	const handlerButton = () => {
 		navigate(routePath.COOKBOOKS);
 	};
-	console.log(card);
+
 	return (
 		<Section
 			buttonText={t('buttonText')}

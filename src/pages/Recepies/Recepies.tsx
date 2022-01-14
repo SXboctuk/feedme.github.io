@@ -47,6 +47,7 @@ const Recepies = (props: RecepiesProps) => {
 										commentsCounter={elem.commentsCounter}
 										type="wide"
 										OptionType={'Recepie'}
+										creatorId={elem.creatorId}
 									/>
 								);
 							})}

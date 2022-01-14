@@ -60,7 +60,13 @@
 	"OptionCard": {
 		"cloneToMyCookBooks" :"Clone To My Cookbooks",
 		"cloneToMyRecepies": "Clone To My Recepies"
-	}
+	},
+	"CloneToMyRecepies": "Clone To My Recepies",
+	"CloneToMyCookbooks": "Clone To My Cookbooks",
+	"EditRecepie": "Edit Recepie",
+	"DeleteRecepie": "Delete Recepie",
+	"EditCookbook": "Edit Cookbook",
+	"DeleteCookbook": "Delete Cookbook"
   }
   
 }

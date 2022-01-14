@@ -4,6 +4,7 @@ export interface CardRecepie {
 	viewsCounter: number;
 	titleName: string;
 	creatorName: string;
+	creatorId: string;
 	imageSrc: string;
 	likesCounter: number;
 	commentsCounter: number;

@@ -46,6 +46,7 @@ const Cookbooks = (props: CookbooksProps) => {
 										likesCounter={elem.likesCounter}
 										commentsCounter={elem.commentsCounter}
 										OptionType={'Cookbook'}
+										creatorId={elem.creatorId}
 									/>
 								);
 							})}

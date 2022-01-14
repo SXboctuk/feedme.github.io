@@ -9,9 +9,11 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { routePath } from '../constants/routePath';
 import styles from '../constants/stylesProperty';
-import { HomePage } from '../pages';
+
 import CookbooksContainter from '../pages/Cookbooks/Cookbooks.Containter';
+import HomePage from '../pages/HomePage';
 import RecepiesContainer from '../pages/Recepies/Recepies.Container';
+import SignInContainer from '../pages/SignIn/SignIn.Container';
 
 const Routes = () => {
 	return (
@@ -38,8 +40,12 @@ const Routes = () => {
 						></Route>
 					</Route>
 					<Route
-						path={routePath.ABOUTUS}
+						path={routePath.ABOUT_US}
 						element={<div>About us</div>}
+					></Route>
+					<Route
+						path={routePath.SIGN_IN}
+						element={<SignInContainer />}
 					></Route>
 					<Route path={'*'} element={<div>Not found</div>}></Route>
 				</RouterDomRoutes>

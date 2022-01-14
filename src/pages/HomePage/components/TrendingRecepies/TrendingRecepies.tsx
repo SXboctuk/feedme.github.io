@@ -46,6 +46,7 @@ const TrendingRecepies = () => {
 							viewsCounter={elem.viewsCounter}
 							fontSizeCreator="12px"
 							OptionType={'Recepie'}
+							creatorId={'4'}
 						/>
 					))}
 				</TrendingRecepiesSlider>

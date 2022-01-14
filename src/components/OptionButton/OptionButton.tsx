@@ -12,7 +12,13 @@ const OptionButton = (props: OptionButtonProps) => {
 	const { ItemsButton, isShow, setIsShow, handlerMainButton } = props;
 
 	return (
-		<OptionWrapper>
+		<OptionWrapper
+			onMouseLeave={() => {
+				setTimeout(() => {
+					setIsShow(!isShow);
+				}, 600);
+			}}
+		>
 			<OptionMainButton onClick={handlerMainButton}>
 				<SvgOption />
 			</OptionMainButton>

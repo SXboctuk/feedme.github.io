@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import OptionButton from '.';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { OptionButtonType } from './OptionButton.Contstants';
 import { OptionButtonContainerProps } from './OptionButton.Interface';
 
 const OptionButtonContainer = (props: OptionButtonContainerProps) => {
@@ -9,75 +12,90 @@ const OptionButtonContainer = (props: OptionButtonContainerProps) => {
 		e.preventDefault();
 		setIsShow(!isShow);
 	};
-	const { id, type } = props;
-
+	const { elemId, type, creatorId } = props;
+	const { id } = useTypedSelector((state) => state.userReducer);
+	const { t } = useTranslation();
 	const OptionButtons: { [name: string]: React.ReactElement } = {
-		Recepie: (
+		RECEPIE: (
 			<OptionButton
 				isShow={isShow}
 				setIsShow={setIsShow}
 				handlerMainButton={handlerMainButton}
 				ItemsButton={[
 					{
-						text: 'Recepie',
-						onClick: () => console.log('recepie' + id),
+						text: t('CloneToMyRecepies'),
+						onClick: () => console.log('recepie' + elemId),
 					},
 				]}
 			/>
 		),
 
-		Cookbook: (
+		COOKBOOK: (
 			<OptionButton
 				isShow={isShow}
 				setIsShow={setIsShow}
 				handlerMainButton={handlerMainButton}
 				ItemsButton={[
 					{
-						text: 'Cookbook',
-						onClick: () => console.log('Cookbook' + id),
+						text: t('CloneToMyRecepies'),
+						onClick: () => console.log('Cookbook' + elemId),
 					},
 				]}
 			/>
 		),
 
-		RecepieOwner: (
+		RECEPIE_OWNER: (
 			<OptionButton
 				isShow={isShow}
 				setIsShow={setIsShow}
 				handlerMainButton={handlerMainButton}
 				ItemsButton={[
 					{
-						text: 'RecepieOwner',
-						onClick: () => console.log('RecepieOwner' + id),
+						text: t('EditRecepie'),
+						onClick: () => console.log('RecepieOwner' + elemId),
 					},
 					{
-						text: 'RecepieOwner',
-						onClick: () => console.log('RecepieOwner' + id),
+						text: t('DeleteRecepie'),
+						onClick: () => console.log('RecepieOwner' + elemId),
 					},
 				]}
 			/>
 		),
 
-		CookbookOwner: (
+		COOKBOOK_OWNER: (
 			<OptionButton
 				isShow={isShow}
 				setIsShow={setIsShow}
 				handlerMainButton={handlerMainButton}
 				ItemsButton={[
 					{
-						text: 'CookbookOwner',
-						onClick: () => console.log('CookbookOwner' + id),
+						text: t('EditCookbook'),
+						onClick: () => console.log('CookbookOwner' + elemId),
 					},
 					{
-						text: 'CookbookOwner',
-						onClick: () => console.log('CookbookOwner' + id),
+						text: t('DeleteCookbook'),
+						onClick: () => console.log('CookbookOwner' + elemId),
 					},
 				]}
 			/>
 		),
 	};
 
-	return OptionButtons[type];
+	if (type === 'Recepie') {
+		if (id === creatorId) {
+			return OptionButtons[OptionButtonType.RECEPIE_OWNER];
+		} else {
+			return OptionButtons[OptionButtonType.RECEPIE];
+		}
+	} else if (type === 'Cookbook') {
+		if (id === creatorId) {
+			return OptionButtons[OptionButtonType.COOKBOOK_OWNER];
+		} else {
+			return OptionButtons[OptionButtonType.COOKBOOK];
+		}
+	} else {
+		return null;
+	}
 };
 
 export default OptionButtonContainer;

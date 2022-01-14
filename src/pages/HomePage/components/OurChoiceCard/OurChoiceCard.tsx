@@ -11,10 +11,11 @@ import {
 	OurChoiceCardBlock,
 } from './OurChoiceCard.Styled';
 import OptionButtonContainer from '../../../../components/OptionButton/OptionButton.Container';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 
 const OurChoiceCard = (props: ourChoiceCardProps) => {
 	const navigate = useNavigate();
-
+	const { isAuth } = useTypedSelector((state) => state.userReducer);
 	const handlerButton = () => {
 		navigate(`${routePath.COOKBOOKS}/${props.cookbookId}`);
 	};
@@ -30,10 +31,13 @@ const OurChoiceCard = (props: ourChoiceCardProps) => {
 				</OurChoiceCardButton>
 			</OurChoiceCardWrapper>
 			<OurChoiceCardMoreOption>
-				<OptionButtonContainer
-					type={'Cookbook'}
-					id={props.cookbookId}
-				/>
+				{isAuth ? (
+					<OptionButtonContainer
+						type={'Cookbook'}
+						elemId={props.cookbookId}
+						creatorId={'4'}
+					/>
+				) : null}
 			</OurChoiceCardMoreOption>
 		</OurChoiceCardBlock>
 	);

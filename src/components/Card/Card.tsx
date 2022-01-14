@@ -25,9 +25,11 @@ import {
 
 import { useTranslation } from 'react-i18next';
 import OptionButtonContainer from '../OptionButton/OptionButton.Container';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const Card = (props: CardProps) => {
 	const { t } = useTranslation('common', { keyPrefix: 'cardRecepie' });
+	const { isAuth } = useTypedSelector((state) => state.userReducer);
 
 	if (props.type == 'wide') {
 		return (
@@ -67,10 +69,13 @@ const Card = (props: CardProps) => {
 									</CardCounterText>
 								</AlignCenterBlock>
 							</CardWideSocialCounter>
-							<OptionButtonContainer
-								type={props.OptionType}
-								id={props.to}
-							/>
+							{isAuth ? (
+								<OptionButtonContainer
+									type={props.OptionType}
+									elemId={props.to}
+									creatorId={props.creatorId}
+								/>
+							) : null}
 						</CardBottomBlock>
 					</CardWideContent>
 				</CardWideWrapper>
@@ -87,10 +92,13 @@ const Card = (props: CardProps) => {
 								{props.viewsCounter} {t('views')}
 							</CardCounterText>
 						</AlignCenterBlock>
-						<OptionButtonContainer
-							type={props.OptionType}
-							id={props.to}
-						/>
+						{isAuth ? (
+							<OptionButtonContainer
+								type={props.OptionType}
+								elemId={props.to}
+								creatorId={props.creatorId}
+							/>
+						) : null}
 					</CardInnerBlock>
 					<CardImageWrapper>
 						<CardImage src={props.imageSrc} />
