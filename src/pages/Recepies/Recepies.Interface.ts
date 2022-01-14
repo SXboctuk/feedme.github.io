@@ -12,4 +12,6 @@ export interface RecepiesProps {
 	setFilterOption: Dispatch<React.SetStateAction<RecepiesFilterOption>>;
 	RecepiesCard: CardRecepie[];
 	RecepieById: string | null;
+	loading: boolean;
+	error: string | null;
 }

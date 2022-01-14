@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Cookbooks from '.';
-import { cookbooksMockData } from '../../constants/mocks/Cookbooks';
+import { useAction } from '../../hooks/useAction';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { CardCookbook } from '../../interfaces/Cookbook';
 import { initialCookbooksFilterOption } from './Cookbooks.Constant';
 import { CookbooksFilterOption } from './Cookbooks.Interface';
@@ -9,15 +10,19 @@ import { CookbooksFilterOption } from './Cookbooks.Interface';
 const CookbooksContainter = () => {
 	const params = useParams();
 
-	const [cookbooks, setCookbooks] = useState<CardCookbook[]>();
 	const [option, setOption] = useState<CookbooksFilterOption>(
 		initialCookbooksFilterOption,
 	);
 
-	useEffect(() => {
-		setCookbooks(cookbooksMockData);
-	}, []);
+	const { loading, error, cookbooks } = useTypedSelector(
+		(state) => state.cookbooksReducer,
+	);
+	const { FetchCookbook } = useAction();
 
+	useEffect(() => {
+		FetchCookbook();
+	}, []);
+	console.log(cookbooks);
 	const filterElems = (): CardCookbook[] => {
 		let filterElems: CardCookbook[] = cookbooks || [];
 
@@ -67,14 +72,14 @@ const CookbooksContainter = () => {
 		return filterElems;
 	};
 
-	// const resultCookbooks = filterElems();
-
 	return (
 		<Cookbooks
 			filterOption={option}
 			setFilterOption={setOption}
 			CookbooksCard={filterElems()}
 			CookbookById={params.id ? params.id : null}
+			loading={loading}
+			error={error}
 		/>
 	);
 };

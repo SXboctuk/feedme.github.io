@@ -6,6 +6,13 @@ export const OptionWrapper = styled.div`
 export const OptionMainButton = styled.button`
 	border: none;
 	background: none;
+	padding: 0;
+	text-align: center;
+	vertical-align: middle;
+
+	& > * {
+		display: block;
+	}
 	&:hover {
 		circle {
 			fill: ${({ theme }) => theme.colors.primary};

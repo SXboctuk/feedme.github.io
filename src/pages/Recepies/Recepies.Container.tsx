@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Recepies from '.';
-import { recepiesMockData } from '../../constants/mocks/Recepies';
+import { useAction } from '../../hooks/useAction';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { CardRecepie } from '../../interfaces/Recepie';
 import { initialRecepiesFilterOption } from './Recepies.Constant';
 import { RecepiesFilterOption } from './Recepies.Interface';
@@ -9,14 +10,19 @@ import { RecepiesFilterOption } from './Recepies.Interface';
 const RecepiesContainer = () => {
 	const params = useParams();
 
-	const [recepies, setRecepies] = useState<CardRecepie[]>();
 	const [option, setOption] = useState<RecepiesFilterOption>(
 		initialRecepiesFilterOption,
 	);
 
+	const { loading, error, recepies } = useTypedSelector(
+		(state) => state.recepiesReducer,
+	);
+	const { FetchRecepies } = useAction();
+
 	useEffect(() => {
-		setRecepies(recepiesMockData);
+		FetchRecepies();
 	}, []);
+
 	const filterItem = (): CardRecepie[] => {
 		let filterElems: CardRecepie[] = recepies || [];
 
@@ -59,6 +65,8 @@ const RecepiesContainer = () => {
 			setFilterOption={setOption}
 			RecepieById={params.id ? params.id : null}
 			RecepiesCard={filterItem()}
+			loading={loading}
+			error={error}
 		/>
 	);
 };

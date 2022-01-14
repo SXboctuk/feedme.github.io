@@ -4,9 +4,21 @@ import { routePath } from '../../constants/routePath';
 import RecepiesFilter from './components/RecepiesFilter';
 import { RecepiesContentWrapper } from './Recepies.Styled';
 import { RecepiesProps } from './Recepies.Interface';
+import Spinner from '../../components/shared/Spinner';
 
 const Recepies = (props: RecepiesProps) => {
-	const { filterOption, setFilterOption, RecepieById, RecepiesCard } = props;
+	const {
+		loading,
+		error,
+		filterOption,
+		setFilterOption,
+		RecepieById,
+		RecepiesCard,
+	} = props;
+	if (error) {
+		return <div>{error}</div>;
+	}
+
 	return (
 		<>
 			<ContentSearchTemplate
@@ -17,25 +29,29 @@ const Recepies = (props: RecepiesProps) => {
 					/>
 				}
 				rightElem={
-					<RecepiesContentWrapper>
-						{RecepiesCard.map((elem) => {
-							return (
-								<Card
-									to={`${routePath.RECEPIES}/${elem.to}`}
-									key={elem.key}
-									text={elem.text}
-									viewsCounter={elem.viewsCounter}
-									titleName={elem.titleName}
-									creatorName={elem.creatorName}
-									imageSrc={elem.imageSrc}
-									likesCounter={elem.likesCounter}
-									commentsCounter={elem.commentsCounter}
-									type="wide"
-									OptionType={'Recepie'}
-								/>
-							);
-						})}
-					</RecepiesContentWrapper>
+					loading ? (
+						<Spinner />
+					) : (
+						<RecepiesContentWrapper>
+							{RecepiesCard.map((elem) => {
+								return (
+									<Card
+										to={`${routePath.RECEPIES}/${elem.to}`}
+										key={elem.key}
+										text={elem.text}
+										viewsCounter={elem.viewsCounter}
+										titleName={elem.titleName}
+										creatorName={elem.creatorName}
+										imageSrc={elem.imageSrc}
+										likesCounter={elem.likesCounter}
+										commentsCounter={elem.commentsCounter}
+										type="wide"
+										OptionType={'Recepie'}
+									/>
+								);
+							})}
+						</RecepiesContentWrapper>
+					)
 				}
 				selectedPage={'Recepies'}
 			/>

@@ -3,6 +3,7 @@ import styles from '../../constants/stylesProperty';
 
 export const ContentSearchTemplateWrapper = styled.div`
 	padding-top: 92px;
+	min-height: 100vh;
 `;
 export const ContentSearchTemplateGrid1x3 = styled.div`
 	display: grid;

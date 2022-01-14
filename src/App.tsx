@@ -1,19 +1,23 @@
 import React, { Suspense } from 'react';
+import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import FullscreenLoading from './components/FullscreenLoading';
 import GlobalStyles from './components/GlobalStyles';
+import { store } from './redux/store';
 import Routes from './routes';
 import { defaultTheme } from './theme';
 
 const App = () => {
 	return (
-		<Suspense fallback={<FullscreenLoading />}>
+		<Provider store={store}>
 			<ThemeProvider theme={defaultTheme}>
-				<GlobalStyles>
-					<Routes />
-				</GlobalStyles>
+				<Suspense fallback={<FullscreenLoading />}>
+					<GlobalStyles>
+						<Routes />
+					</GlobalStyles>
+				</Suspense>
 			</ThemeProvider>
-		</Suspense>
+		</Provider>
 	);
 };
 
