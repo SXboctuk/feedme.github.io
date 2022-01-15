@@ -10,8 +10,9 @@ export interface RecepiesFilterOption {
 export interface RecepiesProps {
 	filterOption: RecepiesFilterOption;
 	setFilterOption: Dispatch<React.SetStateAction<RecepiesFilterOption>>;
-	RecepiesCard: CardRecepie[];
-	RecepieById: string | null;
+	recepiesCard: CardRecepie[];
+	recepieById: string | null;
 	loading: boolean;
 	error: string | null;
+	width: number;
 }

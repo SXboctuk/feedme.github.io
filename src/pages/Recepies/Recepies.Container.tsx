@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Recepies from '.';
 import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import useWindowSize from '../../hooks/useWindowSize';
 import { CardRecepie } from '../../interfaces/Recepie';
 import { initialRecepiesFilterOption } from './Recepies.Constant';
 import { RecepiesFilterOption } from './Recepies.Interface';
@@ -18,7 +19,7 @@ const RecepiesContainer = () => {
 		(state) => state.recepiesReducer,
 	);
 	const { FetchRecepies } = useAction();
-
+	const { width } = useWindowSize();
 	useEffect(() => {
 		FetchRecepies();
 	}, []);
@@ -63,10 +64,11 @@ const RecepiesContainer = () => {
 		<Recepies
 			filterOption={option}
 			setFilterOption={setOption}
-			RecepieById={params.id ? params.id : null}
-			RecepiesCard={filterItem()}
+			recepieById={params.id ? params.id : null}
+			recepiesCard={filterItem()}
 			loading={loading}
 			error={error}
+			width={width}
 		/>
 	);
 };

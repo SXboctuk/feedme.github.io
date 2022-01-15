@@ -5,6 +5,7 @@ import RecepiesFilter from './components/RecepiesFilter';
 import { RecepiesContentWrapper } from './Recepies.Styled';
 import { RecepiesProps } from './Recepies.Interface';
 import Spinner from '../../components/shared/Spinner';
+import styles from '../../constants/stylesProperty';
 
 const Recepies = (props: RecepiesProps) => {
 	const {
@@ -12,8 +13,9 @@ const Recepies = (props: RecepiesProps) => {
 		error,
 		filterOption,
 		setFilterOption,
-		RecepieById,
-		RecepiesCard,
+		recepieById,
+		recepiesCard,
+		width,
 	} = props;
 	if (error) {
 		return <div>{error}</div>;
@@ -33,7 +35,47 @@ const Recepies = (props: RecepiesProps) => {
 						<Spinner />
 					) : (
 						<RecepiesContentWrapper>
-							{RecepiesCard.map((elem) => {
+							{width >= parseInt(styles.screenSize.sm)
+								? recepiesCard.map((elem) => {
+										return (
+											<Card
+												to={`${routePath.RECEPIES}/${elem.to}`}
+												key={elem.key}
+												text={elem.text}
+												viewsCounter={elem.viewsCounter}
+												titleName={elem.titleName}
+												creatorName={elem.creatorName}
+												imageSrc={elem.imageSrc}
+												likesCounter={elem.likesCounter}
+												commentsCounter={
+													elem.commentsCounter
+												}
+												type="wide"
+												OptionType={'Recepie'}
+												creatorId={elem.creatorId}
+											/>
+										);
+								  })
+								: recepiesCard.map((elem) => {
+										return (
+											<Card
+												to={`${routePath.RECEPIES}/${elem.to}`}
+												key={elem.key}
+												text={elem.text}
+												viewsCounter={elem.viewsCounter}
+												titleName={elem.titleName}
+												creatorName={elem.creatorName}
+												imageSrc={elem.imageSrc}
+												likesCounter={elem.likesCounter}
+												commentsCounter={
+													elem.commentsCounter
+												}
+												OptionType={'Recepie'}
+												creatorId={elem.creatorId}
+											/>
+										);
+								  })}
+							{/* {recepiesCard.map((elem) => {
 								return (
 									<Card
 										to={`${routePath.RECEPIES}/${elem.to}`}
@@ -50,14 +92,14 @@ const Recepies = (props: RecepiesProps) => {
 										creatorId={elem.creatorId}
 									/>
 								);
-							})}
+							})} */}
 						</RecepiesContentWrapper>
 					)
 				}
 				selectedPage={'Recepies'}
 			/>
 
-			{RecepieById ? RecepieById : null}
+			{recepieById ? recepieById : null}
 		</>
 	);
 };

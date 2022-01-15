@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import styles from '../../../../constants/stylesProperty';
+import useWindowSize from '../../../../hooks/useWindowSize';
 import { TrendingRecepiesSliderProps } from './TrendingRecepiesSlider.Interface';
 import {
 	TrendingRecepiesSliderContainer,
@@ -14,21 +16,21 @@ const TrendingRecepiesSlider = (props: TrendingRecepiesSliderProps) => {
 	const { children } = props;
 	const [lengthShow, setLengthShow] = useState<number>(3);
 	const [activeIndex, setActiveIndex] = useState<number>(0);
-
+	const { width } = useWindowSize();
 	useEffect(() => {
-		function handleResize() {
-			if (window.innerWidth >= 1200) {
-				setLengthShow(3);
-			}
-			if (window.innerWidth <= 1200 && window.innerWidth >= 768) {
-				setLengthShow(2);
-			}
-			if (window.innerWidth <= 768) {
-				setLengthShow(1);
-			}
+		if (width >= parseInt(styles.screenSize.lg)) {
+			setLengthShow(3);
 		}
-		window.addEventListener('resize', handleResize);
-	}, []);
+		if (
+			width <= parseInt(styles.screenSize.lg) &&
+			width >= parseInt(styles.screenSize.sm)
+		) {
+			setLengthShow(2);
+		}
+		if (width <= parseInt(styles.screenSize.sm)) {
+			setLengthShow(1);
+		}
+	}, [width]);
 
 	const handlerNext = () => {
 		setActiveIndex(activeIndex + 1);
