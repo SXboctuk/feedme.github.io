@@ -7,6 +7,7 @@ export const defaultTheme: themeInterface = {
 		gray: '#F7F7F7',
 		grayDark: '#DADADA',
 		white: '#FFFFFF',
+		textSecondary: '#494949',
 	},
 	displaySize: {
 		xs: '768px',
@@ -14,6 +15,7 @@ export const defaultTheme: themeInterface = {
 		md: '992px',
 		lg: '1200px',
 	},
-	borderRadiusSpecial: '50px 10px',
+	borderRadiusImage: '50px 10px',
+	borderRadiusSpecial: '50px 10px 10px 10px',
 	borderRadius: '10px',
 };

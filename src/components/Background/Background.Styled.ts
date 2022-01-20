@@ -4,5 +4,5 @@ import { backgroundProps } from './Background.Interface';
 export const BackgroundStyled = styled.div<backgroundProps>`
 	background-color: ${({ backgroundColor }) => backgroundColor};
 	display: block;
-	min-height: 80vh;
+	height: 100%;
 `;

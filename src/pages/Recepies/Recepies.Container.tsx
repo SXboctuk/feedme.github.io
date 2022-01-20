@@ -4,7 +4,7 @@ import Recepies from '.';
 import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import useWindowSize from '../../hooks/useWindowSize';
-import { CardRecepie } from '../../interfaces/Recepie';
+import { CardRecepie } from '../../interfaces/CardRecipe';
 import { initialRecepiesFilterOption } from './Recepies.Constant';
 import { RecepiesFilterOption } from './Recepies.Interface';
 
@@ -18,10 +18,12 @@ const RecepiesContainer = () => {
 	const { loading, error, recepies } = useTypedSelector(
 		(state) => state.recepiesReducer,
 	);
-	const { FetchRecepies } = useAction();
+
+	const { fetchRecepies } = useAction();
 	const { width } = useWindowSize();
+
 	useEffect(() => {
-		FetchRecepies();
+		fetchRecepies();
 	}, []);
 
 	const filterItem = (): CardRecepie[] => {
@@ -64,7 +66,7 @@ const RecepiesContainer = () => {
 		<Recepies
 			filterOption={option}
 			setFilterOption={setOption}
-			recepieById={params.id ? params.id : null}
+			recepieId={params.id ? params.id : null}
 			recepiesCard={filterItem()}
 			loading={loading}
 			error={error}

@@ -1,4 +1,4 @@
-import { CardCookbook } from '../../../interfaces/Cookbook';
+import { CardCookbook } from '../../../interfaces/CardCookbook';
 
 export enum CookbooksActionTypes {
 	FETCH_COOKBOOKS = 'FETCH_COOKBOOKS',

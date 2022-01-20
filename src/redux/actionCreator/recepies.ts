@@ -6,7 +6,7 @@ import { Dispatch } from 'redux';
 
 import recepiesData from '../../constants/mocks/RecepiesCard.json';
 
-export const FetchRecepies = () => {
+export const fetchRecepies = () => {
 	return async (dispatch: Dispatch<RecepiesAction>) => {
 		try {
 			dispatch({ type: RecepiesActionTypes.FETCH_RECEPIES });

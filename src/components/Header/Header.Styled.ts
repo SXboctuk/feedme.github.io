@@ -15,7 +15,7 @@ export const HeaderNavBlock = styled.nav`
 	flex: 1 1 auto;
 	margin-left: 10%;
 
-	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
+	@media (max-width: ${styles.screenSize.sm}) {
 		display: none;
 
 		&.opened {
@@ -35,14 +35,14 @@ export const HeaderNavBlock = styled.nav`
 			border-radius: 0 0 10px 10px;
 			padding: 0 12px 12px 12px;
 			* {
-				margin-bottom: ${styles.distances.lg};
+				margin-bottom: ${styles.distances.mdPlus};
 			}
 		}
 	}
 `;
 export const HeaderHamburger = styled.div`
 	display: none;
-	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
+	@media (max-width: ${styles.screenSize.sm}) {
 		display: block;
 	}
 `;

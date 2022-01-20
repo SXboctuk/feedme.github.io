@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { routePath } from '../../../../constants/routePath';
-import Card from '../../../../components/Card';
+import Card from '../../../../components/shared/Card';
 import Section from '../Section';
 import { UserChoiceCardsBlock } from './UserChoice.Styled';
 
 import { useTranslation } from 'react-i18next';
-import { CardRecepie } from '../../../../interfaces/Recepie';
+import { CardRecepie } from '../../../../interfaces/CardRecipe';
 import { recepiesMockData } from '../../../../constants/mocks/Recepies';
 const UserChoice = () => {
 	const { t } = useTranslation('common');

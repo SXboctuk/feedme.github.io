@@ -11,7 +11,7 @@ import OurChoiceCard from '../OurChoiceCard';
 import { useNavigate } from 'react-router-dom';
 import { routePath } from '../../../../constants/routePath';
 import { useTranslation } from 'react-i18next';
-import { CardCookbook } from '../../../../interfaces/Cookbook';
+import { CardCookbook } from '../../../../interfaces/CardCookbook';
 import { cookbooksMockData } from '../../../../constants/mocks/Cookbooks';
 const OurChoice = () => {
 	const { t } = useTranslation('common', {

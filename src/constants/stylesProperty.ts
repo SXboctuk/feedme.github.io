@@ -18,8 +18,10 @@ const styles = {
 		xs: '8px',
 		sm: '12px',
 		md: '16px',
-		lg: '24px',
+		mdPlus: '24px',
+		lg: '32px',
 		xl: '48px',
+		xxl: '96px',
 	},
 };
 

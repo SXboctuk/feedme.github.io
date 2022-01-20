@@ -1,11 +1,13 @@
 import React from 'react';
-import Card from '../../components/Card';
+import Card from '../../components/shared/Card';
 import ContentSearchTemplate from '../../components/ContentSearchTemplate';
 import Spinner from '../../components/shared/Spinner';
 import { routePath } from '../../constants/routePath';
 import CookbooksFilter from './components/CookbooksFilter';
 import { CookbooksProps } from './Cookbooks.Interface';
 import { CookbooksContentMainGrid } from './Cookbooks.Styled';
+import ContentWrapper from '../../components/ContentWrapper';
+import CookbookContainer from '../Cookbook/Cookbook.Container';
 
 const Cookbooks = (props: CookbooksProps) => {
 	const {
@@ -20,7 +22,7 @@ const Cookbooks = (props: CookbooksProps) => {
 		return <div>{error}</div>;
 	}
 	return (
-		<>
+		<ContentWrapper>
 			<ContentSearchTemplate
 				leftElem={
 					<CookbooksFilter
@@ -56,8 +58,8 @@ const Cookbooks = (props: CookbooksProps) => {
 				selectedPage={'Cookbooks'}
 			/>
 
-			{CookbookById ? CookbookById : null}
-		</>
+			{CookbookById ? <CookbookContainer id={CookbookById} /> : null}
+		</ContentWrapper>
 	);
 };
 

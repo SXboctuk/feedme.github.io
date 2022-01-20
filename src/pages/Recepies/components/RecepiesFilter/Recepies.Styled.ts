@@ -3,7 +3,7 @@ import SvgArrowDropmenu from '../../../../components/Svg/SvgArrowDropmenu';
 import styles from '../../../../constants/stylesProperty';
 
 export const RecepiesFilterContainer = styled.div`
-	padding: ${styles.distances.lg};
+	padding: ${styles.distances.mdPlus};
 	background-color: ${({ theme }) => theme.colors.white};
 	border-radius: ${({ theme }) => theme.borderRadius};
 	box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);
@@ -35,7 +35,7 @@ export const RecepiesFilterClearButton = styled.button`
 `;
 
 export const RecepiesFilterDropMenu = styled.div`
-	margin-top: ${styles.distances.lg};
+	margin-top: ${styles.distances.mdPlus};
 `;
 
 export const RecepiesFilterLabel = styled.label`
@@ -52,7 +52,7 @@ export const RecepiesFilterLabel = styled.label`
 `;
 export const RecepiesFilterSelectWrapper = styled.div`
 	position: relative;
-	margin-bottom: ${styles.distances.lg};
+	margin-bottom: ${styles.distances.mdPlus};
 `;
 
 export const RecepiesFilterSvgArrowDropmenu = styled(SvgArrowDropmenu)`

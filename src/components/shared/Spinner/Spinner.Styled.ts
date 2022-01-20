@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import styles from '../../../constants/stylesProperty';
 
 export const SpinnerWrapper = styled.div`
-	margin: ${styles.distances.lg} auto;
+	margin: ${styles.distances.mdPlus} auto;
 	width: 100%;
 	text-align: center;
 `;

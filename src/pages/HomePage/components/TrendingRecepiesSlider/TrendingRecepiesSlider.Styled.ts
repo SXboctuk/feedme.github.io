@@ -22,8 +22,8 @@ export const TrendingRecepiesSliderButtonLeft = styled(
 	TrendingRecepiesSliderArrow,
 )`
 	transform: rotate(180deg);
-	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
-		margin-right: ${styles.distances.lg};
+	@media (max-width: ${styles.screenSize.sm}) {
+		margin-right: ${styles.distances.mdPlus};
 	} ;
 `;
 
@@ -34,15 +34,15 @@ export const TrendingRecepiesSliderContent = styled.div`
 	overflow: hidden;
 
 	& > *:not(:first-child) {
-		margin-left: ${styles.distances.lg};
+		margin-left: ${styles.distances.mdPlus};
 	}
 `;
 
 export const TrendingRecepiesSliderButtonRight = styled(
 	TrendingRecepiesSliderArrow,
 )`
-	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
-		margin-left: ${styles.distances.lg};
+	@media (max-width: ${styles.screenSize.sm}) {
+		margin-left: ${styles.distances.mdPlus};
 	} ;
 `;
 

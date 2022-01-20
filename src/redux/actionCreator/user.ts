@@ -4,7 +4,7 @@ import {
 	UserActionTypes,
 } from '../reducers/UserReducer/UserReducer.types';
 
-export const SignInUser = (login: string, password: string) => {
+export const signInUser = (login: string, password: string) => {
 	return async (dispatch: Dispatch<UserAction>) => {
 		try {
 			dispatch({ type: UserActionTypes.SIGN_IN_USER });
@@ -30,7 +30,7 @@ export const SignInUser = (login: string, password: string) => {
 	};
 };
 
-export const SignOutUser = () => {
+export const signOutUser = () => {
 	return (dispatch: Dispatch<UserAction>) => {
 		dispatch({ type: UserActionTypes.SIGN_OUT_USER });
 	};

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import styles from '../../../../constants/stylesProperty';
 
 export const Grid = styled.div`
 	display: grid;
@@ -21,7 +22,7 @@ export const SmallCard = styled.div`
 	height: 100%;
 `;
 export const MainGrid = styled(Grid)`
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		grid-template-columns: 1fr;
 	}
 `;
@@ -31,7 +32,7 @@ export const BigCard = styled.div`
 	width: 100%;
 `;
 export const GridIncide = styled(Grid)`
-	@media (max-width: ${({ theme }) => theme.displaySize.lg}) {
+	@media (max-width: ${styles.screenSize.lg}) {
 		${SmallCard} button {
 			font-size: 14px;
 		}

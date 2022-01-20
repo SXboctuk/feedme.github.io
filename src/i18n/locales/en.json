@@ -11,11 +11,11 @@
 
 	"signin": "Sign In",
 
-	"cardRecepie" :{
-		"views": "view",
-		"likes": "likes",
-		"comments": "comments"
-	},
+	
+	"views": "views",
+	"likes": "likes",
+	"comments": "comments",
+	
 
 	"homePage": {
 		"mainScreen": {
@@ -57,16 +57,18 @@
 		"hideMyCookbooks": "Hide My Cookbooks",
 		"cookingTime": "Cooking Time"
 	},
-	"OptionCard": {
-		"cloneToMyCookBooks" :"Clone To My Cookbooks",
-		"cloneToMyRecepies": "Clone To My Recepies"
-	},
+
 	"CloneToMyRecepies": "Clone To My Recepies",
 	"CloneToMyCookbooks": "Clone To My Cookbooks",
 	"EditRecepie": "Edit Recepie",
 	"DeleteRecepie": "Delete Recepie",
 	"EditCookbook": "Edit Cookbook",
-	"DeleteCookbook": "Delete Cookbook"
+	"DeleteCookbook": "Delete Cookbook",
+	"description": "Description",
+	"directions": "Directions",
+	"ingredients": "Ingredients",
+	"expressyourself": "Express yoursef...",
+	"commentsTitle": "Comments"
   }
   
 }

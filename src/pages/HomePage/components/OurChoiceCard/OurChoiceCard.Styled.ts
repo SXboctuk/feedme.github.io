@@ -28,12 +28,12 @@ export const OurChoiceCardButton = styled.button`
 	line-height: 22px;
 	color: ${({ theme }) => theme.colors.textMain};
 	background-color: ${({ theme }) => theme.colors.white};
-	padding: ${styles.distances.xs} ${styles.distances.lg};
+	padding: ${styles.distances.xs} ${styles.distances.mdPlus};
 	position: absolute;
 	left: 24px;
 	bottom: 24px;
 	border-radius: ${({ theme }) => theme.borderRadius};
-	margin-right: ${styles.distances.lg};
+	margin-right: ${styles.distances.mdPlus};
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.primary};
@@ -44,7 +44,7 @@ export const OurChoiceCardWrapper = styled.div`
 	position: relative;
 	width: 100%;
 	height: 100%;
-	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
+	border-radius: ${({ theme }) => theme.borderRadiusImage};
 	overflow: hidden;
 
 	box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);

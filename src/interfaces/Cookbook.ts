@@ -1,15 +1,15 @@
-export interface CardCookbook {
-	to: string;
-	key: string;
-	viewsCounter: number;
-	titleName: string;
+import { CardRecepie } from './CardRecipe';
+import { IComment } from './Comment';
+
+export interface ICookbook {
+	image: string;
+	id: string;
 	creatorName: string;
 	creatorId: string;
-	imageSrc: string;
-	likesCounter: number;
-	commentsCounter: number;
-	text: string;
-	isVegatarian: boolean;
-	isWithoutMilk: boolean;
-	isWithoutEggs: boolean;
+	title: string;
+	mainText: string;
+	likes: number;
+	views: number;
+	comments: IComment[];
+	recepies: CardRecepie[];
 }

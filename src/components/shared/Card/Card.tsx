@@ -24,11 +24,11 @@ import {
 } from './Card.Styled';
 
 import { useTranslation } from 'react-i18next';
-import OptionButtonContainer from '../OptionButton/OptionButton.Container';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import OptionButtonContainer from '../../OptionButton/OptionButton.Container';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
 const Card = (props: CardProps) => {
-	const { t } = useTranslation('common', { keyPrefix: 'cardRecepie' });
+	const { t } = useTranslation('common');
 	const { isAuth } = useTypedSelector((state) => state.userReducer);
 
 	if (props.type == 'wide') {

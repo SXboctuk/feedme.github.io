@@ -13,13 +13,13 @@ export const FooterEmailLink = styled.a`
 export const FooterLinksBlock = styled.div`
 	display: flex;
 	justify-content: space-between;
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		order: 1;
 		flex: 1 1 100%;
 		width: 100%;
 		margin-bottom: ${styles.distances.sm};
 	}
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		order: 2;
 		flex-direction: column;
 		align-items: center;
@@ -33,11 +33,11 @@ export const FooterLinksBlock = styled.div`
 	}
 `;
 export const FooterLogoBlock = styled.div`
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		order: 2;
 		flex: 1 1 50%;
 	}
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		order: 1;
 	}
 `;
@@ -46,11 +46,11 @@ export const FooterProjectInfo = styled.div`
 	align-items: center;
 	justify-content: right;
 
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		order: 3;
 		flex: 1 1 50%;
 	}
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		margin-top: ${styles.distances.sm};
 	}
 `;
@@ -70,10 +70,10 @@ export const FooterStyled = styled.footer`
 		flex: 1 1 auto;
 	}
 
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		flex-wrap: wrap;
 	}
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		flex-direction: column;
 	}
 `;

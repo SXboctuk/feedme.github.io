@@ -3,7 +3,7 @@ import SvgArrowDropmenu from '../../../../components/Svg/SvgArrowDropmenu';
 import styles from '../../../../constants/stylesProperty';
 
 export const CookbooksFilterContainer = styled.div`
-	padding: ${styles.distances.lg};
+	padding: ${styles.distances.mdPlus};
 	background-color: ${({ theme }) => theme.colors.white};
 	border-radius: ${({ theme }) => theme.borderRadius};
 	box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);
@@ -36,7 +36,7 @@ export const CookbooksFilterClearButton = styled.button`
 `;
 
 export const CookbooksFilterDropMenu = styled.div`
-	margin-top: ${styles.distances.lg};
+	margin-top: ${styles.distances.mdPlus};
 `;
 
 export const CookbooksFilterLabel = styled.label`
@@ -53,7 +53,7 @@ export const CookbooksFilterLabel = styled.label`
 `;
 export const CookbooksFilterSelectWrapper = styled.div`
 	position: relative;
-	margin-bottom: ${styles.distances.lg};
+	margin-bottom: ${styles.distances.mdPlus};
 `;
 
 export const CookbooksFilterSvgArrowDropmenu = styled(SvgArrowDropmenu)`
@@ -91,7 +91,7 @@ export const CookbooksFilterCheckboxInputWrapper = styled.div`
 export const CookbooksFilterCheckboxInputWrapperHideMy = styled(
 	CookbooksFilterCheckboxInputWrapper,
 )`
-	margin-top: ${styles.distances.lg};
+	margin-top: ${styles.distances.mdPlus};
 `;
 export const CookbooksFilterCheckboxLabel = styled.label`
 	display: inline-flex;

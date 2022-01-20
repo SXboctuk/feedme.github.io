@@ -1,12 +1,11 @@
-import { DefaultTheme } from 'styled-components';
-
-export interface themeInterface extends DefaultTheme {
+export interface themeInterface {
 	colors: {
 		textMain: string;
 		primary: string;
 		gray: string;
 		grayDark: string;
 		white: string;
+		textSecondary: string;
 	};
 	displaySize: {
 		xs: string;
@@ -14,6 +13,7 @@ export interface themeInterface extends DefaultTheme {
 		md: string;
 		lg: string;
 	};
+	borderRadiusImage: string;
 	borderRadiusSpecial: string;
 	borderRadius: string;
 }

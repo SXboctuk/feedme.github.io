@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import SvgComment from '../Svg/SvgComment';
-import SvgHeart from '../Svg/SvgHeart';
-import SvgWatch from '../Svg/SvgWatch';
-import styles from '../../constants/stylesProperty';
+import SvgComment from '../../Svg/SvgComment';
+import SvgHeart from '../../Svg/SvgHeart';
+import SvgWatch from '../../Svg/SvgWatch';
+import styles from '../../../constants/stylesProperty';
 import { CardCreatorProps, StyledCardInnerBlockProps } from './Card.Interface';
 
 export const CardInnerBlock = styled.div<StyledCardInnerBlockProps>`
@@ -21,10 +21,10 @@ export const CardCounterText = styled.span`
 	line-height: 19px;
 	color: ${({ theme }) => theme.colors.textMain};
 
-	@media (max-width: ${({ theme }) => theme.displaySize.lg}) {
+	@media (max-width: ${styles.screenSize.lg}) {
 		font-size: 12px;
 	}
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		font-size: 14px;
 	}
 `;
@@ -57,7 +57,7 @@ export const CardImageWrapper = styled.div`
 	padding-top: 100%;
 	position: relative;
 
-	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
+	border-radius: ${({ theme }) => theme.borderRadiusImage};
 	margin-bottom: ${styles.distances.md};
 	overflow: hidden;
 `;
@@ -110,7 +110,7 @@ export const CardBlock = styled(Link)`
 	}
 `;
 export const CardBlockWrapper = styled.div`
-	padding: ${styles.distances.lg};
+	padding: ${styles.distances.mdPlus};
 `;
 
 export const TitleAndCreatorBlock = styled(CardInnerBlock)`
@@ -125,11 +125,11 @@ export const CardWideImageWrapper = styled.div`
 	width: 30%;
 	padding-top: 20%;
 	position: relative;
-	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
+	border-radius: ${({ theme }) => theme.borderRadiusImage};
 	overflow: hidden;
 `;
 export const CardWideContent = styled.div`
-	padding: ${styles.distances.lg};
+	padding: ${styles.distances.mdPlus};
 	display: flex;
 	flex-direction: column;
 `;
@@ -147,9 +147,5 @@ export const CardBottomBlock = styled.div`
 	align-items: flex-end;
 `;
 export const CardBlockWide = styled(CardBlock)`
-	border-radius: ${({ theme }) => {
-		return `${'50px'} ${theme.borderRadius} ${theme.borderRadius} ${
-			theme.borderRadius
-		} `;
-	}};
+	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
 `;

@@ -1,4 +1,4 @@
-import { CardRecepie } from '../../interfaces/Recepie';
+import { CardRecepie } from '../../interfaces/CardRecipe';
 
 import cardImage1 from './Image/card1.jpg';
 import cardImage2 from './Image/card2.png';
@@ -11,6 +11,7 @@ export const recepiesMockData: CardRecepie[] = [
 		key: 'card1',
 		viewsCounter: 11000,
 		titleName: 'Fresh meat',
+		creatorId: '13',
 		creatorName: 'John Doe',
 		imageSrc: cardImage1,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -23,6 +24,7 @@ export const recepiesMockData: CardRecepie[] = [
 		key: 'card2',
 		viewsCounter: 12000,
 		titleName: 'Fresh meat',
+		creatorId: '13',
 		creatorName: 'John Doe',
 		imageSrc: cardImage2,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -35,6 +37,7 @@ export const recepiesMockData: CardRecepie[] = [
 		key: 'card3',
 		viewsCounter: 13000,
 		titleName: 'Fresh meat',
+		creatorId: '13',
 		creatorName: 'John Doe',
 		imageSrc: cardImage3,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -47,6 +50,7 @@ export const recepiesMockData: CardRecepie[] = [
 		key: 'card4',
 		viewsCounter: 14000,
 		titleName: 'Fresh meat',
+		creatorId: '13',
 		creatorName: 'John Doe',
 		imageSrc: cardImage4,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -59,6 +63,7 @@ export const recepiesMockData: CardRecepie[] = [
 		key: 'card5',
 		viewsCounter: 15000,
 		titleName: 'Fresh meat',
+		creatorId: '13',
 		creatorName: 'John Doe',
 		imageSrc: cardImage1,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -71,6 +76,7 @@ export const recepiesMockData: CardRecepie[] = [
 		key: 'card6',
 		viewsCounter: 16000,
 		titleName: 'Fresh meat',
+		creatorId: '13',
 		creatorName: 'John Doe',
 		imageSrc: cardImage2,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -83,6 +89,7 @@ export const recepiesMockData: CardRecepie[] = [
 		key: 'card7',
 		viewsCounter: 17000,
 		titleName: 'Fresh meat',
+		creatorId: '13',
 		creatorName: 'John Doe',
 		imageSrc: cardImage3,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -95,6 +102,7 @@ export const recepiesMockData: CardRecepie[] = [
 		key: 'card8',
 		viewsCounter: 18000,
 		titleName: 'Fresh meat',
+		creatorId: '13',
 		creatorName: 'John Doe',
 		imageSrc: cardImage4,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -107,6 +115,7 @@ export const recepiesMockData: CardRecepie[] = [
 		key: 'card9',
 		viewsCounter: 19000,
 		titleName: 'Fresh meat',
+		creatorId: '13',
 		creatorName: 'John Doe',
 		imageSrc: cardImage4,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',

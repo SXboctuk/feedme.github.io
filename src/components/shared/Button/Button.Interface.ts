@@ -1,3 +1,3 @@
 export interface IButtonProps extends React.HTMLProps<HTMLButtonElement> {
-	variant: 'outline' | 'white' | 'solid';
+	variant: 'outline' | 'white' | 'solid' | 'outlineAdd' | 'solidSend';
 }

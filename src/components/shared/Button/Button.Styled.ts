@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import styles from '../../../constants/stylesProperty';
 
 export const ButtonOutline = styled.button`
 	color: ${({ theme }) => theme.colors.primary};
@@ -17,6 +18,14 @@ export const ButtonOutline = styled.button`
 		color: ${({ theme }) => theme.colors.white};
 	}
 `;
+export const ButtonOutlineAdd = styled(ButtonOutline)`
+	font-weight: normal;
+	font-size: 24px;
+	padding: 0;
+	width: 40px;
+	height: 40px;
+`;
+
 export const ButtonSolid = styled.button`
 	color: ${({ theme }) => theme.colors.textMain};
 	border: none;
@@ -32,6 +41,19 @@ export const ButtonSolid = styled.button`
 	&:hover {
 		background: ${({ theme }) => theme.colors.primary};
 		color: ${({ theme }) => theme.colors.white};
+	}
+`;
+export const ButtonOutlineSend = styled(ButtonSolid)`
+	padding: 0 ${styles.distances.lg};
+	box-sizing: unset;
+	border: 3px solid ${({ theme }) => theme.colors.primary};
+	&:hover {
+		background: ${({ theme }) => theme.colors.white};
+		border: 3px solid ${({ theme }) => theme.colors.primary};
+
+		path {
+			fill: ${({ theme }) => theme.colors.primary};
+		}
 	}
 `;
 export const ButtonWhite = styled.button`

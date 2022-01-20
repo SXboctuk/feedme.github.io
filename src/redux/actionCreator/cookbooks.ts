@@ -5,7 +5,7 @@ import {
 } from '../reducers/CookbooksReducer/CookbooksReducer.types';
 
 import cookbooksData from '../../constants/mocks/CookbooksCard.json';
-export const FetchCookbook = () => {
+export const fetchCookbook = () => {
 	return async (dispatch: Dispatch<CookbooksAction>) => {
 		try {
 			dispatch({ type: CookbooksActionTypes.FETCH_COOKBOOKS });

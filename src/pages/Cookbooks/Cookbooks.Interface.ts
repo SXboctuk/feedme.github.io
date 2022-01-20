@@ -1,5 +1,5 @@
 import React, { Dispatch } from 'react';
-import { CardCookbook } from '../../interfaces/Cookbook';
+import { CardCookbook } from '../../interfaces/CardCookbook';
 
 export interface CookbooksProps {
 	filterOption: CookbooksFilterOption;

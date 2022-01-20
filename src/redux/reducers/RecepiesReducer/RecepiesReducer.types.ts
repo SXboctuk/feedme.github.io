@@ -1,4 +1,4 @@
-import { CardRecepie } from '../../../interfaces/Recepie';
+import { CardRecepie } from '../../../interfaces/CardRecipe';
 
 export enum RecepiesActionTypes {
 	FETCH_RECEPIES = 'FETCH_RECEPIES',

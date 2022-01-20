@@ -1,4 +1,4 @@
-import { CardCookbook } from '../../interfaces/Cookbook';
+import { CardCookbook } from '../../interfaces/CardCookbook';
 import cardImage1 from './Image/card1.jpg';
 import cardImage2 from './Image/card2.png';
 import cardImage3 from './Image/card3.png';
@@ -10,6 +10,7 @@ export const cookbooksMockData: CardCookbook[] = [
 		key: 'card1',
 		viewsCounter: 11000,
 		titleName: 'Fresh meat',
+		creatorId: '33',
 		creatorName: 'John Doe',
 		imageSrc: cardImage1,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -24,6 +25,7 @@ export const cookbooksMockData: CardCookbook[] = [
 		key: 'card2',
 		viewsCounter: 12000,
 		titleName: 'Fresh meat',
+		creatorId: '33',
 		creatorName: 'John Doe',
 		imageSrc: cardImage2,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -38,6 +40,7 @@ export const cookbooksMockData: CardCookbook[] = [
 		key: 'card3',
 		viewsCounter: 13000,
 		titleName: 'Fresh meat',
+		creatorId: '33',
 		creatorName: 'John Doe',
 		imageSrc: cardImage3,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -52,6 +55,7 @@ export const cookbooksMockData: CardCookbook[] = [
 		key: 'card4',
 		viewsCounter: 14000,
 		titleName: 'Fresh meat',
+		creatorId: '33',
 		creatorName: 'John Doe',
 		imageSrc: cardImage4,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -66,6 +70,7 @@ export const cookbooksMockData: CardCookbook[] = [
 		key: 'card5',
 		viewsCounter: 15000,
 		titleName: 'Fresh meat',
+		creatorId: '33',
 		creatorName: 'John Doe',
 		imageSrc: cardImage1,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -80,6 +85,7 @@ export const cookbooksMockData: CardCookbook[] = [
 		key: 'card6',
 		viewsCounter: 16000,
 		titleName: 'Fresh meat',
+		creatorId: '33',
 		creatorName: 'John Doe',
 		imageSrc: cardImage2,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -94,6 +100,7 @@ export const cookbooksMockData: CardCookbook[] = [
 		key: 'card7',
 		viewsCounter: 17000,
 		titleName: 'Fresh meat',
+		creatorId: '33',
 		creatorName: 'John Doe',
 		imageSrc: cardImage3,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -108,6 +115,7 @@ export const cookbooksMockData: CardCookbook[] = [
 		key: 'card8',
 		viewsCounter: 18000,
 		titleName: 'Fresh meat',
+		creatorId: '33',
 		creatorName: 'John Doe',
 		imageSrc: cardImage4,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',
@@ -122,6 +130,7 @@ export const cookbooksMockData: CardCookbook[] = [
 		key: 'card9',
 		viewsCounter: 19000,
 		titleName: 'Fresh meat',
+		creatorId: '33',
 		creatorName: 'John Doe',
 		imageSrc: cardImage4,
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit vel',

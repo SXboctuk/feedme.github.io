@@ -9,7 +9,7 @@ export const SectionNameTitle = styled.div`
 	font-size: 16px;
 	line-height: 24px;
 	text-align: center;
-	margin-bottom: ${styles.distances.lg};
+	margin-bottom: ${styles.distances.mdPlus};
 	color: ${({ theme, color }) => (color ? color : theme.colors.primary)};
 `;
 export const SectionTitle = styled.div`
@@ -31,7 +31,7 @@ export const SectionButtonCenterWrapper = styled.div`
 export const ContainerBackgroundColor = styled.div`
 	padding: 104px 0;
 	background-color: ${({ theme }) => theme.colors.primary};
-	border-radius: ${({ theme }) => theme.borderRadiusSpecial};
+	border-radius: ${({ theme }) => theme.borderRadiusImage};
 	position: relative;
 	overflow: hidden;
 `;

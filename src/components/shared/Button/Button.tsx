@@ -1,29 +1,79 @@
 import React from 'react';
-import { StyledComponent } from 'styled-components';
+import SvgPaperPlane from '../../Svg/SvgPaperPlane';
 import { IButtonProps } from './Button.Interface';
-import { ButtonOutline, ButtonSolid, ButtonWhite } from './Button.Styled';
+import {
+	ButtonOutline,
+	ButtonSolid,
+	ButtonWhite,
+	ButtonOutlineAdd,
+	ButtonOutlineSend,
+} from './Button.Styled';
 
 const Button = (props: IButtonProps) => {
 	const { variant, children, ...rest } = props;
 
-	function renderButton(Elem: StyledComponent<'button', any, object, never>) {
-		return (
-			<Elem
+	// function renderButton(Elem: StyledComponent<'button', any>) {
+	// 	return (
+	// 		<Elem
+	// 			type={rest.type === 'submit' ? 'submit' : 'button'}
+	// 			onClick={rest.onClick}
+	// 		>
+	// 			{children}
+	// 		</Elem>
+	// 	);
+	// }
+
+	const buttons: { [name: string]: React.ReactElement } = {
+		outline: (
+			<ButtonOutline
 				type={rest.type === 'submit' ? 'submit' : 'button'}
 				onClick={rest.onClick}
 			>
 				{children}
-			</Elem>
-		);
-	}
-
-	const buttons: { [name: string]: React.ReactElement } = {
-		outline: renderButton(ButtonOutline),
-
-		solid: renderButton(ButtonSolid),
-
-		white: renderButton(ButtonWhite),
+			</ButtonOutline>
+		),
+		solid: (
+			<ButtonSolid
+				type={rest.type === 'submit' ? 'submit' : 'button'}
+				onClick={rest.onClick}
+			>
+				{children}
+			</ButtonSolid>
+		),
+		white: (
+			<ButtonWhite
+				type={rest.type === 'submit' ? 'submit' : 'button'}
+				onClick={rest.onClick}
+			>
+				{children}
+			</ButtonWhite>
+		),
+		outlineAdd: (
+			<ButtonOutlineAdd
+				type={rest.type === 'submit' ? 'submit' : 'button'}
+				onClick={rest.onClick}
+			>
+				+
+			</ButtonOutlineAdd>
+		),
+		solidSend: (
+			<ButtonOutlineSend
+				type={rest.type === 'submit' ? 'submit' : 'button'}
+				onClick={rest.onClick}
+			>
+				<SvgPaperPlane />
+			</ButtonOutlineSend>
+		),
 	};
+	// const buttons: { [name: string]: React.ReactElement } = {
+	// 	outline: renderButton(ButtonOutline),
+
+	// 	solid: renderButton(ButtonSolid),
+
+	// 	white: renderButton(ButtonWhite),
+
+	// 	outlineAdd: renderButton(ButtonOutlineSmall),
+	// };
 
 	return buttons[variant];
 

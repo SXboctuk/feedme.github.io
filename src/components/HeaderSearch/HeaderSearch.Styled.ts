@@ -10,7 +10,7 @@ export const InputSearchIcon = styled(SvgSearch)`
 export const InputContainer = styled.div`
 	position: relative;
 
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		display: none;
 	}
 `;

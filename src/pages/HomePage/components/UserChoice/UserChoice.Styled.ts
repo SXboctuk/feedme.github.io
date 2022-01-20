@@ -7,16 +7,16 @@ export const UserChoiceCardsBlock = styled.div`
 	flex: wrap;
 	flex: 0 1 25%;
 
-	margin-right: -${styles.distances.lg};
+	margin-right: -${styles.distances.mdPlus};
 
 	& > * {
-		margin-right: ${styles.distances.lg};
+		margin-right: ${styles.distances.mdPlus};
 	}
-	@media (max-width: ${({ theme }) => theme.displaySize.md}) {
+	@media (max-width: ${styles.screenSize.md}) {
 		flex-wrap: wrap;
-		margin-right: -${styles.distances.lg};
+		margin-right: -${styles.distances.mdPlus};
 		& > * {
-			margin-top: ${styles.distances.lg};
+			margin-top: ${styles.distances.mdPlus};
 			max-width: 50%;
 			flex: 1 1 45%;
 		}
@@ -27,7 +27,7 @@ export const UserChoiceCardsBlock = styled.div`
 			margin-top: 0;
 		}
 	}
-	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
+	@media (max-width: ${styles.screenSize.sm}) {
 		flex-wrap: wrap;
 		margin-right: 0;
 
@@ -38,7 +38,7 @@ export const UserChoiceCardsBlock = styled.div`
 			flex: 1 1 100%;
 		}
 		& > *:not(:first-child) {
-			margin-top: ${styles.distances.lg};
+			margin-top: ${styles.distances.mdPlus};
 		}
 	}
 `;

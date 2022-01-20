@@ -17,7 +17,7 @@ export const MainScreenInput = styled.input`
 		outline: none;
 	}
 
-	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
+	@media (max-width: ${styles.screenSize.sm}) {
 		padding-right: 0;
 	} ;
 `;
@@ -37,9 +37,9 @@ export const MainScreenSearchButton = styled(ButtonSolid)`
 	top: 50%;
 	transform: translate(0, -50%);
 
-	@media (max-width: ${({ theme }) => theme.displaySize.sm}) {
+	@media (max-width: ${styles.screenSize.sm}) {
 		position: static;
-		margin-top: ${styles.distances.lg};
+		margin-top: ${styles.distances.mdPlus};
 
 		transform: translate(0, 0%);
 	} ;

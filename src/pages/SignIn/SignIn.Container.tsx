@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useAction } from '../../hooks/useAction';
 
 const SignInContainer = () => {
-	const { SignInUser } = useAction();
+	const { signInUser } = useAction();
 
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		SignInUser('UserName', 'UserPassword');
+		signInUser('UserName', 'UserPassword');
 		navigate(-1);
 	}, []);
 

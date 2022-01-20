@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import styles from '../../constants/stylesProperty';
 
-export const ContentSearchTemplateWrapper = styled.div`
-	padding-top: 92px;
-	/* min-height: 100vh; */
-`;
+export const ContentSearchTemplateWrapper = styled.div``;
 export const ContentSearchTemplateGrid1x3 = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 	grid-gap: 40px;
 
-	@media (max-width: ${({ theme }) => theme.displaySize.xs}) {
+	@media (max-width: ${styles.screenSize.sm}) {
 		grid-template-columns: 1fr;
 	}
 `;
@@ -30,7 +27,7 @@ export const ContentSearchTemplateVariant = styled.div`
 	position: relative;
 
 	&:not(:first-child) {
-		margin-left: ${styles.distances.lg};
+		margin-left: ${styles.distances.mdPlus};
 	}
 
 	&[aria-selected] {

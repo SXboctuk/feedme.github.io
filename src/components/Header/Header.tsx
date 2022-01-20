@@ -16,6 +16,7 @@ import styles from '../../constants/stylesProperty';
 
 import { useTranslation } from 'react-i18next';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import SvgUser from '../Svg/SvgUser';
 
 const Header = () => {
 	const { t } = useTranslation();
@@ -41,7 +42,12 @@ const Header = () => {
 							{t('buttonCreateCookbook')}
 						</Button>
 						{isAuth ? (
-							<Link to={routePath.PERSONAL_PAGE}>{userName}</Link>
+							<div>
+								<SvgUser />{' '}
+								<Link to={routePath.PERSONAL_PAGE}>
+									{userName}
+								</Link>
+							</div>
 						) : (
 							<Link to={routePath.SIGN_IN}>{t('signin')}</Link>
 						)}

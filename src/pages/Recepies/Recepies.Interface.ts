@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { CardRecepie } from '../../interfaces/Recepie';
+import { CardRecepie } from '../../interfaces/CardRecipe';
 
 export interface RecepiesFilterOption {
 	sortBy: string;
@@ -11,7 +11,7 @@ export interface RecepiesProps {
 	filterOption: RecepiesFilterOption;
 	setFilterOption: Dispatch<React.SetStateAction<RecepiesFilterOption>>;
 	recepiesCard: CardRecepie[];
-	recepieById: string | null;
+	recepieId: string | null;
 	loading: boolean;
 	error: string | null;
 	width: number;

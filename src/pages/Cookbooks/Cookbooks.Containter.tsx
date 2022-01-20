@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Cookbooks from '.';
 import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { CardCookbook } from '../../interfaces/Cookbook';
+import { CardCookbook } from '../../interfaces/CardCookbook';
 import { initialCookbooksFilterOption } from './Cookbooks.Constant';
 import { CookbooksFilterOption } from './Cookbooks.Interface';
 
@@ -18,10 +18,10 @@ const CookbooksContainter = () => {
 		(state) => state.cookbooksReducer,
 	);
 	const { id } = useTypedSelector((state) => state.userReducer);
-	const { FetchCookbook } = useAction();
+	const { fetchCookbook } = useAction();
 
 	useEffect(() => {
-		FetchCookbook();
+		fetchCookbook();
 	}, []);
 
 	const filterElems = (): CardCookbook[] => {
@@ -47,7 +47,7 @@ const CookbooksContainter = () => {
 			);
 		}
 		if (option.isHideMyCookbooks && id !== null) {
-			filterElems = filterElems.filter((elem) => elem.creatorId === id);
+			filterElems = filterElems.filter((elem) => elem.creatorId !== id);
 		}
 
 		if (option.sortBy === 'likes') {
