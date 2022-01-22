@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import styles from '../../../constants/stylesProperty';
 
-export const ButtonOutline = styled.button`
+export const ButtonOutline = styled.button<{ wide?: true }>`
 	color: ${({ theme }) => theme.colors.primary};
 	border: 3px solid ${({ theme }) => theme.colors.primary};
 	background: none;
@@ -12,12 +12,13 @@ export const ButtonOutline = styled.button`
 	text-align: center;
 	border-radius: ${({ theme }) => theme.borderRadius};
 	padding: 12px 32px;
-
+	width: ${({ wide }) => (wide ? '100%' : 'auto')};
 	&:hover {
 		background: ${({ theme }) => theme.colors.primary};
 		color: ${({ theme }) => theme.colors.white};
 	}
 `;
+
 export const ButtonOutlineAdd = styled(ButtonOutline)`
 	font-weight: normal;
 	font-size: 24px;
@@ -26,7 +27,7 @@ export const ButtonOutlineAdd = styled(ButtonOutline)`
 	height: 40px;
 `;
 
-export const ButtonSolid = styled.button`
+export const ButtonSolid = styled.button<{ wide?: true }>`
 	color: ${({ theme }) => theme.colors.textMain};
 	border: none;
 	background-color: ${({ theme }) => theme.colors.primary};
@@ -37,12 +38,13 @@ export const ButtonSolid = styled.button`
 	text-align: center;
 	border-radius: ${({ theme }) => theme.borderRadius};
 	padding: 12px 32px;
-
+	width: ${({ wide }) => (wide ? '100%' : 'auto')};
 	&:hover {
 		background: ${({ theme }) => theme.colors.primary};
 		color: ${({ theme }) => theme.colors.white};
 	}
 `;
+
 export const ButtonOutlineSend = styled(ButtonSolid)`
 	padding: 0 ${styles.distances.lg};
 	box-sizing: unset;
@@ -56,7 +58,7 @@ export const ButtonOutlineSend = styled(ButtonSolid)`
 		}
 	}
 `;
-export const ButtonWhite = styled.button`
+export const ButtonWhite = styled.button<{ wide?: true }>`
 	color: ${({ theme }) => theme.colors.primary};
 	border: none;
 	background-color: ${({ theme }) => theme.colors.white};
@@ -67,7 +69,7 @@ export const ButtonWhite = styled.button`
 	text-align: center;
 	border-radius: ${({ theme }) => theme.borderRadius};
 	padding: 12px 32px;
-
+	width: ${({ wide }) => (wide ? '100%' : 'auto')};
 	&:hover {
 		background: ${({ theme }) => theme.colors.primary};
 		color: ${({ theme }) => theme.colors.white};

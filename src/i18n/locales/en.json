@@ -10,6 +10,7 @@
 	"buttonCreateCookbook": "Create Cookbook",
 
 	"signin": "Sign In",
+	"signup": "Sign Up",
 
 	
 	"views": "views",
@@ -68,7 +69,20 @@
 	"directions": "Directions",
 	"ingredients": "Ingredients",
 	"expressyourself": "Express yoursef...",
-	"commentsTitle": "Comments"
+	"commentsTitle": "Comments",
+
+	"createAnAccount": "Create an acoount",
+	"signinUnderTitle": "New here?",
+	"signinTitle": "Welcome back",
+
+	"login": "Login",
+	"password": "Password",
+	"forgotPassword": "Forgot password?",
+	"passwordConfirm": "Confirm Password",
+
+	"signupTitle": "Join Our Community",
+	"signupUnderTitle": "Already have an account?"
+
   }
   
 }

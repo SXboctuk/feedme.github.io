@@ -56,6 +56,11 @@ export const CookbookContentGridBlock = styled.div`
 	grid-template-columns: 1fr 1fr;
 	grid-gap: ${styles.distances.mdPlus};
 	margin-bottom: ${styles.distances.lg};
+
+	@media (max-width: ${styles.screenSize.sm}) {
+		grid-template-columns: 1fr;
+		grid-gap: ${styles.distances.md};
+	}
 `;
 export const CookbookImageWrapper = styled.div`
 	min-height: 250px;

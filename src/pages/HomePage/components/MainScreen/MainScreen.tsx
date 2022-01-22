@@ -13,6 +13,7 @@ import {
 } from './MainScreen.Styled';
 
 import { useTranslation } from 'react-i18next';
+import { constImagePath } from '../../../../constants/imagePath';
 
 const MainScreen = () => {
 	const { t } = useTranslation('common', {
@@ -21,11 +22,7 @@ const MainScreen = () => {
 	return (
 		<Container maxWidth={styles.screenSize.xl}>
 			<BorderWrapper>
-				<MainImage
-					src={
-						'../../../../../public/assets/images/MainBackground.png'
-					}
-				/>
+				<MainImage src={constImagePath.HOMEPAGE_MAIN} />
 				<MainShadow />
 				<Container maxWidth={styles.screenSize.lg}>
 					<MainContent>

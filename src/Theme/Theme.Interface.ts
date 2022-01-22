@@ -6,6 +6,7 @@ export interface themeInterface {
 		grayDark: string;
 		white: string;
 		textSecondary: string;
+		danger: string;
 	};
 	displaySize: {
 		xs: string;
@@ -16,4 +17,5 @@ export interface themeInterface {
 	borderRadiusImage: string;
 	borderRadiusSpecial: string;
 	borderRadius: string;
+	borderRadiusSmall: string;
 }

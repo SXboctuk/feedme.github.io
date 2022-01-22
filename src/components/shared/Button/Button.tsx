@@ -10,24 +10,14 @@ import {
 } from './Button.Styled';
 
 const Button = (props: IButtonProps) => {
-	const { variant, children, ...rest } = props;
-
-	// function renderButton(Elem: StyledComponent<'button', any>) {
-	// 	return (
-	// 		<Elem
-	// 			type={rest.type === 'submit' ? 'submit' : 'button'}
-	// 			onClick={rest.onClick}
-	// 		>
-	// 			{children}
-	// 		</Elem>
-	// 	);
-	// }
+	const { variant, children, wide, ...rest } = props;
 
 	const buttons: { [name: string]: React.ReactElement } = {
 		outline: (
 			<ButtonOutline
 				type={rest.type === 'submit' ? 'submit' : 'button'}
 				onClick={rest.onClick}
+				wide={wide ? wide : undefined}
 			>
 				{children}
 			</ButtonOutline>
@@ -36,6 +26,7 @@ const Button = (props: IButtonProps) => {
 			<ButtonSolid
 				type={rest.type === 'submit' ? 'submit' : 'button'}
 				onClick={rest.onClick}
+				wide={wide ? wide : undefined}
 			>
 				{children}
 			</ButtonSolid>
@@ -44,6 +35,7 @@ const Button = (props: IButtonProps) => {
 			<ButtonWhite
 				type={rest.type === 'submit' ? 'submit' : 'button'}
 				onClick={rest.onClick}
+				wide={wide ? wide : undefined}
 			>
 				{children}
 			</ButtonWhite>
