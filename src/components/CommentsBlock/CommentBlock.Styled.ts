@@ -28,8 +28,13 @@ export const CommentsInputBlock = styled.div`
 	align-items: flex-start;
 `;
 export const CommentsWrapper = styled.div`
-	margin: ${styles.distances.xxl} ${styles.distances.xl}
+	padding: ${styles.distances.xxl} ${styles.distances.xl}
 		${styles.distances.xl} ${styles.distances.xl};
+
+	@media (max-width: ${styles.screenSize.md}) {
+		padding: ${styles.distances.xl} ${styles.distances.md}
+			${styles.distances.xl} ${styles.distances.md};
+	}
 `;
 export const CommentsTitle = styled.div`
 	font-family: 'Montserrat';

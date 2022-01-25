@@ -7,9 +7,12 @@ export enum UserActionTypes {
 
 export interface UserState {
 	isAuth: boolean;
-	userName: string | null;
-	id: string | null;
-	role: string | null;
+	userName: string;
+	userText: string;
+	email: string;
+	image: string;
+	id: string;
+	role: string;
 	loading: boolean;
 	error: string | null;
 }
@@ -18,7 +21,14 @@ interface SignInAction {
 }
 interface SignInSuccessAction {
 	type: UserActionTypes.SIGN_IN_USER_SUCCESS;
-	payload: { userName: string; id: string; role: string };
+	payload: {
+		userName: string;
+		userText: string;
+		email: string;
+		image: string;
+		id: string;
+		role: string;
+	};
 }
 interface SignInErrorAction {
 	type: UserActionTypes.SIGN_IN_USER_ERROR;

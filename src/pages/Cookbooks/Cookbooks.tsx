@@ -38,7 +38,7 @@ const Cookbooks = (props: CookbooksProps) => {
 							{CookbooksCard.map((elem) => {
 								return (
 									<Card
-										to={`${routePath.COOKBOOKS}/${elem.to}`}
+										to={`${routePath.COOKBOOKS}${elem.to}`}
 										key={elem.key}
 										text={elem.text}
 										viewsCounter={elem.viewsCounter}

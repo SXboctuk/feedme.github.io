@@ -6,7 +6,7 @@ const ModalWindowContainer = (props: React.HTMLProps<HTMLDivElement>) => {
 	const navigate = useNavigate();
 
 	const handlerShow = () => {
-		navigate('../');
+		navigate(-1);
 	};
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';

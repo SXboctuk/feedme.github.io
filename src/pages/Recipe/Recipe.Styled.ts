@@ -31,7 +31,13 @@ export const RecipeImage = styled.img`
 `;
 
 export const RecipeContent = styled.div`
-	padding: 60px 60px 0 60px;
+	padding: ${styles.distances.xl} ${styles.distances.xl} 0
+		${styles.distances.xl};
+
+	@media (max-width: ${styles.screenSize.md}) {
+		padding: ${styles.distances.md} ${styles.distances.md} 0
+			${styles.distances.md};
+	}
 `;
 
 export const RecipeHeader = styled.div`
@@ -44,6 +50,7 @@ export const RecipeMainTitle = styled.div`
 	font-size: 40px;
 	color: ${({ theme }) => theme.colors.textMain};
 	margin-bottom: ${styles.distances.md};
+	max-width: 80%;
 `;
 export const RecipeButtonWrapper = styled.div``;
 export const RecipeCreatorName = styled(Link)`

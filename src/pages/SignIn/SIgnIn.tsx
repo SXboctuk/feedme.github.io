@@ -9,12 +9,23 @@ import { routePath } from '../../constants/routePath';
 import { SignupButtonWrapper, SignupputWrapper } from './SignIn.Styled';
 
 const SIgnIn = (props: {
+	handlerFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 	handlerLogin: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	handlerPassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	loginError: string;
 	passwordError: string;
+	loginValue: string;
+	passwordValue: string;
 }) => {
-	const { handlerLogin, handlerPassword, loginError, passwordError } = props;
+	const {
+		handlerLogin,
+		handlerPassword,
+		loginError,
+		passwordError,
+		loginValue,
+		passwordValue,
+		handlerFormSubmit,
+	} = props;
 	const { t } = useTranslation();
 
 	return (
@@ -25,12 +36,13 @@ const SIgnIn = (props: {
 				underTitleText={t('signinUnderTitle')}
 				title={t('signinTitle')}
 			>
-				<form>
+				<form onSubmit={handlerFormSubmit}>
 					<SignupputWrapper>
 						<Input
 							labelText={t('login')}
 							handlerInput={handlerLogin}
 							error={loginError}
+							value={loginValue}
 						/>
 					</SignupputWrapper>
 					<SignupputWrapper>
@@ -39,6 +51,7 @@ const SIgnIn = (props: {
 							handlerInput={handlerPassword}
 							error={passwordError}
 							type={'password'}
+							value={passwordValue}
 							forgotLink
 						/>
 					</SignupputWrapper>

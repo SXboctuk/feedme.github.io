@@ -65,7 +65,7 @@ const Recipe = (props: { recipeData: IRecipe }) => {
 								</RecipeButtonWrapper>
 							</RecipeHeader>
 							<RecipeCreatorName
-								to={routePath.USER_BY_ID + creatorId}
+								to={routePath.PROFILE + creatorId}
 							>
 								{creatorName}
 							</RecipeCreatorName>
@@ -79,7 +79,7 @@ const Recipe = (props: { recipeData: IRecipe }) => {
 									{directions.map((elem, i) => (
 										<RecipeDirection key={elem + i}>
 											<RecipeDirectionStep>
-												step {i}:{' '}
+												step {i + 1}:{' '}
 											</RecipeDirectionStep>
 											{elem}
 										</RecipeDirection>

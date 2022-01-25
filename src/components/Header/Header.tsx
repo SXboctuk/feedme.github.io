@@ -27,7 +27,9 @@ const Header = () => {
 		headerNavBlockRef.current?.classList.toggle('opened');
 	};
 
-	const { userName, isAuth } = useTypedSelector((state) => state.userReducer);
+	const { userName, isAuth, id } = useTypedSelector(
+		(state) => state.userReducer,
+	);
 
 	return (
 		<HeaderBackground>
@@ -44,7 +46,7 @@ const Header = () => {
 						{isAuth ? (
 							<div>
 								<SvgUser />{' '}
-								<Link to={routePath.PERSONAL_PAGE}>
+								<Link to={routePath.PROFILE + id}>
 									{userName}
 								</Link>
 							</div>

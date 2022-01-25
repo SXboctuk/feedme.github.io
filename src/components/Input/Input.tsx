@@ -15,12 +15,13 @@ import {
 const Input = (props: {
 	labelText: string;
 	handlerInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	value: string;
 	error?: string | null;
 	type?: 'password';
 	forgotLink?: true;
 }) => {
 	const { t } = useTranslation();
-	const { labelText, handlerInput, error, type, forgotLink } = props;
+	const { labelText, handlerInput, error, type, forgotLink, value } = props;
 	const [hidden, setHidden] = useState(true);
 	return (
 		<InputBlock>
@@ -34,6 +35,7 @@ const Input = (props: {
 			</InputHeaderBlock>
 			<InputWrapper>
 				<InputStyled
+					value={value}
 					className={error ? 'error' : ''}
 					onChange={handlerInput}
 					type={type === 'password' && hidden ? 'password' : ''}

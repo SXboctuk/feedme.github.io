@@ -12,7 +12,7 @@ const styles = {
 		grayDark: '#DADADA',
 		white: '#FFFFFF',
 	},
-	containerMediaMdPadding: '0px 15px',
+	containerMediaMdPadding: '0px 5px',
 
 	distances: {
 		xs: '8px',

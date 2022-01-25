@@ -63,7 +63,7 @@ const Cookbook = (props: { cookbookData: ICookbook; width: number }) => {
 						</CookbookHeaderBlock>
 						<CookbookCreatorBlock>
 							<CookbookCreator
-								to={routePath.USER_BY_ID + { creatorId }}
+								to={routePath.PROFILE + { creatorId }}
 							>
 								{creatorName}
 							</CookbookCreator>

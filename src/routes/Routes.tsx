@@ -3,14 +3,17 @@ import {
 	BrowserRouter,
 	Route,
 	Routes as RouterDomRoutes,
+	Navigate,
 } from 'react-router-dom';
 import Background from '../components/Background';
 import Layout from '../components/Layout';
 import { routePath } from '../constants/routePath';
 import styles from '../constants/stylesProperty';
-
 import CookbooksContainter from '../pages/Cookbooks/Cookbooks.Containter';
 import HomePage from '../pages/HomePage';
+import ProfileCookbooksContainer from '../pages/ProfileCookbooks/ProfileCookbooks.Container';
+import ProfileRecepiesContainer from '../pages/ProfileRecepies/ProfileRecepies.Container';
+import ProfileSettingsContainer from '../pages/ProfileSettings/ProfileSettings.Container';
 import RecepiesContainer from '../pages/Recepies/Recepies.Container';
 import SignInContainer from '../pages/SignIn/SignIn.Container';
 import SignUpContainer from '../pages/SignUp/SignUp.Container';
@@ -52,6 +55,59 @@ const Routes = () => {
 							path={routePath.ABOUT_US}
 							element={<div>About us</div>}
 						></Route>
+						<Route path={routePath.PROFILE + ':id'}>
+							<Route
+								index
+								element={
+									<Navigate
+										to={'.' + routePath.PROFILE_COOKBOOKS}
+									/>
+								}
+							/>
+							<Route
+								path={
+									routePath.PROFILE +
+									':id' +
+									routePath.PROFILE_COOKBOOKS
+								}
+								element={<ProfileCookbooksContainer />}
+							></Route>
+							<Route
+								path={
+									routePath.PROFILE +
+									':id' +
+									routePath.PROFILE_COOKBOOKS +
+									':cookbookid'
+								}
+								element={<ProfileCookbooksContainer />}
+							></Route>
+							<Route
+								path={
+									routePath.PROFILE +
+									':id' +
+									routePath.PROFILE_RECEPIES
+								}
+								element={<ProfileRecepiesContainer />}
+							></Route>
+							<Route
+								path={
+									routePath.PROFILE +
+									':id' +
+									routePath.PROFILE_RECEPIES +
+									':recipeid'
+								}
+								element={<ProfileRecepiesContainer />}
+							></Route>
+							<Route
+								path={
+									routePath.PROFILE +
+									':id' +
+									routePath.PROFILE_SETTINGS
+								}
+								element={<ProfileSettingsContainer />}
+							></Route>
+						</Route>
+
 						<Route
 							path={'*'}
 							element={<div>Not found</div>}

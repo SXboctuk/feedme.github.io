@@ -19,7 +19,7 @@ export const ContentSearchTemplateSelectedPageBlock = styled.div`
 	margin-bottom: 40px;
 `;
 export const ContentSearchTemplateVariant = styled.div`
-	font-family: Montserrat;
+	font-family: 'Montserrat';
 	font-weight: 600;
 	font-size: 20px;
 	line-height: 24px;

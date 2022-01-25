@@ -76,6 +76,7 @@ export const CardSvgWatch = styled(SvgWatch)`
 `;
 export const CardText = styled.div`
 	width: 100%;
+	max-width: 600px;
 	margin-bottom: ${styles.distances.md};
 	color: ${({ theme }) => theme.colors.textMain};
 	font-weight: normal;
@@ -120,6 +121,7 @@ export const TitleAndCreatorBlock = styled(CardInnerBlock)`
 export const CardWideWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
+	width: 100%;
 `;
 export const CardWideImageWrapper = styled.div`
 	width: 30%;
@@ -132,6 +134,7 @@ export const CardWideContent = styled.div`
 	padding: ${styles.distances.mdPlus};
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 `;
 export const CardWideSocialCounter = styled.div`
 	display: flex;

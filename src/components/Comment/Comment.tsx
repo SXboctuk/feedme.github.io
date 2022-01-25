@@ -18,9 +18,6 @@ const Comment = (props: IComment) => {
 	const getDateString = (date: Date) => {
 		const currentTime = new Date();
 
-		console.log((currentTime.getTime() - date.getTime()) / (1000 * 60));
-		console.log(currentTime.getHours());
-		console.log(date.getHours());
 		if (
 			(currentTime.getTime() - date.getTime()) / (1000 * 60 * 60) <= 8 &&
 			(currentTime.getTime() - date.getTime()) / (1000 * 60 * 60) > 1
@@ -67,7 +64,7 @@ const Comment = (props: IComment) => {
 
 			<CommentTextBlock>
 				<CommentTextHeader>
-					<CommentUserName to={routePath.USER_BY_ID + userId}>
+					<CommentUserName to={routePath.PROFILE + userId}>
 						{userName}
 					</CommentUserName>
 					<CommentDispatchTime>

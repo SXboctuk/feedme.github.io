@@ -13,6 +13,6 @@ export const ContainerStyled = styled.div<containerProps>`
 	}
 	@media (max-width: ${styles.screenSize.md}) {
 		max-width: 100%;
-		padding: ${styles.containerMediaMdPadding};
+		padding: 0 ${styles.distances.md};
 	}
 `;

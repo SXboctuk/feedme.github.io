@@ -6,6 +6,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 const CookbookContainer = (props: { id: string }) => {
 	//fetch cookbook from server by id
 	const data = cookbookMockData;
+	console.log(props.id);
 	const { width } = useWindowSize();
 	return <Cookbook cookbookData={data} width={width} />;
 };

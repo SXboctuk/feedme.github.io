@@ -2,9 +2,12 @@ import { UserState, UserAction, UserActionTypes } from './UserReducer.types';
 
 const userInitialState: UserState = {
 	isAuth: false,
-	userName: null,
-	id: null,
-	role: null,
+	userName: '',
+	userText: '',
+	email: '',
+	image: '',
+	id: '',
+	role: '',
 	loading: false,
 	error: null,
 };
@@ -22,6 +25,9 @@ export const userReducer = (
 				error: null,
 				isAuth: true,
 				userName: action.payload.userName,
+				userText: action.payload.userText,
+				email: action.payload.email,
+				image: action.payload.image,
 				role: action.payload.role,
 				id: action.payload.id,
 			};

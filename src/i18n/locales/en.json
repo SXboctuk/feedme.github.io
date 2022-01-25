@@ -81,7 +81,24 @@
 	"passwordConfirm": "Confirm Password",
 
 	"signupTitle": "Join Our Community",
-	"signupUnderTitle": "Already have an account?"
+	"signupUnderTitle": "Already have an account?",
+
+	"createNewCookbook": "Create New Cookbook",
+	"createNewRecepie": "Create New Recepie",
+
+	"myCookbooks": "My Cookbooks",
+	"myRecepies": "My Recepies",
+	"mySettings": "My Settings",
+
+	"personalInformation": "Personal Information",
+	"name": "Name",
+	"email": "Email",
+	"edit": "Edit",
+	"changeMyPassword": "Change My Password",
+	"save": "Save",
+	"close": "Close"
+
+
 
   }
   

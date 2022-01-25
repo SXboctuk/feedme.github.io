@@ -12,9 +12,13 @@ const SignUp = (props: {
 	handlerLogin: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	handlerPassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	handlerPasswordConfirm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handlerFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 	loginError: string;
 	passwordError: string;
 	passwordConfirmError: string;
+	loginValue: string;
+	passwordValue: string;
+	passwordConfirmValue: string;
 }) => {
 	const {
 		handlerLogin,
@@ -23,6 +27,10 @@ const SignUp = (props: {
 		passwordError,
 		handlerPasswordConfirm,
 		passwordConfirmError,
+		handlerFormSubmit,
+		loginValue,
+		passwordValue,
+		passwordConfirmValue,
 	} = props;
 	const { t } = useTranslation();
 	return (
@@ -33,12 +41,13 @@ const SignUp = (props: {
 				underTitleText={t('signupUnderTitle')}
 				title={t('signupTitle')}
 			>
-				<form>
+				<form onSubmit={handlerFormSubmit}>
 					<SignupputWrapper>
 						<Input
 							labelText={t('login')}
 							handlerInput={handlerLogin}
 							error={loginError}
+							value={loginValue}
 						/>
 					</SignupputWrapper>
 					<SignupputWrapper>
@@ -47,6 +56,7 @@ const SignUp = (props: {
 							handlerInput={handlerPassword}
 							error={passwordError}
 							type={'password'}
+							value={passwordValue}
 							forgotLink
 						/>
 					</SignupputWrapper>
@@ -55,6 +65,7 @@ const SignUp = (props: {
 							labelText={t('passwordConfirm')}
 							handlerInput={handlerPasswordConfirm}
 							error={passwordConfirmError}
+							value={passwordConfirmValue}
 							type={'password'}
 						/>
 					</SignupputWrapper>
