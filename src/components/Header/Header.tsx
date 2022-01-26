@@ -11,16 +11,18 @@ import {
 	HeaderHamburger,
 	HeaderNavBlock,
 	HeaderStyled,
+	HeaderUserWrapper,
 } from './Header.Styled';
 import styles from '../../constants/stylesProperty';
 
 import { useTranslation } from 'react-i18next';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import SvgUser from '../Svg/SvgUser';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
 	const { t } = useTranslation();
-
+	const navigate = useNavigate();
 	const headerNavBlockRef = createRef<HTMLDivElement>();
 
 	const hamburgerHandler = () => {
@@ -40,16 +42,30 @@ const Header = () => {
 						<Link to={routePath.RECEPIES}>{t('recepies')}</Link>
 						<Link to={routePath.COOKBOOKS}>{t('cookbooks')}</Link>
 						<HeaderSearch />
-						<Button variant="outline">
+						<Button
+							variant="outline"
+							onClick={() => {
+								if (isAuth) {
+									navigate(
+										routePath.PROFILE +
+											id +
+											routePath.PROFILE_COOKBOOKS +
+											routePath.CREATE_COOKBOOK,
+									);
+								} else {
+									navigate('../' + routePath.SIGN_IN);
+								}
+							}}
+						>
 							{t('buttonCreateCookbook')}
 						</Button>
 						{isAuth ? (
-							<div>
+							<HeaderUserWrapper>
 								<SvgUser />{' '}
 								<Link to={routePath.PROFILE + id}>
 									{userName}
 								</Link>
-							</div>
+							</HeaderUserWrapper>
 						) : (
 							<Link to={routePath.SIGN_IN}>{t('signin')}</Link>
 						)}

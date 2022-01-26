@@ -3,9 +3,9 @@ import styles from '../../../constants/stylesProperty';
 
 export const ButtonOutline = styled.button<{ wide?: true }>`
 	color: ${({ theme }) => theme.colors.primary};
-	border: 3px solid ${({ theme }) => theme.colors.primary};
+	outline: 3px solid ${({ theme }) => theme.colors.primary};
 	background: none;
-
+	border: none;
 	font-weight: bold;
 	font-size: 20px;
 	line-height: 30px;
@@ -48,10 +48,10 @@ export const ButtonSolid = styled.button<{ wide?: true }>`
 export const ButtonOutlineSend = styled(ButtonSolid)`
 	padding: 0 ${styles.distances.lg};
 	box-sizing: unset;
-	border: 3px solid ${({ theme }) => theme.colors.primary};
+	/* border: 3px solid ${({ theme }) => theme.colors.primary}; */
 	&:hover {
 		background: ${({ theme }) => theme.colors.white};
-		border: 3px solid ${({ theme }) => theme.colors.primary};
+		outline: 3px solid ${({ theme }) => theme.colors.primary};
 
 		path {
 			fill: ${({ theme }) => theme.colors.primary};
@@ -62,7 +62,7 @@ export const ButtonWhite = styled.button<{ wide?: true }>`
 	color: ${({ theme }) => theme.colors.primary};
 	border: none;
 	background-color: ${({ theme }) => theme.colors.white};
-	border: 3px solid ${({ theme }) => theme.colors.white};
+	outline: 3px solid ${({ theme }) => theme.colors.white};
 	font-weight: bold;
 	font-size: 20px;
 	line-height: 30px;

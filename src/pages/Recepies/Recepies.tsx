@@ -41,7 +41,7 @@ const Recepies = (props: RecepiesProps) => {
 								? recepiesCard.map((elem) => {
 										return (
 											<Card
-												to={`${routePath.RECEPIES}/${elem.to}`}
+												to={`${routePath.RECEPIES}${elem.to}`}
 												key={elem.key}
 												text={elem.text}
 												viewsCounter={elem.viewsCounter}

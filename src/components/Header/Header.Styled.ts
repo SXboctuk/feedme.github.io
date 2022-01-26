@@ -50,3 +50,11 @@ export const HeaderHamburger = styled.div`
 export const HeaderBackground = styled.div`
 	background-color: ${({ theme }) => theme.colors.white};
 `;
+
+export const HeaderUserWrapper = styled.div`
+	@media (max-width: ${styles.screenSize.sm}) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+`;

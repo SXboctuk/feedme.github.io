@@ -69,7 +69,7 @@ const Card = (props: CardProps) => {
 									</CardCounterText>
 								</AlignCenterBlock>
 							</CardWideSocialCounter>
-							{isAuth ? (
+							{isAuth && props.OptionType !== 'Hidden' ? (
 								<OptionButtonContainer
 									type={props.OptionType}
 									elemId={props.to}
@@ -92,7 +92,7 @@ const Card = (props: CardProps) => {
 								{props.viewsCounter} {t('views')}
 							</CardCounterText>
 						</AlignCenterBlock>
-						{isAuth ? (
+						{isAuth && props.OptionType !== 'Hidden' ? (
 							<OptionButtonContainer
 								type={props.OptionType}
 								elemId={props.to}

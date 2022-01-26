@@ -11,12 +11,14 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import useWindowSize from '../../hooks/useWindowSize';
 import { CardRecepie } from '../../interfaces/CardRecipe';
 import { IUser } from '../../interfaces/User';
+import CreateRecepie from '../CreateRecepie';
 import RecipeContainer from '../Recipe/Recipe.Container';
 import { ProfileRecepiesContentWrapper } from './ProfileRecepies.Styled';
 
 import data from '/src/constants/mocks/RecepiesCard.json';
 
-const ProfileRecepies = () => {
+const ProfileRecepies = (props: { create?: true }) => {
+	const { create } = props;
 	const { t } = useTranslation();
 	const params = useParams();
 	const { id, userName, image, userText } = useTypedSelector(
@@ -29,6 +31,7 @@ const ProfileRecepies = () => {
 		userText: '',
 	});
 	const [userRecepies, setUserRecepies] = useState<CardRecepie[]>([]);
+	const [showCreate, setShowCreate] = useState(create || false);
 	const isOwner = params.id === id;
 	useEffect(() => {
 		if (isOwner) {
@@ -61,7 +64,9 @@ const ProfileRecepies = () => {
 					<ProfileNavigation
 						itemSelect="recepies"
 						buttonText={t('createNewRecepie')}
-						handlerButton={(e) => e}
+						handlerButton={() => {
+							setShowCreate(true);
+						}}
 						isOwner={isOwner}
 					/>
 					<ProfileRecepiesContentWrapper>
@@ -109,6 +114,11 @@ const ProfileRecepies = () => {
 				</Container>
 			</ContentWrapper>
 			{params.recipeid ? <RecipeContainer id={params.recipeid} /> : null}
+			{showCreate ? (
+				<CreateRecepie
+					handlerCloseButton={() => setShowCreate(false)}
+				/>
+			) : null}
 		</>
 	);
 };

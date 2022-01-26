@@ -68,10 +68,26 @@ const Routes = () => {
 								path={
 									routePath.PROFILE +
 									':id' +
+									routePath.PROFILE_COOKBOOKS +
+									routePath.CREATE_COOKBOOK
+								}
+							>
+								<Route
+									index
+									element={
+										<ProfileCookbooksContainer create />
+									}
+								></Route>
+							</Route>
+							<Route
+								path={
+									routePath.PROFILE +
+									':id' +
 									routePath.PROFILE_COOKBOOKS
 								}
 								element={<ProfileCookbooksContainer />}
 							></Route>
+
 							<Route
 								path={
 									routePath.PROFILE +

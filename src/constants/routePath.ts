@@ -10,4 +10,5 @@ export enum routePath {
 	PROFILE_SETTINGS = '/settings/',
 	PROFILE_COOKBOOKS = '/cookbooks/',
 	PROFILE_RECEPIES = '/recepies/',
+	CREATE_COOKBOOK = 'create/',
 }

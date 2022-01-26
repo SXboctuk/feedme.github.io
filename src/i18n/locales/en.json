@@ -96,7 +96,13 @@
 	"edit": "Edit",
 	"changeMyPassword": "Change My Password",
 	"save": "Save",
-	"close": "Close"
+	"close": "Close",
+
+	"cookbookTitle": "Cookbook title",
+	"recepieTitle": "Recepie title",
+	"uploadCookbookImage": "Upload Cookbook Image",
+	"cancel": "Cancel",
+	"confirm": "Confirm"
 
 
 

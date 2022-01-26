@@ -42,6 +42,7 @@ export const RecipeContent = styled.div`
 
 export const RecipeHeader = styled.div`
 	display: flex;
+	justify-content: space-between;
 `;
 
 export const RecipeMainTitle = styled.div`

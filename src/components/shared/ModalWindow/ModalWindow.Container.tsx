@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ModalWindow from '.';
 
-const ModalWindowContainer = (props: React.HTMLProps<HTMLDivElement>) => {
+const ModalWindowContainer = (props: {
+	handlerCloseButton?: () => void;
+	children?: React.ReactNode;
+}) => {
 	const navigate = useNavigate();
-
+	const { handlerCloseButton } = props;
 	const handlerShow = () => {
 		navigate(-1);
 	};
@@ -16,7 +19,9 @@ const ModalWindowContainer = (props: React.HTMLProps<HTMLDivElement>) => {
 		};
 	}, []);
 	return (
-		<ModalWindow handlerShow={handlerShow}>{props.children}</ModalWindow>
+		<ModalWindow handlerShow={handlerCloseButton || handlerShow}>
+			{props.children}
+		</ModalWindow>
 	);
 };
 

@@ -19,6 +19,23 @@ export const InputStyled = styled.input`
 		border: 1px solid ${({ theme }) => theme.colors.danger};
 	}
 `;
+export const TextAreaStyled = styled.textarea`
+	width: 100%;
+	max-width: 100%;
+	max-height: 400px;
+	min-height: 200px;
+	border: 1px solid ${({ theme }) => theme.colors.grayDark};
+	border-radius: ${({ theme }) => theme.borderRadiusSmall};
+	padding: ${styles.distances.md} ${styles.distances.sm};
+
+	&:focus {
+		outline: none;
+	}
+
+	&.error {
+		border: 1px solid ${({ theme }) => theme.colors.danger};
+	}
+`;
 export const InputHeaderBlock = styled.div`
 	font-weight: normal;
 	font-size: 14px;

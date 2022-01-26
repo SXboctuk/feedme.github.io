@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ContentWrapper from '../../components/ContentWrapper';
 import ProfileHeader from '../../components/ProfileHeader';
 import ProfileNavigation from '../../components/ProfileNavigation';
@@ -11,11 +11,13 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { CardCookbook } from '../../interfaces/CardCookbook';
 import { IUser } from '../../interfaces/User';
 import CookbookContainer from '../Cookbook/Cookbook.Container';
+import CreateCookbook from '../CreateCookbook';
 import { ProfileCookbooksContentWrapper } from './ProfileCookbook.Styled';
 
 import data from '/src/constants/mocks/CookbooksCard.json';
 
-const ProfileCookbooks = () => {
+const ProfileCookbooks = (props: { create?: true }) => {
+	const { create } = props;
 	const { t } = useTranslation();
 	const params = useParams();
 	const { id, image, userName, userText } = useTypedSelector(
@@ -26,8 +28,10 @@ const ProfileCookbooks = () => {
 		imageSrc: '',
 		userText: '',
 	});
-	const isOwner = params.id === id;
+
 	const [userCookbooks, setUserCookbooks] = useState<CardCookbook[]>([]);
+	const [showCreate, setShowCreate] = useState(create || false);
+	const isOwner = params.id === id;
 	useEffect(() => {
 		if (isOwner) {
 			setUserData({
@@ -60,7 +64,7 @@ const ProfileCookbooks = () => {
 					<ProfileNavigation
 						itemSelect="cookbooks"
 						buttonText={t('createNewCookbook')}
-						handlerButton={(e) => e}
+						handlerButton={() => setShowCreate(true)}
 						isOwner={isOwner}
 					/>
 					<ProfileCookbooksContentWrapper>
@@ -86,6 +90,11 @@ const ProfileCookbooks = () => {
 			</ContentWrapper>
 			{params.cookbookid ? (
 				<CookbookContainer id={params.cookbookid} />
+			) : null}
+			{showCreate ? (
+				<CreateCookbook
+					handlerCloseButton={() => setShowCreate(false)}
+				/>
 			) : null}
 		</>
 	);

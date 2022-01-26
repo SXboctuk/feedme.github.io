@@ -14,7 +14,7 @@ export interface CardProps {
 	isWithoutMilk?: boolean;
 	isWithoutEggs?: boolean;
 	type?: 'wide';
-	OptionType: 'Recepie' | 'Cookbook';
+	OptionType: 'Recepie' | 'Cookbook' | 'Hidden';
 }
 
 export interface StyledCardInnerBlockProps {
