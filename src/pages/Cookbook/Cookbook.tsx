@@ -32,8 +32,13 @@ import {
 	CookbookRecepies,
 } from './Cookbook.Styled';
 
-const Cookbook = (props: { cookbookData: ICookbook; width: number }) => {
-	const { cookbookData, width } = props;
+const Cookbook = (props: {
+	cookbookData: ICookbook;
+	width: number;
+	isAuth: boolean;
+	isOwner: boolean;
+}) => {
+	const { cookbookData, width, isOwner, isAuth } = props;
 	const {
 		comments,
 		creatorId,
@@ -56,15 +61,15 @@ const Cookbook = (props: { cookbookData: ICookbook; width: number }) => {
 						<CookbookHeaderBlock>
 							<CookbookMainTitle>{title}</CookbookMainTitle>
 							<CookbookButtonWrapper>
-								<Button variant={'solid'}>
-									{t('CloneToMyCookbooks')}
-								</Button>
+								{isAuth && !isOwner ? (
+									<Button variant={'solid'}>
+										{t('CloneToMyCookbooks')}
+									</Button>
+								) : null}
 							</CookbookButtonWrapper>
 						</CookbookHeaderBlock>
 						<CookbookCreatorBlock>
-							<CookbookCreator
-								to={routePath.PROFILE + { creatorId }}
-							>
+							<CookbookCreator to={routePath.PROFILE + creatorId}>
 								{creatorName}
 							</CookbookCreator>
 						</CookbookCreatorBlock>

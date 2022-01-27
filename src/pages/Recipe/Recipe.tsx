@@ -32,8 +32,12 @@ import {
 } from './Recipe.Styled';
 import CommentsBlock from '../../components/CommentsBlock';
 
-const Recipe = (props: { recipeData: IRecipe }) => {
-	const { recipeData } = props;
+const Recipe = (props: {
+	recipeData: IRecipe;
+	isAuth: boolean;
+	isOwner: boolean;
+}) => {
+	const { recipeData, isAuth, isOwner } = props;
 	const {
 		comments,
 		creatorName,
@@ -58,10 +62,12 @@ const Recipe = (props: { recipeData: IRecipe }) => {
 							<RecipeHeader>
 								<RecipeMainTitle>{title}</RecipeMainTitle>
 								<RecipeButtonWrapper>
-									<Button
-										variant={'outlineAdd'}
-										onClick={() => alert(id)}
-									/>
+									{isAuth && !isOwner ? (
+										<Button
+											variant={'outlineAdd'}
+											onClick={() => alert(id)}
+										/>
+									) : null}
 								</RecipeButtonWrapper>
 							</RecipeHeader>
 							<RecipeCreatorName

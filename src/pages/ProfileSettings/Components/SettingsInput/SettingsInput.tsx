@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { regexString } from '../../../../constants/regex';
 import {
 	SettingItem,
 	SettingsItemName,
@@ -7,6 +8,7 @@ import {
 	SettingsItemButton,
 	SettingItemWrapper,
 	SettingsButtonsWrapper,
+	SettingErrorText,
 } from './SettingsInput.Styled';
 
 const SettingsInput = (props: {
@@ -15,27 +17,60 @@ const SettingsInput = (props: {
 	buttonName: string;
 	saveButton: (newValue: string) => void;
 	isPassword?: true;
+	error?: string;
+	handlerInputChange?: () => void;
+	isEmail?: true;
 }) => {
-	const { value, name, buttonName, saveButton, isPassword } = props;
+	const {
+		value,
+		name,
+		buttonName,
+		saveButton,
+		isPassword,
+		error,
+		handlerInputChange,
+		isEmail,
+	} = props;
 	const [showInput, setShowInput] = useState(false);
 	const [newValue, setNewValue] = useState(value);
 	const { t } = useTranslation();
 	const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setNewValue(e.target.value);
+		if (isEmail) {
+			if (
+				e.target.value.match(regexString.IS_VALID_STRING_EMAIL) !== null
+			) {
+				setNewValue(e.target.value);
+				if (handlerInputChange) {
+					handlerInputChange();
+				}
+			}
+		} else {
+			if (e.target.value.match(regexString.IS_VALID_STRING) !== null) {
+				setNewValue(e.target.value);
+				if (handlerInputChange) {
+					handlerInputChange();
+				}
+			}
+		}
 	};
 
 	return (
 		<SettingItem>
 			<SettingsItemName>{name}</SettingsItemName>
 			{showInput ? (
-				<SettingItemWrapper>
-					<SettingsItemInput
-						style={{ width: newValue.length * 10.7 + 'px' }}
-						value={newValue}
-						onChange={handlerInput}
-						autoFocus
-					/>
-				</SettingItemWrapper>
+				<>
+					<SettingItemWrapper>
+						<SettingsItemInput
+							style={{ width: newValue.length * 10.7 + 'px' }}
+							value={newValue}
+							onChange={handlerInput}
+							autoFocus
+						/>
+					</SettingItemWrapper>
+					{error && error.length !== 0 ? (
+						<SettingErrorText>{error}</SettingErrorText>
+					) : null}
+				</>
 			) : (
 				<SettingsItemInput
 					style={{ width: newValue.length * 10.7 + 'px' }}

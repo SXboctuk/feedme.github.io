@@ -1,12 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 import ContentWrapper from '../../components/ContentWrapper';
 import ProfileHeader from '../../components/ProfileHeader';
 import ProfileNavigation from '../../components/ProfileNavigation';
 import Container from '../../components/shared/Container';
 import styles from '../../constants/stylesProperty';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { UserState } from '../../redux/reducers/UserReducer/UserReducer.types';
 import SettingsInput from './Components/SettingsInput/SettingsInput';
 import {
 	ProfileSettingsContentWrapper,
@@ -14,14 +13,40 @@ import {
 	ProfileSettingsItemsBlock,
 } from './ProfileSettings.Styled';
 
-const ProfileSettings = () => {
+const ProfileSettings = (props: {
+	isOwner: boolean;
+	user: UserState;
+	refInputUploadFile: React.RefObject<HTMLInputElement>;
+	handlerUploadInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handlerPhotoClick: (e: React.MouseEvent) => void;
+	handlerSaveName: (str: string) => void;
+	handlerSaveEmail: (str: string) => void;
+	handlerSavePassword: (str: string) => void;
+	errorName: string;
+	errorEmail: string;
+	errorPassword: string;
+	handlerChangeName: () => void;
+	handlerChangeEmail: () => void;
+	handlerChangePassword: () => void;
+}) => {
 	const { t } = useTranslation();
-	const params = useParams();
-	const { id, userText, userName, email, image } = useTypedSelector(
-		(state) => state.userReducer,
-	);
-
-	const isOwner = params.id === id;
+	const {
+		isOwner,
+		user,
+		refInputUploadFile,
+		handlerUploadInput,
+		handlerPhotoClick,
+		handlerSaveName,
+		handlerSaveEmail,
+		handlerSavePassword,
+		errorName,
+		errorEmail,
+		errorPassword,
+		handlerChangeName,
+		handlerChangeEmail,
+		handlerChangePassword,
+	} = props;
+	const { userText, userName, email, image } = user;
 
 	if (!isOwner) {
 		return <div>Wooops</div>;
@@ -35,8 +60,15 @@ const ProfileSettings = () => {
 						imageSrc={image}
 						userName={userName}
 						userText={userText}
-						handlerPhotoClick={(e) => e}
+						handlerPhotoClick={handlerPhotoClick}
 					/>
+					<input
+						ref={refInputUploadFile}
+						type={'file'}
+						onChange={handlerUploadInput}
+						accept="image/*"
+						hidden
+					></input>
 					<ProfileNavigation
 						itemSelect="settings"
 						isOwner={isOwner}
@@ -50,20 +82,27 @@ const ProfileSettings = () => {
 								buttonName={t('edit')}
 								name={t('name')}
 								value={userName}
-								saveButton={(newValue) => newValue}
+								saveButton={handlerSaveName}
+								error={errorName}
+								handlerInputChange={handlerChangeName}
 							/>
 							<SettingsInput
 								buttonName={t('edit')}
 								name={t('email')}
 								value={email}
-								saveButton={(newValue) => newValue}
+								saveButton={handlerSaveEmail}
+								error={errorEmail}
+								handlerInputChange={handlerChangeEmail}
+								isEmail
 							/>
 							<SettingsInput
 								buttonName={t('changeMyPassword')}
 								name={t('Password')}
 								value={''}
-								saveButton={(newValue) => newValue}
+								saveButton={handlerSavePassword}
+								error={errorPassword}
 								isPassword
+								handlerInputChange={handlerChangePassword}
 							/>
 						</ProfileSettingsItemsBlock>
 					</ProfileSettingsContentWrapper>

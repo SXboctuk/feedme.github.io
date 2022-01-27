@@ -72,3 +72,7 @@ export const SettingsItemButton = styled.button`
 	cursor: pointer;
 	margin-left: ${styles.distances.md};
 `;
+
+export const SettingErrorText = styled.div`
+	color: ${({ theme }) => theme.colors.danger};
+`;

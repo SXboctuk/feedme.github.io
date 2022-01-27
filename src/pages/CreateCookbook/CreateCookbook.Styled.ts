@@ -83,3 +83,29 @@ export const CreateCookbookRecepies = styled.div`
 	grid-template-columns: 1fr;
 	grid-gap: ${styles.distances.mdPlus};
 `;
+
+export const CreateCookbookError = styled.div`
+	font-size: 16px;
+	margin-top: ${styles.distances.xs};
+	color: ${({ theme }) => theme.colors.danger};
+`;
+export const CreateCookbookPrevieImageWrapper = styled.div`
+	margin-top: ${styles.distances.mdPlus};
+	border-radius: ${({ theme }) => theme.borderRadiusImage};
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+
+	&:after {
+		content: '';
+		display: block;
+		padding-top: 50%;
+	}
+`;
+export const CreateCookbookPreviewImage = styled.img`
+	position: absolute;
+	top: 0;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+`;

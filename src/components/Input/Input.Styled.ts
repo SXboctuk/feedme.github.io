@@ -52,6 +52,7 @@ export const InputLink = styled(Link)`
 export const InputBlock = styled.div``;
 export const InputLabel = styled.label``;
 export const InputError = styled.div`
+	font-size: 16px;
 	margin-top: ${styles.distances.xs};
 	color: ${({ theme }) => theme.colors.danger};
 `;

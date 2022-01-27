@@ -1,65 +1,63 @@
-import React, { useEffect, useState } from 'react';
+import { Dispatch } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
 import ContentWrapper from '../../components/ContentWrapper';
 import ProfileHeader from '../../components/ProfileHeader';
 import ProfileNavigation from '../../components/ProfileNavigation';
 import Card from '../../components/shared/Card';
 import Container from '../../components/shared/Container';
+import Spinner from '../../components/shared/Spinner';
 import styles from '../../constants/stylesProperty';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+
 import { CardCookbook } from '../../interfaces/CardCookbook';
 import { IUser } from '../../interfaces/User';
+
 import CookbookContainer from '../Cookbook/Cookbook.Container';
 import CreateCookbook from '../CreateCookbook';
 import { ProfileCookbooksContentWrapper } from './ProfileCookbook.Styled';
 
-import data from '/src/constants/mocks/CookbooksCard.json';
-
-const ProfileCookbooks = (props: { create?: true }) => {
-	const { create } = props;
+const ProfileCookbooks = (props: {
+	userData: IUser;
+	isOwner: boolean;
+	userCookbooks: CardCookbook[];
+	cookbookid: string | undefined;
+	showCreate: boolean;
+	setShowCreate: Dispatch<boolean>;
+	error: string | null;
+	loadingCookbooks: boolean;
+}) => {
+	const {
+		showCreate,
+		userData,
+		setShowCreate,
+		isOwner,
+		userCookbooks,
+		cookbookid,
+		error,
+		loadingCookbooks,
+	} = props;
 	const { t } = useTranslation();
-	const params = useParams();
-	const { id, image, userName, userText } = useTypedSelector(
-		(state) => state.userReducer,
-	);
-	const [userData, setUserData] = useState<IUser>({
-		userName: '',
-		imageSrc: '',
-		userText: '',
-	});
 
-	const [userCookbooks, setUserCookbooks] = useState<CardCookbook[]>([]);
-	const [showCreate, setShowCreate] = useState(create || false);
-	const isOwner = params.id === id;
-	useEffect(() => {
-		if (isOwner) {
-			setUserData({
-				userName: userName,
-				imageSrc: image,
-				userText: userText,
-			});
-		} else {
-			//fetch user by params.id
-			setUserData({
-				userName: 'UserName',
-				imageSrc: '/public/assets/images/SignIn.jpg',
-				userText: 'UserTEXT',
-			});
-		}
-
-		//fetch user recepies by params.id
-		setUserCookbooks(data);
-	}, []);
-
+	if (error) return <div>Error</div>;
 	return (
 		<>
 			<ContentWrapper>
 				<Container maxWidth={styles.screenSize.lg}>
 					<ProfileHeader
-						imageSrc={userData.imageSrc}
-						userName={userData.userName}
-						userText={userData.userText}
+						imageSrc={
+							userData.imageSrc === ''
+								? '/public/assets/images/userDefault.png'
+								: userData.imageSrc
+						}
+						userName={
+							userData.userName === ''
+								? 'Loading...'
+								: userData.userName
+						}
+						userText={
+							userData.userText === ''
+								? 'Loading...'
+								: userData.userText
+						}
 					/>
 					<ProfileNavigation
 						itemSelect="cookbooks"
@@ -67,31 +65,35 @@ const ProfileCookbooks = (props: { create?: true }) => {
 						handlerButton={() => setShowCreate(true)}
 						isOwner={isOwner}
 					/>
-					<ProfileCookbooksContentWrapper>
-						{userCookbooks.map((elem) => {
-							return (
-								<Card
-									to={`./${elem.to}`}
-									key={elem.key}
-									text={elem.text}
-									viewsCounter={elem.viewsCounter}
-									titleName={elem.titleName}
-									creatorName={elem.creatorName}
-									imageSrc={elem.imageSrc}
-									likesCounter={elem.likesCounter}
-									commentsCounter={elem.commentsCounter}
-									OptionType={'Cookbook'}
-									creatorId={elem.creatorId}
-								/>
-							);
-						})}
-					</ProfileCookbooksContentWrapper>
+					{loadingCookbooks ? (
+						<Spinner />
+					) : (
+						<ProfileCookbooksContentWrapper>
+							{userCookbooks.map((elem) => {
+								return (
+									<Card
+										to={`./${elem.to}`}
+										key={elem.key}
+										text={elem.text}
+										viewsCounter={elem.viewsCounter}
+										titleName={elem.titleName}
+										creatorName={elem.creatorName}
+										imageSrc={elem.imageSrc}
+										likesCounter={elem.likesCounter}
+										commentsCounter={elem.commentsCounter}
+										OptionType={'Cookbook'}
+										creatorId={elem.creatorId}
+									/>
+								);
+							})}
+						</ProfileCookbooksContentWrapper>
+					)}
 				</Container>
 			</ContentWrapper>
-			{params.cookbookid ? (
-				<CookbookContainer id={params.cookbookid} />
+			{cookbookid && cookbookid !== 'create' ? (
+				<CookbookContainer id={cookbookid} />
 			) : null}
-			{showCreate ? (
+			{cookbookid === 'create' || showCreate ? (
 				<CreateCookbook
 					handlerCloseButton={() => setShowCreate(false)}
 				/>

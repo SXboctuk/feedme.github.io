@@ -22,7 +22,7 @@ const ProfileHeader = (props: {
 	return (
 		<ProfileHeaderBlock>
 			<ProfileHeaderWrapper>
-				<ProfileHeaderImageWrapper>
+				<ProfileHeaderImageWrapper onClick={handlerPhotoClick}>
 					<ProfileHeaderImage src={imageSrc} />
 					{handlerPhotoClick ? (
 						<ProfileHeaderHover>

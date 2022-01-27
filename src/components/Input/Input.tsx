@@ -17,12 +17,14 @@ const Input = (props: {
 	labelText: string | React.ReactNode;
 	textArea?: true;
 	placeholder?: string;
-	handlerInput: (e: React.ChangeEvent) => void;
+	handlerInput: (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => void;
 	value: string;
 	error?: string | null;
 	type?: 'password';
 	forgotLink?: true;
-}) => {
+}): JSX.Element => {
 	const { t } = useTranslation();
 	const {
 		textArea,

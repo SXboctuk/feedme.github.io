@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/Input';
@@ -6,17 +6,22 @@ import Button from '../../components/shared/Button';
 import Card from '../../components/shared/Card';
 import Container from '../../components/shared/Container';
 import ModalWindowContainer from '../../components/shared/ModalWindow/ModalWindow.Container';
-import { recepiesMockData } from '../../constants/mocks/Recepies';
+import { errorMassage } from '../../constants/errorMassage';
+import { regexString } from '../../constants/regex';
 import { routePath } from '../../constants/routePath';
 import styles from '../../constants/stylesProperty';
+import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import useWindowSize from '../../hooks/useWindowSize';
 import { CardRecepie } from '../../interfaces/CardRecipe';
 import {
 	CreateCookbookDropRecepieWrapper,
+	CreateCookbookError,
 	CreateCookbookFooterBlock,
 	CreateCookbookLabel,
 	CreateCookbookMainTitle,
+	CreateCookbookPrevieImageWrapper,
+	CreateCookbookPreviewImage,
 	CreateCookbookRecepies,
 	CreateCookbookRecepiesItem,
 	CreateCookbookRecepiesWrapper,
@@ -26,14 +31,127 @@ import {
 
 const CreateCookbook = (props: { handlerCloseButton: () => void }) => {
 	const { handlerCloseButton } = props;
+	const refInputUploadFile = createRef<HTMLInputElement>();
+
 	const { t } = useTranslation();
-	const [recipe, setRecepi] = useState<CardRecepie[]>([]);
 	const { width } = useWindowSize();
 	const navigate = useNavigate();
 	const { id } = useTypedSelector((state) => state.userReducer);
+	const { recepies } = useTypedSelector((state) => state.userRecepiesReducer);
+	const { fetchUserRecepies } = useAction();
+
+	const [title, setTitle] = useState<string>('');
+	const [uploadImage, setUploadImage] = useState<File>();
+	const [description, setDescription] = useState<string>('');
+	const [recepiesInCookbook, setRecepiesInCookbook] = useState<CardRecepie[]>(
+		[],
+	);
+
+	const [userRecepies, setUserRecepies] = useState<CardRecepie[]>(recepies);
+	const [recepieSearch, setRecepieSearch] = useState<string>('');
+	const [recepieShow, setRecepieShow] = useState<CardRecepie[]>([]);
+
+	const [titleError, setTitleError] = useState<string>('');
+	const [descriptionError, setDescriptionError] = useState<string>('');
+	const [imageError, setImageError] = useState<string>('');
+	const [recepiesError, setRecepiesError] = useState<string>('');
+
+	const handlerUploadButton = () => {
+		refInputUploadFile.current?.click();
+	};
+	const handlerUploadInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files) {
+			setUploadImage(e.target.files[0]);
+			setImageError('');
+		}
+	};
+	const handlerTitleInput = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		if (e.target.value.match(regexString.IS_VALID_STRING) !== null) {
+			setTitle(e.target.value);
+			setTitleError('');
+		}
+	};
+	const handlerDescriptionInput = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		if (e.target.value.match(regexString.IS_VALID_STRING) !== null) {
+			setDescription(e.target.value);
+			setDescriptionError('');
+		}
+	};
+	const handlerRicipeSearchInput = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		if (e.target.value.match(regexString.IS_VALID_STRING) !== null) {
+			setRecepieSearch(e.target.value);
+			setRecepiesError('');
+		}
+	};
+	const handlerAddRecepieInCookbook = (elem: CardRecepie) => {
+		setRecepiesInCookbook([...recepiesInCookbook, elem]);
+
+		const index = userRecepies.indexOf(elem);
+
+		setUserRecepies([
+			...userRecepies.slice(0, index),
+			...userRecepies.slice(index + 1),
+		]);
+	};
+	const handlerRemoveRecepieFromCookbook = (elem: CardRecepie) => {
+		setUserRecepies([...userRecepies, elem]);
+		const index = recepiesInCookbook.indexOf(elem);
+		setRecepiesInCookbook([
+			...recepiesInCookbook.slice(0, index),
+			...recepiesInCookbook.slice(index + 1),
+		]);
+	};
+	const handlerConfirm = () => {
+		if (title.match(regexString.IS_STRING_SHORT) === null) {
+			setTitleError(errorMassage.IS_SHORT);
+		}
+
+		if (!uploadImage) {
+			setImageError(errorMassage.NO_IMAGE);
+		}
+
+		if (
+			description.match(regexString.IS_STRING_SHORT_DESCRIPTION) === null
+		) {
+			setDescriptionError(errorMassage.IS_SHORT_DESCRIPTION);
+		}
+
+		if (recepiesInCookbook.length === 0) {
+			setRecepiesError(errorMassage.NO_RECEPIES);
+		}
+
+		if (
+			titleError.length === 0 &&
+			imageError.length === 0 &&
+			descriptionError.length === 0 &&
+			recepiesError.length === 0
+		) {
+			//fetch new cookbook and take from server cookbook and push in redux user Cookbooks
+			alert('All field is ok');
+		} else {
+			return;
+		}
+	};
 	useEffect(() => {
-		setRecepi(recepiesMockData.slice(0, 2));
-	}, []);
+		const recepiesSuitable =
+			userRecepies.filter(
+				(elem) =>
+					elem.titleName.toLowerCase().indexOf(recepieSearch) !== -1,
+			) || [];
+
+		setRecepieShow(recepiesSuitable);
+	}, [recepieSearch, userRecepies]);
+
+	useEffect(() => {
+		fetchUserRecepies(id);
+		setUserRecepies(recepies);
+	}, [recepies]);
 
 	return (
 		<ModalWindowContainer
@@ -49,104 +167,161 @@ const CreateCookbook = (props: { handlerCloseButton: () => void }) => {
 					</CreateCookbookMainTitle>
 					<div>
 						<Input
-							handlerInput={() => 1}
+							handlerInput={handlerTitleInput}
 							labelText={
 								<CreateCookbookLabel>
 									{t('cookbookTitle')}
 								</CreateCookbookLabel>
 							}
-							value={''}
+							value={title}
 							placeholder={t('title')}
+							error={titleError}
 						/>
+						{uploadImage ? (
+							<CreateCookbookPrevieImageWrapper>
+								<CreateCookbookPreviewImage
+									src={URL.createObjectURL(uploadImage)}
+								/>
+							</CreateCookbookPrevieImageWrapper>
+						) : null}
 						<CreateCookbookUploadWrapper>
-							<Button variant={'solid'}>
+							<Button
+								variant={'solid'}
+								onClick={handlerUploadButton}
+							>
 								{t('uploadCookbookImage')}
 							</Button>
+							<input
+								ref={refInputUploadFile}
+								type={'file'}
+								onChange={handlerUploadInput}
+								accept="image/*"
+								hidden
+							></input>
+							{imageError.length !== 0 ? (
+								<CreateCookbookError>
+									{imageError}
+								</CreateCookbookError>
+							) : null}
 						</CreateCookbookUploadWrapper>
 					</div>
 
 					<Input
-						handlerInput={() => 1}
+						handlerInput={handlerDescriptionInput}
 						textArea
 						labelText={
 							<CreateCookbookLabel>
 								{t('description')}
 							</CreateCookbookLabel>
 						}
-						value={''}
+						value={description}
 						placeholder={t('description')}
+						error={descriptionError}
 					/>
 					<Input
-						handlerInput={() => 1}
+						handlerInput={handlerRicipeSearchInput}
 						labelText={
 							<CreateCookbookLabel>
 								{t('recepies')}
 							</CreateCookbookLabel>
 						}
-						value={''}
+						value={recepieSearch}
 						placeholder={t('recepieTitle')}
+						error={recepiesError}
 					/>
-					<CreateCookbookDropRecepieWrapper>
-						<CreateCookbookRecepiesWrapper>
-							<CreateCookbookRecepiesItem>
-								test
-							</CreateCookbookRecepiesItem>
-							<CreateCookbookRecepiesItem>
-								test
-							</CreateCookbookRecepiesItem>
-							<CreateCookbookRecepiesItem>
-								test
-							</CreateCookbookRecepiesItem>
-							<CreateCookbookRecepiesItem>
-								test
-							</CreateCookbookRecepiesItem>
-						</CreateCookbookRecepiesWrapper>
-					</CreateCookbookDropRecepieWrapper>
+					{recepieSearch != '' && recepieShow.length !== 0 ? (
+						<CreateCookbookDropRecepieWrapper>
+							<CreateCookbookRecepiesWrapper>
+								{recepieShow.slice(0, 3).map((elem, i) => (
+									<CreateCookbookRecepiesItem
+										key={elem.key + i}
+										onClick={() =>
+											handlerAddRecepieInCookbook(elem)
+										}
+									>
+										{elem.titleName}
+									</CreateCookbookRecepiesItem>
+								))}
+							</CreateCookbookRecepiesWrapper>
+						</CreateCookbookDropRecepieWrapper>
+					) : null}
 					<CreateCookbookRecepies>
 						{width >= parseInt(styles.screenSize.sm)
-							? recipe.map((elem) => {
+							? recepiesInCookbook.map((elem) => {
 									return (
-										<Card
-											to={'#'}
-											key={elem.key}
-											text={elem.text}
-											viewsCounter={elem.viewsCounter}
-											titleName={elem.titleName}
-											creatorName={elem.creatorName}
-											imageSrc={elem.imageSrc}
-											likesCounter={elem.likesCounter}
-											commentsCounter={
-												elem.commentsCounter
-											}
-											type="wide"
-											OptionType={'Hidden'}
-											creatorId={elem.creatorId}
-										/>
+										<div
+											onClick={() => {
+												handlerRemoveRecepieFromCookbook(
+													elem,
+												);
+											}}
+											key={'newInCookbook' + elem.key}
+										>
+											<Card
+												to={'#'}
+												key={elem.key}
+												text={elem.text}
+												viewsCounter={elem.viewsCounter}
+												titleName={elem.titleName}
+												creatorName={elem.creatorName}
+												imageSrc={elem.imageSrc}
+												likesCounter={elem.likesCounter}
+												commentsCounter={
+													elem.commentsCounter
+												}
+												type="wide"
+												OptionType={'Hidden'}
+												creatorId={elem.creatorId}
+											/>
+										</div>
 									);
 							  })
-							: recipe.map((elem) => {
+							: recepiesInCookbook.map((elem) => {
 									return (
-										<Card
-											to={'#'}
-											key={elem.key}
-											text={elem.text}
-											viewsCounter={elem.viewsCounter}
-											titleName={elem.titleName}
-											creatorName={elem.creatorName}
-											imageSrc={elem.imageSrc}
-											likesCounter={elem.likesCounter}
-											commentsCounter={
-												elem.commentsCounter
-											}
-											OptionType={'Hidden'}
-											creatorId={elem.creatorId}
-										/>
+										<div
+											onClick={() => {
+												handlerRemoveRecepieFromCookbook(
+													elem,
+												);
+											}}
+											key={'newInCookbook' + elem.key}
+										>
+											<Card
+												to={'#'}
+												key={elem.key}
+												text={elem.text}
+												viewsCounter={elem.viewsCounter}
+												titleName={elem.titleName}
+												creatorName={elem.creatorName}
+												imageSrc={elem.imageSrc}
+												likesCounter={elem.likesCounter}
+												commentsCounter={
+													elem.commentsCounter
+												}
+												OptionType={'Hidden'}
+												creatorId={elem.creatorId}
+											/>
+										</div>
 									);
 							  })}
 					</CreateCookbookRecepies>
 					<CreateCookbookFooterBlock>
-						<Button variant={'outline'}>{t('cancel')}</Button>
-						<Button variant={'solid'}>{t('confirm')}</Button>
+						<Button
+							variant={'outline'}
+							onClick={() => {
+								navigate(
+									routePath.PROFILE +
+										id +
+										routePath.COOKBOOKS,
+								);
+								handlerCloseButton();
+							}}
+						>
+							{t('cancel')}
+						</Button>
+						<Button variant={'solid'} onClick={handlerConfirm}>
+							{t('confirm')}
+						</Button>
 					</CreateCookbookFooterBlock>
 				</CreateCookbookWrapper>
 			</Container>
