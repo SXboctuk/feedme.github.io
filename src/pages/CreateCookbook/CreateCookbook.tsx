@@ -14,7 +14,6 @@ import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import useWindowSize from '../../hooks/useWindowSize';
 import { CardRecepie } from '../../interfaces/CardRecipe';
-import { ICookbook } from '../../interfaces/Cookbook';
 import {
 	CreateCookbookDropRecepieWrapper,
 	CreateCookbookError,
@@ -37,14 +36,14 @@ const CreateCookbook = () => {
 	const { width } = useWindowSize();
 	const navigate = useNavigate();
 	const params = useParams();
-	const { id } = useTypedSelector((state) => state.userReducer);
-	const { recepies } = useTypedSelector((state) => state.userRecepiesReducer);
 	const { fetchUserRecepies } = useAction();
-	if (params.cookbookid) {
-		alert('edit');
-	}
+	const { id } = useTypedSelector((state) => state.userReducer);
+	const { cookbooks } = useTypedSelector(
+		(state) => state.userCookbooksReducer,
+	);
+	const { recepies } = useTypedSelector((state) => state.userRecepiesReducer);
 	const [title, setTitle] = useState<string>('');
-	const [uploadImage, setUploadImage] = useState<File>();
+	const [uploadImage, setUploadImage] = useState<File | string>();
 	const [description, setDescription] = useState<string>('');
 	const [recepiesInCookbook, setRecepiesInCookbook] = useState<CardRecepie[]>(
 		[],
@@ -99,12 +98,12 @@ const CreateCookbook = () => {
 	const handlerAddRecepieInCookbook = (elem: CardRecepie) => {
 		setRecepiesInCookbook([...recepiesInCookbook, elem]);
 
-		const index = userRecepies.indexOf(elem);
+		// const index = userRecepies.indexOf(elem);
 
-		setUserRecepies([
-			...userRecepies.slice(0, index),
-			...userRecepies.slice(index + 1),
-		]);
+		// setUserRecepies([
+		// 	...userRecepies.slice(0, index),
+		// 	...userRecepies.slice(index + 1),
+		// ]);
 	};
 	const handlerRemoveRecepieFromCookbook = (elem: CardRecepie) => {
 		setUserRecepies([...userRecepies, elem]);
@@ -137,12 +136,21 @@ const CreateCookbook = () => {
 		}
 
 		if (!error) {
-			//fetch new cookbook and take from server cookbook and push in redux user Cookbooks
+			//post new cookbook and take from server cookbook and push in redux user Cookbooks
 			alert('All field is ok');
 		} else {
 			return;
 		}
 	};
+
+	useEffect(() => {
+		fetchUserRecepies(id);
+	}, []);
+
+	useEffect(() => {
+		setUserRecepies(recepies);
+	}, [recepies]);
+
 	useEffect(() => {
 		const recepiesSuitable =
 			userRecepies.filter(
@@ -154,10 +162,37 @@ const CreateCookbook = () => {
 	}, [recepieSearch, userRecepies]);
 
 	useEffect(() => {
-		fetchUserRecepies(id);
-		setUserRecepies(recepies);
-	}, [recepies]);
+		const cookbook = cookbooks.find(
+			(elem) => elem.to === params.cookbookid,
+		);
+		if (cookbook) {
+			//fetch id cookbook
+			params.cookbookid;
+			//set value from responce
+			setTitle('Responce title');
+			setDescription(
+				'Responce description Responce description Responce description Responce description Responce description Responce description Responce description',
+			);
+			setUploadImage('/public/mocks/Image/card1.jpg');
+			setRecepiesInCookbook([...recepies.slice(0, 3)]);
+		}
+	}, [params.cookbookid, cookbooks]);
 
+	useEffect(() => {
+		let newRecepieArray = userRecepies;
+
+		recepiesInCookbook.forEach((elem) => {
+			const index = newRecepieArray.indexOf(elem);
+			if (index !== -1) {
+				newRecepieArray = [
+					...newRecepieArray.slice(0, index),
+					...newRecepieArray.slice(index + 1),
+				];
+			}
+		});
+
+		setUserRecepies(newRecepieArray);
+	}, [recepiesInCookbook]);
 	return (
 		<ModalWindowContainer
 			handlerCloseButton={() => {
@@ -184,7 +219,11 @@ const CreateCookbook = () => {
 						{uploadImage ? (
 							<CreateCookbookPrevieImageWrapper>
 								<CreateCookbookPreviewImage
-									src={URL.createObjectURL(uploadImage)}
+									src={
+										typeof uploadImage === 'string'
+											? uploadImage
+											: URL.createObjectURL(uploadImage)
+									}
 								/>
 							</CreateCookbookPrevieImageWrapper>
 						) : null}

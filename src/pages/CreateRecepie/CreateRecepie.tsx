@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import Input from '../../components/Input';
@@ -7,6 +7,7 @@ import Container from '../../components/shared/Container';
 import ModalWindowContainer from '../../components/shared/ModalWindow/ModalWindow.Container';
 import { errorMassage } from '../../constants/errorMassage';
 import { regexString } from '../../constants/regex';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
 	CreateRecepieWrapper,
 	CreateRecepieMainTitle,
@@ -22,21 +23,18 @@ import {
 	CreateRecepieError,
 } from './CreateRecepie.Styled';
 
-const CreateRecepie = (props: {}) => {
+const CreateRecepie = () => {
 	// const { handlerCloseButton } = props;
 	const refInputUploadFile = createRef<HTMLInputElement>();
 
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const params = useParams();
-	if (params.recipeid !== undefined) {
-		alert('edit');
-	}
 	const [ingredientsValue, setIngredientsValue] = useState<string>('');
 	const [directionsValue, setDirectionsValue] = useState<string>('');
 
 	const [title, setTitle] = useState<string>('');
-	const [uploadImage, setUploadImage] = useState<File>();
+	const [uploadImage, setUploadImage] = useState<File | string>();
 	const [description, setDescription] = useState<string>('');
 	const [ingredients, setIngredients] = useState<string[]>([]);
 	const [directions, setDirections] = useState<string[]>([]);
@@ -149,6 +147,24 @@ const CreateRecepie = (props: {}) => {
 			return;
 		}
 	};
+	const { recepies } = useTypedSelector((state) => state.userRecepiesReducer);
+	useEffect(() => {
+		const recepie = recepies.find((elem) => elem.to === params.recipeid);
+		console.log(recepie);
+		if (recepie) {
+			console.log('EDIT');
+			//fetch id recepies
+			params.recipeid;
+			//set value from responce
+			setTitle('Responce title');
+			setDescription(
+				'Responce description Responce description Responce description Responce description Responce description Responce description Responce description',
+			);
+			setUploadImage('/public/mocks/Image/card1.jpg');
+			setIngredients([]);
+			setDirections([]);
+		}
+	}, [params.recipeid, recepies]);
 
 	return (
 		<ModalWindowContainer handlerCloseButton={handlerCloseButton}>
@@ -172,7 +188,11 @@ const CreateRecepie = (props: {}) => {
 						{uploadImage ? (
 							<CreateRecepiePrevieImageWrapper>
 								<CreateRecepiePreviewImage
-									src={URL.createObjectURL(uploadImage)}
+									src={
+										typeof uploadImage === 'string'
+											? uploadImage
+											: URL.createObjectURL(uploadImage)
+									}
 								/>
 							</CreateRecepiePrevieImageWrapper>
 						) : null}
