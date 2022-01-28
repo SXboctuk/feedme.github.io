@@ -128,7 +128,7 @@ const Recipe = (props: {
 					<CommentsBlock
 						comments={comments}
 						handlerSendComment={(str) => {
-							alert(str);
+							alert('str: ' + str + ' id: ' + id);
 						}}
 					/>
 				</RecipeWrapper>

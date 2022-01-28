@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 import { routePath } from '../../constants/routePath';
 import Button from '../shared/Button';
 import {
@@ -18,41 +17,25 @@ const ProfileNavigation = (props: {
 }) => {
 	const { handlerButton, buttonText, itemSelect, isOwner } = props;
 	const { t } = useTranslation();
-	const params = useParams();
 	return (
 		<ProfileNavigationBlock>
 			<ProfileNavigationItemsBlock>
 				<ProfileNavigationItem
 					className={itemSelect === 'cookbooks' ? 'active' : ''}
-					to={
-						'../' +
-						routePath.PROFILE +
-						params.id +
-						routePath.PROFILE_COOKBOOKS
-					}
+					to={`../${routePath.PROFILE_COOKBOOKS}`}
 				>
 					{isOwner ? t('myCookbooks') : t('cookbooks')}
 				</ProfileNavigationItem>
 				<ProfileNavigationItem
 					className={itemSelect === 'recepies' ? 'active' : ''}
-					to={
-						'../' +
-						routePath.PROFILE +
-						params.id +
-						routePath.PROFILE_RECEPIES
-					}
+					to={`../${routePath.PROFILE_RECEPIES}`}
 				>
 					{isOwner ? t('myRecepies') : t('recepies')}
 				</ProfileNavigationItem>
 				{isOwner ? (
 					<ProfileNavigationItem
 						className={itemSelect === 'settings' ? 'active' : ''}
-						to={
-							'../' +
-							routePath.PROFILE +
-							params.id +
-							routePath.PROFILE_SETTINGS
-						}
+						to={`../${routePath.PROFILE_SETTINGS}`}
 					>
 						{t('mySettings')}
 					</ProfileNavigationItem>

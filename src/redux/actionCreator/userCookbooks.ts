@@ -10,7 +10,7 @@ export const fetchUserCookbooks = (id: string) => {
 	return async (dispatch: Dispatch<UserCookbooksAction>) => {
 		try {
 			dispatch({ type: UserCookbooksActionTypes.FETCH_USER_COOKBOOKS });
-			// fetch
+			// fetch id
 			const data = cookbooksData;
 			setTimeout(() => {
 				dispatch({

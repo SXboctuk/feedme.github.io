@@ -1,5 +1,7 @@
 import { t } from 'i18next';
-import React, { createRef, useRef } from 'react';
+import React, { useState } from 'react';
+import { errorMassage } from '../../constants/errorMassage';
+import { regexString } from '../../constants/regex';
 import styles from '../../constants/stylesProperty';
 import useWindowSize from '../../hooks/useWindowSize';
 import { IComment } from '../../interfaces/Comment';
@@ -8,6 +10,7 @@ import Comment from '../Comment';
 import Button from '../shared/Button';
 import {
 	Comments,
+	CommentsError,
 	CommentsInput,
 	CommentsInputBlock,
 	CommentsLeftBlock,
@@ -21,7 +24,14 @@ const CommentsBlock = (props: {
 }) => {
 	const { comments, handlerSendComment } = props;
 	const { width } = useWindowSize();
-	const refInputText = createRef<HTMLInputElement>();
+	const [inputValue, setInputValue] = useState('');
+	const [inputError, setInputError] = useState('');
+	const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.value.match(regexString.IS_VALID_STRING)) {
+			setInputValue(e.target.value);
+			setInputError('');
+		}
+	};
 	return (
 		<CommentsWrapper>
 			<CommentsTitle>
@@ -31,8 +41,10 @@ const CommentsBlock = (props: {
 				<CommentsLeftBlock>
 					<CommentsInput
 						placeholder={t('expressyourself')}
-						ref={refInputText}
+						onChange={handlerInput}
+						value={inputValue}
 					/>
+					<CommentsError>{inputError}</CommentsError>
 					{width >= parseInt(styles.screenSize.sm) ? (
 						<Comments>
 							{comments.map((elem, i) => (
@@ -52,10 +64,11 @@ const CommentsBlock = (props: {
 				<Button
 					variant={'solidSend'}
 					onClick={() => {
-						if (refInputText.current)
-							handlerSendComment(
-								refInputText.current?.value.toString(),
-							);
+						if (inputValue.match(regexString.IS_STRING_SHORT)) {
+							setInputError(errorMassage.IS_SHORT);
+							return;
+						}
+						handlerSendComment(inputValue);
 					}}
 				/>
 			</CommentsInputBlock>

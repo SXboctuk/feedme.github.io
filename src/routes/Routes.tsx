@@ -9,12 +9,16 @@ import Background from '../components/Background';
 import Layout from '../components/Layout';
 import { routePath } from '../constants/routePath';
 import styles from '../constants/stylesProperty';
+import CookbookContainer from '../pages/Cookbook/Cookbook.Container';
 import CookbooksContainter from '../pages/Cookbooks/Cookbooks.Containter';
+import CreateCookbook from '../pages/CreateCookbook';
+import CreateRecepie from '../pages/CreateRecepie';
 import HomePage from '../pages/HomePage';
 import ProfileCookbooksContainer from '../pages/ProfileCookbooks/ProfileCookbooks.Container';
 import ProfileRecepiesContainer from '../pages/ProfileRecepies/ProfileRecepies.Container';
 import ProfileSettingsContainer from '../pages/ProfileSettings/ProfileSettings.Container';
 import RecepiesContainer from '../pages/Recepies/Recepies.Container';
+import RecipeContainer from '../pages/Recipe/Recipe.Container';
 import SignInContainer from '../pages/SignIn/SignIn.Container';
 import SignUpContainer from '../pages/SignUp/SignUp.Container';
 
@@ -55,71 +59,57 @@ const Routes = () => {
 							path={routePath.ABOUT_US}
 							element={<div>About us</div>}
 						></Route>
-						<Route path={routePath.PROFILE + ':id'}>
+						<Route path={routePath.PROFILE + '/:id'}>
 							<Route
 								index
 								element={
 									<Navigate
-										to={'.' + routePath.PROFILE_COOKBOOKS}
+										to={routePath.PROFILE_COOKBOOKS}
 									/>
 								}
 							/>
-							{/* <Route
-								path={
-									routePath.PROFILE +
-									':id' +
-									routePath.PROFILE_COOKBOOKS +
-									routePath.CREATE_COOKBOOK
-								}
-							>
-								<Route
-									index
-									element={
-										<ProfileCookbooksContainer create />
-									}
-								></Route>
-							</Route> */}
+
 							<Route
-								path={
-									routePath.PROFILE +
-									':id' +
-									routePath.PROFILE_COOKBOOKS
-								}
+								path={routePath.PROFILE_COOKBOOKS}
 								element={<ProfileCookbooksContainer />}
 							></Route>
 
 							<Route
-								path={
-									routePath.PROFILE +
-									':id' +
-									routePath.PROFILE_COOKBOOKS +
-									':cookbookid'
-								}
+								path={routePath.PROFILE_COOKBOOKS}
 								element={<ProfileCookbooksContainer />}
-							></Route>
+							>
+								<Route
+									path={routePath.CREATE}
+									element={<CreateCookbook />}
+								></Route>
+								<Route
+									path={':cookbookid/' + routePath.EDIT}
+									element={<CreateCookbook />}
+								></Route>
+								<Route
+									path={':cookbookid'}
+									element={<CookbookContainer />}
+								></Route>
+							</Route>
 							<Route
-								path={
-									routePath.PROFILE +
-									':id' +
-									routePath.PROFILE_RECEPIES
-								}
+								path={routePath.PROFILE_RECEPIES}
 								element={<ProfileRecepiesContainer />}
-							></Route>
+							>
+								<Route
+									path={routePath.CREATE}
+									element={<CreateRecepie />}
+								></Route>
+								<Route
+									path={':recipeid/' + routePath.EDIT}
+									element={<CreateRecepie />}
+								></Route>
+								<Route
+									path={':recipeid'}
+									element={<RecipeContainer />}
+								></Route>
+							</Route>
 							<Route
-								path={
-									routePath.PROFILE +
-									':id' +
-									routePath.PROFILE_RECEPIES +
-									':recipeid'
-								}
-								element={<ProfileRecepiesContainer />}
-							></Route>
-							<Route
-								path={
-									routePath.PROFILE +
-									':id' +
-									routePath.PROFILE_SETTINGS
-								}
+								path={routePath.PROFILE_SETTINGS}
 								element={<ProfileSettingsContainer />}
 							></Route>
 						</Route>

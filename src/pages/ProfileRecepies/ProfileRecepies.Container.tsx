@@ -12,7 +12,6 @@ const ProfileRecepiesContainer = () => {
 		imageSrc: '',
 		userText: '',
 	});
-	const [showCreate, setShowCreate] = useState(false);
 	const { id, image, userName, userText } = useTypedSelector(
 		(state) => state.userReducer,
 	);
@@ -47,9 +46,6 @@ const ProfileRecepiesContainer = () => {
 			error={error}
 			loadingRecepies={loading}
 			isOwner={isOwner}
-			recipeid={params.recipeid}
-			showCreate={showCreate}
-			setShowCreate={setShowCreate}
 		/>
 	);
 };

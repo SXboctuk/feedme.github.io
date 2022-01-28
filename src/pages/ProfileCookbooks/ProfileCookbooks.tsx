@@ -1,5 +1,6 @@
-import { Dispatch } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Outlet, useNavigate } from 'react-router-dom';
 import ContentWrapper from '../../components/ContentWrapper';
 import ProfileHeader from '../../components/ProfileHeader';
 import ProfileNavigation from '../../components/ProfileNavigation';
@@ -11,31 +12,25 @@ import styles from '../../constants/stylesProperty';
 import { CardCookbook } from '../../interfaces/CardCookbook';
 import { IUser } from '../../interfaces/User';
 
-import CookbookContainer from '../Cookbook/Cookbook.Container';
-import CreateCookbook from '../CreateCookbook';
 import { ProfileCookbooksContentWrapper } from './ProfileCookbook.Styled';
 
 const ProfileCookbooks = (props: {
 	userData: IUser;
 	isOwner: boolean;
 	userCookbooks: CardCookbook[];
-	cookbookid: string | undefined;
-	showCreate: boolean;
-	setShowCreate: Dispatch<boolean>;
 	error: string | null;
 	loadingCookbooks: boolean;
 }) => {
 	const {
-		showCreate,
 		userData,
-		setShowCreate,
 		isOwner,
 		userCookbooks,
-		cookbookid,
+
 		error,
 		loadingCookbooks,
 	} = props;
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 
 	if (error) return <div>Error</div>;
 	return (
@@ -62,7 +57,7 @@ const ProfileCookbooks = (props: {
 					<ProfileNavigation
 						itemSelect="cookbooks"
 						buttonText={t('createNewCookbook')}
-						handlerButton={() => setShowCreate(true)}
+						handlerButton={() => navigate('create')}
 						isOwner={isOwner}
 					/>
 					{loadingCookbooks ? (
@@ -90,14 +85,7 @@ const ProfileCookbooks = (props: {
 					)}
 				</Container>
 			</ContentWrapper>
-			{cookbookid && cookbookid !== 'create' ? (
-				<CookbookContainer id={cookbookid} />
-			) : null}
-			{cookbookid === 'create' || showCreate ? (
-				<CreateCookbook
-					handlerCloseButton={() => setShowCreate(false)}
-				/>
-			) : null}
+			<Outlet />
 		</>
 	);
 };

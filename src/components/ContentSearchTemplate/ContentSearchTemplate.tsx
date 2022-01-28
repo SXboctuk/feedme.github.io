@@ -31,7 +31,7 @@ const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
 										{t('cookbooks')}
 									</ContentSearchTemplateVariant>
 									<ContentSearchTemplateVariant
-										to={routePath.RECEPIES}
+										to={'/' + routePath.RECEPIES}
 									>
 										{t('recepies')}
 									</ContentSearchTemplateVariant>
@@ -39,7 +39,7 @@ const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
 							) : (
 								<>
 									<ContentSearchTemplateVariant
-										to={routePath.COOKBOOKS}
+										to={'/' + routePath.COOKBOOKS}
 									>
 										{t('cookbooks')}
 									</ContentSearchTemplateVariant>

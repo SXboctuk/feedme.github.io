@@ -12,7 +12,6 @@ const ProfileCookbooksContainer = () => {
 		imageSrc: '',
 		userText: '',
 	});
-	const [showCreate, setShowCreate] = useState(false);
 	const { id, image, userName, userText } = useTypedSelector(
 		(state) => state.userReducer,
 	);
@@ -47,9 +46,6 @@ const ProfileCookbooksContainer = () => {
 			error={error}
 			loadingCookbooks={loading}
 			isOwner={isOwner}
-			cookbookid={params.cookbookid}
-			showCreate={showCreate}
-			setShowCreate={setShowCreate}
 		/>
 	);
 };

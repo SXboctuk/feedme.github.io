@@ -49,13 +49,13 @@ const Header = () => {
 								onClick={() => {
 									if (isAuth) {
 										navigate(
-											routePath.PROFILE +
-												id +
-												routePath.PROFILE_COOKBOOKS +
-												routePath.CREATE_COOKBOOK,
+											`${routePath.PROFILE}/
+												${id}/
+												${routePath.PROFILE_COOKBOOKS}/
+												${routePath.CREATE}`,
 										);
 									} else {
-										navigate('../' + routePath.SIGN_IN);
+										navigate('/' + routePath.SIGN_IN);
 									}
 								}}
 							>
@@ -66,7 +66,7 @@ const Header = () => {
 						{isAuth ? (
 							<HeaderUserWrapper>
 								<SvgUser />{' '}
-								<Link to={routePath.PROFILE + id}>
+								<Link to={`${routePath.PROFILE}/${id}`}>
 									{userName}
 								</Link>
 							</HeaderUserWrapper>

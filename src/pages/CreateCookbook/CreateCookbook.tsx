@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Input from '../../components/Input';
 import Button from '../../components/shared/Button';
 import Card from '../../components/shared/Card';
@@ -14,6 +14,7 @@ import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import useWindowSize from '../../hooks/useWindowSize';
 import { CardRecepie } from '../../interfaces/CardRecipe';
+import { ICookbook } from '../../interfaces/Cookbook';
 import {
 	CreateCookbookDropRecepieWrapper,
 	CreateCookbookError,
@@ -29,17 +30,19 @@ import {
 	CreateCookbookWrapper,
 } from './CreateCookbook.Styled';
 
-const CreateCookbook = (props: { handlerCloseButton: () => void }) => {
-	const { handlerCloseButton } = props;
+const CreateCookbook = () => {
 	const refInputUploadFile = createRef<HTMLInputElement>();
 
 	const { t } = useTranslation();
 	const { width } = useWindowSize();
 	const navigate = useNavigate();
+	const params = useParams();
 	const { id } = useTypedSelector((state) => state.userReducer);
 	const { recepies } = useTypedSelector((state) => state.userRecepiesReducer);
 	const { fetchUserRecepies } = useAction();
-
+	if (params.cookbookid) {
+		alert('edit');
+	}
 	const [title, setTitle] = useState<string>('');
 	const [uploadImage, setUploadImage] = useState<File>();
 	const [description, setDescription] = useState<string>('');
@@ -55,6 +58,10 @@ const CreateCookbook = (props: { handlerCloseButton: () => void }) => {
 	const [descriptionError, setDescriptionError] = useState<string>('');
 	const [imageError, setImageError] = useState<string>('');
 	const [recepiesError, setRecepiesError] = useState<string>('');
+
+	const handlerCloseButton = () => {
+		navigate('../');
+	};
 
 	const handlerUploadButton = () => {
 		refInputUploadFile.current?.click();
@@ -154,7 +161,6 @@ const CreateCookbook = (props: { handlerCloseButton: () => void }) => {
 	return (
 		<ModalWindowContainer
 			handlerCloseButton={() => {
-				navigate(routePath.PROFILE + id + routePath.COOKBOOKS);
 				handlerCloseButton();
 			}}
 		>

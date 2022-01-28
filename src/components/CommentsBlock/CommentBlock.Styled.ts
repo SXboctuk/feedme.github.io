@@ -43,3 +43,8 @@ export const CommentsTitle = styled.div`
 
 	margin-bottom: ${styles.distances.md};
 `;
+export const CommentsError = styled.div`
+	font-size: 16px;
+	margin-top: ${styles.distances.xs};
+	color: ${({ theme }) => theme.colors.danger};
+`;

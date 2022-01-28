@@ -1,5 +1,6 @@
 import React, { createRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router-dom';
 import Input from '../../components/Input';
 import Button from '../../components/shared/Button';
 import Container from '../../components/shared/Container';
@@ -21,12 +22,16 @@ import {
 	CreateRecepieError,
 } from './CreateRecepie.Styled';
 
-const CreateRecepie = (props: { handlerCloseButton: () => void }) => {
-	const { handlerCloseButton } = props;
+const CreateRecepie = (props: {}) => {
+	// const { handlerCloseButton } = props;
 	const refInputUploadFile = createRef<HTMLInputElement>();
 
 	const { t } = useTranslation();
-
+	const navigate = useNavigate();
+	const params = useParams();
+	if (params.recipeid !== undefined) {
+		alert('edit');
+	}
 	const [ingredientsValue, setIngredientsValue] = useState<string>('');
 	const [directionsValue, setDirectionsValue] = useState<string>('');
 
@@ -41,6 +46,10 @@ const CreateRecepie = (props: { handlerCloseButton: () => void }) => {
 	const [imageError, setImageError] = useState<string>('');
 	const [ingredientsError, setIngredientsError] = useState<string>('');
 	const [directionsError, setDirectionsError] = useState<string>('');
+
+	const handlerCloseButton = () => {
+		navigate('../');
+	};
 
 	const handlerUploadButton = () => {
 		refInputUploadFile.current?.click();

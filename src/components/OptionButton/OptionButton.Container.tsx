@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import OptionButton from '.';
+import { routePath } from '../../constants/routePath';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { OptionButtonType } from './OptionButton.Contstants';
 import { OptionButtonContainerProps } from './OptionButton.Interface';
 
 const OptionButtonContainer = (props: OptionButtonContainerProps) => {
 	const [isShow, setIsShow] = useState(false);
+	const navigate = useNavigate();
 	const handlerMainButton = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.stopPropagation();
 		e.preventDefault();
@@ -52,7 +55,15 @@ const OptionButtonContainer = (props: OptionButtonContainerProps) => {
 				ItemsButton={[
 					{
 						text: t('EditRecepie'),
-						onClick: () => console.log('RecepieOwner' + elemId),
+						onClick: () => {
+							navigate(
+								`/${routePath.PROFILE}/
+									${id}/
+									${routePath.RECEPIES}/
+									${elemId}/
+									${routePath.EDIT}`,
+							);
+						},
 					},
 					{
 						text: t('DeleteRecepie'),
@@ -70,7 +81,15 @@ const OptionButtonContainer = (props: OptionButtonContainerProps) => {
 				ItemsButton={[
 					{
 						text: t('EditCookbook'),
-						onClick: () => console.log('CookbookOwner' + elemId),
+						onClick: () => {
+							navigate(
+								`/${routePath.PROFILE}/
+									${id}/
+									${routePath.COOKBOOKS}/
+									${elemId}/
+									${routePath.EDIT}`,
+							);
+						},
 					},
 					{
 						text: t('DeleteCookbook'),

@@ -2,7 +2,7 @@ import { IRecipe } from '../../interfaces/Recepi';
 
 export const recipeMockData: IRecipe = {
 	image: '/public/mocks/Image/card1.jpg',
-	id: 'string',
+	id: '56das',
 	creatorName: 'Sir John Reed',
 	creatorId: '123',
 	title: 'Lorem ipsum dolor sit amet, consecteturadipiscing elit.',
