@@ -20,6 +20,9 @@ const Input = (props: {
 	handlerInput: (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => void;
+	handlerKeyDown?: (
+		e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => void;
 	value: string;
 	error?: string | null;
 	type?: 'password';
@@ -30,6 +33,7 @@ const Input = (props: {
 		textArea,
 		labelText,
 		handlerInput,
+		handlerKeyDown,
 		error,
 		type,
 		forgotLink,
@@ -54,6 +58,7 @@ const Input = (props: {
 						value={value}
 						className={error ? 'error' : ''}
 						onChange={handlerInput}
+						onKeyDown={handlerKeyDown}
 						placeholder={placeholder ? placeholder : ''}
 					></TextAreaStyled>
 				</InputWrapper>
@@ -77,6 +82,7 @@ const Input = (props: {
 					value={value}
 					className={error ? 'error' : ''}
 					onChange={handlerInput}
+					onKeyDown={handlerKeyDown}
 					type={type === 'password' && hidden ? 'password' : ''}
 					placeholder={placeholder ? placeholder : ''}
 				></InputStyled>

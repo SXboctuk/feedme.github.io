@@ -74,3 +74,29 @@ export const CreateRecepieGridContentDeleate = styled(SvgClose)`
 		fill: ${({ theme }) => theme.colors.textMain};
 	}
 `;
+
+export const CreateRecepieError = styled.div`
+	font-size: 16px;
+	margin-top: ${styles.distances.xs};
+	color: ${({ theme }) => theme.colors.danger};
+`;
+export const CreateRecepiePrevieImageWrapper = styled.div`
+	margin-top: ${styles.distances.mdPlus};
+	border-radius: ${({ theme }) => theme.borderRadiusImage};
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+
+	&:after {
+		content: '';
+		display: block;
+		padding-top: 50%;
+	}
+`;
+export const CreateRecepiePreviewImage = styled.img`
+	position: absolute;
+	top: 0;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+`;

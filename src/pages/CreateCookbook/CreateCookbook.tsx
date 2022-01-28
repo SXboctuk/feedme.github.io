@@ -108,30 +108,28 @@ const CreateCookbook = (props: { handlerCloseButton: () => void }) => {
 		]);
 	};
 	const handlerConfirm = () => {
-		if (title.match(regexString.IS_STRING_SHORT) === null) {
+		let error = false;
+		if (title.match(regexString.IS_STRING_SHORT)) {
 			setTitleError(errorMassage.IS_SHORT);
+			error = true;
 		}
 
 		if (!uploadImage) {
 			setImageError(errorMassage.NO_IMAGE);
+			error = true;
 		}
 
-		if (
-			description.match(regexString.IS_STRING_SHORT_DESCRIPTION) === null
-		) {
+		if (description.match(regexString.IS_STRING_SHORT_DESCRIPTION)) {
 			setDescriptionError(errorMassage.IS_SHORT_DESCRIPTION);
+			error = true;
 		}
 
 		if (recepiesInCookbook.length === 0) {
 			setRecepiesError(errorMassage.NO_RECEPIES);
+			error = true;
 		}
 
-		if (
-			titleError.length === 0 &&
-			imageError.length === 0 &&
-			descriptionError.length === 0 &&
-			recepiesError.length === 0
-		) {
+		if (!error) {
 			//fetch new cookbook and take from server cookbook and push in redux user Cookbooks
 			alert('All field is ok');
 		} else {
@@ -235,9 +233,10 @@ const CreateCookbook = (props: { handlerCloseButton: () => void }) => {
 								{recepieShow.slice(0, 3).map((elem, i) => (
 									<CreateCookbookRecepiesItem
 										key={elem.key + i}
-										onClick={() =>
-											handlerAddRecepieInCookbook(elem)
-										}
+										onClick={() => {
+											handlerAddRecepieInCookbook(elem);
+											setRecepieSearch('');
+										}}
 									>
 										{elem.titleName}
 									</CreateCookbookRecepiesItem>

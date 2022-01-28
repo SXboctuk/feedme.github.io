@@ -11,6 +11,7 @@ import {
 } from './ContentSearchTemplate.Styled';
 
 import { useTranslation } from 'react-i18next';
+import { routePath } from '../../constants/routePath';
 
 const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
 	const { t } = useTranslation();
@@ -23,19 +24,29 @@ const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
 						<ContentSearchTemplateSelectedPageBlock>
 							{props.selectedPage === 'Cookbooks' ? (
 								<>
-									<ContentSearchTemplateVariant aria-selected>
+									<ContentSearchTemplateVariant
+										to={routePath.COOKBOOKS}
+										aria-selected
+									>
 										{t('cookbooks')}
 									</ContentSearchTemplateVariant>
-									<ContentSearchTemplateVariant>
+									<ContentSearchTemplateVariant
+										to={routePath.RECEPIES}
+									>
 										{t('recepies')}
 									</ContentSearchTemplateVariant>
 								</>
 							) : (
 								<>
-									<ContentSearchTemplateVariant>
+									<ContentSearchTemplateVariant
+										to={routePath.COOKBOOKS}
+									>
 										{t('cookbooks')}
 									</ContentSearchTemplateVariant>
-									<ContentSearchTemplateVariant aria-selected>
+									<ContentSearchTemplateVariant
+										to={routePath.RECEPIES}
+										aria-selected
+									>
 										{t('recepies')}
 									</ContentSearchTemplateVariant>
 								</>

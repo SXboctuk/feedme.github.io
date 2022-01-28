@@ -9,9 +9,15 @@ import { routePath } from '../../constants/routePath';
 import { SignupputWrapper, SignupButtonWrapper } from './SignUp.Styled';
 
 const SignUp = (props: {
-	handlerLogin: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handlerPassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handlerPasswordConfirm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handlerLogin: (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => void;
+	handlerPassword: (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => void;
+	handlerPasswordConfirm: (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => void;
 	handlerFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 	loginError: string;
 	passwordError: string;

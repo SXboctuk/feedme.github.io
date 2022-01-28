@@ -10,8 +10,12 @@ import { SignupButtonWrapper, SignupputWrapper } from './SignIn.Styled';
 
 const SIgnIn = (props: {
 	handlerFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-	handlerLogin: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handlerPassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handlerLogin: (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => void;
+	handlerPassword: (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => void;
 	loginError: string;
 	passwordError: string;
 	loginValue: string;

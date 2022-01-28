@@ -8,6 +8,7 @@ import Container from '../shared/Container';
 import SvgHamburgetButton from '../Svg/SvgHamburgerButton/SvgHamburget';
 import {
 	HeaderBackground,
+	HeaderButtonWrapper,
 	HeaderHamburger,
 	HeaderNavBlock,
 	HeaderStyled,
@@ -42,23 +43,26 @@ const Header = () => {
 						<Link to={routePath.RECEPIES}>{t('recepies')}</Link>
 						<Link to={routePath.COOKBOOKS}>{t('cookbooks')}</Link>
 						<HeaderSearch />
-						<Button
-							variant="outline"
-							onClick={() => {
-								if (isAuth) {
-									navigate(
-										routePath.PROFILE +
-											id +
-											routePath.PROFILE_COOKBOOKS +
-											routePath.CREATE_COOKBOOK,
-									);
-								} else {
-									navigate('../' + routePath.SIGN_IN);
-								}
-							}}
-						>
-							{t('buttonCreateCookbook')}
-						</Button>
+						<HeaderButtonWrapper>
+							<Button
+								variant="outline"
+								onClick={() => {
+									if (isAuth) {
+										navigate(
+											routePath.PROFILE +
+												id +
+												routePath.PROFILE_COOKBOOKS +
+												routePath.CREATE_COOKBOOK,
+										);
+									} else {
+										navigate('../' + routePath.SIGN_IN);
+									}
+								}}
+							>
+								{t('buttonCreateCookbook')}
+							</Button>
+						</HeaderButtonWrapper>
+
 						{isAuth ? (
 							<HeaderUserWrapper>
 								<SvgUser />{' '}

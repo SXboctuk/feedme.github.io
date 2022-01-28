@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import styles from '../../constants/stylesProperty';
 
@@ -18,11 +19,12 @@ export const ContentSearchTemplateSelectedPageBlock = styled.div`
 	display: flex;
 	margin-bottom: 40px;
 `;
-export const ContentSearchTemplateVariant = styled.div`
+export const ContentSearchTemplateVariant = styled(Link)`
 	font-family: 'Montserrat';
 	font-weight: 600;
 	font-size: 20px;
 	line-height: 24px;
+	color: ${({ theme }) => theme.colors.textMain};
 
 	position: relative;
 

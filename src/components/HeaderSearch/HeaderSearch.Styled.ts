@@ -11,10 +11,6 @@ export const InputSearchIcon = styled(SvgSearch)`
 `;
 export const InputContainer = styled.div`
 	position: relative;
-
-	@media (max-width: ${styles.screenSize.md}) {
-		display: none;
-	}
 `;
 export const InputSuggestionItemWrapper = styled.div`
 	position: absolute;
@@ -32,6 +28,7 @@ export const InputSuggestionItem = styled(Link)`
 	width: 100%;
 	padding: ${styles.distances.xs};
 	border-radius: ${({ theme }) => theme.borderRadius};
+	color: ${({ theme }) => theme.colors.textMain};
 	cursor: pointer;
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.gray};

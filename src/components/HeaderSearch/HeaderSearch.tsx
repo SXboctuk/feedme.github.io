@@ -27,7 +27,6 @@ const HeaderSearch = () => {
 			});
 		}
 		setSuggestion(matches);
-		console.log(suggestion);
 	};
 	const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.value.match(regexString.IS_VALID_STRING) !== null) {

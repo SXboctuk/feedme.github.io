@@ -34,7 +34,7 @@ export const HeaderNavBlock = styled.nav`
 			background-color: ${({ theme }) => theme.colors.white};
 			border-radius: 0 0 10px 10px;
 			padding: 0 12px 12px 12px;
-			* {
+			> * {
 				margin-bottom: ${styles.distances.mdPlus};
 			}
 		}
@@ -56,5 +56,10 @@ export const HeaderUserWrapper = styled.div`
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+	}
+`;
+export const HeaderButtonWrapper = styled.div`
+	@media (max-width: ${styles.screenSize.md}) {
+		display: none;
 	}
 `;
