@@ -37,15 +37,25 @@ const Cookbook = (props: {
 	width: number;
 	isAuth: boolean;
 	isOwner: boolean;
+	handlerLike: (e: React.MouseEvent<HTMLDivElement>) => void;
+	isLikes: boolean;
+	likesCounter: number;
 }) => {
-	const { cookbookData, width, isOwner, isAuth } = props;
+	const {
+		cookbookData,
+		width,
+		isOwner,
+		isAuth,
+		handlerLike,
+		isLikes,
+		likesCounter,
+	} = props;
 	const {
 		comments,
 		creatorId,
 		creatorName,
 		id,
 		image,
-		likes,
 		mainText,
 		recepies,
 		title,
@@ -86,10 +96,13 @@ const Cookbook = (props: {
 							</CookbookContentTextBlock>
 						</CookbookContentGridBlock>
 						<CookbookSocialBlock>
-							<CookbookSocial>
+							<CookbookSocial
+								className={isLikes ? 'selected' : ''}
+								onClick={handlerLike}
+							>
 								<SvgHeart />
 								<CookbookCounter>
-									{likes} {t('likes')}
+									{likesCounter} {t('likes')}
 								</CookbookCounter>
 							</CookbookSocial>
 							<CookbookSocial>
@@ -112,8 +125,8 @@ const Cookbook = (props: {
 									? recepies.map((elem) => {
 											return (
 												<Card
-													to={`${routePath.RECEPIES}/${elem.to}`}
-													key={elem.key}
+													to={`${routePath.RECEPIES}/${elem.id}`}
+													key={elem.id}
 													text={elem.text}
 													viewsCounter={
 														elem.viewsCounter
@@ -132,14 +145,16 @@ const Cookbook = (props: {
 													type="wide"
 													OptionType={'Recepie'}
 													creatorId={elem.creatorId}
+													isLikes={elem.isLikes}
+													cardType={'recepie'}
 												/>
 											);
 									  })
 									: recepies.map((elem) => {
 											return (
 												<Card
-													to={`${routePath.RECEPIES}/${elem.to}`}
-													key={elem.key}
+													to={`${routePath.RECEPIES}/${elem.id}`}
+													key={elem.id}
 													text={elem.text}
 													viewsCounter={
 														elem.viewsCounter
@@ -157,6 +172,8 @@ const Cookbook = (props: {
 													}
 													OptionType={'Recepie'}
 													creatorId={elem.creatorId}
+													isLikes={elem.isLikes}
+													cardType={'recepie'}
 												/>
 											);
 									  })}

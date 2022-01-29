@@ -64,6 +64,13 @@ export const CardImageWrapper = styled.div`
 export const AlignCenterBlock = styled.div`
 	display: flex;
 	align-items: center;
+
+	&.selected {
+		color: ${({ theme }) => theme.colors.primary};
+		path {
+			fill: ${({ theme }) => theme.colors.primary};
+		}
+	}
 `;
 export const CardSvgHeart = styled(SvgHeart)`
 	margin-right: 8px;

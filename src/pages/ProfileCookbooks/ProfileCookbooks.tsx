@@ -67,8 +67,8 @@ const ProfileCookbooks = (props: {
 							{userCookbooks.map((elem) => {
 								return (
 									<Card
-										to={`./${elem.to}`}
-										key={elem.key}
+										to={`./${elem.id}`}
+										key={elem.id}
 										text={elem.text}
 										viewsCounter={elem.viewsCounter}
 										titleName={elem.titleName}
@@ -78,6 +78,8 @@ const ProfileCookbooks = (props: {
 										commentsCounter={elem.commentsCounter}
 										OptionType={'Cookbook'}
 										creatorId={elem.creatorId}
+										isLikes={elem.isLikes}
+										cardType={'recepie'}
 									/>
 								);
 							})}

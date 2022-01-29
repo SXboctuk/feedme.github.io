@@ -1,13 +1,12 @@
 import Card from '../../components/shared/Card';
 import ContentSearchTemplate from '../../components/ContentSearchTemplate';
-import { routePath } from '../../constants/routePath';
 import RecepiesFilter from './components/RecepiesFilter';
 import { RecepiesContentWrapper } from './Recepies.Styled';
 import { RecepiesProps } from './Recepies.Interface';
 import Spinner from '../../components/shared/Spinner';
 import styles from '../../constants/stylesProperty';
 import ContentWrapper from '../../components/ContentWrapper';
-import RecipeContainer from '../Recipe/Recipe.Container';
+import { Outlet } from 'react-router-dom';
 
 const Recepies = (props: RecepiesProps) => {
 	const {
@@ -15,7 +14,6 @@ const Recepies = (props: RecepiesProps) => {
 		error,
 		filterOption,
 		setFilterOption,
-		recepieId,
 		recepiesCard,
 		width,
 	} = props;
@@ -41,8 +39,8 @@ const Recepies = (props: RecepiesProps) => {
 								? recepiesCard.map((elem) => {
 										return (
 											<Card
-												to={`${routePath.RECEPIES}${elem.to}`}
-												key={elem.key}
+												to={`${elem.id}`}
+												key={elem.id}
 												text={elem.text}
 												viewsCounter={elem.viewsCounter}
 												titleName={elem.titleName}
@@ -55,14 +53,16 @@ const Recepies = (props: RecepiesProps) => {
 												type="wide"
 												OptionType={'Recepie'}
 												creatorId={elem.creatorId}
+												isLikes={elem.isLikes}
+												cardType={'recepie'}
 											/>
 										);
 								  })
 								: recepiesCard.map((elem) => {
 										return (
 											<Card
-												to={`${routePath.RECEPIES}${elem.to}`}
-												key={elem.key}
+												to={`$${elem.id}`}
+												key={elem.id}
 												text={elem.text}
 												viewsCounter={elem.viewsCounter}
 												titleName={elem.titleName}
@@ -74,6 +74,8 @@ const Recepies = (props: RecepiesProps) => {
 												}
 												OptionType={'Recepie'}
 												creatorId={elem.creatorId}
+												isLikes={elem.isLikes}
+												cardType={'recepie'}
 											/>
 										);
 								  })}
@@ -83,7 +85,7 @@ const Recepies = (props: RecepiesProps) => {
 				selectedPage={'Recepies'}
 			/>
 
-			{recepieId ? <RecipeContainer id={recepieId} /> : null}
+			<Outlet />
 		</ContentWrapper>
 	);
 };

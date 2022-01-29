@@ -55,7 +55,7 @@ const HeaderSearch = () => {
 					{suggestion.slice(0, 3).map((elem, i) => (
 						<InputSuggestionItem
 							key={elem.userName + elem.id + i}
-							to={routePath.PROFILE + elem.id}
+							to={'/' + routePath.PROFILE + '/' + elem.id}
 							onClick={() => setSearchValue('')}
 						>
 							{elem.userName}

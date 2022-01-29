@@ -1,7 +1,6 @@
 [
 	{
-		"to": "1",
-		"key": "card1",
+		"id": "62464",
 		"viewsCounter": 11000,
 		"titleName": "Fresh meat",
 		"creatorName": "John Doe",
@@ -9,12 +8,12 @@
 		"imageSrc": "/public/mocks/Image/card1.jpg",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
 		"likesCounter": 100,
+		"isLikes": false,
 		"commentsCounter": 12,
 		"cookingTime": 60
 	},
 	{
-		"to": "2",
-		"key": "card2",
+		"id": "724525",
 		"viewsCounter": 12000,
 		"titleName": "Fresh meat",
 		"creatorName": "John Doe",
@@ -22,12 +21,12 @@
 		"imageSrc": "/public/mocks/Image/card1.png",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
 		"likesCounter": 200,
+		"isLikes": false,
 		"commentsCounter": 12,
 		"cookingTime": 60
 	},
 	{
-		"to": "3",
-		"key": "card3",
+		"id": "345226",
 		"viewsCounter": 13000,
 		"titleName": "Fresh meat",
 		"creatorName": "John Doe",
@@ -35,12 +34,12 @@
 		"imageSrc": "/public/mocks/Image/card2.png",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
 		"likesCounter": 300,
+		"isLikes": false,
 		"commentsCounter": 12,
 		"cookingTime": 60
 	},
 	{
-		"to": "4",
-		"key": "card4",
+		"id": "644563",
 		"viewsCounter": 14000,
 		"titleName": "Fresh meat",
 		"creatorName": "John Doe",
@@ -48,12 +47,12 @@
 		"imageSrc": "/public/mocks/Image/card3.png",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
 		"likesCounter": 400,
+		"isLikes": false,
 		"commentsCounter": 12,
 		"cookingTime": 60
 	},
 	{
-		"to": "5",
-		"key": "card5",
+		"id": "76444",
 		"viewsCounter": 15000,
 		"titleName": "Fresh meat",
 		"creatorName": "John Doe",
@@ -61,12 +60,12 @@
 		"imageSrc": "/public/mocks/Image/card4.png",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
 		"likesCounter": 500,
+		"isLikes": false,
 		"commentsCounter": 12,
 		"cookingTime": 60
 	},
 	{
-		"to": "6",
-		"key": "card6",
+		"id": "5234521",
 		"viewsCounter": 16000,
 		"titleName": "Fresh meat",
 		"creatorName": "John Doe",
@@ -74,12 +73,12 @@
 		"imageSrc": "/public/mocks/Image/card1.jpg",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
 		"likesCounter": 600,
+		"isLikes": false,
 		"commentsCounter": 12,
 		"cookingTime": 60
 	},
 	{
-		"to": "8",
-		"key": "card8",
+		"id": "523452",
 		"viewsCounter": 18000,
 		"titleName": "Fresh meat",
 		"creatorName": "John Doe",
@@ -87,12 +86,12 @@
 		"imageSrc": "/public/mocks/Image/card1.jpg",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
 		"likesCounter": 800,
+		"isLikes": false,
 		"commentsCounter": 12,
 		"cookingTime": 60
 	},
 	{
-		"to": "9",
-		"key": "card9",
+		"id": "41234",
 		"viewsCounter": 18000,
 		"titleName": "Fresh meat",
 		"creatorName": "John Doe",
@@ -100,12 +99,12 @@
 		"imageSrc": "/public/mocks/Image/card1.jpg",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
 		"likesCounter": 800,
+		"isLikes": false,
 		"commentsCounter": 12,
 		"cookingTime": 60
 	},
 	{
-		"to": "10",
-		"key": "card10",
+		"id": "52345",
 		"viewsCounter": 110000,
 		"titleName": "Fresh meat",
 		"creatorName": "John Doe",
@@ -113,6 +112,7 @@
 		"imageSrc": "/public/mocks/Image/card1.jpg",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna amet etiam risus aliquet sit ve",
 		"likesCounter": 1000,
+		"isLikes": false,
 		"commentsCounter": 12,
 		"cookingTime": 60
 	}

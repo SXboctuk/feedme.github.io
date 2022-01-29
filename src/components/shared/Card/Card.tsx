@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CardProps } from './Card.Interface';
 import {
 	CardBlock,
@@ -26,11 +26,29 @@ import {
 import { useTranslation } from 'react-i18next';
 import OptionButtonContainer from '../../OptionButton/OptionButton.Container';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { setCookbookLike, setRecepieLike } from '../../../api/Feedme.Api';
 
 const Card = (props: CardProps) => {
 	const { t } = useTranslation('common');
 	const { isAuth } = useTypedSelector((state) => state.userReducer);
-
+	const [isLikes, setIsLikes] = useState(props.isLikes);
+	const [likesCounter, setLikesCounter] = useState(props.likesCounter);
+	const handlerLike = async (e: React.MouseEvent<HTMLDivElement>) => {
+		if (isAuth) {
+			e.preventDefault();
+			console.log(e.currentTarget.classList);
+			if (props.cardType === 'cookbook') {
+				const res = await setCookbookLike(isLikes, props.to);
+				setIsLikes(res.value);
+				setLikesCounter(res.currentLikesCounter);
+			}
+			if (props.cardType === 'recepie') {
+				const res = await setRecepieLike(isLikes, props.to);
+				setIsLikes(res.value);
+				setLikesCounter(res.currentLikesCounter);
+			}
+		}
+	};
 	if (props.type == 'wide') {
 		return (
 			<CardBlockWide to={props.to}>
@@ -56,10 +74,13 @@ const Card = (props: CardProps) => {
 										{props.viewsCounter} {t('views')}
 									</CardCounterText>
 								</AlignCenterBlock>
-								<AlignCenterBlock>
+								<AlignCenterBlock
+									className={isLikes ? 'selected' : ''}
+									onClick={handlerLike}
+								>
 									<CardSvgHeart />
 									<CardCounterText>
-										{props.likesCounter} {t('likes')}
+										{likesCounter} {t('likes')}
 									</CardCounterText>
 								</AlignCenterBlock>
 								<AlignCenterBlock>
@@ -69,7 +90,7 @@ const Card = (props: CardProps) => {
 									</CardCounterText>
 								</AlignCenterBlock>
 							</CardWideSocialCounter>
-							{isAuth && props.OptionType !== 'Hidden' ? (
+							{isAuth && props.OptionType != 'Hidden' ? (
 								<OptionButtonContainer
 									type={props.OptionType}
 									elemId={props.to}
@@ -92,7 +113,7 @@ const Card = (props: CardProps) => {
 								{props.viewsCounter} {t('views')}
 							</CardCounterText>
 						</AlignCenterBlock>
-						{isAuth && props.OptionType !== 'Hidden' ? (
+						{isAuth && props.OptionType != 'Hidden' ? (
 							<OptionButtonContainer
 								type={props.OptionType}
 								elemId={props.to}
@@ -113,7 +134,10 @@ const Card = (props: CardProps) => {
 					{props.text ? <CardText>{props.text}</CardText> : null}
 					{props.likesCounter && props.commentsCounter ? (
 						<CardInnerBlock>
-							<AlignCenterBlock>
+							<AlignCenterBlock
+								className={isLikes ? 'selected' : ''}
+								onClick={handlerLike}
+							>
 								<CardSvgHeart />
 								<CardCounterText>
 									{props.likesCounter} {t('likes')}

@@ -1,12 +1,12 @@
 export interface CardRecepie {
-	to: string;
-	key: string;
+	id: string;
 	viewsCounter: number;
 	titleName: string;
 	creatorName: string;
 	creatorId: string;
 	imageSrc: string;
 	likesCounter: number;
+	isLikes: boolean;
 	commentsCounter: number;
 	text: string;
 	cookingTime: number;

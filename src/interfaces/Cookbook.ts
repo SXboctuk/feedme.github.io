@@ -9,6 +9,7 @@ export interface ICookbook {
 	title: string;
 	mainText: string;
 	likes: number;
+	isLikes: boolean;
 	views: number;
 	comments: IComment[];
 	recepies: CardRecepie[];

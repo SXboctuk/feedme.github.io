@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import Cookbooks from '.';
 import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -8,8 +7,6 @@ import { initialCookbooksFilterOption } from './Cookbooks.Constant';
 import { CookbooksFilterOption } from './Cookbooks.Interface';
 
 const CookbooksContainter = () => {
-	const params = useParams();
-
 	const [option, setOption] = useState<CookbooksFilterOption>(
 		initialCookbooksFilterOption,
 	);
@@ -78,7 +75,6 @@ const CookbooksContainter = () => {
 			filterOption={option}
 			setFilterOption={setOption}
 			CookbooksCard={filterElems()}
-			CookbookById={params.id ? params.id : null}
 			loading={loading}
 			error={error}
 		/>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import Recepies from '.';
 import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -9,8 +8,6 @@ import { initialRecepiesFilterOption } from './Recepies.Constant';
 import { RecepiesFilterOption } from './Recepies.Interface';
 
 const RecepiesContainer = () => {
-	const params = useParams();
-
 	const [option, setOption] = useState<RecepiesFilterOption>(
 		initialRecepiesFilterOption,
 	);
@@ -66,7 +63,6 @@ const RecepiesContainer = () => {
 		<Recepies
 			filterOption={option}
 			setFilterOption={setOption}
-			recepieId={params.id ? params.id : null}
 			recepiesCard={filterItem()}
 			loading={loading}
 			error={error}

@@ -38,8 +38,8 @@ const TrendingRecepies = () => {
 				<TrendingRecepiesSlider>
 					{cards.map((elem) => (
 						<Card
-							key={elem.key}
-							to={`${routePath.RECEPIES}/${elem.to}`}
+							key={elem.id}
+							to={`${routePath.RECEPIES}/${elem.id}`}
 							imageSrc={elem.imageSrc}
 							titleName={elem.titleName}
 							creatorName={elem.creatorName}
@@ -47,6 +47,8 @@ const TrendingRecepies = () => {
 							fontSizeCreator="12px"
 							OptionType={'Recepie'}
 							creatorId={'4'}
+							isLikes={elem.isLikes}
+							cardType={'recepie'}
 						/>
 					))}
 				</TrendingRecepiesSlider>

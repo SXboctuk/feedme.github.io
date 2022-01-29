@@ -149,7 +149,7 @@ const CreateRecepie = () => {
 	};
 	const { recepies } = useTypedSelector((state) => state.userRecepiesReducer);
 	useEffect(() => {
-		const recepie = recepies.find((elem) => elem.to === params.recipeid);
+		const recepie = recepies.find((elem) => elem.id === params.recipeid);
 		console.log(recepie);
 		if (recepie) {
 			console.log('EDIT');

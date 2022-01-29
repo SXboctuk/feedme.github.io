@@ -36,8 +36,12 @@ const Recipe = (props: {
 	recipeData: IRecipe;
 	isAuth: boolean;
 	isOwner: boolean;
+	handlerLike: (e: React.MouseEvent<HTMLDivElement>) => void;
+	isLikes: boolean;
+	likesCounter: number;
 }) => {
-	const { recipeData, isAuth, isOwner } = props;
+	const { recipeData, isAuth, isOwner, handlerLike, isLikes, likesCounter } =
+		props;
 	const {
 		comments,
 		creatorName,
@@ -46,7 +50,6 @@ const Recipe = (props: {
 		id,
 		image,
 		ingredients,
-		likes,
 		mainText,
 		title,
 		views,
@@ -109,10 +112,13 @@ const Recipe = (props: {
 										{views} {t('views')}
 									</RecipeCounter>
 								</RecipeSocial>
-								<RecipeSocial>
+								<RecipeSocial
+									className={isLikes ? 'selected' : ''}
+									onClick={handlerLike}
+								>
 									<SvgHeart />
 									<RecipeCounter>
-										{likes} {t('likes')}
+										{likesCounter} {t('likes')}
 									</RecipeCounter>
 								</RecipeSocial>
 								<RecipeSocial>

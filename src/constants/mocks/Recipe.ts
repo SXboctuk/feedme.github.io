@@ -12,6 +12,7 @@ export const recipeMockData: IRecipe = {
 	ingredients: ['some, 200g', 'some, 200g', 'some, 200g'],
 	likes: 120,
 	views: 200,
+	isLikes: true,
 	comments: [
 		{
 			imageSrc: '/public/mocks/Image/card1.jpg',

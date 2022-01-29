@@ -2,22 +2,15 @@ import React from 'react';
 import Card from '../../components/shared/Card';
 import ContentSearchTemplate from '../../components/ContentSearchTemplate';
 import Spinner from '../../components/shared/Spinner';
-import { routePath } from '../../constants/routePath';
 import CookbooksFilter from './components/CookbooksFilter';
 import { CookbooksProps } from './Cookbooks.Interface';
 import { CookbooksContentMainGrid } from './Cookbooks.Styled';
 import ContentWrapper from '../../components/ContentWrapper';
-import CookbookContainer from '../Cookbook/Cookbook.Container';
+import { Outlet } from 'react-router-dom';
 
 const Cookbooks = (props: CookbooksProps) => {
-	const {
-		loading,
-		error,
-		filterOption,
-		setFilterOption,
-		CookbooksCard,
-		CookbookById,
-	} = props;
+	const { loading, error, filterOption, setFilterOption, CookbooksCard } =
+		props;
 	if (error) {
 		return <div>{error}</div>;
 	}
@@ -38,8 +31,8 @@ const Cookbooks = (props: CookbooksProps) => {
 							{CookbooksCard.map((elem) => {
 								return (
 									<Card
-										to={`${routePath.COOKBOOKS}${elem.to}`}
-										key={elem.key}
+										to={`${elem.id}`}
+										key={elem.id}
 										text={elem.text}
 										viewsCounter={elem.viewsCounter}
 										titleName={elem.titleName}
@@ -49,6 +42,8 @@ const Cookbooks = (props: CookbooksProps) => {
 										commentsCounter={elem.commentsCounter}
 										OptionType={'Cookbook'}
 										creatorId={elem.creatorId}
+										isLikes={elem.isLikes}
+										cardType={'cookbook'}
 									/>
 								);
 							})}
@@ -57,8 +52,7 @@ const Cookbooks = (props: CookbooksProps) => {
 				}
 				selectedPage={'Cookbooks'}
 			/>
-
-			{CookbookById ? <CookbookContainer id={CookbookById} /> : null}
+			<Outlet />
 		</ContentWrapper>
 	);
 };

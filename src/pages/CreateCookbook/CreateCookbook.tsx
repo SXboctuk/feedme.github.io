@@ -163,7 +163,7 @@ const CreateCookbook = () => {
 
 	useEffect(() => {
 		const cookbook = cookbooks.find(
-			(elem) => elem.to === params.cookbookid,
+			(elem) => elem.id === params.cookbookid,
 		);
 		if (cookbook) {
 			//fetch id cookbook
@@ -277,7 +277,7 @@ const CreateCookbook = () => {
 							<CreateCookbookRecepiesWrapper>
 								{recepieShow.slice(0, 3).map((elem, i) => (
 									<CreateCookbookRecepiesItem
-										key={elem.key + i}
+										key={elem.id + i}
 										onClick={() => {
 											handlerAddRecepieInCookbook(elem);
 											setRecepieSearch('');
@@ -299,11 +299,11 @@ const CreateCookbook = () => {
 													elem,
 												);
 											}}
-											key={'newInCookbook' + elem.key}
+											key={'newInCookbook' + elem.id}
 										>
 											<Card
 												to={'#'}
-												key={elem.key}
+												key={elem.id}
 												text={elem.text}
 												viewsCounter={elem.viewsCounter}
 												titleName={elem.titleName}
@@ -316,6 +316,8 @@ const CreateCookbook = () => {
 												type="wide"
 												OptionType={'Hidden'}
 												creatorId={elem.creatorId}
+												isLikes={elem.isLikes}
+												cardType={'recepie'}
 											/>
 										</div>
 									);
@@ -328,11 +330,11 @@ const CreateCookbook = () => {
 													elem,
 												);
 											}}
-											key={'newInCookbook' + elem.key}
+											key={'newInCookbook' + elem.id}
 										>
 											<Card
 												to={'#'}
-												key={elem.key}
+												key={elem.id}
 												text={elem.text}
 												viewsCounter={elem.viewsCounter}
 												titleName={elem.titleName}
@@ -344,6 +346,8 @@ const CreateCookbook = () => {
 												}
 												OptionType={'Hidden'}
 												creatorId={elem.creatorId}
+												isLikes={elem.isLikes}
+												cardType={'recepie'}
 											/>
 										</div>
 									);

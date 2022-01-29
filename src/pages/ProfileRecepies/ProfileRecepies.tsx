@@ -71,8 +71,8 @@ const ProfileRecepies = (props: {
 								? userRecepies.map((elem) => {
 										return (
 											<Card
-												to={`./${elem.to}`}
-												key={elem.key}
+												to={`./${elem.id}`}
+												key={elem.id}
 												text={elem.text}
 												viewsCounter={elem.viewsCounter}
 												titleName={elem.titleName}
@@ -85,14 +85,16 @@ const ProfileRecepies = (props: {
 												type="wide"
 												OptionType={'Recepie'}
 												creatorId={elem.creatorId}
+												isLikes={elem.isLikes}
+												cardType={'recepie'}
 											/>
 										);
 								  })
 								: userRecepies.map((elem) => {
 										return (
 											<Card
-												to={`./${elem.to}`}
-												key={elem.key}
+												to={`./${elem.id}`}
+												key={elem.id}
 												text={elem.text}
 												viewsCounter={elem.viewsCounter}
 												titleName={elem.titleName}
@@ -104,6 +106,8 @@ const ProfileRecepies = (props: {
 												}
 												OptionType={'Recepie'}
 												creatorId={elem.creatorId}
+												isLikes={elem.isLikes}
+												cardType={'recepie'}
 											/>
 										);
 								  })}

@@ -35,24 +35,22 @@ const Routes = () => {
 							<Background backgroundColor={styles.colors.gray} />
 						}
 					>
-						<Route path={routePath.RECEPIES}>
+						<Route
+							path={routePath.RECEPIES}
+							element={<RecepiesContainer />}
+						>
 							<Route
-								index
-								element={<RecepiesContainer />}
-							></Route>
-							<Route
-								path={':id'}
-								element={<RecepiesContainer />}
+								path={':recipeid'}
+								element={<RecipeContainer />}
 							></Route>
 						</Route>
-						<Route path={routePath.COOKBOOKS}>
+						<Route
+							path={routePath.COOKBOOKS}
+							element={<CookbooksContainter />}
+						>
 							<Route
-								index
-								element={<CookbooksContainter />}
-							></Route>
-							<Route
-								path={':id'}
-								element={<CookbooksContainter />}
+								path={':cookbookid'}
+								element={<CookbookContainer />}
 							></Route>
 						</Route>
 						<Route

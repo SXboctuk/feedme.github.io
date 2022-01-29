@@ -1,6 +1,7 @@
 export interface CardProps {
+	cardType: 'recepie' | 'cookbook';
+	isLikes: boolean;
 	to: string;
-	key: string;
 	viewsCounter: number;
 	titleName: string;
 	creatorName: string;

@@ -5,7 +5,6 @@ export interface CookbooksProps {
 	filterOption: CookbooksFilterOption;
 	setFilterOption: Dispatch<React.SetStateAction<CookbooksFilterOption>>;
 	CookbooksCard: CardCookbook[];
-	CookbookById: string | null;
 	loading: boolean;
 	error: string | null;
 }

@@ -134,4 +134,11 @@ export const RecipeSocial = styled.div`
 	&:not(:last-child) {
 		margin-right: ${styles.distances.mdPlus};
 	}
+
+	&.selected {
+		color: ${({ theme }) => theme.colors.primary};
+		path {
+			fill: ${({ theme }) => theme.colors.primary};
+		}
+	}
 `;

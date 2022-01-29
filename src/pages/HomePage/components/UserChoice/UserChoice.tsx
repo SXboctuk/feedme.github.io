@@ -36,8 +36,8 @@ const UserChoice = () => {
 			<UserChoiceCardsBlock>
 				{cards.map((elem) => (
 					<Card
-						to={`${routePath.RECEPIES}/${elem.to}`}
-						key={elem.key}
+						to={`${routePath.RECEPIES}/${elem.id}`}
+						key={elem.id}
 						viewsCounter={elem.viewsCounter}
 						titleName={elem.titleName}
 						creatorName={elem.creatorName}
@@ -46,6 +46,8 @@ const UserChoice = () => {
 						commentsCounter={elem.commentsCounter}
 						OptionType={'Recepie'}
 						creatorId={'4'}
+						isLikes={elem.isLikes}
+						cardType={'recepie'}
 					/>
 				))}
 			</UserChoiceCardsBlock>

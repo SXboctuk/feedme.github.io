@@ -9,7 +9,7 @@ const ModalWindowContainer = (props: {
 	const navigate = useNavigate();
 	const { handlerCloseButton } = props;
 	const handlerShow = () => {
-		navigate(-1);
+		navigate('../');
 	};
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
