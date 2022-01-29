@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProfileSettings from '.';
 import { errorMassage } from '../../constants/errorMassage';
@@ -11,21 +11,11 @@ const ProfileSettingsContainer = () => {
 	const { signOutUser } = useAction();
 	const navigate = useNavigate();
 	const user = useTypedSelector((state) => state.userReducer);
-	const refInputUploadFile = createRef<HTMLInputElement>();
 
-	const [uploadImage, setUploadImage] = useState<File>();
 	const [errorName, setErrorName] = useState<string>('');
 	const [errorEmail, setErrorEmail] = useState<string>('');
 	const [errorPassword, setErrorPassword] = useState<string>('');
 
-	const handlerUploadInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
-			setUploadImage(e.target.files[0]);
-		}
-	};
-	const handlerPhotoClick = () => {
-		refInputUploadFile.current?.click();
-	};
 	const handlerSaveName = (str: string) => {
 		if (str.match(regexString.IS_STRING_SHORT) === null) {
 			setErrorName(errorMassage.IS_SHORT);
@@ -79,20 +69,12 @@ const ProfileSettingsContainer = () => {
 		signOutUser();
 		navigate('/');
 	};
-	useEffect(() => {
-		if (uploadImage) {
-			alert('new image');
-		}
-		//fetch new userimage
-	}, [uploadImage]);
-	const isOwner = params.id === user.id;
+
+	const isOwner = params.id === user.id || false;
 	return (
 		<ProfileSettings
-			refInputUploadFile={refInputUploadFile}
 			isOwner={isOwner}
 			user={user}
-			handlerUploadInput={handlerUploadInput}
-			handlerPhotoClick={handlerPhotoClick}
 			handlerSaveName={handlerSaveName}
 			handlerSaveEmail={handlerSaveEmail}
 			handlerSavePassword={handlerSavePassword}

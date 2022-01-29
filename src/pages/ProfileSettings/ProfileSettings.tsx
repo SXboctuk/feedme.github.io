@@ -17,9 +17,7 @@ import {
 const ProfileSettings = (props: {
 	isOwner: boolean;
 	user: UserState;
-	refInputUploadFile: React.RefObject<HTMLInputElement>;
-	handlerUploadInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handlerPhotoClick: (e: React.MouseEvent) => void;
+
 	handlerSaveName: (str: string) => void;
 	handlerSaveEmail: (str: string) => void;
 	handlerSavePassword: (str: string) => void;
@@ -35,9 +33,7 @@ const ProfileSettings = (props: {
 	const {
 		isOwner,
 		user,
-		refInputUploadFile,
-		handlerUploadInput,
-		handlerPhotoClick,
+
 		handlerSaveName,
 		handlerSaveEmail,
 		handlerSavePassword,
@@ -63,16 +59,15 @@ const ProfileSettings = (props: {
 						imageSrc={image}
 						userName={userName}
 						userText={userText}
-						handlerPhotoClick={handlerPhotoClick}
-						changeUserText
+						isOwner={isOwner}
 					/>
-					<input
+					{/* <input
 						ref={refInputUploadFile}
 						type={'file'}
 						onChange={handlerUploadInput}
 						accept="image/*"
 						hidden
-					></input>
+					></input> */}
 					<ProfileNavigation
 						itemSelect="settings"
 						isOwner={isOwner}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { errorMassage } from '../../constants/errorMassage';
 import { regexString } from '../../constants/regex';
@@ -23,15 +23,16 @@ const ProfileHeader = (props: {
 	imageSrc: string;
 	userName: string;
 	userText: string;
-	handlerPhotoClick?: (e: React.MouseEvent) => void;
-	changeUserText?: true;
+	isOwner: boolean;
 }) => {
 	const { t } = useTranslation();
-	const { imageSrc, userName, userText, handlerPhotoClick, changeUserText } =
-		props;
+	const { imageSrc, userName, userText, isOwner } = props;
 	const [showInput, setShowInput] = useState(false);
 	const [value, setValue] = useState(userText);
 	const [errorMessage, setErrorMessage] = useState('');
+	const [uploadImage, setUploadImage] = useState<File>();
+
+	const refInputUploadFile = createRef<HTMLInputElement>();
 	const handlerUserTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		if (e.target.value.match(regexString.IS_VALID_STRING)) {
 			setValue(e.target.value);
@@ -51,17 +52,39 @@ const ProfileHeader = (props: {
 			alert('new userText');
 		}
 	};
+	const handlerPhotoClick = () => {
+		refInputUploadFile.current?.click();
+	};
+	const handlerUploadInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files) {
+			setUploadImage(e.target.files[0]);
+		}
+	};
+	useEffect(() => {
+		if (isOwner && uploadImage !== undefined)
+			alert('get New photo and set it' + uploadImage?.size);
+	}, [uploadImage]);
+
 	return (
 		<ProfileHeaderBlock>
 			<ProfileHeaderWrapper>
-				<ProfileHeaderImageWrapper onClick={handlerPhotoClick}>
+				<ProfileHeaderImageWrapper
+					onClick={isOwner ? handlerPhotoClick : undefined}
+				>
 					<ProfileHeaderImage src={imageSrc} />
-					{handlerPhotoClick ? (
+					{isOwner ? (
 						<ProfileHeaderHover>
 							<ProfileHeaderHoverBackground />
 							<ProfileHeaderSvgCamera />
 						</ProfileHeaderHover>
 					) : null}
+					<input
+						ref={refInputUploadFile}
+						type={'file'}
+						onChange={handlerUploadInput}
+						accept="image/*"
+						hidden
+					></input>
 				</ProfileHeaderImageWrapper>
 
 				<ProfileHeaderTextBlock>
@@ -75,7 +98,7 @@ const ProfileHeader = (props: {
 							<ProfileHeaderError>
 								{errorMessage}
 							</ProfileHeaderError>
-							{changeUserText ? (
+							{isOwner ? (
 								<ProfileButtonWrapper>
 									<ProfileButton onClick={handlerSubmit}>
 										{t('confirm')}
@@ -93,7 +116,7 @@ const ProfileHeader = (props: {
 							<ProfileHeaderUserText>
 								{userText}
 							</ProfileHeaderUserText>
-							{changeUserText ? (
+							{isOwner ? (
 								<ProfileButton
 									onClick={() => setShowInput(true)}
 								>
