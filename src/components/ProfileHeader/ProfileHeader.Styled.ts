@@ -8,7 +8,7 @@ export const ProfileHeaderBlock = styled.div`
 
 export const ProfileHeaderWrapper = styled.div`
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	@media (max-width: ${styles.screenSize.sm}) {
 		flex-direction: column;
 	}
@@ -79,4 +79,30 @@ export const ProfileHeaderUserText = styled.div`
 	font-family: 'Roboto';
 
 	margin-top: ${styles.distances.md};
+`;
+export const ProfileButtonWrapper = styled.div`
+	display: flex;
+
+	& > *:not(:first-child) {
+		margin-left: ${styles.distances.sm};
+	}
+`;
+export const ProfileButton = styled.div`
+	color: ${({ theme }) => theme.colors.primary};
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px;
+	cursor: pointer;
+	margin-top: ${styles.distances.sm};
+`;
+export const ProfileTextarea = styled.textarea`
+	max-width: 100%;
+	width: 100%;
+	min-height: 120px;
+	max-height: 300px;
+	padding: ${styles.distances.sm};
+	border-radius: ${({ theme }) => theme.borderRadius};
+`;
+export const ProfileHeaderError = styled.div`
+	color: ${({ theme }) => theme.colors.danger};
 `;

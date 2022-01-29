@@ -11,6 +11,7 @@ import {
 	ProfileSettingsContentWrapper,
 	ProfileSettingsMainTitle,
 	ProfileSettingsItemsBlock,
+	ProfileSettingsDelete,
 } from './ProfileSettings.Styled';
 
 const ProfileSettings = (props: {
@@ -28,6 +29,7 @@ const ProfileSettings = (props: {
 	handlerChangeName: () => void;
 	handlerChangeEmail: () => void;
 	handlerChangePassword: () => void;
+	handlerDeleteUser: () => void;
 }) => {
 	const { t } = useTranslation();
 	const {
@@ -45,6 +47,7 @@ const ProfileSettings = (props: {
 		handlerChangeName,
 		handlerChangeEmail,
 		handlerChangePassword,
+		handlerDeleteUser,
 	} = props;
 	const { userText, userName, email, image } = user;
 
@@ -61,6 +64,7 @@ const ProfileSettings = (props: {
 						userName={userName}
 						userText={userText}
 						handlerPhotoClick={handlerPhotoClick}
+						changeUserText
 					/>
 					<input
 						ref={refInputUploadFile}
@@ -105,6 +109,9 @@ const ProfileSettings = (props: {
 								handlerInputChange={handlerChangePassword}
 							/>
 						</ProfileSettingsItemsBlock>
+						<ProfileSettingsDelete onClick={handlerDeleteUser}>
+							{t('delete')}
+						</ProfileSettingsDelete>
 					</ProfileSettingsContentWrapper>
 				</Container>
 			</ContentWrapper>

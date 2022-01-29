@@ -31,3 +31,10 @@ export const ProfileSettingsItemsBlock = styled.div`
 		margin-top: ${styles.distances.mdPlus};
 	}
 `;
+
+export const ProfileSettingsDelete = styled.div`
+	cursor: pointer;
+	margin-top: ${styles.distances.xxl};
+	font-size: 18px;
+	color: ${({ theme }) => theme.colors.danger};
+`;

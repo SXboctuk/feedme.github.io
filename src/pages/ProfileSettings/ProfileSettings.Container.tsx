@@ -1,12 +1,15 @@
 import React, { createRef, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ProfileSettings from '.';
 import { errorMassage } from '../../constants/errorMassage';
 import { regexString } from '../../constants/regex';
+import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const ProfileSettingsContainer = () => {
 	const params = useParams();
+	const { signOutUser } = useAction();
+	const navigate = useNavigate();
 	const user = useTypedSelector((state) => state.userReducer);
 	const refInputUploadFile = createRef<HTMLInputElement>();
 
@@ -70,6 +73,12 @@ const ProfileSettingsContainer = () => {
 	const handlerChangePassword = () => {
 		setErrorPassword('');
 	};
+
+	const handlerDeleteUser = () => {
+		//send delete get resp
+		signOutUser();
+		navigate('/');
+	};
 	useEffect(() => {
 		if (uploadImage) {
 			alert('new image');
@@ -93,6 +102,7 @@ const ProfileSettingsContainer = () => {
 			errorName={errorName}
 			errorEmail={errorEmail}
 			errorPassword={errorPassword}
+			handlerDeleteUser={handlerDeleteUser}
 		/>
 	);
 };
