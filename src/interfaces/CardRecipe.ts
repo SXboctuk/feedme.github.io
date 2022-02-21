@@ -10,4 +10,5 @@ export interface CardRecepie {
 	commentsCounter: number;
 	text: string;
 	cookingTime: number;
+	isSaved: boolean;
 }

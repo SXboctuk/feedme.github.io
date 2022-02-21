@@ -18,9 +18,9 @@ const ProfileSettings = (props: {
 	isOwner: boolean;
 	user: UserState;
 
-	handlerSaveName: (str: string) => void;
-	handlerSaveEmail: (str: string) => void;
-	handlerSavePassword: (str: string) => void;
+	handlerSaveName: (str: string) => Promise<boolean>;
+	handlerSaveEmail: (str: string) => Promise<boolean>;
+	handlerSavePassword: (str: string) => Promise<boolean>;
 	errorName: string;
 	errorEmail: string;
 	errorPassword: string;
@@ -61,13 +61,7 @@ const ProfileSettings = (props: {
 						userText={userText}
 						isOwner={isOwner}
 					/>
-					{/* <input
-						ref={refInputUploadFile}
-						type={'file'}
-						onChange={handlerUploadInput}
-						accept="image/*"
-						hidden
-					></input> */}
+
 					<ProfileNavigation
 						itemSelect="settings"
 						isOwner={isOwner}

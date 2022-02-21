@@ -5,11 +5,11 @@ import styles from '../../constants/stylesProperty';
 export const ContentSearchTemplateWrapper = styled.div``;
 export const ContentSearchTemplateGrid1x3 = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 3fr;
+	grid-template-columns: 25% 75%;
 	grid-gap: 40px;
 
 	@media (max-width: ${styles.screenSize.sm}) {
-		grid-template-columns: 1fr;
+		grid-template-columns: 100%;
 	}
 `;
 export const ContentSearchTemplateRightElem = styled.div`

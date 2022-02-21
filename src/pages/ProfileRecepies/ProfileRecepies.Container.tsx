@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProfileRecepies from '.';
+import { getUserById } from '../../api/Feedme.Api';
 import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { IUser } from '../../interfaces/User';
@@ -29,16 +30,25 @@ const ProfileRecepiesContainer = () => {
 			});
 		} else {
 			//fetch user by params.id
-			setUserData({
-				userName: 'UserName',
-				imageSrc: '/public/assets/images/SignIn.jpg',
-				userText: 'UserTEXT',
-			});
+			const fetchUser = async () => {
+				if (params.id) {
+					const data = await (await getUserById(params.id)).json();
+					setUserData({
+						userName: await data.userName,
+						imageSrc: await data.imageSrc,
+						userText: await data.userText,
+					});
+				}
+			};
+			fetchUser();
 		}
 
 		//fetch user recepies by params.id
-		fetchUserRecepies(params.id || '');
+		if (params.id) {
+			fetchUserRecepies(params.id);
+		}
 	}, []);
+
 	return (
 		<ProfileRecepies
 			userData={userData}

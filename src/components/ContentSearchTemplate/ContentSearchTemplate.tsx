@@ -25,7 +25,7 @@ const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
 							{props.selectedPage === 'Cookbooks' ? (
 								<>
 									<ContentSearchTemplateVariant
-										to={routePath.COOKBOOKS}
+										to={'/' + routePath.COOKBOOKS}
 										aria-selected
 									>
 										{t('cookbooks')}
@@ -44,7 +44,7 @@ const ContentSearchTemplate = (props: ContentSearchTemplateProsp) => {
 										{t('cookbooks')}
 									</ContentSearchTemplateVariant>
 									<ContentSearchTemplateVariant
-										to={routePath.RECEPIES}
+										to={'/' + routePath.RECEPIES}
 										aria-selected
 									>
 										{t('recepies')}

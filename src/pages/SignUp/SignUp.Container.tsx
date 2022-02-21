@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SignUp from '.';
+import { signUp } from '../../api/Feedme.Api';
 import { errorMassage } from '../../constants/errorMassage';
 import { regexString } from '../../constants/regex';
+import { routePath } from '../../constants/routePath';
+import { useAction } from '../../hooks/useAction';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const SignUpContainer = () => {
 	const [loginError, setLoginError] = useState<string>('');
+	const [usernameError, setUsernameError] = useState<string>('');
 	const [passwordError, setPasswordError] = useState<string>('');
 	const [passwordConfirmError, setPasswordConfirmError] =
 		useState<string>('');
 	const [loginValue, setLoginValue] = useState<string>('');
+	const [usernameValue, setUsernameValue] = useState<string>('');
 	const [passwordValue, setPasswordValue] = useState<string>('');
 	const [passwordConfirmValue, setPasswordConfirmValue] =
 		useState<string>('');
+
+	const [responseMessage, setResponseMessage] = useState<string>('');
+
+	const navigate = useNavigate();
+	const { signInUser } = useAction();
+	const { isAuth } = useTypedSelector((state) => state.userReducer);
+	useEffect(() => {
+		if (isAuth) {
+			navigate(routePath.HOMEPAGE);
+		}
+	}, [isAuth]);
 
 	const handlerLogin = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -19,6 +37,14 @@ const SignUpContainer = () => {
 		if (e.target.value.match(regexString.IS_VALID_STRING_EMAIL) !== null) {
 			setLoginValue(e.target.value);
 			setLoginError('');
+		}
+	};
+	const handlerUsername = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		if (e.target.value.match(regexString.IS_VALID_STRING) !== null) {
+			setUsernameValue(e.target.value);
+			setUsernameError('');
 		}
 	};
 
@@ -40,18 +66,22 @@ const SignUpContainer = () => {
 			setPasswordConfirmError('');
 		}
 	};
-	const handlerFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handlerFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		let error = false;
-		if (loginValue.match(regexString.IS_STRING_SHORT)) {
+		if (loginValue.match(regexString.IS_STRING_SHORT) === null) {
 			setLoginError(errorMassage.IS_SHORT);
 			error = true;
 		}
-		if (passwordValue.match(regexString.IS_STRING_SHORT)) {
+		if (usernameValue.match(regexString.IS_STRING_SHORT) === null) {
+			setUsernameError(errorMassage.IS_SHORT);
+			error = true;
+		}
+		if (passwordValue.match(regexString.IS_STRING_SHORT) === null) {
 			setPasswordError(errorMassage.IS_SHORT);
 			error = true;
 		}
-		if (passwordConfirmValue.match(regexString.IS_STRING_SHORT)) {
+		if (passwordConfirmValue.match(regexString.IS_STRING_SHORT) === null) {
 			setPasswordConfirmError(errorMassage.IS_SHORT);
 			error = true;
 		}
@@ -61,20 +91,33 @@ const SignUpContainer = () => {
 		}
 
 		if (!error) {
-			//post to server
+			const res = await signUp(
+				loginValue,
+				usernameValue,
+				passwordValue,
+				passwordConfirmValue,
+			);
+			if (res.ok) {
+				signInUser(res);
+			} else {
+				setResponseMessage((await res.json()).message);
+			}
 		}
 		return;
 	};
 	return (
 		<SignUp
 			handlerLogin={handlerLogin}
+			handlerUsername={handlerUsername}
 			handlerPassword={handlerPassword}
 			handlerPasswordConfirm={handlerPasswordConfirm}
 			loginError={loginError}
+			usernameError={usernameError}
 			passwordError={passwordError}
 			passwordConfirmError={passwordConfirmError}
 			handlerFormSubmit={handlerFormSubmit}
 			loginValue={loginValue}
+			usernameValue={usernameValue}
 			passwordValue={passwordValue}
 			passwordConfirmValue={passwordConfirmValue}
 		/>

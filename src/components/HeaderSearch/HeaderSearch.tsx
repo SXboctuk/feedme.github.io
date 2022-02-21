@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { getUsers } from '../../api/Feedme.Api';
 import { regexString } from '../../constants/regex';
 import { routePath } from '../../constants/routePath';
 import {
@@ -37,13 +38,11 @@ const HeaderSearch = () => {
 
 	useEffect(() => {
 		//fetch users
-		setUsers([
-			{ userName: 'Jon', id: '1' },
-			{ userName: 'Ivan', id: '2' },
-			{ userName: 'Max', id: '3' },
-			{ userName: 'Vlad ster', id: '4' },
-			{ userName: 'ConstantUser', id: '123' },
-		]);
+		const getUsersFetch = async () => {
+			const res = await getUsers();
+			setUsers(await res.json());
+		};
+		getUsersFetch();
 	}, []);
 
 	return (

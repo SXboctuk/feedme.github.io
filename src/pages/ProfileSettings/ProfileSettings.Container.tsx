@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProfileSettings from '.';
+import {
+	deleteUser,
+	updataUserEmail,
+	updataUserName,
+	updataUserPassword,
+} from '../../api/Feedme.Api';
 import { errorMassage } from '../../constants/errorMassage';
 import { regexString } from '../../constants/regex';
 import { useAction } from '../../hooks/useAction';
@@ -8,7 +14,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const ProfileSettingsContainer = () => {
 	const params = useParams();
-	const { signOutUser } = useAction();
+	const { signOutUser, setNewEmail, setNewName } = useAction();
 	const navigate = useNavigate();
 	const user = useTypedSelector((state) => state.userReducer);
 
@@ -16,42 +22,52 @@ const ProfileSettingsContainer = () => {
 	const [errorEmail, setErrorEmail] = useState<string>('');
 	const [errorPassword, setErrorPassword] = useState<string>('');
 
-	const handlerSaveName = (str: string) => {
+	const handlerSaveName = async (str: string) => {
 		if (str.match(regexString.IS_STRING_SHORT) === null) {
 			setErrorName(errorMassage.IS_SHORT);
-			return;
+			return false;
 		}
 
 		if (errorName.length === 0) {
-			alert('new Name');
+			const res = await updataUserName(str);
+
+			if (res.ok) {
+				setNewName(str);
+				return true;
+			}
 		}
+		return false;
 		//posr new user name
 	};
-	const handlerSaveEmail = (str: string) => {
-		if (str.match(regexString.IS_STRING_SHORT) === null) {
-			setErrorEmail(errorMassage.IS_SHORT);
-			return;
-		}
-
+	const handlerSaveEmail = async (str: string) => {
 		if (str.match(regexString.IS_EMAIL) === null) {
 			setErrorEmail(errorMassage.INVALID_EMAIL);
-			return;
+			return false;
 		}
 
 		if (errorName.length === 0) {
-			alert('new Email');
+			const res = await updataUserEmail(str);
+			if (res.ok) {
+				setNewEmail(str);
+				return true;
+			}
 		}
+		return false;
 		//post new user email
 	};
-	const handlerSavePassword = (str: string) => {
+	const handlerSavePassword = async (str: string) => {
 		if (str.match(regexString.IS_STRING_SHORT) === null) {
 			setErrorPassword(errorMassage.IS_SHORT);
-			return;
+			return false;
 		}
 
 		if (errorName.length === 0) {
-			alert('new Password');
+			const res = await updataUserPassword(str);
+			if (res.ok) {
+				return true;
+			}
 		}
+		return false;
 		//post new user password
 	};
 	const handlerChangeName = () => {
@@ -64,10 +80,14 @@ const ProfileSettingsContainer = () => {
 		setErrorPassword('');
 	};
 
-	const handlerDeleteUser = () => {
+	const handlerDeleteUser = async () => {
 		//send delete get resp
-		signOutUser();
-		navigate('/');
+
+		const res = await deleteUser();
+		if (res.ok) {
+			signOutUser();
+			navigate('/');
+		}
 	};
 
 	const isOwner = params.id === user.id || false;

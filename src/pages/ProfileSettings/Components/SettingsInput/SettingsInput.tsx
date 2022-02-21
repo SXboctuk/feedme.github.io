@@ -15,7 +15,7 @@ const SettingsInput = (props: {
 	value: string;
 	name: string;
 	buttonName: string;
-	saveButton: (newValue: string) => void;
+	saveButton: (newValue: string) => Promise<boolean>;
 	isPassword?: true;
 	error?: string;
 	handlerInputChange?: () => void;
@@ -83,7 +83,15 @@ const SettingsInput = (props: {
 			)}
 			{showInput ? (
 				<SettingsButtonsWrapper>
-					<SettingsItemButton onClick={() => saveButton(newValue)}>
+					<SettingsItemButton
+						onClick={async () => {
+							const res = await saveButton(newValue);
+
+							if (res) {
+								setShowInput(false);
+							}
+						}}
+					>
 						{t('save')}
 					</SettingsItemButton>
 					<SettingsItemButton

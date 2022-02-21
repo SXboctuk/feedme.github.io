@@ -5,20 +5,22 @@ import {
 	UserRecepiesActionTypes,
 } from '../reducers/UserRecepieReducer/UserRecepiesReducer.types';
 
-import recepiesData from '../../constants/mocks/RecepiesCardOwner.json';
+import { getUserRecepies } from '../../api/Feedme.Api';
+import { responseInResepieCard } from '../../helpers/converter/recepieCard';
 
-export const fetchUserRecepies = (id: stirng) => {
+export const fetchUserRecepies = (id: string) => {
 	return async (dispatch: Dispatch<UserRecepiesAction>) => {
 		try {
 			dispatch({ type: UserRecepiesActionTypes.FETCH_USER_RECEPIES });
 			// fetch
-			const data = recepiesData;
-			setTimeout(() => {
+			const data = await getUserRecepies(id);
+
+			if (data.ok) {
 				dispatch({
 					type: UserRecepiesActionTypes.FETCH_USER_RECEPIES_SUCCESS,
-					payload: data,
+					payload: responseInResepieCard(await data.json()),
 				});
-			}, 1500);
+			}
 		} catch (e) {
 			dispatch({
 				type: UserRecepiesActionTypes.FETCH_USER_RECEPIES_ERROR,

@@ -20,6 +20,7 @@ export const CommentImage = styled.img`
 
 export const CommentTextBlock = styled.div`
 	margin-left: ${styles.distances.md};
+	width: 100%;
 `;
 
 export const CommentTextHeader = styled.div`

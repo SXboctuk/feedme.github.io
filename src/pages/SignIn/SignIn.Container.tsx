@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { signIn } from '../../api/Feedme.Api';
 import { errorMassage } from '../../constants/errorMassage';
 import { regexString } from '../../constants/regex';
 import { routePath } from '../../constants/routePath';
@@ -20,6 +21,7 @@ const SignInContainer = () => {
 
 	const [loginError, setLoginError] = useState<string>('');
 	const [passwordError, setPasswordError] = useState<string>('');
+	const [responseMessage, setResponseMessage] = useState<string>('');
 	const [passwordValue, setPasswordValue] = useState<string>('');
 	const [loginValue, setLoginValue] = useState<string>('');
 
@@ -29,6 +31,7 @@ const SignInContainer = () => {
 		if (e.target.value.match(regexString.IS_VALID_STRING_EMAIL) !== null) {
 			setLoginValue(e.target.value);
 			setLoginError('');
+			setResponseMessage('');
 		}
 	};
 
@@ -38,24 +41,29 @@ const SignInContainer = () => {
 		if (e.target.value.match(regexString.IS_PASSWORD) !== null) {
 			setPasswordValue(e.target.value);
 			setPasswordError('');
+			setResponseMessage('');
 		}
 	};
 
-	const handlerFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handlerFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		let error = false;
-		if (loginValue.match(regexString.IS_STRING_SHORT)) {
+		if (loginValue.match(regexString.IS_STRING_SHORT) === null) {
 			setLoginError(errorMassage.IS_SHORT);
 			error = true;
 		}
-		if (passwordValue.match(regexString.IS_STRING_SHORT)) {
+		if (passwordValue.match(regexString.IS_STRING_SHORT) === null) {
 			setPasswordError(errorMassage.IS_SHORT);
 			error = true;
 		}
 
 		if (!error) {
-			signInUser('123', '321');
-			//check res from server
+			const res = await signIn(loginValue, passwordValue);
+			if (res.ok) {
+				signInUser(res);
+			} else {
+				setResponseMessage((await res.json()).message);
+			}
 		}
 	};
 	return (
@@ -67,6 +75,7 @@ const SignInContainer = () => {
 			passwordError={passwordError}
 			loginValue={loginValue}
 			passwordValue={passwordValue}
+			responseMessage={responseMessage}
 		/>
 	);
 };

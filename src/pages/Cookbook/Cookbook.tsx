@@ -5,6 +5,7 @@ import Button from '../../components/shared/Button';
 import Card from '../../components/shared/Card';
 import Container from '../../components/shared/Container';
 import ModalWindowContainer from '../../components/shared/ModalWindow/ModalWindow.Container';
+import Spinner from '../../components/shared/Spinner';
 import SvgComment from '../../components/Svg/SvgComment';
 import SvgHeart from '../../components/Svg/SvgHeart';
 import SvgWatch from '../../components/Svg/SvgWatch';
@@ -33,35 +34,40 @@ import {
 } from './Cookbook.Styled';
 
 const Cookbook = (props: {
-	cookbookData: ICookbook;
+	cookbookData: ICookbook | null;
 	width: number;
 	isAuth: boolean;
-	isOwner: boolean;
+	isSaved: boolean;
 	handlerLike: (e: React.MouseEvent<HTMLDivElement>) => void;
 	isLikes: boolean;
 	likesCounter: number;
+	handlerSendComment: (str: string) => void;
 }) => {
+	const { t } = useTranslation();
 	const {
 		cookbookData,
 		width,
-		isOwner,
+		isSaved,
 		isAuth,
 		handlerLike,
 		isLikes,
 		likesCounter,
+		handlerSendComment,
 	} = props;
+	if (cookbookData === null) {
+		return <Spinner />;
+	}
 	const {
 		comments,
 		creatorId,
 		creatorName,
-		id,
+
 		image,
 		mainText,
 		recepies,
 		title,
 		views,
 	} = cookbookData;
-	const { t } = useTranslation();
 
 	return (
 		<ModalWindowContainer>
@@ -71,7 +77,7 @@ const Cookbook = (props: {
 						<CookbookHeaderBlock>
 							<CookbookMainTitle>{title}</CookbookMainTitle>
 							<CookbookButtonWrapper>
-								{isAuth && !isOwner ? (
+								{isAuth && !isSaved ? (
 									<Button variant={'solid'}>
 										{t('CloneToMyCookbooks')}
 									</Button>
@@ -125,7 +131,7 @@ const Cookbook = (props: {
 									? recepies.map((elem) => {
 											return (
 												<Card
-													to={`${routePath.RECEPIES}/${elem.id}`}
+													to={`${elem.id}`}
 													key={elem.id}
 													text={elem.text}
 													viewsCounter={
@@ -147,13 +153,15 @@ const Cookbook = (props: {
 													creatorId={elem.creatorId}
 													isLikes={elem.isLikes}
 													cardType={'recepie'}
+													isSaved={elem.isSaved}
+													noTo
 												/>
 											);
 									  })
 									: recepies.map((elem) => {
 											return (
 												<Card
-													to={`${routePath.RECEPIES}/${elem.id}`}
+													to={`${elem.id}`}
 													key={elem.id}
 													text={elem.text}
 													viewsCounter={
@@ -174,6 +182,8 @@ const Cookbook = (props: {
 													creatorId={elem.creatorId}
 													isLikes={elem.isLikes}
 													cardType={'recepie'}
+													isSaved={elem.isSaved}
+													noTo
 												/>
 											);
 									  })}
@@ -182,9 +192,7 @@ const Cookbook = (props: {
 					</CookbookBlock>
 					<CommentsBlock
 						comments={comments}
-						handlerSendComment={(str) => {
-							alert('str: ' + str + ' id: ' + id);
-						}}
+						handlerSendComment={handlerSendComment}
 					/>
 				</CookbookWrapper>
 			</Container>

@@ -7,10 +7,12 @@ export interface IRecipe {
 	creatorName: string;
 	creatorId: string;
 	mainText: string;
+	cookingTime: number;
 	directions: string[];
 	ingredients: string[];
 	likes: number;
 	isLikes: boolean;
+	isSaved: boolean;
 	views: number;
 	comments: IComment[];
 }

@@ -22,6 +22,7 @@ interface FetchUserRecepiesErrorAction {
 	type: UserRecepiesActionTypes.FETCH_USER_RECEPIES_ERROR;
 	payload: string;
 }
+
 export type UserRecepiesAction =
 	| FetchUserRecepiesAction
 	| FetchUserRecepiesSuccessAction

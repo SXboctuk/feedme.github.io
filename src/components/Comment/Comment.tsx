@@ -64,7 +64,9 @@ const Comment = (props: IComment) => {
 
 			<CommentTextBlock>
 				<CommentTextHeader>
-					<CommentUserName to={routePath.PROFILE + userId}>
+					<CommentUserName
+						to={'/' + routePath.PROFILE + '/' + userId}
+					>
 						{userName}
 					</CommentUserName>
 					<CommentDispatchTime>

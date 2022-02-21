@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import FullscreenLoading from './components/FullscreenLoading';
 import GlobalStyles from './components/GlobalStyles';
+
 import { store } from './redux/store';
 import Routes from './routes';
 import { defaultTheme } from './theme';

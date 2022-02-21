@@ -54,6 +54,7 @@ const Recepies = (props: RecepiesProps) => {
 												OptionType={'Recepie'}
 												creatorId={elem.creatorId}
 												isLikes={elem.isLikes}
+												isSaved={elem.isSaved}
 												cardType={'recepie'}
 											/>
 										);
@@ -75,6 +76,7 @@ const Recepies = (props: RecepiesProps) => {
 												OptionType={'Recepie'}
 												creatorId={elem.creatorId}
 												isLikes={elem.isLikes}
+												isSaved={elem.isSaved}
 												cardType={'recepie'}
 											/>
 										);

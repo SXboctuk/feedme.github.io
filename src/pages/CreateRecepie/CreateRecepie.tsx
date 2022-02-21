@@ -1,6 +1,7 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { ChangeEvent, createRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
+import { createNewRecpeie } from '../../api/Feedme.Api';
 import Input from '../../components/Input';
 import Button from '../../components/shared/Button';
 import Container from '../../components/shared/Container';
@@ -21,6 +22,7 @@ import {
 	CreateRecepiePrevieImageWrapper,
 	CreateRecepiePreviewImage,
 	CreateRecepieError,
+	CreateRecepienputRange,
 } from './CreateRecepie.Styled';
 
 const CreateRecepie = () => {
@@ -38,6 +40,7 @@ const CreateRecepie = () => {
 	const [description, setDescription] = useState<string>('');
 	const [ingredients, setIngredients] = useState<string[]>([]);
 	const [directions, setDirections] = useState<string[]>([]);
+	const [rangeValue, setRangeValue] = useState<number>(1);
 
 	const [titleError, setTitleError] = useState<string>('');
 	const [descriptionError, setDescriptionError] = useState<string>('');
@@ -95,7 +98,7 @@ const CreateRecepie = () => {
 		e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		if (e.key === 'Enter') {
-			if (ingredientsValue.match(regexString.IS_STRING_SHORT) === null) {
+			if (ingredientsValue.match(regexString.IS_STRING_SHORT)) {
 				setIngredients([...ingredients, ingredientsValue]);
 				setIngredientsValue('');
 			} else {
@@ -107,18 +110,19 @@ const CreateRecepie = () => {
 		e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		if (e.key === 'Enter') {
-			if (directionsValue.match(regexString.IS_STRING_SHORT) === null) {
-				setIngredients([...ingredients, ingredientsValue]);
-				setIngredientsValue('');
+			if (directionsValue.match(regexString.IS_STRING_SHORT)) {
+				setDirections([...directions, directionsValue]);
+				setDirectionsValue('');
 			} else {
 				setDirectionsError(errorMassage.IS_SHORT);
 			}
 		}
 	};
 
-	const handlerConfirm = () => {
+	const handlerConfirm = async () => {
 		let error = false;
-		if (title.match(regexString.IS_STRING_SHORT)) {
+
+		if (title.match(regexString.IS_STRING_SHORT) === null) {
 			setTitleError(errorMassage.IS_SHORT);
 			error = true;
 		}
@@ -142,7 +146,20 @@ const CreateRecepie = () => {
 		}
 		if (!error) {
 			//fetch new cookbook and take from server cookbook and push in redux user Cookbooks
-			alert('All field is ok');
+
+			if (uploadImage instanceof File) {
+				const res = await createNewRecpeie(
+					uploadImage,
+					title,
+					ingredients,
+					directions,
+					description,
+					rangeValue,
+				);
+				if (res.ok) {
+					alert('All field is ok');
+				}
+			}
 		} else {
 			return;
 		}
@@ -300,7 +317,7 @@ const CreateRecepie = () => {
 										<CreateRecepieGridContentItem
 											key={elem + i}
 										>
-											<div>{`${i}:${t(
+											<div>{`${i + 1}:${t(
 												'step',
 											)} ${elem}`}</div>
 											<CreateRecepieGridContentDeleate
@@ -326,6 +343,19 @@ const CreateRecepie = () => {
 							) : null}
 						</div>
 					</CreateRecepieGrid>
+					<CreateRecepienputRange
+						type={'range'}
+						min={0}
+						max={240}
+						value={rangeValue}
+						onChange={(event: ChangeEvent<HTMLInputElement>) => {
+							setRangeValue(+event.target.value);
+							console.log(rangeValue);
+						}}
+					></CreateRecepienputRange>
+					<div>
+						{t('cookingTime')} : {rangeValue}
+					</div>
 					<CreateRecepieFooterBlock>
 						<Button
 							variant={'outline'}

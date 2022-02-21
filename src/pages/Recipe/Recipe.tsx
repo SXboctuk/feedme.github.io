@@ -31,30 +31,47 @@ import {
 	RecipeCounter,
 } from './Recipe.Styled';
 import CommentsBlock from '../../components/CommentsBlock';
+import Spinner from '../../components/shared/Spinner';
 
 const Recipe = (props: {
-	recipeData: IRecipe;
+	recipeData: IRecipe | null;
 	isAuth: boolean;
-	isOwner: boolean;
+	isSaved: boolean;
 	handlerLike: (e: React.MouseEvent<HTMLDivElement>) => void;
 	isLikes: boolean;
 	likesCounter: number;
+	handlerSave: () => void;
+	handlerSendComment: (str: string) => void;
 }) => {
-	const { recipeData, isAuth, isOwner, handlerLike, isLikes, likesCounter } =
-		props;
+	const { t } = useTranslation();
+	const {
+		recipeData,
+		isAuth,
+		isLikes,
+		handlerLike,
+		isSaved,
+		likesCounter,
+		handlerSave,
+		handlerSendComment,
+	} = props;
+	if (recipeData === null) {
+		return (
+			<ModalWindowContainer>
+				<Spinner />
+			</ModalWindowContainer>
+		);
+	}
 	const {
 		comments,
 		creatorName,
 		creatorId,
 		directions,
-		id,
 		image,
 		ingredients,
 		mainText,
 		title,
 		views,
 	} = recipeData;
-	const { t } = useTranslation();
 	return (
 		<ModalWindowContainer>
 			<Container maxWidth={'1016px'}>
@@ -65,10 +82,12 @@ const Recipe = (props: {
 							<RecipeHeader>
 								<RecipeMainTitle>{title}</RecipeMainTitle>
 								<RecipeButtonWrapper>
-									{isAuth && !isOwner ? (
+									{isAuth && !isSaved ? (
 										<Button
 											variant={'outlineAdd'}
-											onClick={() => alert(id)}
+											onClick={() => {
+												handlerSave();
+											}}
 										/>
 									) : null}
 								</RecipeButtonWrapper>
@@ -133,9 +152,7 @@ const Recipe = (props: {
 
 					<CommentsBlock
 						comments={comments}
-						handlerSendComment={(str) => {
-							alert('str: ' + str + ' id: ' + id);
-						}}
+						handlerSendComment={handlerSendComment}
 					/>
 				</RecipeWrapper>
 			</Container>

@@ -34,9 +34,9 @@ const Card = (props: CardProps) => {
 	const [isLikes, setIsLikes] = useState(props.isLikes);
 	const [likesCounter, setLikesCounter] = useState(props.likesCounter);
 	const handlerLike = async (e: React.MouseEvent<HTMLDivElement>) => {
-		if (isAuth) {
+		if (isAuth && props.OptionType !== 'Hidden') {
 			e.preventDefault();
-			console.log(e.currentTarget.classList);
+
 			if (props.cardType === 'cookbook') {
 				const res = await setCookbookLike(isLikes, props.to);
 				setIsLikes(res.value);
@@ -44,6 +44,7 @@ const Card = (props: CardProps) => {
 			}
 			if (props.cardType === 'recepie') {
 				const res = await setRecepieLike(isLikes, props.to);
+				console.log(res);
 				setIsLikes(res.value);
 				setLikesCounter(res.currentLikesCounter);
 			}
@@ -51,7 +52,7 @@ const Card = (props: CardProps) => {
 	};
 	if (props.type == 'wide') {
 		return (
-			<CardBlockWide to={props.to}>
+			<CardBlockWide to={props.noTo ? '#' : props.to}>
 				<CardWideWrapper>
 					<CardWideImageWrapper>
 						<CardImage src={props.imageSrc} />
@@ -95,6 +96,7 @@ const Card = (props: CardProps) => {
 									type={props.OptionType}
 									elemId={props.to}
 									creatorId={props.creatorId}
+									isSaved={props.isSaved}
 								/>
 							) : null}
 						</CardBottomBlock>
@@ -118,6 +120,7 @@ const Card = (props: CardProps) => {
 								type={props.OptionType}
 								elemId={props.to}
 								creatorId={props.creatorId}
+								isSaved={props.isSaved}
 							/>
 						) : null}
 					</CardInnerBlock>
@@ -132,7 +135,8 @@ const Card = (props: CardProps) => {
 						</CardCreator>
 					</TitleAndCreatorBlock>
 					{props.text ? <CardText>{props.text}</CardText> : null}
-					{props.likesCounter && props.commentsCounter ? (
+					{props.likesCounter !== undefined &&
+					props.commentsCounter !== undefined ? (
 						<CardInnerBlock>
 							<AlignCenterBlock
 								className={isLikes ? 'selected' : ''}
@@ -140,7 +144,7 @@ const Card = (props: CardProps) => {
 							>
 								<CardSvgHeart />
 								<CardCounterText>
-									{props.likesCounter} {t('likes')}
+									{likesCounter} {t('likes')}
 								</CardCounterText>
 							</AlignCenterBlock>
 							<AlignCenterBlock>

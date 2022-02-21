@@ -33,21 +33,20 @@ const ProfileRecepies = (props: {
 	const { t } = useTranslation();
 	const { width } = useWindowSize();
 	const navigate = useNavigate();
-	if (error) return <div>Error</div>;
+	if (error) return <div>{error}</div>;
 	return (
 		<>
 			<ContentWrapper>
 				<Container maxWidth={styles.screenSize.lg}>
 					<ProfileHeader
+						isOwner={false}
 						imageSrc={
-							userData.imageSrc === ''
-								? '/public/assets/images/userDefault.png'
-								: userData.imageSrc
+							userData.imageSrc
+								? userData.imageSrc
+								: '/public/assets/images/userDefault.png'
 						}
 						userName={
-							userData.userName === ''
-								? 'Loading...'
-								: userData.userName
+							userData.userName ? userData.userName : 'Loading...'
 						}
 						userText={
 							userData.userText === ''
@@ -87,6 +86,7 @@ const ProfileRecepies = (props: {
 												creatorId={elem.creatorId}
 												isLikes={elem.isLikes}
 												cardType={'recepie'}
+												isSaved={elem.isSaved}
 											/>
 										);
 								  })
@@ -108,6 +108,7 @@ const ProfileRecepies = (props: {
 												creatorId={elem.creatorId}
 												isLikes={elem.isLikes}
 												cardType={'recepie'}
+												isSaved={elem.isSaved}
 											/>
 										);
 								  })}

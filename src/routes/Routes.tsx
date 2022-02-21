@@ -51,7 +51,12 @@ const Routes = () => {
 							<Route
 								path={':cookbookid'}
 								element={<CookbookContainer />}
-							></Route>
+							>
+								<Route
+									path={':recipeid'}
+									element={<RecipeContainer />}
+								></Route>
+							</Route>
 						</Route>
 						<Route
 							path={routePath.ABOUT_US}

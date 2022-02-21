@@ -3,21 +3,22 @@ import {
 	RecepiesActionTypes,
 } from '../reducers/RecepiesReducer/RecepiesReducer.types';
 import { Dispatch } from 'redux';
-
-import recepiesData from '../../constants/mocks/RecepiesCard.json';
+import { getAllRecepies } from '../../api/Feedme.Api';
+import { responseInResepieCard } from '../../helpers/converter/recepieCard';
 
 export const fetchRecepies = () => {
 	return async (dispatch: Dispatch<RecepiesAction>) => {
 		try {
 			dispatch({ type: RecepiesActionTypes.FETCH_RECEPIES });
 			// fetch
-			const data = recepiesData;
-			setTimeout(() => {
+			const data = await getAllRecepies();
+
+			if (data.ok) {
 				dispatch({
 					type: RecepiesActionTypes.FETCH_RECEPIES_SUCCESS,
-					payload: data,
+					payload: responseInResepieCard(await data.json()),
 				});
-			}, 1500);
+			}
 		} catch (e) {
 			dispatch({
 				type: RecepiesActionTypes.FETCH_RECEPIES_ERROR,

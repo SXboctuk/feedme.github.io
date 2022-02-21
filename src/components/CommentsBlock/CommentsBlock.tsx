@@ -64,7 +64,10 @@ const CommentsBlock = (props: {
 				<Button
 					variant={'solidSend'}
 					onClick={() => {
-						if (inputValue.match(regexString.IS_STRING_SHORT)) {
+						if (
+							inputValue.match(regexString.IS_STRING_SHORT) ===
+							null
+						) {
 							setInputError(errorMassage.IS_SHORT);
 							return;
 						}

@@ -44,6 +44,7 @@ const Cookbooks = (props: CookbooksProps) => {
 										creatorId={elem.creatorId}
 										isLikes={elem.isLikes}
 										cardType={'cookbook'}
+										isSaved={elem.isSaved}
 									/>
 								);
 							})}

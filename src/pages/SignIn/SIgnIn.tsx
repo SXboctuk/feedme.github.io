@@ -20,6 +20,7 @@ const SIgnIn = (props: {
 	passwordError: string;
 	loginValue: string;
 	passwordValue: string;
+	responseMessage: string;
 }) => {
 	const {
 		handlerLogin,
@@ -29,6 +30,7 @@ const SIgnIn = (props: {
 		loginValue,
 		passwordValue,
 		handlerFormSubmit,
+		responseMessage,
 	} = props;
 	const { t } = useTranslation();
 
@@ -36,10 +38,11 @@ const SIgnIn = (props: {
 		<AuthWrapper imageSrc={constImagePath.SIGN_IN} positionX={'left'}>
 			<AuthFormWrapper
 				linkText={t('createAnAccount')}
-				linkPath={routePath.SIGN_UP}
+				linkPath={'/' + routePath.SIGN_UP}
 				underTitleText={t('signinUnderTitle')}
 				title={t('signinTitle')}
 			>
+				<div>{responseMessage}</div>
 				<form onSubmit={handlerFormSubmit}>
 					<SignupputWrapper>
 						<Input

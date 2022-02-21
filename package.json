@@ -2,6 +2,7 @@
   "name": "react-typescript-webpack-starter",
   "version": "1.0.0",
   "description": "npx degit https://github.com/gopinav/React-TypeScript-Webpack-Starter my-app",
+  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",

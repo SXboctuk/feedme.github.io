@@ -1,6 +1,7 @@
 export interface CardProps {
 	cardType: 'recepie' | 'cookbook';
 	isLikes: boolean;
+	isSaved: boolean;
 	to: string;
 	viewsCounter: number;
 	titleName: string;
@@ -15,6 +16,7 @@ export interface CardProps {
 	isWithoutMilk?: boolean;
 	isWithoutEggs?: boolean;
 	type?: 'wide';
+	noTo?: boolean;
 	OptionType: 'Recepie' | 'Cookbook' | 'Hidden';
 }
 

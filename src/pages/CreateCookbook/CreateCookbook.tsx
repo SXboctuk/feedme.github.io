@@ -1,6 +1,11 @@
 import React, { createRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
+import {
+	createNewCookbook,
+	getCookbookById,
+	updateCookbook,
+} from '../../api/Feedme.Api';
 import Input from '../../components/Input';
 import Button from '../../components/shared/Button';
 import Card from '../../components/shared/Card';
@@ -15,6 +20,9 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import useWindowSize from '../../hooks/useWindowSize';
 import { CardRecepie } from '../../interfaces/CardRecipe';
 import {
+	CookbookCreateCheckboxInput,
+	CookbookCreateCheckboxInputWrapper,
+	CookbookCreateCheckboxLabel,
 	CreateCookbookDropRecepieWrapper,
 	CreateCookbookError,
 	CreateCookbookFooterBlock,
@@ -38,9 +46,9 @@ const CreateCookbook = () => {
 	const params = useParams();
 	const { fetchUserRecepies } = useAction();
 	const { id } = useTypedSelector((state) => state.userReducer);
-	const { cookbooks } = useTypedSelector(
-		(state) => state.userCookbooksReducer,
-	);
+	// const { cookbooks } = useTypedSelector(
+	// 	(state) => state.userCookbooksReducer,
+	// );
 	const { recepies } = useTypedSelector((state) => state.userRecepiesReducer);
 	const [title, setTitle] = useState<string>('');
 	const [uploadImage, setUploadImage] = useState<File | string>();
@@ -48,6 +56,9 @@ const CreateCookbook = () => {
 	const [recepiesInCookbook, setRecepiesInCookbook] = useState<CardRecepie[]>(
 		[],
 	);
+	const [isVegatarian, setIsVegatarian] = useState(false);
+	const [isWithoutEggs, setIsWithoutEggs] = useState(false);
+	const [isWithoutMilk, setIsWithoutMilk] = useState(false);
 
 	const [userRecepies, setUserRecepies] = useState<CardRecepie[]>(recepies);
 	const [recepieSearch, setRecepieSearch] = useState<string>('');
@@ -57,6 +68,16 @@ const CreateCookbook = () => {
 	const [descriptionError, setDescriptionError] = useState<string>('');
 	const [imageError, setImageError] = useState<string>('');
 	const [recepiesError, setRecepiesError] = useState<string>('');
+
+	const handlerIsVegatarian = () => {
+		setIsVegatarian(!isVegatarian);
+	};
+	const handlerIsWithoutEggs = () => {
+		setIsWithoutEggs(!isWithoutEggs);
+	};
+	const handlerIsWithoutMilk = () => {
+		setIsWithoutMilk(!isWithoutMilk);
+	};
 
 	const handlerCloseButton = () => {
 		navigate('../');
@@ -113,9 +134,9 @@ const CreateCookbook = () => {
 			...recepiesInCookbook.slice(index + 1),
 		]);
 	};
-	const handlerConfirm = () => {
+	const handlerConfirm = async () => {
 		let error = false;
-		if (title.match(regexString.IS_STRING_SHORT)) {
+		if (title.match(regexString.IS_STRING_SHORT) === null) {
 			setTitleError(errorMassage.IS_SHORT);
 			error = true;
 		}
@@ -137,7 +158,38 @@ const CreateCookbook = () => {
 
 		if (!error) {
 			//post new cookbook and take from server cookbook and push in redux user Cookbooks
-			alert('All field is ok');
+
+			if (uploadImage instanceof File) {
+				const recepieIdList = recepiesInCookbook.map(
+					(recepie) => recepie.id,
+				);
+				if (params.cookbookid) {
+					const image =
+						uploadImage instanceof File ? uploadImage : undefined;
+					const res = await updateCookbook(
+						params.cookbookid,
+						image,
+						title,
+						isVegatarian,
+						isWithoutMilk,
+						isWithoutEggs,
+						description,
+						recepieIdList,
+					);
+					console.log(res);
+				} else {
+					const res = await createNewCookbook(
+						uploadImage,
+						title,
+						isVegatarian,
+						isWithoutMilk,
+						isWithoutEggs,
+						description,
+						recepieIdList,
+					);
+					console.log(res);
+				}
+			}
 		} else {
 			return;
 		}
@@ -162,21 +214,45 @@ const CreateCookbook = () => {
 	}, [recepieSearch, userRecepies]);
 
 	useEffect(() => {
-		const cookbook = cookbooks.find(
-			(elem) => elem.id === params.cookbookid,
-		);
-		if (cookbook) {
+		if (params.cookbookid) {
 			//fetch id cookbook
-			params.cookbookid;
+
+			const fetchCookbook = async () => {
+				if (params.cookbookid) {
+					const res = await getCookbookById(params.cookbookid);
+					const json = await res.json();
+
+					setTitle(json.cookbook.title);
+					setDescription(json.cookbook.description);
+					setUploadImage(json.cookbook.imagePath);
+					let newRecepieArray = userRecepies;
+					setRecepiesInCookbook(
+						json.recepies.map((elem: any) => {
+							let recepie: CardRecepie | null = null;
+							userRecepies.forEach((res) => {
+								if (res.id == elem.id) {
+									const index = newRecepieArray.indexOf(res);
+
+									newRecepieArray = [
+										...newRecepieArray.slice(0, index),
+										...newRecepieArray.slice(index + 1),
+									];
+									recepie = res;
+								}
+							});
+							if (recepie !== null) {
+								return recepie;
+							}
+						}),
+					);
+
+					setUserRecepies(newRecepieArray);
+				}
+			};
+			fetchCookbook();
 			//set value from responce
-			setTitle('Responce title');
-			setDescription(
-				'Responce description Responce description Responce description Responce description Responce description Responce description Responce description',
-			);
-			setUploadImage('/public/mocks/Image/card1.jpg');
-			setRecepiesInCookbook([...recepies.slice(0, 3)]);
 		}
-	}, [params.cookbookid, cookbooks]);
+	}, [params.cookbookid]);
 
 	useEffect(() => {
 		let newRecepieArray = userRecepies;
@@ -261,6 +337,44 @@ const CreateCookbook = () => {
 						placeholder={t('description')}
 						error={descriptionError}
 					/>
+					<div>
+						<CookbookCreateCheckboxInputWrapper>
+							<CookbookCreateCheckboxInput
+								onChange={handlerIsVegatarian}
+								checked={isVegatarian}
+								type="checkbox"
+								name="Vegetarian"
+								id="Vegetarian"
+							/>
+							<CookbookCreateCheckboxLabel htmlFor="Vegetarian">
+								{t('vegetarian')}
+							</CookbookCreateCheckboxLabel>
+						</CookbookCreateCheckboxInputWrapper>
+						<CookbookCreateCheckboxInputWrapper>
+							<CookbookCreateCheckboxInput
+								onChange={handlerIsWithoutMilk}
+								checked={isWithoutMilk}
+								type="checkbox"
+								name="Without milk"
+								id="WithoutMilk"
+							/>
+							<CookbookCreateCheckboxLabel htmlFor="WithoutMilk">
+								{t('withoutMilk')}
+							</CookbookCreateCheckboxLabel>
+						</CookbookCreateCheckboxInputWrapper>
+						<CookbookCreateCheckboxInputWrapper>
+							<CookbookCreateCheckboxInput
+								onChange={handlerIsWithoutEggs}
+								checked={isWithoutEggs}
+								type="checkbox"
+								name="Without eggs"
+								id="WithoutEggs"
+							/>
+							<CookbookCreateCheckboxLabel htmlFor="WithoutEggs">
+								{t('withoutEggs')}
+							</CookbookCreateCheckboxLabel>
+						</CookbookCreateCheckboxInputWrapper>
+					</div>
 					<Input
 						handlerInput={handlerRicipeSearchInput}
 						labelText={
@@ -303,8 +417,8 @@ const CreateCookbook = () => {
 										>
 											<Card
 												to={'#'}
-												key={elem.id}
-												text={elem.text}
+												key={elem?.id}
+												text={elem?.text}
 												viewsCounter={elem.viewsCounter}
 												titleName={elem.titleName}
 												creatorName={elem.creatorName}
@@ -318,6 +432,7 @@ const CreateCookbook = () => {
 												creatorId={elem.creatorId}
 												isLikes={elem.isLikes}
 												cardType={'recepie'}
+												isSaved={false}
 											/>
 										</div>
 									);
@@ -348,6 +463,7 @@ const CreateCookbook = () => {
 												creatorId={elem.creatorId}
 												isLikes={elem.isLikes}
 												cardType={'recepie'}
+												isSaved={false}
 											/>
 										</div>
 									);

@@ -32,12 +32,13 @@ const ProfileCookbooks = (props: {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	if (error) return <div>Error</div>;
+	if (error) return <div>{error}</div>;
 	return (
 		<>
 			<ContentWrapper>
 				<Container maxWidth={styles.screenSize.lg}>
 					<ProfileHeader
+						isOwner={false}
 						imageSrc={
 							userData.imageSrc === ''
 								? '/public/assets/images/userDefault.png'
@@ -80,6 +81,7 @@ const ProfileCookbooks = (props: {
 										creatorId={elem.creatorId}
 										isLikes={elem.isLikes}
 										cardType={'recepie'}
+										isSaved={elem.isSaved}
 									/>
 								);
 							})}

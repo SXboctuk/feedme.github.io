@@ -109,3 +109,42 @@ export const CreateCookbookPreviewImage = styled.img`
 	width: 100%;
 	height: 100%;
 `;
+
+export const CookbookCreateCheckboxInputWrapper = styled.div`
+	&:not(:last-child) {
+		margin-bottom: ${styles.distances.xs};
+	}
+`;
+
+export const CookbookCreateCheckboxLabel = styled.label`
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+
+	&:before {
+		content: '';
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		flex-shrink: 0;
+		flex-grow: 0;
+		border: 1px solid #adb5bd;
+		border-radius: 0.25em;
+		margin-right: 0.5em;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 50% 50%;
+	}
+`;
+
+export const CookbookCreateCheckboxInput = styled.input`
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+
+	&:checked + label:before {
+		border-color: ${({ theme }) => theme.colors.primary};
+		background-color: ${({ theme }) => theme.colors.primary};
+		background-image: url('../../../../../public/assets/svg/checkboxCheck.svg');
+	}
+`;

@@ -100,3 +100,31 @@ export const CreateRecepiePreviewImage = styled.img`
 	width: 100%;
 	height: 100%;
 `;
+
+export const CreateRecepienputRange = styled.input`
+	width: 100%;
+
+	border-radius: 10px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+	overflow: hidden;
+	height: 10px;
+
+	&::-webkit-slider-runnable-track {
+		background-color: ${({ theme }) => theme.colors.gray};
+	}
+
+	&::-webkit-slider-thumb {
+		background-color: ${({ theme }) => theme.colors.grayDark};
+		cursor: pointer;
+		border-radius: 10px;
+		width: 15px;
+		height: 15px;
+		-webkit-appearance: none;
+
+		padding: 10px 0;
+		box-shadow: -2000px 0 0 2000px ${({ theme }) => theme.colors.primary};
+	}
+`;

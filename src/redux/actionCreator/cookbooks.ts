@@ -4,19 +4,20 @@ import {
 	CookbooksActionTypes,
 } from '../reducers/CookbooksReducer/CookbooksReducer.types';
 
-import cookbooksData from '../../constants/mocks/CookbooksCard.json';
+import { getAllCookbooks } from '../../api/Feedme.Api';
+import { responseInCookbookCard } from '../../helpers/converter/cookbookCard';
 export const fetchCookbook = () => {
 	return async (dispatch: Dispatch<CookbooksAction>) => {
 		try {
 			dispatch({ type: CookbooksActionTypes.FETCH_COOKBOOKS });
 			// fetch
-			const data = cookbooksData;
-			setTimeout(() => {
+			const data = await getAllCookbooks();
+			if (data.ok) {
 				dispatch({
 					type: CookbooksActionTypes.FETCH_COOKBOOKS_SUCCESS,
-					payload: data,
+					payload: responseInCookbookCard(await data.json()),
 				});
-			}, 1500);
+			}
 		} catch (e) {
 			dispatch({
 				type: CookbooksActionTypes.FETCH_COOKBOOKS_ERROR,

@@ -1,7 +1,9 @@
 import React, { createRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { updataUserText, updateUserImage } from '../../api/Feedme.Api';
 import { errorMassage } from '../../constants/errorMassage';
 import { regexString } from '../../constants/regex';
+import { useAction } from '../../hooks/useAction';
 import {
 	ProfileButton,
 	ProfileButtonWrapper,
@@ -32,6 +34,8 @@ const ProfileHeader = (props: {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [uploadImage, setUploadImage] = useState<File>();
 
+	const { setNewImage, setNewUsertext } = useAction();
+
 	const refInputUploadFile = createRef<HTMLInputElement>();
 	const handlerUserTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		if (e.target.value.match(regexString.IS_VALID_STRING)) {
@@ -39,7 +43,7 @@ const ProfileHeader = (props: {
 			setErrorMessage('');
 		}
 	};
-	const handlerSubmit = () => {
+	const handlerSubmit = async () => {
 		let error = false;
 		if (value.match(regexString.IS_STRING_VALID_SHORT_LONG)) {
 			setErrorMessage(errorMassage.IS_SHORT);
@@ -49,7 +53,11 @@ const ProfileHeader = (props: {
 		if (error === true) {
 			alert('error');
 		} else {
-			alert('new userText');
+			const res = await updataUserText(value);
+			if (res.ok) {
+				setNewUsertext((await res.json()).userText);
+				setShowInput(false);
+			}
 		}
 	};
 	const handlerPhotoClick = () => {
@@ -61,8 +69,16 @@ const ProfileHeader = (props: {
 		}
 	};
 	useEffect(() => {
-		if (isOwner && uploadImage !== undefined)
-			alert('get New photo and set it' + uploadImage?.size);
+		if (isOwner && uploadImage !== undefined) {
+			const uploadImageOnServer = async () => {
+				const res = await updateUserImage(uploadImage);
+				if (res.ok) {
+					const value = await res.json();
+					setNewImage(await value.imagePath);
+				}
+			};
+			uploadImageOnServer();
+		}
 	}, [uploadImage]);
 
 	return (

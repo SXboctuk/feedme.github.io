@@ -12,4 +12,5 @@ export interface CardCookbook {
 	isVegatarian: boolean;
 	isWithoutMilk: boolean;
 	isWithoutEggs: boolean;
+	isSaved: boolean;
 }

@@ -17,4 +17,5 @@ export interface OptionButtonContainerProps {
 	type: 'Recepie' | 'Cookbook';
 	elemId: string;
 	creatorId: string;
+	isSaved: boolean;
 }
