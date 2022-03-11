@@ -49,7 +49,7 @@ export const setRecepieLike = async (value: boolean, id: string) => {
 export const setCookbookLike = async (value: boolean, id: string) => {
 	const res = getData(_path + '/cookbook/like/' + id).then((res) => res);
 	const data = await (await res).json();
-	console.log(data);
+
 	return { value: data.value, currentLikesCounter: data.counter };
 };
 
@@ -73,6 +73,11 @@ export const signUp = async (
 		password: password,
 		repeatPassword: repeatPassword,
 	});
+
+	return res;
+};
+export const signInWithCookie = async () => {
+	const res = getData(_path + '/auth/tokenAuth');
 
 	return res;
 };

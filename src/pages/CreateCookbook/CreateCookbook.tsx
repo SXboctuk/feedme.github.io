@@ -49,7 +49,9 @@ const CreateCookbook = () => {
 	// const { cookbooks } = useTypedSelector(
 	// 	(state) => state.userCookbooksReducer,
 	// );
-	const { recepies } = useTypedSelector((state) => state.userRecepiesReducer);
+	const { recepies, loading } = useTypedSelector(
+		(state) => state.userRecepiesReducer,
+	);
 	const [title, setTitle] = useState<string>('');
 	const [uploadImage, setUploadImage] = useState<File | string>();
 	const [description, setDescription] = useState<string>('');
@@ -118,13 +120,6 @@ const CreateCookbook = () => {
 	};
 	const handlerAddRecepieInCookbook = (elem: CardRecepie) => {
 		setRecepiesInCookbook([...recepiesInCookbook, elem]);
-
-		// const index = userRecepies.indexOf(elem);
-
-		// setUserRecepies([
-		// 	...userRecepies.slice(0, index),
-		// 	...userRecepies.slice(index + 1),
-		// ]);
 	};
 	const handlerRemoveRecepieFromCookbook = (elem: CardRecepie) => {
 		setUserRecepies([...userRecepies, elem]);
@@ -136,6 +131,7 @@ const CreateCookbook = () => {
 	};
 	const handlerConfirm = async () => {
 		let error = false;
+
 		if (title.match(regexString.IS_STRING_SHORT) === null) {
 			setTitleError(errorMassage.IS_SHORT);
 			error = true;
@@ -146,7 +142,9 @@ const CreateCookbook = () => {
 			error = true;
 		}
 
-		if (description.match(regexString.IS_STRING_SHORT_DESCRIPTION)) {
+		if (
+			description.match(regexString.IS_STRING_SHORT_DESCRIPTION) === null
+		) {
 			setDescriptionError(errorMassage.IS_SHORT_DESCRIPTION);
 			error = true;
 		}
@@ -158,45 +156,43 @@ const CreateCookbook = () => {
 
 		if (!error) {
 			//post new cookbook and take from server cookbook and push in redux user Cookbooks
-
-			if (uploadImage instanceof File) {
-				const recepieIdList = recepiesInCookbook.map(
-					(recepie) => recepie.id,
+			console.log('res');
+			const recepieIdList = recepiesInCookbook.map(
+				(recepie) => recepie.id,
+			);
+			if (params.cookbookid) {
+				const image =
+					uploadImage instanceof File ? uploadImage : undefined;
+				const res = await updateCookbook(
+					params.cookbookid,
+					image,
+					title,
+					isVegatarian,
+					isWithoutMilk,
+					isWithoutEggs,
+					description,
+					recepieIdList,
 				);
-				if (params.cookbookid) {
-					const image =
-						uploadImage instanceof File ? uploadImage : undefined;
-					const res = await updateCookbook(
-						params.cookbookid,
-						image,
-						title,
-						isVegatarian,
-						isWithoutMilk,
-						isWithoutEggs,
-						description,
-						recepieIdList,
-					);
-					console.log(res);
-				} else {
-					const res = await createNewCookbook(
-						uploadImage,
-						title,
-						isVegatarian,
-						isWithoutMilk,
-						isWithoutEggs,
-						description,
-						recepieIdList,
-					);
-					console.log(res);
-				}
+				console.log(res);
 			}
-		} else {
-			return;
+			if (uploadImage instanceof File) {
+				const res = await createNewCookbook(
+					uploadImage,
+					title,
+					isVegatarian,
+					isWithoutMilk,
+					isWithoutEggs,
+					description,
+					recepieIdList,
+				);
+				console.log(res);
+			}
 		}
 	};
-
+	const [loadingRecepieStart, setLoadingRecepieStart] = useState(false);
 	useEffect(() => {
 		fetchUserRecepies(id);
+		setLoadingRecepieStart(true);
 	}, []);
 
 	useEffect(() => {
@@ -214,51 +210,55 @@ const CreateCookbook = () => {
 	}, [recepieSearch, userRecepies]);
 
 	useEffect(() => {
-		if (params.cookbookid) {
-			//fetch id cookbook
-
+		if (params.cookbookid && !loading && loadingRecepieStart) {
+			// fetch id cookbook
 			const fetchCookbook = async () => {
 				if (params.cookbookid) {
 					const res = await getCookbookById(params.cookbookid);
-					const json = await res.json();
+					if (res.ok) {
+						const json = await res.json();
 
-					setTitle(json.cookbook.title);
-					setDescription(json.cookbook.description);
-					setUploadImage(json.cookbook.imagePath);
-					let newRecepieArray = userRecepies;
-					setRecepiesInCookbook(
+						setTitle(json.cookbook.title);
+						setDescription(json.cookbook.description);
+						setUploadImage(json.cookbook.imagePath);
+						let newRecepieInCookbook: CardRecepie[] = [];
 						json.recepies.map((elem: any) => {
 							let recepie: CardRecepie | null = null;
-							userRecepies.forEach((res) => {
+							recepies.forEach((res) => {
 								if (res.id == elem.id) {
-									const index = newRecepieArray.indexOf(res);
-
-									newRecepieArray = [
-										...newRecepieArray.slice(0, index),
-										...newRecepieArray.slice(index + 1),
-									];
 									recepie = res;
 								}
 							});
 							if (recepie !== null) {
-								return recepie;
+								newRecepieInCookbook = [
+									...newRecepieInCookbook,
+									recepie,
+								];
 							}
-						}),
-					);
-
-					setUserRecepies(newRecepieArray);
+						});
+						console.log('json res: ', json.recepies);
+						console.log('new: ', newRecepieInCookbook);
+						setRecepiesInCookbook(newRecepieInCookbook);
+					}
 				}
 			};
 			fetchCookbook();
+
 			//set value from responce
 		}
-	}, [params.cookbookid]);
+	}, [recepies]);
 
 	useEffect(() => {
 		let newRecepieArray = userRecepies;
 
-		recepiesInCookbook.forEach((elem) => {
-			const index = newRecepieArray.indexOf(elem);
+		recepiesInCookbook.forEach((recepieInCookbook) => {
+			let index = -1;
+			newRecepieArray.forEach((recepie, i) => {
+				if (recepie.id === recepieInCookbook.id) {
+					index = i;
+				}
+			});
+
 			if (index !== -1) {
 				newRecepieArray = [
 					...newRecepieArray.slice(0, index),
@@ -268,7 +268,8 @@ const CreateCookbook = () => {
 		});
 
 		setUserRecepies(newRecepieArray);
-	}, [recepiesInCookbook]);
+	}, [recepiesInCookbook, userRecepies]);
+
 	return (
 		<ModalWindowContainer
 			handlerCloseButton={() => {
@@ -413,24 +414,36 @@ const CreateCookbook = () => {
 													elem,
 												);
 											}}
-											key={'newInCookbook' + elem.id}
+											key={'newInCookbook' + elem?.id}
 										>
 											<Card
 												to={'#'}
 												key={elem?.id}
 												text={elem?.text}
-												viewsCounter={elem.viewsCounter}
-												titleName={elem.titleName}
-												creatorName={elem.creatorName}
-												imageSrc={elem.imageSrc}
-												likesCounter={elem.likesCounter}
+												viewsCounter={
+													elem?.viewsCounter || 0
+												}
+												titleName={
+													elem?.titleName ||
+													'loading..'
+												}
+												creatorName={
+													elem?.creatorName ||
+													'loading..'
+												}
+												imageSrc={elem?.imageSrc || ''}
+												likesCounter={
+													elem?.likesCounter || 0
+												}
 												commentsCounter={
-													elem.commentsCounter
+													elem?.commentsCounter || 0
 												}
 												type="wide"
 												OptionType={'Hidden'}
-												creatorId={elem.creatorId}
-												isLikes={elem.isLikes}
+												creatorId={
+													elem?.creatorId || '#'
+												}
+												isLikes={elem?.isLikes || false}
 												cardType={'recepie'}
 												isSaved={false}
 											/>

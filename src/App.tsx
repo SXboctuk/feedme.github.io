@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import FirstRunApp from './components/FirstRunApp';
+
 import FullscreenLoading from './components/FullscreenLoading';
 import GlobalStyles from './components/GlobalStyles';
 
@@ -14,7 +16,9 @@ const App = () => {
 			<ThemeProvider theme={defaultTheme}>
 				<Suspense fallback={<FullscreenLoading />}>
 					<GlobalStyles>
-						<Routes />
+						<FirstRunApp>
+							<Routes />
+						</FirstRunApp>
 					</GlobalStyles>
 				</Suspense>
 			</ThemeProvider>
