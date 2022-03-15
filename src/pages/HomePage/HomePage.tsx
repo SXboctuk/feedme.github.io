@@ -7,16 +7,16 @@ import TrendingRecepies from './components/TrendingRecepies';
 import UserChoice from './components/UserChoice/UserChoice';
 
 const HomePage = () => {
-	return (
-		<>
-			<Background backgroundColor={styles.colors.white}>
-				<MainScreen />
-				<UserChoice />
-				<OurChoice />
-				<TrendingRecepies />
-			</Background>
-		</>
-	);
+    return (
+        <>
+            <Background backgroundColor={styles.colors.white}>
+                <MainScreen />
+                <UserChoice />
+                <OurChoice />
+                <TrendingRecepies />
+            </Background>
+        </>
+    );
 };
 
 export default HomePage;

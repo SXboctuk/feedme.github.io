@@ -7,9 +7,9 @@ import en from './locales/en.json';
 const resources = { en };
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
-	fallbackLng: 'en',
-	defaultNS: 'common',
-	resources: resources,
+    fallbackLng: 'en',
+    defaultNS: 'common',
+    resources: resources,
 });
 
 export default i18n;

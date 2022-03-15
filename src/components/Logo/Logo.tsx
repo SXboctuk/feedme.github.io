@@ -9,19 +9,19 @@ const Logo = (props: {
 	fontSize?: string;
 	svgSize?: number;
 }) => {
-	const { color, fontSize, svgSize } = props;
-	return (
-		<LogoLink to={routePath.HOMEPAGE}>
-			<SvgLogo
-				width={svgSize ? svgSize * 0.7 : 25 * 0.7}
-				height={svgSize ? svgSize : 25}
-			/>
-			<LogoText color={color} fontSize={fontSize}>
-				{logoPartFeed}
-				<LogoTextPrimary>{logoPartMe}</LogoTextPrimary>
-			</LogoText>
-		</LogoLink>
-	);
+    const { color, fontSize, svgSize } = props;
+    return (
+        <LogoLink to={routePath.HOMEPAGE}>
+            <SvgLogo
+                width={svgSize ? svgSize * 0.7 : 25 * 0.7}
+                height={svgSize ? svgSize : 25}
+            />
+            <LogoText color={color} fontSize={fontSize}>
+                {logoPartFeed}
+                <LogoTextPrimary>{logoPartMe}</LogoTextPrimary>
+            </LogoText>
+        </LogoLink>
+    );
 };
 
 export default Logo;

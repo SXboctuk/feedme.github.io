@@ -89,7 +89,7 @@ export const CookbooksFilterCheckboxInputWrapper = styled.div`
 	}
 `;
 export const CookbooksFilterCheckboxInputWrapperHideMy = styled(
-	CookbooksFilterCheckboxInputWrapper,
+    CookbooksFilterCheckboxInputWrapper,
 )`
 	margin-top: ${styles.distances.mdPlus};
 `;

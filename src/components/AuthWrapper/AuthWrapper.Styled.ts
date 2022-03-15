@@ -20,13 +20,13 @@ export const AuthWrapperImageWrapper = styled.div<{ positionX: string }>`
 	border-radius: ${({ theme }) => theme.borderRadiusImage};
 
 	${({ positionX }) => {
-		if (positionX === 'right') {
-			return 'margin-right: auto;';
-		}
-		if (positionX === 'left') {
-			return 'margin-left: auto;';
-		}
-	}}
+        if (positionX === 'right') {
+            return 'margin-right: auto;';
+        }
+        if (positionX === 'left') {
+            return 'margin-left: auto;';
+        }
+    }}
 
 	overflow: hidden;
 
@@ -58,13 +58,13 @@ export const AuthWrapperContentWrapper = styled.div<{ positionX: string }>`
 	max-width: 600px;
 	width: 100%;
 	${({ positionX }) => {
-		if (positionX === 'right') {
-			return 'left: 50%;';
-		}
-		if (positionX === 'left') {
-			return 'right: 50%;';
-		}
-	}}
+        if (positionX === 'right') {
+            return 'left: 50%;';
+        }
+        if (positionX === 'left') {
+            return 'right: 50%;';
+        }
+    }}
 	@media (max-width: ${styles.screenSize.lg}) {
 		left: 50%;
 		top: 50%;

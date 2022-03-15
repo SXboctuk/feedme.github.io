@@ -19,7 +19,7 @@ const TrendingRecepiesSliderArrow = styled(SvgArrow)`
 `;
 
 export const TrendingRecepiesSliderButtonLeft = styled(
-	TrendingRecepiesSliderArrow,
+    TrendingRecepiesSliderArrow,
 )`
 	transform: rotate(180deg);
 	@media (max-width: ${styles.screenSize.sm}) {
@@ -39,7 +39,7 @@ export const TrendingRecepiesSliderContent = styled.div`
 `;
 
 export const TrendingRecepiesSliderButtonRight = styled(
-	TrendingRecepiesSliderArrow,
+    TrendingRecepiesSliderArrow,
 )`
 	@media (max-width: ${styles.screenSize.sm}) {
 		margin-left: ${styles.distances.mdPlus};

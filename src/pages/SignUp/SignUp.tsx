@@ -31,76 +31,76 @@ const SignUp = (props: {
 	passwordValue: string;
 	passwordConfirmValue: string;
 }) => {
-	const {
-		handlerLogin,
-		handlerUsername,
-		handlerPassword,
-		loginError,
-		usernameError,
-		passwordError,
-		handlerPasswordConfirm,
-		passwordConfirmError,
-		handlerFormSubmit,
-		loginValue,
-		usernameValue,
-		passwordValue,
-		passwordConfirmValue,
-	} = props;
-	const { t } = useTranslation();
-	return (
-		<AuthWrapper imageSrc={constImagePath.SIGN_IN} positionX={'left'}>
-			<AuthFormWrapper
-				linkText={t('signin')}
-				linkPath={'/' + routePath.SIGN_IN}
-				underTitleText={t('signupUnderTitle')}
-				title={t('signupTitle')}
-			>
-				<form onSubmit={handlerFormSubmit}>
-					<SignupputWrapper>
-						<Input
-							labelText={t('login')}
-							handlerInput={handlerLogin}
-							error={loginError}
-							value={loginValue}
-						/>
-					</SignupputWrapper>
-					<SignupputWrapper>
-						<Input
-							labelText={t('username')}
-							handlerInput={handlerUsername}
-							error={usernameError}
-							value={usernameValue}
-						/>
-					</SignupputWrapper>
-					<SignupputWrapper>
-						<Input
-							labelText={t('password')}
-							handlerInput={handlerPassword}
-							error={passwordError}
-							type={'password'}
-							value={passwordValue}
-							forgotLink
-						/>
-					</SignupputWrapper>
-					<SignupputWrapper>
-						<Input
-							labelText={t('passwordConfirm')}
-							handlerInput={handlerPasswordConfirm}
-							error={passwordConfirmError}
-							value={passwordConfirmValue}
-							type={'password'}
-						/>
-					</SignupputWrapper>
+    const {
+        handlerLogin,
+        handlerUsername,
+        handlerPassword,
+        loginError,
+        usernameError,
+        passwordError,
+        handlerPasswordConfirm,
+        passwordConfirmError,
+        handlerFormSubmit,
+        loginValue,
+        usernameValue,
+        passwordValue,
+        passwordConfirmValue,
+    } = props;
+    const { t } = useTranslation();
+    return (
+        <AuthWrapper imageSrc={constImagePath.SIGN_IN} positionX={'left'}>
+            <AuthFormWrapper
+                linkText={t('signin')}
+                linkPath={'/' + routePath.SIGN_IN}
+                underTitleText={t('signupUnderTitle')}
+                title={t('signupTitle')}
+            >
+                <form onSubmit={handlerFormSubmit}>
+                    <SignupputWrapper>
+                        <Input
+                            labelText={t('login')}
+                            handlerInput={handlerLogin}
+                            error={loginError}
+                            value={loginValue}
+                        />
+                    </SignupputWrapper>
+                    <SignupputWrapper>
+                        <Input
+                            labelText={t('username')}
+                            handlerInput={handlerUsername}
+                            error={usernameError}
+                            value={usernameValue}
+                        />
+                    </SignupputWrapper>
+                    <SignupputWrapper>
+                        <Input
+                            labelText={t('password')}
+                            handlerInput={handlerPassword}
+                            error={passwordError}
+                            type={'password'}
+                            value={passwordValue}
+                            forgotLink
+                        />
+                    </SignupputWrapper>
+                    <SignupputWrapper>
+                        <Input
+                            labelText={t('passwordConfirm')}
+                            handlerInput={handlerPasswordConfirm}
+                            error={passwordConfirmError}
+                            value={passwordConfirmValue}
+                            type={'password'}
+                        />
+                    </SignupputWrapper>
 
-					<SignupButtonWrapper>
-						<Button type="submit" variant={'solid'} wide>
-							{t('signup')}
-						</Button>
-					</SignupButtonWrapper>
-				</form>
-			</AuthFormWrapper>
-		</AuthWrapper>
-	);
+                    <SignupButtonWrapper>
+                        <Button type="submit" variant={'solid'} wide>
+                            {t('signup')}
+                        </Button>
+                    </SignupButtonWrapper>
+                </form>
+            </AuthFormWrapper>
+        </AuthWrapper>
+    );
 };
 
 export default SignUp;

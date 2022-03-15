@@ -21,104 +21,104 @@ const ProfileRecepies = (props: {
 	error: string | null;
 	loadingRecepies: boolean;
 }) => {
-	const {
-		userData,
+    const {
+        userData,
 
-		isOwner,
-		userRecepies,
+        isOwner,
+        userRecepies,
 
-		error,
-		loadingRecepies,
-	} = props;
-	const { t } = useTranslation();
-	const { width } = useWindowSize();
-	const navigate = useNavigate();
-	if (error) return <div>{error}</div>;
-	return (
-		<>
-			<ContentWrapper>
-				<Container maxWidth={styles.screenSize.lg}>
-					<ProfileHeader
-						isOwner={false}
-						imageSrc={
-							userData.imageSrc
-								? userData.imageSrc
-								: '/public/assets/images/userDefault.png'
-						}
-						userName={
-							userData.userName ? userData.userName : 'Loading...'
-						}
-						userText={
-							userData.userText === ''
-								? 'Loading...'
-								: userData.userText
-						}
-					/>
-					<ProfileNavigation
-						itemSelect="recepies"
-						buttonText={t('createNewRecepie')}
-						handlerButton={() => {
-							navigate('create');
-						}}
-						isOwner={isOwner}
-					/>
-					{loadingRecepies ? (
-						<Spinner />
-					) : (
-						<ProfileRecepiesContentWrapper>
-							{width >= parseInt(styles.screenSize.sm)
-								? userRecepies.map((elem) => {
-										return (
-											<Card
-												to={`./${elem.id}`}
-												key={elem.id}
-												text={elem.text}
-												viewsCounter={elem.viewsCounter}
-												titleName={elem.titleName}
-												creatorName={elem.creatorName}
-												imageSrc={elem.imageSrc}
-												likesCounter={elem.likesCounter}
-												commentsCounter={
-													elem.commentsCounter
-												}
-												type="wide"
-												OptionType={'Recepie'}
-												creatorId={elem.creatorId}
-												isLikes={elem.isLikes}
-												cardType={'recepie'}
-												isSaved={elem.isSaved}
-											/>
-										);
+        error,
+        loadingRecepies,
+    } = props;
+    const { t } = useTranslation();
+    const { width } = useWindowSize();
+    const navigate = useNavigate();
+    if (error) return <div>{error}</div>;
+    return (
+        <>
+            <ContentWrapper>
+                <Container maxWidth={styles.screenSize.lg}>
+                    <ProfileHeader
+                        isOwner={false}
+                        imageSrc={
+                            userData.imageSrc
+                                ? userData.imageSrc
+                                : '/public/assets/images/userDefault.png'
+                        }
+                        userName={
+                            userData.userName ? userData.userName : 'Loading...'
+                        }
+                        userText={
+                            userData.userText === ''
+                                ? 'Loading...'
+                                : userData.userText
+                        }
+                    />
+                    <ProfileNavigation
+                        itemSelect="recepies"
+                        buttonText={t('createNewRecepie')}
+                        handlerButton={() => {
+                            navigate('create');
+                        }}
+                        isOwner={isOwner}
+                    />
+                    {loadingRecepies ? (
+                        <Spinner />
+                    ) : (
+                        <ProfileRecepiesContentWrapper>
+                            {width >= parseInt(styles.screenSize.sm)
+                                ? userRecepies.map((elem) => {
+                                    return (
+                                        <Card
+                                            to={`./${elem.id}`}
+                                            key={elem.id}
+                                            text={elem.text}
+                                            viewsCounter={elem.viewsCounter}
+                                            titleName={elem.titleName}
+                                            creatorName={elem.creatorName}
+                                            imageSrc={elem.imageSrc}
+                                            likesCounter={elem.likesCounter}
+                                            commentsCounter={
+                                                elem.commentsCounter
+                                            }
+                                            type="wide"
+                                            OptionType={'Recepie'}
+                                            creatorId={elem.creatorId}
+                                            isLikes={elem.isLikes}
+                                            cardType={'recepie'}
+                                            isSaved={elem.isSaved}
+                                        />
+                                    );
 								  })
-								: userRecepies.map((elem) => {
-										return (
-											<Card
-												to={`./${elem.id}`}
-												key={elem.id}
-												text={elem.text}
-												viewsCounter={elem.viewsCounter}
-												titleName={elem.titleName}
-												creatorName={elem.creatorName}
-												imageSrc={elem.imageSrc}
-												likesCounter={elem.likesCounter}
-												commentsCounter={
-													elem.commentsCounter
-												}
-												OptionType={'Recepie'}
-												creatorId={elem.creatorId}
-												isLikes={elem.isLikes}
-												cardType={'recepie'}
-												isSaved={elem.isSaved}
-											/>
-										);
+                                : userRecepies.map((elem) => {
+                                    return (
+                                        <Card
+                                            to={`./${elem.id}`}
+                                            key={elem.id}
+                                            text={elem.text}
+                                            viewsCounter={elem.viewsCounter}
+                                            titleName={elem.titleName}
+                                            creatorName={elem.creatorName}
+                                            imageSrc={elem.imageSrc}
+                                            likesCounter={elem.likesCounter}
+                                            commentsCounter={
+                                                elem.commentsCounter
+                                            }
+                                            OptionType={'Recepie'}
+                                            creatorId={elem.creatorId}
+                                            isLikes={elem.isLikes}
+                                            cardType={'recepie'}
+                                            isSaved={elem.isSaved}
+                                        />
+                                    );
 								  })}
-						</ProfileRecepiesContentWrapper>
-					)}
-				</Container>
-			</ContentWrapper>
-			<Outlet />
-		</>
-	);
+                        </ProfileRecepiesContentWrapper>
+                    )}
+                </Container>
+            </ContentWrapper>
+            <Outlet />
+        </>
+    );
 };
 
 export default ProfileRecepies;

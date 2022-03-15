@@ -1,112 +1,103 @@
 {
-  "common": {
-    "learnReact": "Learn React123",
-	
+    "common": {
+        "learnReact": "Learn React123",
 
-	"cookbooks": "Cookbooks",
-	"recepies": "Recepies",
-	"aboutus": "About us",
+        "cookbooks": "Cookbooks",
+        "recepies": "Recepies",
+        "aboutus": "About us",
 
-	"buttonCreateCookbook": "Create Cookbook",
+        "buttonCreateCookbook": "Create Cookbook",
 
-	"signin": "Sign In",
-	"signup": "Sign Up",
+        "signin": "Sign In",
+        "signup": "Sign Up",
 
-	
-	"views": "views",
-	"likes": "likes",
-	"comments": "comments",
-	
+        "views": "views",
+        "likes": "likes",
+        "comments": "comments",
 
-	"homePage": {
-		"mainScreen": {
-			"mainTagLine": "Find Recepies and Create Your Favourite Cookboks"
-		},
-		"mainScreenSearch": {
-			"placeholder": "Find Best Recipies...",
-			"search": "SEARCH"
-		},
-		"ourChoice": {
-			"buttonText": "Show More",
-			"sectionTitle": "OUR CHOICE",
-			"title": "Most Popular Cookbooks"
-			
-		},
-		"trendingRecepies" : {
-			"buttonText": "Show More",
-			"sectionTitle": "TOP 10",
-			"title": "Trending Recepies"
-		},
-		"userChoice" : {
-			"buttonText": "Show More",
-			"sectionTitle": "USERS CHOICE",
-			"title": "20 Highest-Rated Recipes"
-		}
+        "homePage": {
+            "mainScreen": {
+                "mainTagLine": "Find Recepies and Create Your Favourite Cookboks"
+            },
+            "mainScreenSearch": {
+                "placeholder": "Find Best Recipies...",
+                "search": "SEARCH"
+            },
+            "ourChoice": {
+                "buttonText": "Show More",
+                "sectionTitle": "OUR CHOICE",
+                "title": "Most Popular Cookbooks"
+            },
+            "trendingRecepies": {
+                "buttonText": "Show More",
+                "sectionTitle": "TOP 10",
+                "title": "Trending Recepies"
+            },
+            "userChoice": {
+                "buttonText": "Show More",
+                "sectionTitle": "USERS CHOICE",
+                "title": "20 Highest-Rated Recipes"
+            }
+        },
+        "Filter": {
+            "filterTitle": "Filter",
+            "clearAll": "clear all",
+            "sortBy": "Sort by",
+            "optionValuePlaceholder": "Choose",
+            "optionValueLikes": "Likes",
+            "optionValuePopular": "Popular",
+            "cookbookType": "Cookbook type",
+            "vegetarian": "Vegetarian",
+            "withoutMilk": "Without Milk",
+            "withoutEggs": "Without Eggs",
+            "hideMyCookbooks": "Hide My Cookbooks",
+            "cookingTime": "Cooking Time"
+        },
 
-	},
-	"Filter": {
-		"filterTitle": "Filter",
-		"clearAll": "clear all",
-		"sortBy": "Sort by",
-		"optionValuePlaceholder": "Choose",
-		"optionValueLikes": "Likes",
-		"optionValuePopular": "Popular",
-		"cookbookType": "Cookbook type",
-		"vegetarian": "Vegetarian",
-		"withoutMilk": "Without Milk",
-		"withoutEggs": "Without Eggs",
-		"hideMyCookbooks": "Hide My Cookbooks",
-		"cookingTime": "Cooking Time"
-	},
+        "CloneToMyRecepies": "Clone To My Recepies",
+        "CloneToMyCookbooks": "Clone To My Cookbooks",
+        "EditRecepie": "Edit Recepie",
+        "DeleteRecepie": "Delete Recepie",
+        "EditCookbook": "Edit Cookbook",
+        "DeleteCookbook": "Delete Cookbook",
+        "description": "Description",
+        "directions": "Directions",
+        "ingredients": "Ingredients",
+        "expressyourself": "Express yoursef...",
+        "commentsTitle": "Comments",
 
-	"CloneToMyRecepies": "Clone To My Recepies",
-	"CloneToMyCookbooks": "Clone To My Cookbooks",
-	"EditRecepie": "Edit Recepie",
-	"DeleteRecepie": "Delete Recepie",
-	"EditCookbook": "Edit Cookbook",
-	"DeleteCookbook": "Delete Cookbook",
-	"description": "Description",
-	"directions": "Directions",
-	"ingredients": "Ingredients",
-	"expressyourself": "Express yoursef...",
-	"commentsTitle": "Comments",
+        "createAnAccount": "Create an acoount",
+        "signinUnderTitle": "New here?",
+        "signinTitle": "Welcome back",
 
-	"createAnAccount": "Create an acoount",
-	"signinUnderTitle": "New here?",
-	"signinTitle": "Welcome back",
+        "username": "Username",
+        "login": "Login",
+        "password": "Password",
+        "forgotPassword": "Forgot password?",
+        "passwordConfirm": "Confirm Password",
 
-	"username": "Username",
-	"login": "Login",
-	"password": "Password",
-	"forgotPassword": "Forgot password?",
-	"passwordConfirm": "Confirm Password",
+        "signupTitle": "Join Our Community",
+        "signupUnderTitle": "Already have an account?",
 
-	"signupTitle": "Join Our Community",
-	"signupUnderTitle": "Already have an account?",
+        "createNewCookbook": "Create New Cookbook",
+        "createNewRecepie": "Create New Recepie",
 
-	"createNewCookbook": "Create New Cookbook",
-	"createNewRecepie": "Create New Recepie",
+        "myCookbooks": "My Cookbooks",
+        "myRecepies": "My Recepies",
+        "mySettings": "My Settings",
 
-	"myCookbooks": "My Cookbooks",
-	"myRecepies": "My Recepies",
-	"mySettings": "My Settings",
+        "personalInformation": "Personal Information",
+        "name": "Name",
+        "email": "Email",
+        "edit": "Edit",
+        "changeMyPassword": "Change My Password",
+        "save": "Save",
+        "close": "Close",
 
-	"personalInformation": "Personal Information",
-	"name": "Name",
-	"email": "Email",
-	"edit": "Edit",
-	"changeMyPassword": "Change My Password",
-	"save": "Save",
-	"close": "Close",
-
-	"cookbookTitle": "Cookbook title",
-	"recepieTitle": "Recepie title",
-	"uploadCookbookImage": "Upload Cookbook Image",
-	"cancel": "Cancel",
-	"confirm": "Confirm"
-
-
-
-  }
-  
+        "cookbookTitle": "Cookbook title",
+        "recepieTitle": "Recepie title",
+        "uploadCookbookImage": "Upload Cookbook Image",
+        "cancel": "Cancel",
+        "confirm": "Confirm"
+    }
 }

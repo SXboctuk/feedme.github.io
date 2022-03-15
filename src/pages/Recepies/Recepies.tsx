@@ -9,87 +9,87 @@ import ContentWrapper from '../../components/ContentWrapper';
 import { Outlet } from 'react-router-dom';
 
 const Recepies = (props: RecepiesProps) => {
-	const {
-		loading,
-		error,
-		filterOption,
-		setFilterOption,
-		recepiesCard,
-		width,
-	} = props;
-	if (error) {
-		return <div>{error}</div>;
-	}
+    const {
+        loading,
+        error,
+        filterOption,
+        setFilterOption,
+        recepiesCard,
+        width,
+    } = props;
+    if (error) {
+        return <div>{error}</div>;
+    }
 
-	return (
-		<ContentWrapper>
-			<ContentSearchTemplate
-				leftElem={
-					<RecepiesFilter
-						filterOption={filterOption}
-						setFilterOption={setFilterOption}
-					/>
-				}
-				rightElem={
-					loading ? (
-						<Spinner />
-					) : (
-						<RecepiesContentWrapper>
-							{width >= parseInt(styles.screenSize.sm)
-								? recepiesCard.map((elem) => {
-										return (
-											<Card
-												to={`${elem.id}`}
-												key={elem.id}
-												text={elem.text}
-												viewsCounter={elem.viewsCounter}
-												titleName={elem.titleName}
-												creatorName={elem.creatorName}
-												imageSrc={elem.imageSrc}
-												likesCounter={elem.likesCounter}
-												commentsCounter={
-													elem.commentsCounter
-												}
-												type="wide"
-												OptionType={'Recepie'}
-												creatorId={elem.creatorId}
-												isLikes={elem.isLikes}
-												isSaved={elem.isSaved}
-												cardType={'recepie'}
-											/>
-										);
+    return (
+        <ContentWrapper>
+            <ContentSearchTemplate
+                leftElem={
+                    <RecepiesFilter
+                        filterOption={filterOption}
+                        setFilterOption={setFilterOption}
+                    />
+                }
+                rightElem={
+                    loading ? (
+                        <Spinner />
+                    ) : (
+                        <RecepiesContentWrapper>
+                            {width >= parseInt(styles.screenSize.sm)
+                                ? recepiesCard.map((elem) => {
+                                    return (
+                                        <Card
+                                            to={`${elem.id}`}
+                                            key={elem.id}
+                                            text={elem.text}
+                                            viewsCounter={elem.viewsCounter}
+                                            titleName={elem.titleName}
+                                            creatorName={elem.creatorName}
+                                            imageSrc={elem.imageSrc}
+                                            likesCounter={elem.likesCounter}
+                                            commentsCounter={
+                                                elem.commentsCounter
+                                            }
+                                            type="wide"
+                                            OptionType={'Recepie'}
+                                            creatorId={elem.creatorId}
+                                            isLikes={elem.isLikes}
+                                            isSaved={elem.isSaved}
+                                            cardType={'recepie'}
+                                        />
+                                    );
 								  })
-								: recepiesCard.map((elem) => {
-										return (
-											<Card
-												to={`$${elem.id}`}
-												key={elem.id}
-												text={elem.text}
-												viewsCounter={elem.viewsCounter}
-												titleName={elem.titleName}
-												creatorName={elem.creatorName}
-												imageSrc={elem.imageSrc}
-												likesCounter={elem.likesCounter}
-												commentsCounter={
-													elem.commentsCounter
-												}
-												OptionType={'Recepie'}
-												creatorId={elem.creatorId}
-												isLikes={elem.isLikes}
-												isSaved={elem.isSaved}
-												cardType={'recepie'}
-											/>
-										);
+                                : recepiesCard.map((elem) => {
+                                    return (
+                                        <Card
+                                            to={`$${elem.id}`}
+                                            key={elem.id}
+                                            text={elem.text}
+                                            viewsCounter={elem.viewsCounter}
+                                            titleName={elem.titleName}
+                                            creatorName={elem.creatorName}
+                                            imageSrc={elem.imageSrc}
+                                            likesCounter={elem.likesCounter}
+                                            commentsCounter={
+                                                elem.commentsCounter
+                                            }
+                                            OptionType={'Recepie'}
+                                            creatorId={elem.creatorId}
+                                            isLikes={elem.isLikes}
+                                            isSaved={elem.isSaved}
+                                            cardType={'recepie'}
+                                        />
+                                    );
 								  })}
-						</RecepiesContentWrapper>
-					)
-				}
-				selectedPage={'Recepies'}
-			/>
+                        </RecepiesContentWrapper>
+                    )
+                }
+                selectedPage={'Recepies'}
+            />
 
-			<Outlet />
-		</ContentWrapper>
-	);
+            <Outlet />
+        </ContentWrapper>
+    );
 };
 
 export default Recepies;

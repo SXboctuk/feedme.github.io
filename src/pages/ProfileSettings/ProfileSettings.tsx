@@ -8,10 +8,10 @@ import styles from '../../constants/stylesProperty';
 import { UserState } from '../../redux/reducers/UserReducer/UserReducer.types';
 import SettingsInput from './Components/SettingsInput/SettingsInput';
 import {
-	ProfileSettingsContentWrapper,
-	ProfileSettingsMainTitle,
-	ProfileSettingsItemsBlock,
-	ProfileSettingsDelete,
+    ProfileSettingsContentWrapper,
+    ProfileSettingsMainTitle,
+    ProfileSettingsItemsBlock,
+    ProfileSettingsDelete,
 } from './ProfileSettings.Styled';
 
 const ProfileSettings = (props: {
@@ -29,83 +29,83 @@ const ProfileSettings = (props: {
 	handlerChangePassword: () => void;
 	handlerDeleteUser: () => void;
 }) => {
-	const { t } = useTranslation();
-	const {
-		isOwner,
-		user,
+    const { t } = useTranslation();
+    const {
+        isOwner,
+        user,
 
-		handlerSaveName,
-		handlerSaveEmail,
-		handlerSavePassword,
-		errorName,
-		errorEmail,
-		errorPassword,
-		handlerChangeName,
-		handlerChangeEmail,
-		handlerChangePassword,
-		handlerDeleteUser,
-	} = props;
-	const { userText, userName, email, image } = user;
+        handlerSaveName,
+        handlerSaveEmail,
+        handlerSavePassword,
+        errorName,
+        errorEmail,
+        errorPassword,
+        handlerChangeName,
+        handlerChangeEmail,
+        handlerChangePassword,
+        handlerDeleteUser,
+    } = props;
+    const { userText, userName, email, image } = user;
 
-	if (!isOwner) {
-		return <div>Wooops</div>;
-	}
+    if (!isOwner) {
+        return <div>Wooops</div>;
+    }
 
-	return (
-		<>
-			<ContentWrapper>
-				<Container maxWidth={styles.screenSize.lg}>
-					<ProfileHeader
-						imageSrc={image}
-						userName={userName}
-						userText={userText}
-						isOwner={isOwner}
-					/>
+    return (
+        <>
+            <ContentWrapper>
+                <Container maxWidth={styles.screenSize.lg}>
+                    <ProfileHeader
+                        imageSrc={image}
+                        userName={userName}
+                        userText={userText}
+                        isOwner={isOwner}
+                    />
 
-					<ProfileNavigation
-						itemSelect="settings"
-						isOwner={isOwner}
-					/>
-					<ProfileSettingsContentWrapper>
-						<ProfileSettingsMainTitle>
-							{t('personalInformation')}
-						</ProfileSettingsMainTitle>
-						<ProfileSettingsItemsBlock>
-							<SettingsInput
-								buttonName={t('edit')}
-								name={t('name')}
-								value={userName}
-								saveButton={handlerSaveName}
-								error={errorName}
-								handlerInputChange={handlerChangeName}
-							/>
-							<SettingsInput
-								buttonName={t('edit')}
-								name={t('email')}
-								value={email}
-								saveButton={handlerSaveEmail}
-								error={errorEmail}
-								handlerInputChange={handlerChangeEmail}
-								isEmail
-							/>
-							<SettingsInput
-								buttonName={t('changeMyPassword')}
-								name={t('Password')}
-								value={''}
-								saveButton={handlerSavePassword}
-								error={errorPassword}
-								isPassword
-								handlerInputChange={handlerChangePassword}
-							/>
-						</ProfileSettingsItemsBlock>
-						<ProfileSettingsDelete onClick={handlerDeleteUser}>
-							{t('delete')}
-						</ProfileSettingsDelete>
-					</ProfileSettingsContentWrapper>
-				</Container>
-			</ContentWrapper>
-		</>
-	);
+                    <ProfileNavigation
+                        itemSelect="settings"
+                        isOwner={isOwner}
+                    />
+                    <ProfileSettingsContentWrapper>
+                        <ProfileSettingsMainTitle>
+                            {t('personalInformation')}
+                        </ProfileSettingsMainTitle>
+                        <ProfileSettingsItemsBlock>
+                            <SettingsInput
+                                buttonName={t('edit')}
+                                name={t('name')}
+                                value={userName}
+                                saveButton={handlerSaveName}
+                                error={errorName}
+                                handlerInputChange={handlerChangeName}
+                            />
+                            <SettingsInput
+                                buttonName={t('edit')}
+                                name={t('email')}
+                                value={email}
+                                saveButton={handlerSaveEmail}
+                                error={errorEmail}
+                                handlerInputChange={handlerChangeEmail}
+                                isEmail
+                            />
+                            <SettingsInput
+                                buttonName={t('changeMyPassword')}
+                                name={t('Password')}
+                                value={''}
+                                saveButton={handlerSavePassword}
+                                error={errorPassword}
+                                isPassword
+                                handlerInputChange={handlerChangePassword}
+                            />
+                        </ProfileSettingsItemsBlock>
+                        <ProfileSettingsDelete onClick={handlerDeleteUser}>
+                            {t('delete')}
+                        </ProfileSettingsDelete>
+                    </ProfileSettingsContentWrapper>
+                </Container>
+            </ContentWrapper>
+        </>
+    );
 };
 
 export default ProfileSettings;

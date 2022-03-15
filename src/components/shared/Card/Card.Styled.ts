@@ -38,7 +38,7 @@ export const CardTitle = styled.div`
 export const CardCreator = styled.div<CardCreatorProps>`
 	font-weight: normal;
 	font-size: ${({ fontSizeCreator }) =>
-		fontSizeCreator ? fontSizeCreator : '14px'};
+        fontSizeCreator ? fontSizeCreator : '14px'};
 	line-height: 19px;
 	color: ${({ theme }) => theme.colors.textMain};
 `;

@@ -6,11 +6,11 @@ import { userRecepiesReducer } from './UserRecepieReducer/UserRecepiesReducer';
 import { userReducer } from './UserReducer/UserReducer';
 
 export const rootReducer = combineReducers({
-	cookbooksReducer,
-	recepiesReducer,
-	userReducer,
-	userRecepiesReducer,
-	userCookbooksReducer,
+    cookbooksReducer,
+    recepiesReducer,
+    userReducer,
+    userRecepiesReducer,
+    userCookbooksReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
