@@ -31,7 +31,7 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         "react/jsx-indent-props": "off",
        
-        "indent": [ "error", 4],
+        // "indent": [ "error", 4],
         // "indent": ["error", 4],
         // "react/jsx-indent": ["error", 4],
         // "react/jsx-indent-props": ["error", 4],

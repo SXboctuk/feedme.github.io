@@ -1,7 +1,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+
+module.exports = (assetPath) => { 
+    const ASSET_PATH = assetPath || '/'; 
+    return {
     entry: path.resolve(__dirname, '..', './src/index.tsx'),
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
@@ -23,7 +26,12 @@ module.exports = {
             },
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-                type: 'asset/resource',
+                 use: [
+                        {
+                        loader: 'file-loader',
+                        },
+                    ],
+                //type: 'asset/resource',
             },
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
@@ -34,7 +42,7 @@ module.exports = {
     output: { 
         path: path.resolve(__dirname, '..', './build'),
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: ASSET_PATH
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -42,4 +50,5 @@ module.exports = {
         }),
     ],
     stats: 'errors-only',
+}
 }

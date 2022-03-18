@@ -1,5 +1,8 @@
-export const enum constImagePath {
-	SIGN_IN = '/public/assets/images/SignIn.jpg',
-	SIGN_UP = '/public/assets/images/SignUp.jpg',
-	HOMEPAGE_MAIN = '/public/assets/images/MainBackground.png',
-}
+import backgroundMain from '../../public/assets/images/MainBackground.png';
+import signInImage from '../../public/assets/images/SignIn.jpg';
+import signUpImage from '../../public/assets/images/SignUp.jpg';
+export const constImagePath = {
+    SIGN_IN: signInImage,
+    SIGN_UP: signUpImage,
+    HOMEPAGE_MAIN: backgroundMain,
+};
