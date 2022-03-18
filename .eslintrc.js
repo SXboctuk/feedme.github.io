@@ -17,8 +17,8 @@ module.exports = {
         'plugin:import/warnings',
         'plugin:import/typescript',
         'plugin:eslint-comments/recommended',
-    // 'prettier/@typescript-eslint',
-    // 'plugin:prettier/recommended',
+        'prettier/@typescript-eslint',
+        // 'plugin:prettier/recommended',
     ],
     rules: {
         'import/no-named-as-default-member': 'off',
@@ -35,6 +35,6 @@ module.exports = {
         // "indent": ["error", 4],
         // "react/jsx-indent": ["error", 4],
         // "react/jsx-indent-props": ["error", 4],
-        // 'prettier/prettier': ['off', { singleQuote: true }]
+        'prettier/prettier': ['off', { singleQuote: true }]
     },
 }

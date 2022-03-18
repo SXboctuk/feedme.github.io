@@ -162,7 +162,7 @@ const CreateCookbook = () => {
             );
             if (params.cookbookid) {
                 const image =
-					uploadImage instanceof File ? uploadImage : undefined;
+                    uploadImage instanceof File ? uploadImage : undefined;
                 const res = await updateCookbook(
                     params.cookbookid,
                     image,
@@ -201,10 +201,10 @@ const CreateCookbook = () => {
 
     useEffect(() => {
         const recepiesSuitable =
-			userRecepies.filter(
-			    (elem) =>
-			        elem.titleName.toLowerCase().indexOf(recepieSearch) !== -1,
-			) || [];
+            userRecepies.filter(
+                (elem) =>
+                    elem.titleName.toLowerCase().indexOf(recepieSearch) !== -1,
+            ) || [];
 
         setRecepieShow(recepiesSuitable);
     }, [recepieSearch, userRecepies]);
@@ -424,12 +424,11 @@ const CreateCookbook = () => {
                                                 elem?.viewsCounter || 0
                                             }
                                             titleName={
-                                                elem?.titleName ||
-                                            'loading..'
+                                                elem?.titleName || 'loading..'
                                             }
                                             creatorName={
                                                 elem?.creatorName ||
-                                            'loading..'
+                                                  'loading..'
                                             }
                                             imageSrc={elem?.imageSrc || ''}
                                             likesCounter={
@@ -440,16 +439,14 @@ const CreateCookbook = () => {
                                             }
                                             type="wide"
                                             OptionType={'Hidden'}
-                                            creatorId={
-                                                elem?.creatorId || '#'
-                                            }
+                                            creatorId={elem?.creatorId || '#'}
                                             isLikes={elem?.isLikes || false}
                                             cardType={'recepie'}
                                             isSaved={false}
                                         />
                                     </div>
                                 );
-							  })
+                            })
                             : recepiesInCookbook.map((elem) => {
                                 return (
                                     <div
@@ -480,7 +477,7 @@ const CreateCookbook = () => {
                                         />
                                     </div>
                                 );
-							  })}
+                            })}
                     </CreateCookbookRecepies>
                     <CreateCookbookFooterBlock>
                         <Button
@@ -488,8 +485,8 @@ const CreateCookbook = () => {
                             onClick={() => {
                                 navigate(
                                     routePath.PROFILE +
-										id +
-										routePath.COOKBOOKS,
+                                        id +
+                                        routePath.COOKBOOKS,
                                 );
                                 handlerCloseButton();
                             }}

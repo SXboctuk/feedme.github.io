@@ -1,4 +1,4 @@
-const _path = 'http://localhost:3000/api';
+const _path = 'https://secure-brushlands-80295.herokuapp.com/api';
 
 async function postDataJson(url: string, data: object) {
     // Default options are marked with *
