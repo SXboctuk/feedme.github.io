@@ -19,6 +19,7 @@ const MainScreen = () => {
     const { t } = useTranslation('common', {
         keyPrefix: 'homePage.mainScreen',
     });
+    console.log(constImagePath.HOMEPAGE_MAIN);
     return (
         <Container maxWidth={styles.screenSize.xl}>
             <BorderWrapper>
