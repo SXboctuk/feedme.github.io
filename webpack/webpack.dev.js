@@ -20,7 +20,7 @@ module.exports = {
         }),
         new Dotenv(
             {
-                path: './.env.dev',
+                path: path.resolve(__dirname, '../.env.dev')
             }
         )
     ],
