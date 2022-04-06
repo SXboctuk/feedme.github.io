@@ -5,14 +5,37 @@ import {
     UserActionTypes,
 } from '../reducers/UserReducer/UserReducer.types';
 
-export const signInUser = (response: Response) => {
+export const signInUser = (
+    email: string,
+    id: string,
+    image: string,
+    role: string,
+    userName: string,
+    userText: string,
+    token: string,
+) => {
     return async (dispatch: Dispatch<UserAction>) => {
         try {
             dispatch({ type: UserActionTypes.SIGN_IN_USER });
-            dispatch({
-                type: UserActionTypes.SIGN_IN_USER_SUCCESS,
-                payload: await response.json(),
-            });
+            if (id && image && role && userName && userText && email) {
+                dispatch({
+                    type: UserActionTypes.SIGN_IN_USER_SUCCESS,
+                    payload: {
+                        email: email,
+                        id: id,
+                        image: image,
+                        role: role,
+                        userName: userName,
+                        userText: userText,
+                        token: token,
+                    },
+                });
+            } else {
+                dispatch({
+                    type: UserActionTypes.SIGN_IN_USER_ERROR,
+                    payload: 'Login error, wrong response data',
+                });
+            }
         } catch (e) {
             dispatch({
                 type: UserActionTypes.SIGN_IN_USER_ERROR,

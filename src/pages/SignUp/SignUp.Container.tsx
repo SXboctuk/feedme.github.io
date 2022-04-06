@@ -13,12 +13,12 @@ const SignUpContainer = () => {
     const [usernameError, setUsernameError] = useState<string>('');
     const [passwordError, setPasswordError] = useState<string>('');
     const [passwordConfirmError, setPasswordConfirmError] =
-		useState<string>('');
+        useState<string>('');
     const [loginValue, setLoginValue] = useState<string>('');
     const [usernameValue, setUsernameValue] = useState<string>('');
     const [passwordValue, setPasswordValue] = useState<string>('');
     const [passwordConfirmValue, setPasswordConfirmValue] =
-		useState<string>('');
+        useState<string>('');
 
     const [responseMessage, setResponseMessage] = useState<string>('');
 
@@ -98,7 +98,17 @@ const SignUpContainer = () => {
                 passwordConfirmValue,
             );
             if (res.ok) {
-                signInUser(res);
+                const jsonRes = await res.json();
+
+                signInUser(
+                    jsonRes.email,
+                    jsonRes.id,
+                    jsonRes.image,
+                    jsonRes.role,
+                    jsonRes.userName,
+                    jsonRes.userText,
+                    jsonRes.token,
+                );
             } else {
                 setResponseMessage((await res.json()).message);
             }

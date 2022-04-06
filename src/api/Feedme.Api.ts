@@ -1,8 +1,21 @@
-const _path = 'https://secure-brushlands-80295.herokuapp.com/api';
+//const _path = 'https://secure-brushlands-80295.herokuapp.com/api';
+//const _path = 'http://localhost:3000/api';
+import { store } from '../redux/store';
+const _path = process.env.API_URL;
+
+function createUrl(url: string): string {
+    const token = store.getState().userReducer.token;
+    if (token) {
+        return url + '?token=' + store.getState().userReducer.token;
+    } else {
+        return url;
+    }
+}
 
 async function postDataJson(url: string, data: object) {
     // Default options are marked with *
-    const response = await fetch(url, {
+
+    const response = await fetch(createUrl(url), {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -20,7 +33,7 @@ async function postDataJson(url: string, data: object) {
 
 async function postFormData(url: string, data: FormData) {
     // Default options are marked with *
-    const response = await fetch(url, {
+    const response = await fetch(createUrl(url), {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
@@ -32,7 +45,7 @@ async function postFormData(url: string, data: FormData) {
 }
 
 async function getData(url: string) {
-    const response = await fetch(url, {
+    const response = await fetch(createUrl(url), {
         method: 'GET',
         mode: 'cors',
         credentials: 'include',
