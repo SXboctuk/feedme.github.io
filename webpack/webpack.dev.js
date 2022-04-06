@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     mode: 'development',
@@ -17,5 +18,10 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.name': JSON.stringify('Vishwas'),
         }),
+        new Dotenv(
+            {
+                path: './.env.dev',
+            }
+        )
     ],
 }
